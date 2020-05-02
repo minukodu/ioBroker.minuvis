@@ -1,0 +1,22 @@
+{
+    "name": "MinuVis WebApp",
+    "short_name": "MinuVis",
+    "description": "Minukodu MinuVis Smart Home WebApp",
+    "lang": "de-DE",
+    "icons": [
+        {
+            "src": "/minukodu/android-chrome-192x192.png?v=A0700zz4O5",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/minukodu/android-chrome-512x512.png?v=A0700zz4O5",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#00828b",
+    "background_color": "#00828b"
+}
