@@ -1,4 +1,4 @@
-![Logo](admin/minuvis.png)
+![Logo](admin/minuvis.png =320x)
 # ioBroker.minuvis
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.minuvis.svg)](https://www.npmjs.com/package/iobroker.minuvis)
