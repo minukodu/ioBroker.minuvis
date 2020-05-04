@@ -2,7 +2,7 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/minukodu/mstile-150x150.png?v=A0700zz4O5"/>
+            <square150x150logo src="/minuvis/app/mstile-150x150.png?v=A0700zz4O5"/>
             <TileColor>#00aba9</TileColor>
         </tile>
     </msapplication>
