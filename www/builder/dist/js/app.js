@@ -4,6 +4,7 @@
 var version = "1.0.0";
 //////////////////////
 
+var appPath = "minuvis/app/";
 
 var variables = [];
 var variablesAsObj = [];
@@ -1306,7 +1307,7 @@ function init() {
       appConfig = generateConfig();
       const url = encodeURIComponent(appConfig.dataprovider.url);
       const file = encodeURIComponent(appConfig.dataprovider.fileName);
-      const preViewURL = "/minukodu?url=" + url + "&file=" + file + "&forceUpdate";
+      const preViewURL = "/" + appPath + "?url=" + url + "&file=" + file + "&forceUpdate";
 
       showPreviewQrCode(window.location.protocol + "//" + window.location.host + preViewURL);
 
