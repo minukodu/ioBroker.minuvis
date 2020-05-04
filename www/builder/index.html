@@ -159,7 +159,9 @@
                 <i class="nav-icon fas fa-glasses"></i>
                 <p>
                   Preview in new tab
+                  <i id="preview-qrcode" class="fas fa-qrcode"></i>
                 </p>
+
               </a>
             </li>
             <!-- save and show config -->
@@ -251,6 +253,8 @@
             </div>
             <!-- col -->
             <div class="col col-lg-2">
+              <div id="preview-qrcode-holder-title">QRCode for preview:</div>
+              <div id="preview-qrcode-holder" class="mt-1 ml-1">.. to be generated ...</div>
               <!-- space for scrolling om tablets-->
               <div id="message-holder" class="mt-1"></div>
             </div>
@@ -275,10 +279,14 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-inline"></div>
       <!-- Default to the left -->
       Minu Kodu - Mein Zuhause - my home is my castle
+      <!-- To the right -->
+      <div class="float-right d-none d-sm-inline">
+        <a href="https://minukodu.de/impressum">Impressum</a>
+        <a href="https://minukodu.de/datenschutzerklaerung">Datenschutz</a>
+        <span class="ml-2" id="versionnumber">App-Version V?.?.?</span>
+      </div>
     </footer>
   </div>
   <!-- ./wrapper -->
@@ -383,6 +391,8 @@
   <script src="dist/js/mfdicons.js"></script>
   <!-- fontawesome picker -->
   <script src="dist/js/fontawesome-iconpicker.min.js"></script>
+  <!-- handlebars -->
+  <script src="dist/js/handlebars.min.js"></script>
   <!-- typeahead -->
   <script src="dist/js/typeahead.bundle.min.js"></script>
   <!-- selectpicker -->

@@ -65,6 +65,10 @@ input.colorinput {
   border-top: 1px dotted #fff;
 }
 
+#preview-qrcode {
+  margin-left: 10px;
+}
+
 .form-check-label {
   font-size: 0.875rem;
 }
@@ -173,6 +177,10 @@ input.colorinput {
     border: none;
 }
 
+.iconpicker .iconpicker-items {
+  max-height: 600px;
+}
+
 #show-config-holder {
     font-size: 75%;
 }
@@ -232,8 +240,8 @@ input.colorinput {
 
 .tt-suggestion {
   padding: 3px 20px;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 18px;
   color: black;
   background: white;
 }
@@ -266,4 +274,17 @@ input.typeahead {
 }
 #configShowModal .modal-dialog {
   max-width: 100%;
+}
+
+#preview-qrcode-holder {
+  margin-bottom: 2em;
+  font-size: 0.7em;
+}
+
+#preview-qrcode-holder-title {
+  font-size: 1.1em;
+  padding: 3px;
+  margin: 3px;
+  background-color: #fff;
+  width: 200px;
 }

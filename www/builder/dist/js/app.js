@@ -1,5 +1,13 @@
 // App
+
+//////////////////////
+var version = "1.0.0";
+//////////////////////
+
+
 var variables = [];
+var variablesAsObj = [];
+var arrStates = [];
 var socket;
 var showInfoText = false;
 var filePath = "minukodu";
@@ -218,6 +226,16 @@ function populateWidget(widgetUUID, newWidget) {
       $(thisWidget).find("input.btn4Value").val(newWidget.value4);
       valueSwitcherSelectChange($("#" + widgetUUID + " .nbOfButtons"), newWidget.nbOfButtons);
       break;
+    case "timeswitch":
+      $(thisWidget).find("input.stateSelect").val(newWidget.stateId);
+      $(thisWidget).find(".settings-state").text(newWidget.stateId);
+      $(thisWidget).find(".timeSwitchType").val(newWidget.triggers.type);
+      $(thisWidget).find(".timeSwitchActionType").val(newWidget.action.type);
+      $(thisWidget).find("input.onValue").val(newWidget.action.onValue);
+      $(thisWidget).find("input.offValue").val(newWidget.action.offValue);
+      // States to Switch
+      timeSwitchAddStatesToSwitch(thisWidget, newWidget.action.idsOfStatesToSet);
+      break;
     default:
       // no more settings
       ;
@@ -287,7 +305,7 @@ function generateConfig(saveInFile = true) {
         case "html":
           //console.log("add html");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
-          newWidget.height = $(this).find("input.height").val() || "299px"; 
+          newWidget.height = $(this).find("input.height").val() || "299px";
           break;
         case "slider":
           //console.log("add slider");
@@ -354,6 +372,22 @@ function generateConfig(saveInFile = true) {
           newWidget.value2 = $(this).find(".btn2Value").val() || 33;
           newWidget.value3 = $(this).find(".btn3Value").val() || 66;
           newWidget.value4 = $(this).find(".btn4Value").val() || 99;
+          break;
+        case "timeswitch":
+          //console.log("add timewitch");
+          newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.triggers = {};
+          newWidget.triggers.type = $(this).find(".timeSwitchType").val() || "TimeTrigger";
+          newWidget.action = {};
+          newWidget.action.type = $(this).find(".timeSwitchActionType").val() || "OnOffStateAction";
+          newWidget.action.valueType = "boolean";
+          newWidget.action.onValue = $(this).find(".onValue").val() || "true";
+          newWidget.action.offValue = $(this).find(".offValue").val() || "false";
+          newWidget.action.booleanValue = true;
+          newWidget.action.idsOfStatesToSet = [];
+          $(this).find(".statesToSwitchInputGroup").each(function (index) {
+            newWidget.action.idsOfStatesToSet.push($(this).find("input").val() || "dummy.state");
+          });
           break;
         default:
           // no more settings
@@ -843,10 +877,14 @@ function connect_socket() {
     //console.log(socket);
     //console.log(socket.connected);
     localStorage.setItem("variables", "");
+    localStorage.setItem("arrStates", "");
 
-    socket.emit("getStates", function (err, _states) {
+    //socket.emit("getStates", function (err, _states) {
+    socket.emit("getObjects", function (err, _states) {
       console.log("Received " + Object.keys(_states).length + " states.");
-      //console.log(_states);
+      // console.log("_states");
+      // console.log(_states);
+      variablesAsObj = _states;
       variables = Object.keys(_states);
       localStorage.removeItem("variables");
       localStorage.setItem("variables", JSON.stringify(variables));
@@ -854,6 +892,12 @@ function connect_socket() {
       console.log("Stored " + variables.length + " states.");
       //console.log(variables);
 
+      arrStates = [];
+      for (const item in variablesAsObj) {
+        arrStates.push(variablesAsObj[item]);
+      }
+      localStorage.removeItem("arrStates");
+      localStorage.setItem("arrStates", JSON.stringify(arrStates));
       init_statesTypeahead();
 
       //socket.emit("delObject","myAlarme.VisuMeldungen.Alarme.neuAlalrm");
@@ -934,6 +978,30 @@ function deleteConfigFile(fileName) {
 
 
 function init_statesTypeahead() {
+
+  // console.log("arrStates");
+  // console.log(arrStates);
+
+  // default to prevent errors
+  let arrStatesTypeAhead = [{
+    _id: "no entries",
+    common: {
+      name: "no entries yet"
+    }
+  }];
+
+  if (arrStates) {
+    arrStatesTypeAhead = arrStates;
+  }
+
+  var statesSearchEngine = new Bloodhound({
+    local: arrStatesTypeAhead,
+    queryTokenizer: Bloodhound.tokenizers.nonword,
+    datumTokenizer: Bloodhound.tokenizers.obj.nonword('_id', 'common.name'),
+  });
+  // console.log("statesSearchEngine");
+  // console.log(statesSearchEngine);
+
   $(".states-select .typeahead").typeahead('destroy');
   $(".states-select .typeahead").typeahead(
     {
@@ -943,33 +1011,47 @@ function init_statesTypeahead() {
     },
     {
       name: "states",
-      source: substringMatcher(variables),
-      limit: 5000
+      display: '_id',
+      source: statesSearchEngine, // substringMatcher(variables),
+      limit: 5000,
+      templates: {
+        // empty: [
+        //   '<div class="empty-message">',
+        //     'unable to find any state that match the current query',
+        //   '</div>'
+        // ].join('\n'),
+        //suggestion: Handlebars.compile('<div>{{name}} -- {{num}}</div>')
+        suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}<small></div>')
+      }
     }
   );
 }
 
-var substringMatcher = function (strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
+// var substringMatcher = function (strs) {
+//   return function findMatches(q, cb) {
+//     var matches, substringRegex;
 
-    // an array that will be populated with substring matches
-    matches = [];
+//     // an array that will be populated with substring matches
+//     matches = [];
+//     let objMatches = {};
+//     objMatches.value = [];
 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, "i");
+//     // regex used to determine if a string contains the substring `q`
+//     substrRegex = new RegExp(q, "i");
 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function (i, str) {
-      if (substrRegex.test(str)) {
-        matches.push(str);
-      }
-    });
+//     // iterate through the pool of strings and for any string that
+//     // contains the substring `q`, add it to the `matches` array
+//     $.each(strs, function (i, str) {
+//       if (substrRegex.test(str)) {
+//         matches.push(str);
+//         objMatches.value.push(str);
+//       }
+//     });
 
-    cb(matches);
-  };
-};
+//     //cb(matches);
+//     cb(objMatches.value);
+//   };
+// };
 
 function show_message(message = "message", color = "danger") {
   $("#message-holder")
@@ -1122,14 +1204,29 @@ function submit_modal() {
   if (modalClass === "stateSelect") {
     $("#" + widgetId + " .card-header .settings-state").text(value);
   }
+  if (modalClass === "stateSelectToSwitch") {
+    $("#" + widgetId + " .card-header .settings-state-to-switch").text(value);
+  }
 }
 
 function removeFileExtension(fileName) {
   return fileName.split('.').slice(0, -1).join('.');
 }
 
+function showPreviewQrCode(url) {
+  $("#preview-qrcode-holder").html("");
+  let preViewQrCode = new QRCode(document.getElementById("preview-qrcode-holder"), {
+    width: 200,
+    height: 200
+  });
+  preViewQrCode.makeCode(url);
+}
+
+
 function init() {
   console.log("App init");
+  // version
+  $("#versionnumber").text("Version " + version);
 
   // check if develpoment mode
   // console.log(window.location.host);
@@ -1138,6 +1235,9 @@ function init() {
     $("body").addClass("is-development");
     $("body").prepend(templates.devNote);
   }
+
+  // assume same url and port
+  $("#data-url-port").val(window.location.protocol + "//" + window.location.host);
 
   $(".nav-item a.menu-link-page").on("click", function (e) {
     e.preventDefault();
@@ -1194,6 +1294,7 @@ function init() {
 
     // try to read variables
     variables = JSON.parse(localStorage.getItem("variables") || null);
+    arrStates = JSON.parse(localStorage.getItem("arrStates") || null);
     init_statesTypeahead();
     // init-iconpicker
     $(".icp").iconpicker();
@@ -1206,6 +1307,8 @@ function init() {
       const url = encodeURIComponent(appConfig.dataprovider.url);
       const file = encodeURIComponent(appConfig.dataprovider.fileName);
       const preViewURL = "/minukodu?url=" + url + "&file=" + file + "&forceUpdate";
+
+      showPreviewQrCode(window.location.protocol + "//" + window.location.host + preViewURL);
 
       window.open(preViewURL, '_blank');
     });
@@ -1232,6 +1335,11 @@ function init() {
       event.preventDefault();
       $(".widget").find(".card-body").toggle();
     });
+
+    // $("#preview-qrcode").click(function (event) {
+    //   event.preventDefault();
+    //   showPreviewQrCode();
+    // });
 
     addPage();
     // if config then generate Pages
@@ -1284,6 +1392,44 @@ function valueSwitcherSelectChange(selectObj, value = 0) {
     $("#" + widgetUUID + " .button4").show();
   }
 }
+
+function timeSwitchAddStateToSwitch(selectedObj) {
+  let widgetUUID = $(selectedObj).closest(".widget").attr("id");
+  let inputClone = $("#" + widgetUUID + " .statesToSwitchInputGroup").first().clone(false);
+  let inputCount = $("#" + widgetUUID + " .statesToSwitchInputGroup").length;
+  let oldClass = "stateSelectToSwitch0";
+  let newClass = "stateSelectToSwitch" + inputCount;
+
+  // console.log(inputClone);
+  // console.log(inputCount);
+
+  inputClone.addClass(newClass);
+  $("#" + widgetUUID + " .formStatesToSwitch").append(inputClone);
+  $("#" + widgetUUID + " ." + newClass + " button").attr("data-select", newClass)
+  $("#" + widgetUUID + " ." + newClass + " ." + oldClass).removeClass(oldClass).addClass(newClass);
+};
+
+function timeSwitchAddStatesToSwitch(thisWidget, idsOfStatesToSet) {
+  console.log("idsOfStatesToSet");
+  console.log(idsOfStatesToSet);
+  let inputCount = 0;
+  let inputForm = $(thisWidget).find(".statesToSwitchInputGroup").first();
+  for (const stateId of idsOfStatesToSet) {
+    let oldClass = "stateSelectToSwitch0";
+    let newClass = "stateSelectToSwitch" + inputCount;
+    if (inputCount == 0) {
+      $(thisWidget).find("input.stateSelectToSwitch0").val(stateId);
+    } else {
+      let newInput = $(inputForm).clone(false);
+      $(newInput).find("input.stateSelectToSwitch0").val(stateId);
+      $(newInput).find("." + oldClass).removeClass(oldClass).addClass(newClass);
+      console.log($(newInput).find("." + newClass + " button"));
+      $(newInput).find("button").attr("data-select", newClass)
+      $(thisWidget).find(".formStatesToSwitch").append(newInput);
+    }
+    inputCount++;
+  }
+};
 
 
 function sanitize(input) {
