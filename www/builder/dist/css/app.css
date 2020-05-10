@@ -73,6 +73,10 @@ input.colorinput {
   font-size: 0.875rem;
 }
 
+.message {
+  display: none;
+}
+
 .message.alert {
   font-size: 0.875rem;
 }
