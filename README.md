@@ -4,7 +4,6 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.minuvis.svg)](https://www.npmjs.com/package/iobroker.minuvis)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.minuvis.svg)](https://www.npmjs.com/package/iobroker.minuvis)
 ![Number of Installations (latest)](http://iobroker.live/badges/minuvis-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/minuvis-stable.svg)
 [![Dependency Status](https://img.shields.io/david/minukodu/iobroker.minuvis.svg)](https://david-dm.org/minukodu/iobroker.minuvis)
 [![Known Vulnerabilities](https://snyk.io/test/github/minukodu/ioBroker.minuvis/badge.svg)](https://snyk.io/test/github/minukodu/ioBroker.minuvis)
 
@@ -14,7 +13,43 @@
 
 Visualization for all devices
 
+## Instructions
+
+- install adapter as usual
+- create instance of minuvis (only 1 possible)
+- enable socket.io-Instance at web-Instance 
+
+![socket.io@web](https://minukodu.de/githubimg/web_instance_socket_io.jpg)
+- open minuvis instance 
+
+![minuvis instance](https://minukodu.de/githubimg/minuvis_instance.jpg)
+- connect to socket.io-Port of web or your own socket.io-instance 
+
+![connect](https://minukodu.de/githubimg/minuvis_connect.jpg)
+- add new page 
+
+![add Page](https://minukodu.de/githubimg/minuvis_addpage.jpg)
+- add widget 
+
+![add Widget](https://minukodu.de/githubimg/minuvis_addwidget.jpg)
+- edit state 
+
+![select state](https://minukodu.de/githubimg/minuvis_selectstate.jpg)
+- preView yor new app 
+
+![preview](https://minukodu.de/githubimg/minuvis_preview.jpg)
+
+For more information visit https://minukodu.de/en or watch at youtube https://youtu.be/dtHUBOEc4js
+
+
+
 ## Changelog
+
+### 0.0.4
+* (svallant) update Readme.md
+
+### 0.0.3
+* (svallant) update builder and app to V1.0.4
 
 ### 0.0.1
 * (svallant) initial release
