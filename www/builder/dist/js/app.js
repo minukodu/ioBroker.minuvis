@@ -1,7 +1,7 @@
 // App
 
 //////////////////////
-var version = "1.0.0";
+var version = "1.0.4";
 //////////////////////
 
 var appPath = "minuvis/app/";
@@ -17,7 +17,6 @@ var templates = getTemplates();
 // console.log("getTemplates()");
 // console.log(templates);
 
-
 function generatePages() {
   // delete all pages
   $("#pages .page").remove();
@@ -28,34 +27,49 @@ function generatePages() {
   console.log(appConfig);
 
   // Data Connection
-  $("#data-url-port").val(appConfig.dataprovider.url);
-  $("#data-url-port").attr("value", appConfig.dataprovider.url);
+  if (appConfig && appConfig.dataprovider) {
+    $("#data-url-port").val(appConfig.dataprovider.url);
+    $("#data-url-port").attr("value", appConfig.dataprovider.url);
+  }
 
   // settings
-  $("#chkSplitterOpen")[0].checked = appConfig.settings.SplitterOpen;
-  $("#chkLightMode")[0].checked = !appConfig.settings.LayoutDunkel;
+  if (appConfig && appConfig.settings) {
+    $("#chkSplitterOpen")[0].checked = appConfig.settings.SplitterOpen;
+    $("#chkLightMode")[0].checked = !appConfig.settings.LayoutDunkel;
+  }
 
-  for (var pageId in appConfig.pages) {
-    var pageUUID = addPage(appConfig.pages[pageId]);
-    console.log(appConfig.pages[pageId]);
-    for (var widgetId in appConfig.pages[pageId].widgets) {
-      //console.log(appConfig.pages[pageId].widgets[widgetId]);
-      var widget = appConfig.pages[pageId].widgets[widgetId];
-      // console.log(widget.type);
-      // console.log(pageUUID);
-      var widgetUUID = addWidgetToPage(widget.type, pageUUID);
-      populateWidget(widgetUUID, widget);
+  // pages
+  if (appConfig && appConfig.settings) {
+    for (var pageId in appConfig.pages) {
+      var pageUUID = addPage(appConfig.pages[pageId]);
+      console.log(appConfig.pages[pageId]);
+      for (var widgetId in appConfig.pages[pageId].widgets) {
+        //console.log(appConfig.pages[pageId].widgets[widgetId]);
+        var widget = appConfig.pages[pageId].widgets[widgetId];
+        // console.log(widget.type);
+        // console.log(pageUUID);
+        var widgetUUID = addWidgetToPage(widget.type, pageUUID);
+        populateWidget(widgetUUID, widget);
 
+      }
     }
 
   }
   // delete and populate CSS
   $("#css textarea").val("");
-  $("#css textarea").val(CSSJSON.toCSS(appConfig.css));
+  if (appConfig && appConfig.css) {
+    $("#css textarea").val(CSSJSON.toCSS(appConfig.css));
+  }
 
-  $(".menu-link-page")
-    .first()
-    .click();
+  firstPageUUID = $(".menu-link-page").first().attr("href");
+  //console.log("FirstPageUUID: " + firstPageUUID);
+  showPage(firstPageUUID);
+}
+
+function showPage(UUID) {
+  $("#css").hide();
+  $(".page").hide();
+  $(UUID).show();
 }
 
 function sortPages(pages = {}) {
@@ -295,6 +309,7 @@ function generateConfig(saveInFile = true) {
       switch (newWidget.type) {
         case "indicator":
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.icon = $(this).find(".iconSelect").attr("data-icon");
           newWidget.colorWhenTrue = $(this).find(".colorWhenTrue").val() || "#00FF00";
           newWidget.colorWhenFalse = $(this).find(".colorWhenFalse").val() || "#FF0000";
@@ -302,15 +317,18 @@ function generateConfig(saveInFile = true) {
         case "switch":
           //console.log("add switch");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           break;
         case "html":
           //console.log("add html");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.height = $(this).find("input.height").val() || "299px";
           break;
         case "slider":
           //console.log("add slider");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.unit = $(this).find("input.unit").val();
           newWidget.min = parseInt($(this).find("input.minimum").val(), 10) || 0;
           newWidget.max = parseInt($(this).find("input.maximum").val(), 10) || 100;
@@ -321,6 +339,7 @@ function generateConfig(saveInFile = true) {
         case "output":
           //console.log("add output");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.unit = $(this).find("input.unit").val();
           newWidget.format = $(this).find(".format").val() || "0";
           newWidget.color = $(this).find(".color").val() || "#FFFFFF";
@@ -358,11 +377,13 @@ function generateConfig(saveInFile = true) {
         case "timepicker":
           //console.log("add timepicker");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.format = $(this).find(".format").val() || "HH:mm";
           break;
         case "valueswitcher":
           //console.log("add valueswitcher");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.unit = $(this).find("input.unit").val();
           newWidget.nbOfButtons = $(this).find(".nbOfButtons").val() || 4;
           newWidget.icon1 = $(this).find(".iconSelectIcon1").attr("data-icon") || "fts_garage_door_10";
@@ -377,6 +398,7 @@ function generateConfig(saveInFile = true) {
         case "timeswitch":
           //console.log("add timewitch");
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
+          newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.triggers = {};
           newWidget.triggers.type = $(this).find(".timeSwitchType").val() || "TimeTrigger";
           newWidget.action = {};
@@ -995,11 +1017,11 @@ function init_statesTypeahead() {
     arrStatesTypeAhead = arrStates;
   }
 
-  var statesSearchEngine = new Bloodhound({
-    local: arrStatesTypeAhead,
-    queryTokenizer: Bloodhound.tokenizers.nonword,
-    datumTokenizer: Bloodhound.tokenizers.obj.nonword('_id', 'common.name'),
-  });
+  // var statesSearchEngine = new Bloodhound({
+  //   local: arrStatesTypeAhead,
+  //   queryTokenizer: Bloodhound.tokenizers.nonword,
+  //   datumTokenizer: Bloodhound.tokenizers.obj.nonword('_id', 'common.name'),
+  // });
   // console.log("statesSearchEngine");
   // console.log(statesSearchEngine);
 
@@ -1013,8 +1035,10 @@ function init_statesTypeahead() {
     {
       name: "states",
       display: '_id',
-      source: statesSearchEngine, // substringMatcher(variables),
-      limit: 5000,
+      // source: statesSearchEngine,
+      // source: substringMatcher(variables),
+      source: substringMatcher(arrStatesTypeAhead),
+      limit: 100,
       templates: {
         // empty: [
         //   '<div class="empty-message">',
@@ -1023,10 +1047,51 @@ function init_statesTypeahead() {
         // ].join('\n'),
         //suggestion: Handlebars.compile('<div>{{name}} -- {{num}}</div>')
         suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}<small></div>')
+        //suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>Beschreibung<small></div>')
       }
     }
   );
 }
+
+var substringMatcher = function (strs) {
+  return function findMatches(q, cb) {
+    // var matches, substringRegex;
+
+    // // an array that will be populated with substring matches
+    // matches = [];
+    // let objMatches = {};
+    // objMatches.value = [];
+
+    // regex used to determine if a string contains the substring `q`
+    // substrRegex = new RegExp(q, "i");
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    // $.each(strs, function (i, str) {
+    //   if (substrRegex.test(str)) {
+    //     matches.push(str);
+    //     objMatches.value.push(str);
+    //   }
+    // });
+    let lowerCaseQ = q.toLowerCase();
+    // console.log(lowerCaseQ);
+
+    var arrFllterResult = strs.filter(function (el) {
+
+      let rName = -1;
+      try {
+        rName = el.common.name.toLowerCase().indexOf(lowerCaseQ);
+      } catch (e) { };
+
+      return el._id.toLowerCase().indexOf(lowerCaseQ) > -1 || rName > -1;
+    });
+
+    //cb(matches);
+    //console.log(arrFllterResult);
+    cb(arrFllterResult);
+  };
+};
+
 
 // var substringMatcher = function (strs) {
 //   return function findMatches(q, cb) {
@@ -1059,8 +1124,13 @@ function show_message(message = "message", color = "danger") {
     .prepend('<div class="message alert" role="alert"></div>')
     .find(".alert")
     .first()
+    .addClass("bg-" + color)
     .text(message)
-    .addClass("bg-" + color);
+    .fadeIn("fast")
+    .fadeOut("fast")
+    .fadeIn("fast")
+    .fadeOut("fast")
+    .fadeIn("fast")
 }
 
 function init_modal() {
@@ -1226,16 +1296,16 @@ function showPreviewQrCode(url) {
 
 function init() {
   console.log("App init");
-  // version
-  $("#versionnumber").text("Version " + version);
-
   // check if develpoment mode
   // console.log(window.location.host);
   // console.log(window.location.host.indexOf("dev"));
   if (window.location.host.indexOf("dev") == 0) {
     $("body").addClass("is-development");
     $("body").prepend(templates.devNote);
+    version = version + "-dev";
   }
+  // version
+  $("#versionnumber").text("Version " + version);
 
   // assume same url and port
   $("#data-url-port").val(window.location.protocol + "//" + window.location.host);
@@ -1275,19 +1345,32 @@ function init() {
 
     });
 
-    $("#btn-save-file").on("click", function () {
+    $("#btn-save-file").on("click", function (event) {
+      event.preventDefault();
       console.log("Save config in file");
       generateConfig();
     });
 
-    $("#btn-load-file").on("click", function () {
+    $("#btn-load-file").on("click", function (event) {
+      event.preventDefault();
       console.log("load config from file");
       readConfigFromFile($("#select-configfile").val() + ".json");
     });
 
-    $("#btn-delete-file").on("click", function () {
+    $("#btn-delete-file").on("click", function (event) {
+      event.preventDefault();
       console.log("delete config-file");
       deleteConfigFile($("#select-configfile").val() + ".json");
+    });
+
+
+    $("#btn-cache-clear-all").on("click", function (event) {
+      event.preventDefault();
+      let clearCacheConfirmation = confirm("This will delete all your not saved configuration !\n\nis this ok ?")
+      if (clearCacheConfirmation === true) {
+        console.log("confirmed clear browser cache");
+        clearBrowserCache();
+      }
     });
 
     // not working at the moment
@@ -1369,6 +1452,29 @@ function init() {
 init();
 
 //////////////// helper functions
+
+function clearBrowserCache() {
+  localStorage.clear();
+  location.replace(location.href);
+  location.reload();
+}
+
+function getStateType(stateId) {
+  // console.log("getStateType");
+  // console.log(stateId);
+
+  let type = "undefined";
+  let arrFllterResult = arrStates.filter(function (el) {
+    return el._id === stateId;
+  });
+
+  // console.log("arrFllterResult:");
+  // console.log(arrFllterResult);
+  try {
+    type = arrFllterResult[0].common.type;
+  } catch (e) { }
+  return type;
+}
 
 function valueSwitcherSelectChange(selectObj, value = 0) {
   console.log("valueSwitcherSelectChange");
