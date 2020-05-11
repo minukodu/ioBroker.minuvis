@@ -17,13 +17,27 @@ Visualization for all devices
 
 - install adapter as usual
 - create instance of minuvis (only 1 possible)
-- enable socket.io-Instance at web-Instance ![socket.io@web](https://minukodu.de/githubimg/web_instance_socket_io.jpg "socket.io@web")
-- open minuvis instance ![minuvis instance](https://minukodu.de/githubimg/minuvis_instance.jpg "minuvis instance")
-- connect to socket.io-Port of web or your own socket.io-instance ![connect](https://minukodu.de/githubimg/minuvis_connect.jpg "connect")
-- add new page ![add Page](https://minukodu.de/githubimg/minuvis-addpage.jpg "add Page")
-- add widget ![add Widget](https://minukodu.de/githubimg/minuvis_addwidget.jpg "add Widget")
-- edit state ![select state](https://minukodu.de/githubimg/minuvis_selectstate.jpg "select state")
-- preView app ![preview](https://minukodu.de/githubimg/minuvis_preview.jpg "preview")
+- enable socket.io-Instance at web-Instance 
+
+![socket.io@web](https://minukodu.de/githubimg/web_instance_socket_io.jpg)
+- open minuvis instance 
+
+![minuvis instance](https://minukodu.de/githubimg/minuvis_instance.jpg)
+- connect to socket.io-Port of web or your own socket.io-instance 
+
+![connect](https://minukodu.de/githubimg/minuvis_connect.jpg)
+- add new page 
+
+![add Page](https://minukodu.de/githubimg/minuvis_addpage.jpg)
+- add widget 
+
+![add Widget](https://minukodu.de/githubimg/minuvis_addwidget.jpg)
+- edit state 
+
+![select state](https://minukodu.de/githubimg/minuvis_selectstate.jpg)
+- preView yor new app 
+
+![preview](https://minukodu.de/githubimg/minuvis_preview.jpg)
 
 For more information visit https://minukodu.de/en or watch at youtube https://youtu.be/dtHUBOEc4js
 
@@ -31,7 +45,7 @@ For more information visit https://minukodu.de/en or watch at youtube https://yo
 
 ## Changelog
 
-### 0.0.3
+### 0.0.4
 * (svallant) update Readme.md
 
 ### 0.0.3
