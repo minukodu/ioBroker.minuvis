@@ -61,6 +61,13 @@
 		"localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
         "singleton": true,
 		"noConfig": true,
+		"welcomeScreen": {
+            "link": "minuvis/builder/index.html",
+            "name": "minuvis builder",
+            "img": "minuvis/builder/dist/img/minukodu.png",
+            "color": "#00828B",
+            "order": 99
+        },
 		"dependencies": [
 			{
 				"js-controller": ">=1.4.2",
