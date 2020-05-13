@@ -6,8 +6,8 @@
 ![Number of Installations (latest)](http://iobroker.live/badges/minuvis-installed.svg)
 [![Dependency Status](https://img.shields.io/david/minukodu/iobroker.minuvis.svg)](https://david-dm.org/minukodu/iobroker.minuvis)
 [![Known Vulnerabilities](https://snyk.io/test/github/minukodu/ioBroker.minuvis/badge.svg)](https://snyk.io/test/github/minukodu/ioBroker.minuvis)
-
 [![NPM](https://nodei.co/npm/iobroker.minuvis.png?downloads=true)](https://nodei.co/npm/iobroker.minuvis/)
+[![Build Status](https://travis-ci.org/minukodu/ioBroker.minuvis.svg?branch=master)](https://travis-ci.org/minukodu/ioBroker.minuvis)
 
 ## minuvis adapter for ioBroker
 
