@@ -85,7 +85,7 @@ For later updates, the above procedure is not necessary. Just do the following:
 
 ## Changelog
 ### 0.0.5 (2020-05-14)
-* deleted Gruntfile.js
+* adaptions for iobroker.repositories
 ### 0.0.4 (2020-05-13)
 * updated README.md
 ### 0.0.3 (2020-05-11)
