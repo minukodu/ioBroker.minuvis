@@ -10,7 +10,6 @@
 
 [![NPM](https://nodei.co/npm/iobroker.minuvis.png?downloads=true)](https://nodei.co/npm/iobroker.minuvis/)
 
-
 ## minuvis adapter for ioBroker
 
 Visualization for all devices
@@ -44,16 +43,16 @@ Visualization for all devices
 For more information visit https://minukodu.de/en or watch at youtube https://youtu.be/dtHUBOEc4js
 
 
-
 ## Changelog
-
-### 0.0.4
-* (svallant) update Readme.md
-
-### 0.0.3
-* (svallant) update builder and app to V1.0.4
-
-### 0.0.1
+### 0.0.5 (2020-05-14)
+* adaptions for iobroker.repositories
+### 0.0.4 (2020-05-13)
+* updated README.md
+### 0.0.3 (2020-05-11)
+* updated builder and app to V1.0.4
+### 0.0.2 (2020-05-10)
+* updated builder and app to V1.0.2
+### 0.0.1 (2020-05-02)
 * (svallant) initial release
 
 ## License

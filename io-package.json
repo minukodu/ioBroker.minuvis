@@ -1,21 +1,69 @@
 {
 	"common": {
 		"name": "minuvis",
-		"version": "0.0.4",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"zh-cn": "首次出版"
-			}
-		},
+		"version": "0.0.5",
+        "news": {
+            "0.0.5": {
+                "en": "adaptions for iobroker.repositories",
+                "de": "Anpassungen für iobroker.repositories",
+                "ru": "приспособления для iobroker.repositories",
+                "pt": "adaptações para iobroker.repositories",
+                "nl": "aanpassingen voor iobroker.repositories",
+                "fr": "des adaptations pour iobroker.repositories",
+                "it": "adattamenti per iobroker.repositories",
+                "es": "adaptaciones para iobroker.repositories",
+                "pl": "udogodnienia dla iobroker.repositories",
+                "zh-cn": "适应对于iobroker.repositories"
+            },
+            "0.0.4": {
+                "en": "updated Readme.md",
+                "de": "Readme.md aktualisiert",
+                "ru": "обновленный файл Readme.md",
+                "pt": "Readme.md atualizado",
+                "nl": "bijgewerkte Readme.md",
+                "fr": "Readme.md mis à jour",
+                "it": "Readme.md aggiornato",
+                "es": "Readme.md actualizado",
+                "pl": "zaktualizowano plik Readme.md",
+                "zh-cn": "更新了Readme.md"
+            },
+            "0.0.3": {
+                "en": "updated builder and app to V1.0.4",
+                "de": "Builder und App auf V1.0.4 aktualisiert",
+                "ru": "обновленный компоновщик и приложение до V1.0.4",
+                "pt": "construtor e aplicativo atualizados para a V1.0.4",
+                "nl": "bijgewerkte builder en app naar V1.0.4",
+                "fr": "générateur et application mis à jour vers V1.0.4",
+                "it": "builder e app aggiornati a V1.0.4",
+                "es": "generador y aplicación actualizados a V1.0.4",
+                "pl": "zaktualizowany konstruktor i aplikacja do wersji 1.0.4",
+                "zh-cn": "将生成器和应用更新为V1.0.4"
+            },
+            "0.0.2": {
+                "en": "updated builder and app to V1.0.2",
+                "de": "Builder und App auf V1.0.2 aktualisiert",
+                "ru": "обновленный компоновщик и приложение до V1.0.2",
+                "pt": "construtor e aplicativo atualizados para a V1.0.2",
+                "nl": "bijgewerkte builder en app naar V1.0.2",
+                "fr": "générateur et application mis à jour vers V1.0.2",
+                "it": "builder e app aggiornati alla V1.0.2",
+                "es": "generador y aplicación actualizados a V1.0.2",
+                "pl": "zaktualizowany konstruktor i aplikacja do wersji 1.0.2",
+                "zh-cn": "将生成器和应用更新为V1.0.2"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
 		"title": "minuVis",
 		"titleLang": {
 			"en": "minuVis",
