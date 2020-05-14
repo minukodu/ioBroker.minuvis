@@ -4,9 +4,9 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.minuvis.svg)](https://www.npmjs.com/package/iobroker.minuvis)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.minuvis.svg)](https://www.npmjs.com/package/iobroker.minuvis)
 ![Number of Installations (latest)](http://iobroker.live/badges/minuvis-installed.svg)
-![Number of Installations (stable)](http://iobroker.live/badges/minuvis-stable.svg)
 [![Dependency Status](https://img.shields.io/david/minukodu/iobroker.minuvis.svg)](https://david-dm.org/minukodu/iobroker.minuvis)
 [![Known Vulnerabilities](https://snyk.io/test/github/minukodu/ioBroker.minuvis/badge.svg)](https://snyk.io/test/github/minukodu/ioBroker.minuvis)
+[![Build Status](https://travis-ci.org/minukodu/ioBroker.minuvis.svg?branch=master)](https://travis-ci.org/minukodu/ioBroker.minuvis)
 
 [![NPM](https://nodei.co/npm/iobroker.minuvis.png?downloads=true)](https://nodei.co/npm/iobroker.minuvis/)
 
