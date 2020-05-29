@@ -77,9 +77,13 @@ function getTemplates () {
             </div>
             <div class="form widget-dropdown-holder">
             </div>
+            <!-- copy button -->
+            <button type="button" class="btn btn-sm btn-labeled btn-primary btn-page-copy ml-2">
+                <span class="btn-label"><i class="far fa-copy"></i></span>
+                copy Page
+            </button>
             <!-- delete button -->
-            <button type="button" class="btn btn-sm btn-labeled btn-outline-danger btn-page-delete mt-1"
-                    style="">
+            <button type="button" class="btn btn-sm btn-labeled btn-outline-danger btn-page-delete mt-1">
                 <span class="btn-label"><i class="far fa-trash-alt"></i></span>
                 delete Page
             </button>
@@ -100,7 +104,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Switch</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">Set title ...</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -163,7 +167,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Indicator</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">Set title ...</strong>
                 &nbsp;icon:&nbsp;
                 <strong class="settings-icon">it_wifi</strong>
@@ -260,7 +264,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Slider</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">Set title ...</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -380,7 +384,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Output</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">Set title ...</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -499,7 +503,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Html</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">NONE</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -567,7 +571,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">IFrame</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">NONE</strong>
                 &nbsp;url:&nbsp;
                 <strong class="settings-url">https://iobroker.com</strong>
@@ -640,7 +644,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Flot</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">NONE</strong>
                 &nbsp;url:&nbsp;
                 <strong class="settings-url">https://iobroker.com</strong>
@@ -775,7 +779,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">ImgOutput</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">NONE</strong>
                 &nbsp;url:&nbsp;
                 <strong class="settings-url">http://placekitten.com/640/360</strong>
@@ -862,7 +866,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Timepicker</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">NONE</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -938,7 +942,7 @@ function getTemplates () {
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">ValueSwitcher</h5>
             <small class="settings ml-4">
-                title:&nbsp;
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
                 <strong class="settings-title">Set title ...</strong>
                 &nbsp;state:&nbsp;
                 <strong class="settings-state">...</strong>
@@ -1097,6 +1101,134 @@ function getTemplates () {
     </div>
     `;
 
+    
+    templates.widgets["linkbutton"] = `
+    <div class="card widget linkbutton" data-widgettype="linkbutton">
+        <div class="card-header">
+            <i class="fas fa-arrows-alt handle"></i>
+            <h5 class="card-title">LinkButton</h5>
+            <small class="settings ml-4">
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
+                <strong class="settings-title">NONE</strong>
+            </small>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-widget-copy">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-widget-collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-widget-remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div><!-- /card-tools -->
+        </div><!-- /card-header -->
+        <div class="card-body">
+            <!-- title -->
+            <div class="widget-title-form form">
+                <!-- titleIcon, title -->
+                <form class="form form-inline">
+                    <div class="form-group">
+                        <div class="input-group iconselectfromcontrol iconSelectTitle" data-icon="audio_play">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mfd-icon audio_play"></i></span>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" data-toggle="modal"
+                                        data-target="#selectModal" data-select="iconSelectTitle">
+                                    select title-icon
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control form-control-sm title ml-3" value="Set title ...">
+                    <small class="form-text text-muted hidden">NONE to hide title</small>
+                </form>
+                <hr />
+            </div>
+            <!-- /titleIcon, title -->
+            <form>
+				<div class="input-group input-group-sm mt-1 mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text alert-info ">Link to page:</span>
+					</div>
+                    <select class="form-control form-control-sm targetpage" onfocus="buildPageLinksSelect(this)">
+                    </select>
+				</div>
+            </form>
+        </div> <!-- /card-body -->
+    </div>
+    `;
 
+    templates.widgets["compactModeStart"] = `
+    <div class="card widget compactModeStart" data-widgettype="compactModeStart">
+        <div class="card-header">
+            <i class="fas fa-arrows-alt handle"></i>
+            <h5 class="card-title">compactModeStart</h5>
+            <small class="settings ml-4">
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
+                <strong class="settings-title">NONE</strong>
+                &nbsp;state:&nbsp;
+                <strong class="settings-state">...</strong>
+            </small>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-widget-copy">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-widget-collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-widget-remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div><!-- /card-tools -->
+        </div><!-- /card-header -->
+        <div class="card-body">
+            <!-- title -->
+            <div class="widget-title-form form">
+                <!-- titleIcon, title -->
+                <form class="form form-inline">
+                    <div class="form-group">
+                        <div class="input-group iconselectfromcontrol iconSelectTitle" data-icon="audio_play">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mfd-icon audio_play"></i></span>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" data-toggle="modal"
+                                        data-target="#selectModal" data-select="iconSelectTitle">
+                                    select title-icon
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control form-control-sm title ml-3" value="Set title ...">
+                    <small class="form-text text-muted hidden">NONE to hide title</small>
+                </form>
+                <hr />
+            </div>
+            <!-- /titleIcon, title -->
+        </div> <!-- /card-body -->
+    </div>
+    `;
+    templates.widgets["compactModeEnd"] = `
+    <div class="card widget compactModeEnd" data-widgettype="compactModeEnd">
+        <div class="card-header">
+            <i class="fas fa-arrows-alt handle"></i>
+            <h5 class="card-title">compactModeEnd</h5>
+            <small class="settings ml-4">no extra settings</small>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-widget-copy">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button type="button" class="visibility-hidden btn btn-tool btn-widget-collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-widget-remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div><!-- /card-tools -->
+        </div>
+    </div>
+    `;
     return templates;
 }
