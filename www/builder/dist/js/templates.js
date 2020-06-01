@@ -763,7 +763,7 @@ function getTemplates () {
                     <div class="input-group-prepend">
                         <span class="input-group-text alert-info ">Area 4 Time [min]</span>
                     </div>
-                    <input type="text" class="form-control  form-control-sm area4Time" value="302400">
+                    <input type="text" class="form-control  form-control-sm area4Time" value="43200">
                 </div>
             </form>			
 			
@@ -991,13 +991,23 @@ function getTemplates () {
               <option value="3">3</option>
               <option selected="selected" value="4">4</option>
             </select>
-            <!-- unit -->
-            <div class="input-group input-group-sm mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text alert-info">Unit</span>
+            <form class="form-inline">
+                <!-- unit -->
+                <div class="input-group input-group-sm mb-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text alert-info">Unit</span>
+                    </div>
+                    <input type="text" class="form-control form-control-sm unit" value="%">
                 </div>
-                <input type="text" class="form-control form-control-sm unit" value="%">
-            </div>
+                <!-- hideText -->
+                    <div class="form-check ml-2">
+                        <input class="form-check-input hideText" type="checkbox">
+                        <label class="form-check-label">
+                            hide text in button (show icon only)
+                        </label>
+                    </div>
+                <!-- /hideText -->
+            </form>
             <hr/>
             <!-- icon, value 4 times-->
             <form class="form form-inline mb-2 button1">
@@ -1084,8 +1094,8 @@ function getTemplates () {
                     <input type="text" class="form-control form-control-sm btn4Value" value="90">
                 </div>
             </form>
-            <hr/>
             <!-- /icons, values -->
+            <hr />             
             <form>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control stateSelect" disabled="disabled" placeholder="state">

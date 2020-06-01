@@ -1,7 +1,7 @@
 // App
 
 //////////////////////
-var version = "1.1.0";
+var version = "1.2.0";
 //////////////////////
 
 var appPath = "minuvis/app/";
@@ -207,6 +207,9 @@ function populateWidget(widgetUUID, newWidget) {
       $(thisWidget).find("input.stateSelect").val(newWidget.stateId);
       $(thisWidget).find(".settings-state").text(newWidget.stateId);
       $(thisWidget).find("input.unit").val(newWidget.unit || "");
+      if (newWidget.hideText) {
+        $(thisWidget).find(".hideText").attr("checked", "checked");
+      }
 
       $(thisWidget).find(".nbOfButtons").val(newWidget.nbOfButtons || 4);
 
@@ -390,6 +393,10 @@ function generateConfig(saveInFile = true) {
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
           newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.unit = $(this).find("input.unit").val();
+          newWidget.hideText = false;
+          if ($(this).find(".hideText").get([0]).checked === true) {
+            newWidget.hideText = true;
+          }
           newWidget.nbOfButtons = $(this).find(".nbOfButtons").val() || 4;
           newWidget.icon1 = $(this).find(".iconSelectIcon1").attr("data-icon") || "fts_garage_door_10";
           newWidget.icon2 = $(this).find(".iconSelectIcon2").attr("data-icon") || "fts_garage_door_30";
