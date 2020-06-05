@@ -13,9 +13,97 @@
             "src": "/minuvis/app/android-chrome-512x512.png?v=A0700zz4O5",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-76x76.png?v=A0700zz4O5",
+            "sizes": "76x76",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-72x72.png?v=A0700zz4O5",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-60x60.png?v=A0700zz4O5",
+            "sizes": "60x60",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-57x57.png?v=A0700zz4O5",
+            "sizes": "57x57",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-180x180.png?v=A0700zz4O5",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-152x152.png?v=A0700zz4O5",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-144x144.png?v=A0700zz4O5",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-128x128.png?v=A0700zz4O5",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-120x120.png?v=A0700zz4O5",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon-114x114.png?v=A0700zz4O5",
+            "sizes": "114x114",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/apple-touch-icon.png?v=A0700zz4O5",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-96x96.png?v=A0700zz4O5",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-32x32.png?v=A0700zz4O5",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-196x196.png?v=A0700zz4O5",
+            "sizes": "196x196",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-192x192.png?v=A0700zz4O5",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-16x16.png?v=A0700zz4O5",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon-160x160.png?v=A0700zz4O5",
+            "sizes": "160x160",
+            "type": "image/png"
+        },
+        {
+            "src": "/minuvis/app/favicon.png?v=A0700zz4O5",
+            "type": "image/png"
         }
+        
     ],
-    "start_url": "./index.html",
     "display": "standalone",
     "theme_color": "#00828b",
     "background_color": "#00828b"
