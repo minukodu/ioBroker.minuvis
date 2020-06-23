@@ -1,7 +1,7 @@
 // App
 
 //////////////////////
-var version = "1.0.4";
+var version = "1.2.0";
 //////////////////////
 
 var appPath = "minuvis/app/";
@@ -207,6 +207,9 @@ function populateWidget(widgetUUID, newWidget) {
       $(thisWidget).find("input.stateSelect").val(newWidget.stateId);
       $(thisWidget).find(".settings-state").text(newWidget.stateId);
       $(thisWidget).find("input.unit").val(newWidget.unit || "");
+      if (newWidget.hideText) {
+        $(thisWidget).find(".hideText").attr("checked", "checked");
+      }
 
       $(thisWidget).find(".nbOfButtons").val(newWidget.nbOfButtons || 4);
 
@@ -246,10 +249,15 @@ function populateWidget(widgetUUID, newWidget) {
       $(thisWidget).find(".settings-state").text(newWidget.stateId);
       $(thisWidget).find(".timeSwitchType").val(newWidget.triggers.type);
       $(thisWidget).find(".timeSwitchActionType").val(newWidget.action.type);
-      $(thisWidget).find("input.onValue").val(newWidget.action.onValue);
-      $(thisWidget).find("input.offValue").val(newWidget.action.offValue);
+      $(thisWidget).find("input.onText").val(newWidget.action.onTexr);
+      $(thisWidget).find("input.offText").val(newWidget.action.offText);
       // States to Switch
       timeSwitchAddStatesToSwitch(thisWidget, newWidget.action.idsOfStatesToSet);
+      break;
+    case "linkbutton":
+      //console.log("add linkbutton");
+      $(thisWidget).find(".targetpage").val(newWidget.targetpage);
+      $(thisWidget).find(".targetpage").html("<option value='" + newWidget.targetpage + "'>" + newWidget.targetpage + "</option>");
       break;
     default:
       // no more settings
@@ -345,8 +353,8 @@ function generateConfig(saveInFile = true) {
           newWidget.color = $(this).find(".color").val() || "#FFFFFF";
           newWidget.maxColor = $(this).find(".maxColor").val() || "#FF0000";
           newWidget.minColor = $(this).find(".minColor").val() || "#0000FF";
-          newWidget.maxValue = parseFloat($(this).find(".maxValue").val()) || 90.0;
-          newWidget.minValue = parseFloat($(this).find(".minValue").val()) || 10.0;
+          newWidget.maxValue = parseFloat($(this).find(".maxValue").val()) || 0.0;
+          newWidget.minValue = parseFloat($(this).find(".minValue").val()) || 0.0;
           break;
         case "iframe":
           //console.log("add iframe");
@@ -385,6 +393,10 @@ function generateConfig(saveInFile = true) {
           newWidget.stateId = $(this).find("input.stateSelect").val() || "dummy.state";
           newWidget.stateIdType = getStateType(newWidget.stateId);
           newWidget.unit = $(this).find("input.unit").val();
+          newWidget.hideText = false;
+          if ($(this).find(".hideText").get([0]).checked === true) {
+            newWidget.hideText = true;
+          }
           newWidget.nbOfButtons = $(this).find(".nbOfButtons").val() || 4;
           newWidget.icon1 = $(this).find(".iconSelectIcon1").attr("data-icon") || "fts_garage_door_10";
           newWidget.icon2 = $(this).find(".iconSelectIcon2").attr("data-icon") || "fts_garage_door_30";
@@ -404,13 +416,17 @@ function generateConfig(saveInFile = true) {
           newWidget.action = {};
           newWidget.action.type = $(this).find(".timeSwitchActionType").val() || "OnOffStateAction";
           newWidget.action.valueType = "boolean";
-          newWidget.action.onValue = $(this).find(".onValue").val() || "true";
-          newWidget.action.offValue = $(this).find(".offValue").val() || "false";
+          newWidget.action.onText = $(this).find(".onText").val() || "on";
+          newWidget.action.offText = $(this).find(".offText").val() || "off";
           newWidget.action.booleanValue = true;
           newWidget.action.idsOfStatesToSet = [];
           $(this).find(".statesToSwitchInputGroup").each(function (index) {
             newWidget.action.idsOfStatesToSet.push($(this).find("input").val() || "dummy.state");
           });
+          break;
+        case "linkbutton":
+          //console.log("add linkbutton");
+          newWidget.targetpage = $(this).find(".targetpage").val() || "Page does not exist";
           break;
         default:
           // no more settings
@@ -537,7 +553,7 @@ function addPage(pageData = {}) {
 
   $("#pages .tab-content").append(newPage);
 
-  $(".btn-page-delete").click(function () {
+  $("#" + uuid + " .btn-page-delete").click(function () {
     var uuid = $(this)
       .parent()
       .parent()
@@ -555,6 +571,17 @@ function addPage(pageData = {}) {
       .first()
       .click();
     renamePages();
+  });
+
+  $("#" + uuid + " .btn-page-copy").click(function () {
+    console.log(".btn-page-copy");
+    var uuid = $(this)
+      .parent()
+      .parent()
+      .attr("id");
+    generateConfig(false);
+    duplicatePageinConfig(uuid);
+    generatePages();
   });
 
   // BUGGIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -748,6 +775,8 @@ function addWidgetToPage(widget, pageUUID) {
   });
   // make sortable
   init_sortable();
+  // set compactMode-Class
+  addCompactModeClass();
   // return uuid
   return uuid;
 }
@@ -773,9 +802,8 @@ function init_sortable() {
       animation: 150,
       handle: ".handle",
       onSort: function (/**Event*/ evt) {
-        // console.log("onSort");
-        // console.log(evt);
-        //renamePages();
+        // set compactMode-Class
+        addCompactModeClass();
       }
     });
   });
@@ -833,11 +861,11 @@ function connect_socket() {
 
   socket = io.connect(socketUrl, { path: "/socket.io" });
 
-  variables = JSON.parse(localStorage.getItem("variables") || null);
+  variables = null; //JSON.parse(localStorage.getItem("variables") || null);
 
   var states = variables;
 
-  init_statesTypeahead();
+  //init_statesTypeahead();
 
   //socket.emit('name', 'myButlerBuilder.0');
 
@@ -920,7 +948,9 @@ function connect_socket() {
         arrStates.push(variablesAsObj[item]);
       }
       localStorage.removeItem("arrStates");
-      localStorage.setItem("arrStates", JSON.stringify(arrStates));
+      // console.error(arrStates);
+      // to Big !!!!
+      //localStorage.setItem("arrStates", JSON.stringify(arrStates));
       init_statesTypeahead();
 
       //socket.emit("delObject","myAlarme.VisuMeldungen.Alarme.neuAlalrm");
@@ -1007,14 +1037,15 @@ function init_statesTypeahead() {
 
   // default to prevent errors
   let arrStatesTypeAhead = [{
-    _id: "no entries",
+    _id: "please connect first",
     common: {
-      name: "no entries yet"
+      name: "no entries yet",
+      type: "undefined"
     }
   }];
 
   if (arrStates) {
-    arrStatesTypeAhead = arrStates;
+    arrStatesTypeAhead = JSON.parse(JSON.stringify(arrStates));
   }
 
   // var statesSearchEngine = new Bloodhound({
@@ -1046,7 +1077,7 @@ function init_statesTypeahead() {
         //   '</div>'
         // ].join('\n'),
         //suggestion: Handlebars.compile('<div>{{name}} -- {{num}}</div>')
-        suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}<small></div>')
+        suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}&nbsp;&nbsp;&nbsp;&nbsp;type: {{common.type}}</small></div>')
         //suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>Beschreibung<small></div>')
       }
     }
@@ -1377,8 +1408,8 @@ function init() {
     //init_download();
 
     // try to read variables
-    variables = JSON.parse(localStorage.getItem("variables") || null);
-    arrStates = JSON.parse(localStorage.getItem("arrStates") || null);
+    // variables = JSON.parse(localStorage.getItem("variables") || null);
+    // arrStates = JSON.parse(localStorage.getItem("arrStates") || null);
     init_statesTypeahead();
     // init-iconpicker
     $(".icp").iconpicker();
@@ -1459,20 +1490,33 @@ function clearBrowserCache() {
   location.reload();
 }
 
+function addCompactModeClass() {
+  $(".widget").removeClass("compactMode").removeAttr("data-compactMode");
+  $('.compactModeStart').nextUntil('.compactModeEnd', '.widget').addClass("compactMode").attr("data-compactMode", "compactMode");
+}
+
 function getStateType(stateId) {
   // console.log("getStateType");
   // console.log(stateId);
+  // console.log("getStateType");
+  // console.log(arrStates);
 
   let type = "undefined";
-  let arrFllterResult = arrStates.filter(function (el) {
-    return el._id === stateId;
-  });
+  let arrFllterResult = [];
+  try {
+    arrFllterResult = arrStates.filter(function (el) {
+      return el._id === stateId;
+    });
+  } catch (e) { console.error(e) }
 
   // console.log("arrFllterResult:");
   // console.log(arrFllterResult);
   try {
     type = arrFllterResult[0].common.type;
-  } catch (e) { }
+  } catch (e) { 
+    // console.error(e);
+    show_message("Error creating config please connect socket first", "danger");
+   }
   return type;
 }
 
@@ -1538,6 +1582,17 @@ function timeSwitchAddStatesToSwitch(thisWidget, idsOfStatesToSet) {
   }
 };
 
+function buildPageLinksSelect(element) {
+  let options = "";
+  $(".page .page-title").each(function () {
+    console.log(this);
+    options += "<option value='" + $(this).val() + "'>" + $(this).val() + "</option>";
+  })
+  $(element).html("");
+  $(element).html(options);
+  $(element).attr("value", "Windoes 2020");
+}
+
 
 function sanitize(input) {
 
@@ -1573,4 +1628,27 @@ function validateNumeralFormat(elem) {
   let format = $(elem).val();
   let formatExample = numeral(1000).format(format);
   $(elem).parent().parent().parent().find(".formatExample").val(formatExample);
+}
+
+function duplicatePageinConfig(uuid) {
+  const appConfig = JSON.parse(localStorage.getItem("appConfig", "{}"));
+  let newPage = null;
+  if (appConfig && appConfig.pages) {
+    for (page of appConfig.pages) {
+      if (page.UUID === uuid) {
+        // console.log(page);
+        newPage = JSON.parse(JSON.stringify(page));
+      }
+    }
+    newPage.UUID = UUID();
+    newPage.order = appConfig.pages.length + 1;
+
+    for (widget in newPage.widgets) {
+      newPage.widgets[widget].UUID = UUID();
+    }
+    // console.log(newPage);
+    appConfig.pages.push(newPage);
+    localStorage.setItem('appConfig', JSON.stringify(appConfig));
+
+  }
 }

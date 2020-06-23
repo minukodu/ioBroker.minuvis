@@ -1,8 +1,20 @@
 {
-	"common": {
-		"name": "minuvis",
-		"version": "0.0.5",
+    "common": {
+        "name": "minuvis",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "updated builder and app to V1.2.1",
+                "de": "aktualisiert generator, und die app auf V1.2.1",
+                "ru": "обновлено строитель и приложения для v1.2.1",
+                "pt": "atualizado builder e app para V1.2.1",
+                "nl": "bijgewerkt builder-app naar V1.2.1",
+                "fr": "mise à jour du générateur et de l'application de V1.2.1",
+                "it": "aggiornato generatore e app V1.2.1",
+                "es": "actualizado el generador y aplicación a la V1.2.1",
+                "pl": "aktualizacja budowniczy i aplikacje dla v1.2.1",
+                "zh-cn": "更新的建设者和应用程序，以V1。2.1"
+            },
             "0.0.5": {
                 "en": "adaptions for iobroker.repositories",
                 "de": "Anpassungen für iobroker.repositories",
@@ -64,66 +76,66 @@
                 "zh-cn": "首次出版"
             }
         },
-		"title": "minuVis",
-		"titleLang": {
-			"en": "minuVis",
-			"de": "minuVis",
-			"ru": "minuVis",
-			"pt": "minuVis",
-			"nl": "minivis",
-			"fr": "minuVis",
-			"it": "minuVis",
-			"es": "minuVis",
-			"pl": "minuVis",
-			"zh-cn": "minuVis"
-		},
-		"desc": {
-			"en": "Visualization for all devices",
-			"de": "Visualisierung für alle Geräte",
-			"ru": "Визуализация для всех устройств",
-			"pt": "Visualização para todos os dispositivos",
-			"nl": "Visualisatie voor alle apparaten",
-			"fr": "Visualisation pour tous les appareils",
-			"it": "Visualizzazione per tutti i dispositivi",
-			"es": "Visualización para todos los dispositivos.",
-			"pl": "Wizualizacja dla wszystkich urządzeń",
-			"zh-cn": "可视化所有设备"
-		},
-		"authors": [
-			"svallant <svallant@gmx.eu>"
-		],
-		"keywords": [
-			"Vis SCADA Visualization"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "minuvis.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
-		"readme": "https://github.com/minukodu/ioBroker.minuvis/blob/master/README.md",
-		"loglevel": "info",
-		"mode": "none",
-		"type": "visualization",
-		"onlyWWW": true,
-		"localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
-		"singleton": true,
-		"noConfig": true,
-		"welcomeScreen": {
-			"link": "minuvis/builder/index.html",
-			"name": "minuvis builder",
-			"img": "minuvis/app/android-chrome-512x512.png",
-			"color": "#00828B",
-			"order": 99
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=1.4.2",
-				"web": ">=1.5.4"
-			}
-		]
-	},
-	"native": {},
-	"objects": [],
-	"instanceObjects": []
+        "title": "minuVis",
+        "titleLang": {
+            "en": "minuVis",
+            "de": "minuVis",
+            "ru": "minuVis",
+            "pt": "minuVis",
+            "nl": "minivis",
+            "fr": "minuVis",
+            "it": "minuVis",
+            "es": "minuVis",
+            "pl": "minuVis",
+            "zh-cn": "minuVis"
+        },
+        "desc": {
+            "en": "Visualization for all devices",
+            "de": "Visualisierung für alle Geräte",
+            "ru": "Визуализация для всех устройств",
+            "pt": "Visualização para todos os dispositivos",
+            "nl": "Visualisatie voor alle apparaten",
+            "fr": "Visualisation pour tous les appareils",
+            "it": "Visualizzazione per tutti i dispositivi",
+            "es": "Visualización para todos los dispositivos.",
+            "pl": "Wizualizacja dla wszystkich urządzeń",
+            "zh-cn": "可视化所有设备"
+        },
+        "authors": [
+            "svallant <svallant@gmx.eu>"
+        ],
+        "keywords": [
+            "Vis SCADA Visualization"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "minuvis.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
+        "readme": "https://github.com/minukodu/ioBroker.minuvis/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "none",
+        "type": "visualization",
+        "onlyWWW": true,
+        "localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
+        "singleton": true,
+        "noConfig": true,
+        "welcomeScreen": {
+            "link": "minuvis/builder/index.html",
+            "name": "minuvis builder",
+            "img": "minuvis/app/android-chrome-512x512.png",
+            "color": "#00828B",
+            "order": 99
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=1.4.2",
+                "web": ">=1.5.4"
+            }
+        ]
+    },
+    "native": {},
+    "objects": [],
+    "instanceObjects": []
 }

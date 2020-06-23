@@ -141,6 +141,28 @@ input.colorinput {
   width: 30em;
 }
 
+.widget.compactMode {
+  border-left: 75px solid #ccc;
+}
+
+.showInCompactMode {
+  display: none;
+  font-weight: bold;
+  color: red;
+  margin-right: 10px;
+  font-size: 110%;
+}
+
+.widget.compactMode .showInCompactMode {
+  display: inline;
+}
+
+/* .widget.compactMode .hideIncompactMode,
+.widget.compactMode .settings-title,
+.widget.compactMode .widget-title-form {
+  display: none;
+} */
+
 .widget.flot .input-group-prepend span,
 .widget.iframe .input-group-prepend span,
 .widget.slider .input-group-prepend span,
@@ -197,7 +219,7 @@ input.colorinput {
   align-items: center !important;
 }
 
-/* typahaed Styles */
+/* typeahaed Styles */
 .typeahead,
 .tt-query,
 .tt-hint {
