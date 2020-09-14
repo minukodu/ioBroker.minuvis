@@ -1,6 +1,6 @@
 /* development ? */
 body.is-development {
-  margin-top:30px;
+  margin-top: 30px;
 }
 
 #dev-note {
@@ -15,7 +15,7 @@ body.is-development {
   z-index: 999999;
   height: 30px;
   width: 100%;
-}	
+}
 
 /* minukodu hiiden-class */
 .mk-hidden,
@@ -27,7 +27,7 @@ body.is-development {
 }
 
 html {
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 
 #css {
@@ -35,7 +35,7 @@ html {
 }
 
 input.colorinput {
-  width: 4em !important; 
+  width: 4em !important;
 }
 
 /* no border-radius */
@@ -45,10 +45,10 @@ input.colorinput {
 }
 
 .nav-icon.mfd-icon {
-	height: 32px;
-	width: 32px;
-	background-color: #fff;
-	display: inline-block;
+  height: 32px;
+  width: 32px;
+  background-color: #fff;
+  display: inline-block;
 }
 
 .nav-item {
@@ -87,8 +87,9 @@ input.colorinput {
 
 .content-wrapper {
   background: #ccc;
+  padding-bottom: 3em;
 }
-#filelist{
+#filelist {
   margin-left: 5em;
 }
 
@@ -104,21 +105,21 @@ input.colorinput {
   background: #cccccc;
 }
 
-.btn-widget-delete,
 .btn-page-delete {
   position: absolute;
   right: 2em;
 }
 
 .widget {
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
+  background: #aaa;
+  position: relative;
 }
 
 .widget .handle {
   float: left;
   width: 2em;
 }
-
 
 .widget .settings {
   display: inline-flex;
@@ -130,19 +131,51 @@ input.colorinput {
   overflow: hidden;
   display: inline-block;
 }
-.widget strong.settings-title{
-  width: 30%;
-}
-.widget strong.settings-icon{
+.widget strong.settings-title {
   width: 30%;
 }
 
-.widget .title{
+.widget strong.settings-icon {
+  width: 30%;
+}
+
+.filler.widget strong.settings-title {
+  width: 100%;
+}
+
+.widget .title {
   width: 30em;
 }
 
+.widget .prop-title {
+  width: 25em;
+}
+
+.widget .prop-url {
+  width: 40em;
+}
+
+.widget .prop-stateId {
+  width: 25em;
+}
+
+.widget .type-number {
+  width: 8em;
+}
+
 .widget.compactMode {
-  border-left: 75px solid #ccc;
+  /* border-left: 40px solid #ccc; */
+  margin-left: 40px;
+}
+
+.widget-buttons {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.widget-buttons button {
+  margin-left: 1px;
 }
 
 .showInCompactMode {
@@ -166,11 +199,11 @@ input.colorinput {
 .widget.flot .input-group-prepend span,
 .widget.iframe .input-group-prepend span,
 .widget.slider .input-group-prepend span,
-.widget.imgoutput .input-group-prepend span{
+.widget.imgoutput .input-group-prepend span {
   width: 14em;
 }
 
-.input-group-prepend mark{
+.input-group-prepend mark {
   padding: 0 1em;
 }
 
@@ -178,15 +211,15 @@ input.colorinput {
   width: auto;
 }
 
-.icon-select .icon-holder{
+.icon-select .icon-holder {
   border: 1px solid #545b62;
 }
 
-.iconselectfromcontrol span.input-group-text{
+.iconselectfromcontrol span.input-group-text {
   padding: 0;
 }
 
-.icon-select span.input-group-text{
+.icon-select span.input-group-text {
   padding: 0;
 }
 
@@ -198,9 +231,103 @@ input.colorinput {
   display: inline-block;
 }
 
+.widget {
+  display: none;
+}
+
+.tooltip a {
+  color: greenyellow;
+}
+.tooltip a:hover {
+  color: white;
+}
+
+.widget-inline {
+  display: block;
+  border-radius: 3px;
+  padding: 3px;
+  background: rgb(255, 255, 255);
+}
+
+.widget-inline .handle {
+  display: inline-block;
+  height: 35px;
+  text-align: center;
+  padding-top: 0.5em;
+  background: #fff;
+}
+
+hr.widget-inline-seperator {
+  margin: 0;
+}
+
+.widget-inline .form-check {
+  display: inline-block;
+}
+
+.widget-inline-dropdown {
+  font-weight: bold;
+}
+
+.widget-inline .icon-select .mfd-icon,
+.widget-inline .mfd-icon {
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  display: inline-block;
+}
+
+.widget-inline .icon-select.btn-sm {
+  height: 30px;
+  padding: 0px;
+  border-radius: 0px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(153, 153, 153);
+  border-image: initial;
+}
+
+.widget-inline .icon-select.btn-sm:hover {
+  transform: scale(2);
+}
+
+.widget-inline .form-control-sm {
+  height: 30px;
+}
+
+.widget-inline .form-control {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(153, 153, 153);
+  border-image: initial;
+  margin: 2px;
+  background: rgb(225, 225, 225);
+}
+
+.widget-inline .colorInput {
+  width: 40px;
+}
+
+.widget-inline .newlinespacer {
+  width: 33px;
+  display: inline-block;
+}
+
+input.disabled {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  color: gray;
+  cursor: pointer;
+}
+
+.modal {
+  top: 20px;
+}
+
 .modal .icon-select,
 .modal .states-select {
-    border: none;
+  border: none;
 }
 
 .iconpicker .iconpicker-items {
@@ -208,7 +335,7 @@ input.colorinput {
 }
 
 #show-config-holder {
-    font-size: 75%;
+  font-size: 75%;
 }
 
 .filter-option-inner-inner,

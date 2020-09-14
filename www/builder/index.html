@@ -18,6 +18,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
   <!-- mfd icons -->
   <link rel="stylesheet" type="text/css" href="dist/css/mfd-icons.css" />
+  <!-- mdi icons -->
+  <link rel="stylesheet" type="text/css" href="dist/css/mdi-icons.css" />
   <!-- fontawesome-iconpicker -->
   <link rel="stylesheet" href="dist/css/fontawesome-iconpicker.min.css" />
   <!-- selectpicker -->
@@ -47,7 +49,7 @@
         </button>
       </form>
 
-      <form class="form-inline ml-3">
+      <form class="form-inline ml-3 hidden">
         <button type="button" id="btn-widgets-collapse-all" class="btn btn-sm btn-block btn-labeled btn-secondary">
           toggle widgets
         </button>
@@ -59,7 +61,7 @@
             <span class="input-group-text alert-info"><i class="fas fa-laptop"></i></span>
           </div>
           <input type="url" id="data-url-port" class="form-control  form-control-sm"
-            placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
+                 placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
           <div class="input-group-append">
             <button type="button" id="btn-connect" class="btn btn-sm btn-block btn-labeled btn-outline-success">
               <span class="btn-label"><i class="fas fa-plug"></i></span>
@@ -68,14 +70,14 @@
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-variables" disabled="disabled"
-              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read States
             </button>
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-configfiles" disabled="disabled"
-              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read Config-Files
             </button>
@@ -90,7 +92,7 @@
             <div class="input-group-text">config-file:</div>
           </div>
           <input class="form-control" type="text" autocomplete="off" placeholder="filename" id="select-configfile"
-            data-toggle="dropdown" />
+                 data-toggle="dropdown" />
           <ul id="filelist" class="dropdown-menu" role="menu"></ul>
           <div class="input-group-append">
             <div class="input-group-text">.json</div>
@@ -111,7 +113,7 @@
           clear browser cache
         </button>
       </form>
-      
+
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto mk-hidden">
@@ -145,7 +147,6 @@
       </ul>
     </nav>
     <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-info elevation-0">
       <!-- Brand Logo -->
@@ -251,7 +252,7 @@
                 <div class="form-group">
                   <label for="CssTextarea">Global CSS for HTML Widgets</label>
                   <textarea class="form-control rounded-0" id="CssTextarea" rows="10"
-                    placeholder=".element { background: #FF0000; } ...">
+                            placeholder=".element { background: #FF0000; } ...">
                         .element { background: #FF0000; }</textarea>
                 </div>
               </div>
@@ -272,7 +273,6 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
@@ -282,7 +282,6 @@
       </div>
     </aside>
     <!-- /.control-sidebar -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- Default to the left -->
@@ -296,7 +295,6 @@
     </footer>
   </div>
   <!-- ./wrapper -->
-
   <!-- Select Modal -->
   <div class="modal modal-xl fade" id="selectModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -322,7 +320,7 @@
                   <i class="fa fa-fw fa-heart"></i>
                 </button>
                 <button type="button" class="icp icp-dd btn btn-light dropdown-toggle" data-selected="fa-car"
-                  data-toggle="dropdown">
+                        data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -336,7 +334,7 @@
                   <i class="mfd-icon audio_audio"></i>
                 </button>
                 <button type="button" id="icp-mfd" class="icp icp-dd icp-mfd btn-primary dropdown-toggle"
-                  data-selected="mfd-icon audio_audio" data-toggle="dropdown">
+                        data-selected="mfd-icon audio_audio" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span>Select Icon</span>
                 </button>
@@ -352,7 +350,6 @@
     </div>
   </div>
   <!-- /Select Modal -->
-
   <!-- config Show Modal -->
   <div class="modal modal-xl fade" id="configShowModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -378,13 +375,13 @@
     </div>
   </div>
   <!-- /config Show Modal -->
-
   <!-- REQUIRED SCRIPTS -->
-
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Popper -->
+  <script src="plugins/popper/umd/popper.min.js"></script>  
   <!-- moment -->
   <script src="dist/js/moment-with-locales.js"></script>
   <!-- x-editable -->
@@ -395,8 +392,10 @@
   <script src="dist/js/socket.io.js"></script>
   <!-- MFD Icon List -->
   <script src="dist/js/mfdicons.js"></script>
+  <!-- MDI Icon List -->
+  <script src="dist/js/mdiicons.js"></script>
   <!-- fontawesome picker -->
-  <script src="dist/js/fontawesome-iconpicker.min.js"></script>
+  <script src="dist/js/fontawesome-iconpicker.js"></script>
   <!-- handlebars -->
   <script src="dist/js/handlebars.min.js"></script>
   <!-- typeahead -->
@@ -412,11 +411,20 @@
   <!-- momentjs -->
   <script src="dist/js/moment.min.js"></script>
   <!-- numeraljs -->
-  <script src="dist/js/numeral.min.js"></script>
+  <script src="dist/js/numeral/numeral.js"></script>
+  <script src="dist/js/numeral/locales/de.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <!-- Templates -->
   <script src="dist/js/templates.js"></script>
+  <!-- Widget Definition -->
+  <script src="dist/js/widgetJSON.js"></script>
+  <!-- helper functions -->
+  <script src="dist/js/helper_fkt.js"></script>
+  <!-- widget function -->
+  <script src="dist/js/widget_fkt.js"></script>
+  <!-- page functions -->
+  <script src="dist/js/page_fkt.js"></script>
   <!-- App -->
   <script src="dist/js/app.js"></script>
 </body>
