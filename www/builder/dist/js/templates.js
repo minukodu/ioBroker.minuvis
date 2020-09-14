@@ -844,12 +844,15 @@ function getTemplates () {
         <div class="card-header">
             <i class="fas fa-arrows-alt handle"></i>
             <h5 class="card-title">Filler</h5>
-            <small class="settings ml-4">no extra settings</small>
+            <small class="settings ml-4">
+                <span class="showInCompactMode">Compact-Mode</span><span class="hideIncompactMode">title:&nbsp;</span>
+                <strong class="settings-title">NONE</strong>
+            </small>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool btn-widget-copy">
                     <i class="fas fa-copy"></i>
                 </button>
-                <button type="button" class="visibility-hidden btn btn-tool btn-widget-collapse">
+                <button type="button" class="btn btn-tool btn-widget-collapse">
                     <i class="fas fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-tool btn-widget-remove">
@@ -857,6 +860,31 @@ function getTemplates () {
                 </button>
             </div><!-- /card-tools -->
         </div>
+        <div class="card-body">
+            <!-- title -->
+            <div class="widget-title-form form">
+                <!-- titleIcon, title -->
+                <form class="form form-inline">
+                    <div class="form-group">
+                        <div class="input-group iconselectfromcontrol iconSelectTitle" data-icon="audio_play">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="mfd-icon audio_play"></i></span>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" data-toggle="modal"
+                                        data-target="#selectModal" data-select="iconSelectTitle">
+                                    select title-icon
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control form-control-sm title ml-3" value="NONE">
+                    <small class="form-text text-muted hidden">NONE to hide title</small>
+                </form>
+                <hr />
+            </div>
+            <!-- /titleIcon, title -->
+        </div> <!-- /card-body -->
     </div>
     `;
     
@@ -982,6 +1010,14 @@ function getTemplates () {
                 </form>
                 <hr />
             </div>
+            <!-- hideValue -->
+            <div class="form-check ml-2 mb-3">
+                <input class="form-check-input hideValue" type="checkbox">
+                <label class="form-check-label">
+                    hide value in title line 
+                </label>
+            </div>
+            <!-- /hideValue -->
             <!-- /titleIcon, title -->
             <label>Number of buttons</label>
 
@@ -1007,6 +1043,14 @@ function getTemplates () {
                         </label>
                     </div>
                 <!-- /hideText -->
+                <!-- ReadOnly -->
+                <div class="form-check ml-2">
+                    <input class="form-check-input readOnly" type="checkbox">
+                    <label class="form-check-label">
+                        ReadOnly (no Action on ButtonPress)
+                    </label>
+                </div>
+                <!-- /ReadOnly -->
             </form>
             <hr/>
             <!-- icon, value 4 times-->
