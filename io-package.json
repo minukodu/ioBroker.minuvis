@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "bugfix number of buttons for valueswitcher",
+                "de": "Bugfix Anzahl der Schaltflächen für den valueswitcher",
+                "ru": "исправление количества кнопок для переключателя значений",
+                "pt": "número de bug corrigido de botões para o valueswitcher",
+                "nl": "bugfix aantal knoppen voor waardenwitcher",
+                "fr": "bugfix nombre de boutons pour valueswitcher",
+                "it": "bugfix numero di pulsanti per Value Switcher",
+                "es": "número de botones de corrección de errores para valuewitcher",
+                "pl": "poprawka liczby przycisków przełącznika wartości",
+                "zh-cn": "错误修正值切换器的按钮数量"
+            },
             "0.0.7": {
                 "en": "updated builder and app to V1.4.0",
                 "de": "Builder und App auf V1.4.0 aktualisiert",
