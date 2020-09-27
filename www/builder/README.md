@@ -11,6 +11,10 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### V1.5.0(27.09.2020)
+* small improvements
+* remove not necessary files
+
 ### V1.4.0(13.09.2020)
 * added "read-only" for valueswitcher-Widget
 * added "show as indicator" with different colors for valueswitcher-Widget

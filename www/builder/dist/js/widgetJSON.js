@@ -182,8 +182,8 @@ var widgetJSON = {
     },
     minValue: {
       type: "number",
-      default: "90",
-      tooltip: "minmal value of slider"
+      default: "10",
+      tooltip: "minimal value"
     },
     maxColor: {
       type: "color",
@@ -258,7 +258,7 @@ var widgetJSON = {
       default: "4",
       min: "1",
       max: "4",
-      tooltip: "number of buttuns"
+      tooltip: "maximal value"
     },
     icon1: {
       type: "icon",
