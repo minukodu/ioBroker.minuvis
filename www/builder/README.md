@@ -11,6 +11,10 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### 1.6.0 (2020-10-02)
+* new datepicker-widget
+* new jsontable-widget
+
 ### V1.5.0(27.09.2020)
 * small improvements
 * remove not necessary files
