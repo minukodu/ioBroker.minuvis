@@ -19,11 +19,11 @@ function init_widget_dropdown(pageUUID) {
     .attr("id", widgetId)
     .appendTo("#" + pageUUID + " .widget-dropdown-holder");
 
-  for (var widget in templates.widgets) {
+  for (var widget in widgetJSON) {
     //console.log(widget);
     $(widgetDropdownOption)
-      .text(widget)
-      .attr("data-widgetName", widget)
+      .text(widgetJSON[widget].type)
+      .attr("data-widgetName", widgetJSON[widget].type)
       .attr("data-pageUUID", pageUUID)
       .click(function () {
         addWidgetToPage(
@@ -218,7 +218,9 @@ function init_widget_inline_form(widgettype, uuid) {
                           title="` + objProp.tooltip + `" 
                           class="widget-prop form-control form-control-sm hidden momentjs type-momentjs prop-` + prop + `"  
                           placeholder="` + prop + `" 
-                          value="` + objProp.default + `"  >`;
+                          value="` + objProp.default + `"  
+                          onkeyup="validateTimePickerFormat(this)" >
+                          <span class="formatExample hidden">Example: ` + moment().format(objProp.default) + `</span>`;
           break;
         case "numeraljs":
           formInput += `<input id="` + inputUUID + `" type="text" 
@@ -510,8 +512,9 @@ function timeSwitchAddStatesToSwitch(thisWidget, idsOfStatesToSet) {
 function validateTimePickerFormat(elem) {
   console.log("validateTimePickerFormat");
   let format = $(elem).val();
+  console.log($(elem).next());
   let formatExample = moment().format(format);
-  $(elem).parent().parent().parent().find(".formatExample").val(formatExample);
+  $(elem).next(".formatExample").text("Example: " + formatExample);
 }
 
 function validateNumeralFormat(elem) {

@@ -351,6 +351,39 @@ var widgetJSON = {
       tooltip: "color for value 4"
     },
   },
+    datepicker: {
+    type: "datepicker",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    format: {
+      type: "momentjs",
+      default: "DD.MM.YYYY",
+      tooltip: "click mouse and see at <a href='https://momentjs.com/'  target='_blank'>https://momentjs.com/</a>"
+    },
+  },
   timepicker: {
     type: "timepicker",
     titleIcon: {
@@ -488,6 +521,34 @@ var widgetJSON = {
       type: "number",
       default: "302400",
       tooltip: "time in minutes of area 4"
+    },
+  },
+  jsontable: {
+    type: "jsontable",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
     },
   },
   html: {
