@@ -75,6 +75,79 @@ var widgetJSON = {
       tooltip: "color when state is false"
     },
   },
+  range: {
+    type: "range",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    updateOnComplete: {
+      type: "boolean",
+      default: "true",
+      tooltip: "update state at completion instead on every change"
+    },
+    minIcon: {
+      type: "icon",
+      default: "text_min",
+      tooltip: "icon in minimal position"
+    },
+    minIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of min-icon"
+    },
+    min: {
+      type: "number",
+      default: "10",
+      tooltip: "minimal value of range"
+    },
+    maxIcon: {
+      type: "icon",
+      default: "text_max",
+      tooltip: "icon in maximal position"
+    },
+    maxIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of max-icon"
+    },
+    max: {
+      type: "number",
+      default: "90",
+      tooltip: "maximal value of range"
+    },
+    step: {
+      type: "number",
+      default: "5",
+      tooltip: "step value of range"
+    },
+    unit: {
+      type: "string",
+      default: "%",
+      tooltip: "unit of the value"
+    },
+  },
   slider: {
     type: "slider",
     titleIcon: {
@@ -411,10 +484,66 @@ var widgetJSON = {
       default: "none",
       tooltip: "type of state"
     },
-    format: {
-      type: "momentjs",
-      default: "HH:mm",
-      tooltip: "click mouse and see at <a href='https://momentjs.com/'  target='_blank'>https://momentjs.com/</a>"
+  },
+  colorpicker: {
+    type: "colorpicker",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+  },
+  huecolorpicker: {
+    type: "huecolorpicker",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    formatWithWhite: {
+      type: "boolean",
+      default: "false",
+      tooltip: "returns #RRGGBBWW instead of #RRGGBB"
     },
   },
   iframe: {
@@ -549,6 +678,16 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
+    },
+    colheader: {
+      type: "string",
+      default: "header1,header2,header3",
+      tooltip: "Text of Tableheaders, comma-separated"
+    },
+    colsize: {
+      type: "string",
+      default: "100,100,100",
+      tooltip: "size of tablecolumns, comma-separated, 0 for hide column"
     },
   },
   html: {

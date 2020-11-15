@@ -216,11 +216,11 @@ function init_widget_inline_form(widgettype, uuid) {
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
                           title="` + objProp.tooltip + `" 
-                          class="widget-prop form-control form-control-sm hidden momentjs type-momentjs prop-` + prop + `"  
+                          class="widget-prop form-control form-control-sm nothidden momentjs type-momentjs prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `"  
                           onkeyup="validateTimePickerFormat(this)" >
-                          <span class="formatExample hidden">Example: ` + moment().format(objProp.default) + `</span>`;
+                          <span class="formatExample nothidden">Example: ` + moment().format(objProp.default) + `</span>`;
           break;
         case "numeraljs":
           formInput += `<input id="` + inputUUID + `" type="text" 
@@ -233,6 +233,9 @@ function init_widget_inline_form(widgettype, uuid) {
                           class="widget-prop form-control form-control-sm numeraljs type-numeraljs prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `"  >`;
+          break;
+        case "colorFormat":
+          formInput += ``; // TODO
           break;
         case "pageList":
           formInput += `<select id="` + inputUUID + `"  
