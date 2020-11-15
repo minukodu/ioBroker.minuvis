@@ -211,6 +211,11 @@ input.colorinput {
   width: auto;
 }
 
+.formatExample {
+  font-size: 90%;
+  font-weight: 700;
+}
+
 .icon-select .icon-holder {
   border: 1px solid #545b62;
 }
