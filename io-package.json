@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "news": {
+            "0.0.12": {
+                "en": "updated builder and app to V1.9.0",
+                "de": "Builder und App auf V1.9.0 aktualisiert",
+                "ru": "обновлен конструктор и приложение до версии V1.9.0",
+                "pt": "construtor e aplicativo atualizados para V1.9.0",
+                "nl": "bijgewerkte builder en app naar V1.9.0",
+                "fr": "constructeur et application mis à jour à V1.9.0",
+                "it": "builder e app aggiornati alla V1.9.0",
+                "es": "constructor y aplicación actualizados a V1.9.0",
+                "pl": "zaktualizowany kreator i aplikacja do wersji 1.9.0",
+                "zh-cn": "将生成器和应用更新为V1.9.0"
+            },
             "0.0.11": {
                 "en": "updated builder and app to V1.8.0",
                 "de": "Builder und App auf V1.8.0 aktualisiert",

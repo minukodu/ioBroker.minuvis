@@ -279,6 +279,44 @@ var widgetJSON = {
       tooltip: "click mouse and see at <a href='http://numeraljs.com/#format' target='_blank'>http://numeraljs.com/#format</a>"
     },
   },
+  openstreetmap: {
+    type: "openstreetmap",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state<br>json-array of latitude and longitude"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    height: {
+      type: "string",
+      default: "600px",
+      tooltip: "height of the widget"
+    },
+    zoom: {
+      type: "number",
+      default: "500",
+      tooltip: "zomm value, 1..1000000, try it out"
+    },
+  },
   valueswitcher: {
     type: "valueswitcher",
     titleIcon: {

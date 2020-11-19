@@ -1,7 +1,7 @@
 // App
 
 //////////////////////
-var version = "1.8.0";
+var version = "1.9.0";
 //////////////////////
 
 var appPath = "minuvis/app/";
