@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "0.0.12",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "create version V1.0.0",
+                "de": "Version V1.0.0 erstellen",
+                "ru": "создать версию V1.0.0",
+                "pt": "crie a versão V1.0.0",
+                "nl": "maak versie V1.0.0",
+                "fr": "créer la version V1.0.0",
+                "it": "creare la versione V1.0.0",
+                "es": "crear la versión V1.0.0",
+                "pl": "utwórz wersję V1.0.0",
+                "zh-cn": "创建版本V1.0.0"
+            },
             "0.0.12": {
                 "en": "updated builder and app to V1.9.0",
                 "de": "Builder und App auf V1.9.0 aktualisiert",
