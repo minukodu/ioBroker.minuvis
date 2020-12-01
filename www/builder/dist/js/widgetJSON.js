@@ -1,4 +1,22 @@
 var widgetJSON = {
+  gridChanger: {
+    type: "gridChanger",
+    nbOfRows: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "5",
+      tooltip: "number of rows 1 .. 5"
+    },
+  },
+  timestamp: {
+    type: "timestamp",
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+  },
   switch: {
     type: "switch",
     titleIcon: {
@@ -462,7 +480,7 @@ var widgetJSON = {
       tooltip: "color for value 4"
     },
   },
-    datepicker: {
+  datepicker: {
     type: "datepicker",
     titleIcon: {
       type: "icon",
@@ -726,6 +744,21 @@ var widgetJSON = {
       type: "string",
       default: "100,100,100",
       tooltip: "size of tablecolumns, comma-separated, 0 for hide column"
+    },
+    lineBreaks: {
+      type: "string",
+      default: "0,0,0",
+      tooltip: "0 for no line-break, 1 for line break,comma-separated"
+    },
+    contentTypes: {
+      type: "string",
+      default: "t,t,t",
+      tooltip: "t for text, i for image, comma-separated"
+    },
+    rowsPerPage: {
+      type: "number",
+      default: "5",
+      tooltip: "number of rows on 1 page"
     },
   },
   html: {

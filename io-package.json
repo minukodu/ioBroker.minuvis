@@ -3,6 +3,18 @@
         "name": "minuvis",
         "version": "1.0.0",
         "news": {
+            "1.1.0": {
+                "en": "updated builder and app to V1.10.0",
+                "de": "Builder und App auf V1.10.0 aktualisiert",
+                "ru": "обновлен конструктор и приложение до версии V1.10.0",
+                "pt": "construtor e aplicativo atualizados para V1.10.0",
+                "nl": "bijgewerkte builder en app naar V1.10.0",
+                "fr": "constructeur et application mis à jour à V1.10.0",
+                "it": "builder e app aggiornati alla V1.10.0",
+                "es": "constructor y aplicación actualizados a V1.10.0",
+                "pl": "zaktualizowany kreator i aplikacja do wersji 1.10.0",
+                "zh-cn": "将生成器和应用更新为V1.10.0"
+            },
             "1.0.0": {
                 "en": "create version V1.0.0",
                 "de": "Version V1.0.0 erstellen",

@@ -11,6 +11,11 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### 1.10.0 (2020-12-01)
+* (svallant) new timestamp-widget
+* (svallant) new gridchanger-widget
+* (svallant) improvements of jsontable-widget
+
 ### 1.9.0 (2020-11-19)
 * (svallant) new openstreetmap-widget
 
