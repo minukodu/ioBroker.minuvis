@@ -262,6 +262,10 @@ input.colorinput {
   background: #fff;
 }
 
+.widget-inline.gridChanger {
+  background: lightcoral;
+}
+
 hr.widget-inline-seperator {
   margin: 0;
 }
