@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "news": {
             "1.1.0": {
                 "en": "updated builder and app to V1.10.0",
