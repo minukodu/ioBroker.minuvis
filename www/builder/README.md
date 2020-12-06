@@ -11,6 +11,9 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### 1.11.0 (2020-12-06)
+* (svallant) css improvements
+
 ### 1.10.0 (2020-12-01)
 * (svallant) new timestamp-widget
 * (svallant) new gridchanger-widget
