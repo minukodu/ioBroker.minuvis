@@ -89,6 +89,11 @@ input.colorinput {
   background: #ccc;
   padding-bottom: 3em;
 }
+
+#btn-read-configfiles-old-menu {
+  left: auto;
+}
+
 #filelist {
   margin-left: 5em;
 }
@@ -431,11 +436,19 @@ input.typeahead {
   border-radius: 0.25rem;
 }
 
-#configShowModal {
+#configShowModal,
+#imExportModal {
   padding-left: 1em;
 }
-#configShowModal .modal-dialog {
+#configShowModal .modal-dialog,
+#imExportModal .modal-dialog {
   max-width: 100%;
+}
+
+#imExportModal textarea {
+  width: 100%;
+  height: 70vh;
+  border: 1px solid;
 }
 
 #preview-qrcode-holder {

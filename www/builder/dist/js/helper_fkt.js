@@ -1,3 +1,22 @@
+function importConfig(data = null) {
+
+  try {
+    var newConfig = JSON.parse(data);
+    // reset all UUIDs
+    setAllByKey(newConfig, "UUID", null);
+    // console.log(newConfig);
+    localStorage.setItem("appConfig", JSON.stringify(newConfig));
+    generatePages();
+  } catch (e) {
+    console.error(e)
+    show_message(
+      e,
+      "danger"
+    );
+  }
+}
+
+
 function generateConfig(saveInFile = true) {
   var newConfig = {};
 
@@ -58,7 +77,7 @@ function generateConfig(saveInFile = true) {
           propValue = stringToBoolean(propValue);
         }
         if (propType == "number") {
-          propValue = parseInt(propValue, 10);
+          propValue = parseFloat(propValue);
         }
         newWidget[propName] = propValue;
       })
@@ -101,17 +120,31 @@ function generateConfig(saveInFile = true) {
   if (saveInFile) {
     // save in File (minukodu-config-FileName)
     if (socket) {
-      console.log("save in File " + newConfig.dataprovider.fileName);
-      //(filename, data, mode, callback)
+      var fileName = newConfig.dataprovider.fileName;
 
-      socket.emit("writeFile", null, filePath + "/" + newConfig.dataprovider.fileName, JSON.stringify(newConfig),
+      if (fileName.substring(0, 3) == "OF_") {
+        // file in old Folder
+        fileName = fileName.substring(3);
+        newConfig.dataprovider.fileName = fileName;
+      }
+
+      //(filename, data, mode, callback)
+      var meta = metaInfoSocketIO;
+      if (fileName.substring(0, 3) == "OF_") {
+        // file in old Folder
+        fileName = fileName.substring(3);
+        meta = null;
+      }
+      console.log("save in File " + fileName);
+
+      socket.emit("writeFile", metaInfoSocketIO, filePath + "/" + fileName, JSON.stringify(newConfig),
         function (error) {
           if (error) {
             console.log("Error saving Config in file: " + error);
-            show_message("Error storing config in: " + newConfig.dataprovider.fileName, "danger");
+            show_message("Error storing config in: " + fileName, "danger");
           } else {
             console.log("Saving Config in file successfull");
-            show_message("Stored config in: " + newConfig.dataprovider.fileName, "success");
+            show_message("Stored config in: " + fileName, "success");
             readConfigFiles(); // Update File dropdown
           }
         });
@@ -212,15 +245,14 @@ function connect_socket() {
   });
 
   $("#btn-read-variables").click(function (event) {
-
     readVariables();
-
   });
 
   $("#btn-read-configfiles").click(function (event) {
-
     readConfigFiles();
-
+  });
+  $("#btn-read-configfiles-old").click(function (event) {
+    readConfigFiles(true);
   });
 
 
@@ -272,7 +304,7 @@ function connect_socket() {
 
 };
 
-function readConfigFiles() {
+function readConfigFiles(oldFolder = false) {
 
   $("#btn-read-configfiles .btn-label i").attr(
     "class",
@@ -280,7 +312,14 @@ function readConfigFiles() {
   );
   $("#btn-read-configfiles").attr("disabled", "disabled");
 
-  socket.emit("readDir", null, "/" + filePath + "/", function (err, list) {
+  var meta = metaInfoSocketIO;
+  var prefix = "";
+  if (oldFolder === true) {
+    meta = null;
+    prefix = "OF_";
+  }
+
+  socket.emit("readDir", meta, "/" + filePath + "/", function (err, list) {
 
     console.log(err);
     console.log(list);
@@ -288,9 +327,13 @@ function readConfigFiles() {
     let fileCount = 0;
     for (let file of list) {
       fileCount++;
-      if (fileCount === list.length && $("#select-configfile").val().length < 1) { $("#select-configfile").val(removeFileExtension(file.file)) }
+      if (fileCount === list.length && $("#select-configfile").val().length < 1) {
+        var filename = prefix + removeFileExtension(file.file);
+        $("#select-configfile").val(filename)
+      }
       if (file.isDir === false && file.file.substring(file.file.length - 5, file.file.length) === ".json") {
-        $("#filelist").prepend('<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="selectFileFromList(this)">' + removeFileExtension(file.file) + '</a></li>');
+        var filename = prefix + removeFileExtension(file.file);
+        $("#filelist").prepend('<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="selectFileFromList(this)">' + filename + '</a></li>');
       }
     }
 
@@ -312,8 +355,16 @@ function selectFileFromList(elem) {
 }
 
 function readConfigFromFile(fileName) {
+
+  var meta = metaInfoSocketIO;
+  if (fileName.substring(0, 3) == "OF_") {
+    // file in old Folder
+    fileName = fileName.substring(3);
+    meta = null;
+  }
+
   if (socket) {
-    socket.emit("readFile", null, filePath + "/" + fileName, function (error, fileData, mimeType) {
+    socket.emit("readFile", meta, filePath + "/" + fileName, function (error, fileData, mimeType) {
       console.log(mimeType);
       //console.log(fileData);
       console.log(error);
@@ -326,8 +377,9 @@ function readConfigFromFile(fileName) {
 };
 
 function deleteConfigFile(fileName) {
+  var meta = metaInfoSocketIO;
   if (socket) {
-    socket.emit("unlink", null, filePath + "/" + fileName, function (error) {
+    socket.emit("unlink", meta, filePath + "/" + fileName, function (error) {
       console.log(error);
       show_message("file deleted: " + fileName, "success");
     });
@@ -717,3 +769,24 @@ function stringToBoolean(val) {
       return Boolean(val);
   }
 }
+
+findAllByKey = function (obj, keyToFind) {
+  return Object.entries(obj).reduce(
+    (acc, [key, value]) =>
+      (key == keyToFind)
+        ? acc.concat(value)
+        : typeof value === "object"
+          ? acc.concat(this.findAllByKey(value, keyToFind))
+          : acc,
+    []
+  );
+};
+
+function setAllByKey(obj, keyToFind, valueToSet) {
+  for (var key in obj) {
+    if (typeof obj[key] == "object") { setAllByKey(obj[key], keyToFind, valueToSet) }
+    else if (key == keyToFind) {
+      obj[key] = valueToSet;
+    }
+  }
+};

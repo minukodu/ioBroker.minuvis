@@ -234,6 +234,89 @@ var widgetJSON = {
       tooltip: "unit of the value"
     },
   },
+  donut: {
+    type: "donut",
+    titleIcon: {
+      type: "icon",
+      default: "audio_play",
+      tooltip: "title-icon"
+    },
+    titleIconFamily: {
+      type: "iconFamily",
+      default: "mfd-icon",
+      tooltip: "family of icon"
+    },
+    title: {
+      type: "string",
+      default: "NONE",
+      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    updateOnComplete: {
+      type: "boolean",
+      default: "true",
+      tooltip: "update state at completion instead on every change"
+    },
+    readOnly: {
+      type: "boolean",
+      default: "false",
+      tooltip: "only show value"
+    },
+    min: {
+      type: "number",
+      default: "0",
+      tooltip: "minimal value of range"
+    },
+    max: {
+      type: "number",
+      default: "100",
+      tooltip: "maximal value of range"
+    },
+    step: {
+      type: "number",
+      default: "5",
+      tooltip: "step value of range"
+    },
+    color: {
+      type: "color",
+      default: "#FFFFFF",
+      tooltip: "color when value is between minValue and maxValue"
+    },
+    minColor: {
+      type: "color",
+      default: "#0000FF",
+      tooltip: "color when value < minValue"
+    },
+    minValue: {
+      type: "number",
+      default: "10",
+      tooltip: "minimal value"
+    },
+    maxColor: {
+      type: "color",
+      default: "#FF0000",
+      tooltip: "color when value > maxValue"
+    },
+    maxValue: {
+      type: "number",
+      default: "90",
+      tooltip: "maximal value"
+    },
+    unit: {
+      type: "string",
+      default: "%",
+      tooltip: "unit of the value"
+    },
+  },
   output: {
     type: "output",
     titleIcon: {
