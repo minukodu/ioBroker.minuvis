@@ -1,7 +1,7 @@
 // App
 
 //////////////////////
-var version = "1.11.0";
+var version = "1.12.0";
 //////////////////////
 
 var appPath = "minuvis/app/";
@@ -12,6 +12,7 @@ var arrStates = [];
 var socket;
 var showInfoText = false;
 var filePath = "minukodu";
+var metaInfoSocketIO = "0_userdata.0";
 var defaultIconFamily = "mfd-icon";
 
 var templates = getTemplates();
@@ -148,6 +149,20 @@ function init() {
     $("#btn-widgets-collapse-all").click(function (event) {
       event.preventDefault();
       $(".widget").find(".card-body").toggle();
+    });
+
+    $("#imExport-config-nav-item").click(function (event) {
+      event.preventDefault();
+      generateConfig(false);
+      var outConfig = localStorage.getItem("appConfig");
+      $("#imExport-config-holder textarea").val("");
+      $("#imExport-config-holder textarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
+      $("#imExportModal").modal("show");
+    });
+
+    $(".btn-importConfig").click(function (event) {
+      event.preventDefault();
+      importConfig($("#imExport-config-holder textarea").val());
     });
 
     // $("#preview-qrcode").click(function (event) {

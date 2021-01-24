@@ -61,7 +61,7 @@
             <span class="input-group-text alert-info"><i class="fas fa-laptop"></i></span>
           </div>
           <input type="url" id="data-url-port" class="form-control  form-control-sm"
-                 placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
+            placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
           <div class="input-group-append">
             <button type="button" id="btn-connect" class="btn btn-sm btn-block btn-labeled btn-outline-success">
               <span class="btn-label"><i class="fas fa-plug"></i></span>
@@ -70,17 +70,24 @@
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-variables" disabled="disabled"
-                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read States
             </button>
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-configfiles" disabled="disabled"
-                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read Config-Files
             </button>
+            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" id="btn-read-configfiles-old-menu">
+              <a class="dropdown-item" id="btn-read-configfiles-old" href="#">read files from old folder</a>
+            </div>
           </div>
         </div>
         <!-- /.input group -->
@@ -92,7 +99,7 @@
             <div class="input-group-text">config-file:</div>
           </div>
           <input class="form-control" type="text" autocomplete="off" placeholder="filename" id="select-configfile"
-                 data-toggle="dropdown" />
+            data-toggle="dropdown" />
           <ul id="filelist" class="dropdown-menu" role="menu"></ul>
           <div class="input-group-append">
             <div class="input-group-text">.json</div>
@@ -189,6 +196,13 @@
                 </p>
               </a>
             </li>
+            <!-- import/export config -->
+            <li id="imExport-config-nav-item" class="nav-item">
+              <a href="#" target="_blank" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                <p>import/export config</p>
+              </a>
+            </li>
             <li id="css-nav-item" class="nav-item">
               <a href="#" target="_blank" class="nav-link">
                 <i class="nav-icon fas fa-file-code"></i>
@@ -252,7 +266,7 @@
                 <div class="form-group">
                   <label for="CssTextarea">Global CSS for HTML Widgets</label>
                   <textarea class="form-control rounded-0" id="CssTextarea" rows="10"
-                            placeholder=".element { background: #FF0000; } ...">
+                    placeholder=".element { background: #FF0000; } ...">
                         .element { background: #FF0000; }</textarea>
                 </div>
               </div>
@@ -320,7 +334,7 @@
                   <i class="fa fa-fw fa-heart"></i>
                 </button>
                 <button type="button" class="icp icp-dd btn btn-light dropdown-toggle" data-selected="fa-car"
-                        data-toggle="dropdown">
+                  data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -334,7 +348,7 @@
                   <i class="mfd-icon audio_audio"></i>
                 </button>
                 <button type="button" id="icp-mfd" class="icp icp-dd icp-mfd btn-primary dropdown-toggle"
-                        data-selected="mfd-icon audio_audio" data-toggle="dropdown">
+                  data-selected="mfd-icon audio_audio" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span>Select Icon</span>
                 </button>
@@ -375,13 +389,43 @@
     </div>
   </div>
   <!-- /config Show Modal -->
+  <!-- im/export Modal -->
+  <div class="modal modal-xl fade" id="imExportModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">import/export configuration</h5>
+          <button type="button" class="ml-3 btn btn-primary btn-importConfig" data-dismiss="modal">
+            import
+          </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="imExport-config-holder">
+            <textarea></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-importConfig" data-dismiss="modal">
+            import
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /im/export Modal Modal -->
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Popper -->
-  <script src="plugins/popper/umd/popper.min.js"></script>  
+  <script src="plugins/popper/umd/popper.min.js"></script>
   <!-- moment -->
   <script src="dist/js/moment-with-locales.js"></script>
   <!-- x-editable -->

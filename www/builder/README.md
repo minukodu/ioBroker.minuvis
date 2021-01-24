@@ -11,6 +11,11 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### 1.12.0 (2021-01-21)
+* (svallant) new donut-widget
+* (svallant) improvement of range-widget (fraction number as step possible)
+* (svallant) use meta-datapoint "0_userdata.0" for storing config-files
+
 ### 1.11.0 (2020-12-06)
 * (svallant) css improvements
 

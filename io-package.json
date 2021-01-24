@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "news": {
+            "1.3.0": {
+                "en": "updated builder and app to V1.12.0",
+                "de": "Builder und App auf V1.12.0 aktualisiert",
+                "ru": "обновлен конструктор и приложение до версии V1.12.0",
+                "pt": "construtor e aplicativo atualizados para V1.12.0",
+                "nl": "bijgewerkte builder en app naar V1.12.0",
+                "fr": "constructeur et application mis à jour à V1.12.0",
+                "it": "builder e app aggiornati alla V1.12.0",
+                "es": "constructor y aplicación actualizados a V1.12.0",
+                "pl": "zaktualizowany kreator i aplikacja do wersji 1.12.0",
+                "zh-cn": "将生成器和应用更新为V1.12.0"
+            },
             "1.2.0": {
                 "en": "updated builder and app to V1.11.0",
                 "de": "Builder und App auf V1.11.0 aktualisiert",
@@ -238,7 +250,7 @@
         },
         "dependencies": [
             {
-                "js-controller": ">=1.4.2",
+                "js-controller": ">=2.0.38",
                 "web": ">=1.5.4"
             }
         ]
