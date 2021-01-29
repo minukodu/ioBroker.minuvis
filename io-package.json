@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "1.3.0",
+        "version": "1.3.1",
         "news": {
+            "1.3.1": {
+                "en": "updated app to V1.12.1",
+                "de": "App auf V1.12.1 aktualisiert",
+                "ru": "обновлено приложение до V1.12.1",
+                "pt": "aplicativo atualizado para V1.12.1",
+                "nl": "bijgewerkte app naar V1.12.1",
+                "fr": "application mise à jour à V1.12.1",
+                "it": "app aggiornata alla V1.12.1",
+                "es": "aplicación actualizada a V1.12.1",
+                "pl": "zaktualizowana aplikacja do wersji 1.12.1",
+                "zh-cn": "将应用更新为V1.12.1"
+            },
             "1.3.0": {
                 "en": "updated builder and app to V1.12.0",
                 "de": "Builder und App auf V1.12.0 aktualisiert",
