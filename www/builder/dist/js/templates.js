@@ -10,7 +10,7 @@ function getTemplates () {
     // templates.configJSprePend = "const appConfig =";
     // templates.configJSpostPend = ";localStorage.setItem('appConfig', JSON.stringify(appConfig));";
     
-    templates.devNote = "<div id='dev-note'>Attention ! This is a development-site ! for production goto <a href='http://builder.minukodu.de'>http://builder.minukodu.de</a></div>";
+    templates.devNote = "<div id='dev-note'>Attention ! This is a development-site for <i>Version 2</i> ! For production goto <a href='http://builder.minukodu.de'>http://builder.minukodu.de</a> or <a href='http://v2.builder.minukodu.de'>http://v2.builder.minukodu.de</a></div>";
     
     templates.pageTab = `
     <li class="nav-item page-nav-item">
@@ -43,6 +43,7 @@ function getTemplates () {
         <!-- icon, title and startpage -->
         <form class="form-inline mb-3">
             <div class="input-group input-group-sm">
+
                 <div class="input-group-prepend">
                     <span class="input-group-text alert-info label-page-name">Page</span>
                 </div>
@@ -56,27 +57,26 @@ function getTemplates () {
                 <input type="text" class="form-control  form-control-sm page-title" placeholder="Name of page"
                        value="Page 1">
             </div>
-			<div class="form-group ml-2 mr-2">
+			<div class="form-group ml-1 mr-1">
 				<div class="input-group iconselectfromcontrol icon-select iconSelectPage" data-icon="audio_play">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="mfd-icon audio_play"></i></span>
 					</div>
 					<div class="input-group-append">
-						<button class="btn btn-primary" type="button" data-toggle="modal"
+						<button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
 								data-target="#selectModal" data-select="iconSelectPage">
-							select page-icon
+							page-icon
 						</button>
 					</div>
 				</div>
-			</div>
+            </div>
             <div class="form-check ml-2">
                 <input class="form-check-input isstartpage" type="checkbox">
                 <label class="form-check-label">
                     is Startpage
                 </label>
             </div>
-            <div class="form widget-dropdown-holder">
-            </div>
+
             <!-- copy button -->
             <button type="button" class="btn btn-sm btn-labeled btn-primary btn-page-copy ml-2">
                 <span class="btn-label"><i class="far fa-copy"></i></span>
@@ -91,8 +91,11 @@ function getTemplates () {
     
         <!-- widgets -->
         <div class="widget-holder">
-    
+        
+            <div class="grid-holder"></div>
             <div class="widget-holder-end" class="hidden"></div>
+            <div class="form addWidgetToPageHolder widget-dropdown-holder">
+            </div>
         </div>
     </div>
     <!-- /page -->

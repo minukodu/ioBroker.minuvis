@@ -5,7 +5,8 @@
 }
 
 .iconpicker-component .mfd-icon,
-.iconpicker-item .mfd-icon {
+.iconpicker-item .mfd-icon,
+.noIcon {
   width: 85px;
   height: 85px;
   background-color: #000;
@@ -32,6 +33,14 @@
 .mfd-icon.alarm.fault,
 .mfd-icon.alarm.fehler {
   background-color: #fe3824;
+}
+
+.mfd-icon.aa_noIcon,
+.noIcon.aa_noIcon {
+  -webkit-mask: url("mfd-icons/aa_noIcon.svg") no-repeat center;
+  -webkit-mask-size: cover;
+  mask: url("mfd-icons/aa_noIcon.svg") no-repeat center;
+  mask-size: cover;
 }
 
 .mfd-icon.audio_audio {

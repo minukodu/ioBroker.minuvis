@@ -1,5 +1,6 @@
 function getMfdIcons() {
     icons = [
+        { title: "mfd-icon aa_noIcon", searchTerms: ["noIcon"] },
         { title: "mfd-icon audio_audio", searchTerms: ["audio", "audio"] },
         { title: "mfd-icon audio_desync", searchTerms: ["audio", "desync"] },
         { title: "mfd-icon audio_eject", searchTerms: ["audio", "eject"] },

@@ -24,11 +24,22 @@
   <link rel="stylesheet" href="dist/css/fontawesome-iconpicker.min.css" />
   <!-- selectpicker -->
   <link rel="stylesheet" href="dist/css/bootstrap-select.min.css" />
+  <!-- bootstrap-table -->
+  <link rel="stylesheet" href="plugins/bootstrap-table/bootstrap-table.min.css" />
+  <!-- gridstack -->
+  <link rel="stylesheet" href="plugins/gridstack/gridstack.min.css" />
+  <link rel="stylesheet" href="plugins/gridstack/gridstack-6-18.css" />
   <!-- App style -->
   <link rel="stylesheet" href="dist/css/app.css" />
 </head>
 
 <body class="hold-transition sidebar-mini">
+  <div id="workingNote">
+    <div class='workingNoteInner'><i class='fas fa-spinner fa-spin'></i><span class='text'>
+        generating pages from config... please wait
+      </span>
+    </div>
+  </div>
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -48,20 +59,13 @@
           add Page
         </button>
       </form>
-
-      <form class="form-inline ml-3 hidden">
-        <button type="button" id="btn-widgets-collapse-all" class="btn btn-sm btn-block btn-labeled btn-secondary">
-          toggle widgets
-        </button>
-      </form>
-
       <form class="form-inline form-connection ml-3">
         <div class="input-group input-group-sm">
           <div class="input-group-prepend">
             <span class="input-group-text alert-info"><i class="fas fa-laptop"></i></span>
           </div>
-          <input type="url" id="data-url-port" class="form-control  form-control-sm"
-                 placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
+          <input type="url" id="data-url-port" class="form-control form-control-sm"
+            placeholder="http://94.130.57.38:9090/" value="http://94.130.57.38:9090/" />
           <div class="input-group-append">
             <button type="button" id="btn-connect" class="btn btn-sm btn-block btn-labeled btn-outline-success">
               <span class="btn-label"><i class="fas fa-plug"></i></span>
@@ -70,17 +74,24 @@
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-variables" disabled="disabled"
-                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read States
             </button>
           </div>
           <div class="input-group-append">
             <button type="button" id="btn-read-configfiles" disabled="disabled"
-                    class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
+              class="btn btn-sm btn-block btn-labeled btn-outline-secondary">
               <span class="btn-label"><i class="fas fa-list"></i></span>
               read Config-Files
             </button>
+            <!-- <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" id="btn-read-configfiles-old-menu">
+              <a class="dropdown-item" id="btn-read-configfiles-old" href="#">read files from old folder</a>
+            </div> -->
           </div>
         </div>
         <!-- /.input group -->
@@ -92,7 +103,7 @@
             <div class="input-group-text">config-file:</div>
           </div>
           <input class="form-control" type="text" autocomplete="off" placeholder="filename" id="select-configfile"
-                 data-toggle="dropdown" />
+            data-toggle="dropdown" />
           <ul id="filelist" class="dropdown-menu" role="menu"></ul>
           <div class="input-group-append">
             <div class="input-group-text">.json</div>
@@ -113,45 +124,15 @@
           clear browser cache
         </button>
       </form>
-
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto mk-hidden">
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-danger navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-      </ul>
+      <!-- col messages-->
+      <div id="message-holder" class="ml-2"></div>
     </nav>
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-info elevation-0">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <img src="dist/img/minukodu.png" alt="MinuKodu Logo" class="brand-image elevation-3" style="opacity: .8" />
+        <img src="dist/img/minukodu.png" alt="MinuKodu Logo" class="brand-image elevation-3" style="opacity: 0.8" />
         <span class="brand-text font-weight-light">MINUKODU Builder</span>
       </a>
 
@@ -168,33 +149,45 @@
                   Preview in new tab
                   <i id="preview-qrcode" class="fas fa-qrcode"></i>
                 </p>
-
               </a>
             </li>
             <!-- save and show config -->
-            <li id="show-config-nav-item" class="nav-item">
+            <!-- <li id="show-config-nav-item" class="nav-item">
               <a href="#" target="_blank" class="nav-link">
                 <i class="nav-icon fas fa-magic"></i>
-                <p>
-                  save and show config.js
-                </p>
+                <p>save and show config.js</p>
+              </a>
+            </li> -->
+            <!-- only show config -->
+            <!-- <li id="only-show-config-nav-item" class="nav-item">
+              <a href="#" target="_blank" class="nav-link">
+                <i class="nav-icon fas fa-magic"></i>
+                <p>show config.js without saving</p>
+              </a>
+            </li> -->
+            <!-- import/export config -->
+            <li id="imExport-config-nav-item" class="nav-item">
+              <a href="#" target="_blank" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                <p>import/export config</p>
               </a>
             </li>
-            <!-- only show config -->
-            <li id="only-show-config-nav-item" class="nav-item">
+            <li id="banner-nav-item" class="nav-item">
               <a href="#" target="_blank" class="nav-link">
-                <i class="nav-icon fas fa-magic"></i>
-                <p>
-                  show config.js without saving
-                </p>
+                <i class="nav-icon fa fa-flag"></i>
+                <p>banner config</p>
+              </a>
+            </li>
+            <li id="theme-nav-item" class="nav-item">
+              <a href="#" target="_blank" class="nav-link">
+                <i class="nav-icon fa fa-palette"></i>
+                <p>global theme</p>
               </a>
             </li>
             <li id="css-nav-item" class="nav-item">
               <a href="#" target="_blank" class="nav-link">
                 <i class="nav-icon fas fa-file-code"></i>
-                <p>
-                  global CSS
-                </p>
+                <p>global CSS</p>
               </a>
             </li>
             <li id="spliiterOpen-nav-item" class="nav-item settings">
@@ -205,12 +198,34 @@
                 </label>
               </div>
             </li>
-            <li id="lightMode-nav-item" class="nav-item settings mb-2">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="chkLightMode" />
-                <label class="form-check-label" for="chkLightMode">
-                  Light Mode
-                </label>
+            <li id="lightMode-nav-item" class="nav-item settings hidden">
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chkLightMode" />
+                  <label class="form-check-label" for="chkLightMode">
+                    Light Mode
+                  </label>
+                </div>
+              </form>
+            </li>
+            <li id="alarmPage-nav-item" class="nav-item settings hidden">
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chkAlarmPage" />
+                  <label class="form-check-label" for="chkAlarmPage">
+                    use Alarmpage
+                  </label>
+                </div>
+              </form>
+            </li>
+            <li id="nbOfCols-nav-item" class="nav-item settings mb-2 hidden">
+              <div class="form-group">
+                <select class="form-control form-control-sm" id="nbOfColsSelect" value="18"
+                  onchange="setGridCols(this);">
+                  <!-- <option value="6">6 columns</option>
+                  <option value="12">12 columns</option> -->
+                  <option selected="selected" value="18">18 columns</option>
+                </select>
               </div>
             </li>
             <!-- Add icons to the links using the .nav-icon class
@@ -228,7 +243,13 @@
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
+        <hr />
+        <div id="preview-qrcode-holder-title">QRCode for preview:</div>
+        <div id="preview-qrcode-holder" class="mt-2 ml-1">
+          .. to be generated ...
+        </div>
       </div>
+
       <!-- /.sidebar -->
     </aside>
 
@@ -239,7 +260,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <!-- pages -->
-            <div class="col col-lg-10">
+            <div class="col col-lg-9">
               <div id="pages" class="list-group mt-3">
                 <div class="tab-content" id="myTabContent">
                   <!-- page will be inserted here -->
@@ -247,23 +268,45 @@
                 <!-- tab-content -->
               </div>
               <!-- /pages -->
+              <!-- banner -->
+              <div id="bannerData" class="list-group mt-3"></div>
+              <!-- /banner -->
+              <!-- theme -->
+              <div id="theme" class="list-group mt-3">
+                <div id="theme-button-group" class="btn-group mb-2" role="group">
+                  <button id="btn-theme-light" class="btn btn-primary btn-sm">
+                    load default light theme
+                  </button>
+                  <button id="btn-theme-dark" class="btn btn-secondary btn-sm">
+                    load default dark theme
+                  </button>
+                </div>
+                <div class="form-group">
+                  <label for="themeTextarea">edit your theme here</label>
+                  <textarea class="form-control rounded-0" id="themeTextarea" rows="50"></textarea>
+                </div>
+              </div>
+              <!-- /theme -->
               <!-- css -->
               <div id="css" class="list-group mt-3">
                 <div class="form-group">
                   <label for="CssTextarea">Global CSS for HTML Widgets</label>
-                  <textarea class="form-control rounded-0" id="CssTextarea" rows="10"
-                            placeholder=".element { background: #FF0000; } ...">
+                  <textarea class="form-control rounded-0" id="CssTextarea" rows="20"
+                    placeholder=".element { background: #FF0000; } ...">
                         .element { background: #FF0000; }</textarea>
                 </div>
               </div>
               <!-- /css -->
             </div>
-            <!-- col -->
-            <div class="col col-lg-2">
-              <div id="preview-qrcode-holder-title">QRCode for preview:</div>
-              <div id="preview-qrcode-holder" class="mt-1 ml-1">.. to be generated ...</div>
-              <!-- space for scrolling om tablets-->
-              <div id="message-holder" class="mt-1"></div>
+            <!-- col settings-editor-->
+            <div id="settings-holder-wrapper" class="col col-lg-3">
+              <div id="settings-holder" class="mt-1">
+                <table id="props-nowidget" class="table table-striped widget-settings-table">
+                  <tr>
+                    <td>select widget first</td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
           <!-- row -->
@@ -314,13 +357,19 @@
               <div id="modal-states-info-text"></div>
             </div>
 
+            <div class="hide-at-start file-select form-control mb-5">
+              <input id="modalFileInput" type="file" accept="image/png, image/jpeg" placeholder="select image"
+                onchange="modalPreviewFile()" />
+              <div id="modal-file-preview"><img height=100></img></div>
+            </div>
+
             <div class="hide-at-start fa-icon-select form-group mb-5">
               <div class="btn-group">
                 <button type="button" class="btn btn-light iconpicker-component">
                   <i class="fa fa-fw fa-heart"></i>
                 </button>
                 <button type="button" class="icp icp-dd btn btn-light dropdown-toggle" data-selected="fa-car"
-                        data-toggle="dropdown">
+                  data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -334,7 +383,7 @@
                   <i class="mfd-icon audio_audio"></i>
                 </button>
                 <button type="button" id="icp-mfd" class="icp icp-dd icp-mfd btn-primary dropdown-toggle"
-                        data-selected="mfd-icon audio_audio" data-toggle="dropdown">
+                  data-selected="mfd-icon audio_audio" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span>Select Icon</span>
                 </button>
@@ -355,16 +404,16 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">view config.js</h5>
+          <h5 class="modal-title" id="ModalLabel">view configuration</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div id="qrcode-holder" style="width:200px; height:200px"></div>
+          <!-- <div id="qrcode-holder" style="width: 200px; height: 200px"></div>
           <div id="show-config-holder">
             <pre></pre>
-          </div>
+          </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -375,13 +424,48 @@
     </div>
   </div>
   <!-- /config Show Modal -->
+  <!-- im/export Modal -->
+  <div class="modal modal-xl fade" id="imExportModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">import/export configuration</h5>
+          <button type="button" class="ml-3 btn btn-primary btn-importConfig" data-dismiss="modal">
+            import
+          </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="qrcode-holder" style="width: 200px; height: 200px"></div>
+          <div id="imExport-config-holder">
+            <textarea></textarea>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-importConfig" data-dismiss="modal">
+          import
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- /im/export Modal Modal -->
+  <!-- loading overlay -->
+  <div id="loading">
+    <div class="loader"></div>
+  </div>
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Popper -->
-  <script src="plugins/popper/umd/popper.min.js"></script>  
+  <script src="plugins/popper/umd/popper.min.js"></script>
   <!-- moment -->
   <script src="dist/js/moment-with-locales.js"></script>
   <!-- x-editable -->
@@ -402,6 +486,10 @@
   <script src="dist/js/typeahead.bundle.min.js"></script>
   <!-- selectpicker -->
   <script src="dist/js/bootstrap-select.min.js"></script>
+  <!-- bootstrap-table -->
+  <script src="plugins/bootstrap-table/bootstrap-table.min.js"></script>
+  <!-- gridstack -->
+  <script src="plugins/gridstack/gridstack-h5.js"></script>
   <!-- uuid -->
   <script src="dist/js/uuid-v4.js"></script>
   <!-- qrcode -->
@@ -412,11 +500,14 @@
   <script src="dist/js/moment.min.js"></script>
   <!-- numeraljs -->
   <script src="dist/js/numeral/numeral.js"></script>
+  <!-- locales -->
   <script src="dist/js/numeral/locales/de.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <!-- Templates -->
   <script src="dist/js/templates.js"></script>
+  <!-- Themes -->
+  <script src="dist/js/themes.js"></script>
   <!-- Widget Definition -->
   <script src="dist/js/widgetJSON.js"></script>
   <!-- helper functions -->
