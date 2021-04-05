@@ -230,6 +230,7 @@ function addAllWidgetsToOnePage(pageData) {
 
       console.log("all cardWidgets:");
       console.log(widget.widgets);
+      console.log(cardUUID);
 
       for (var cardWidgetId in widget.widgets) {
         var cardWidget = widget.widgets[cardWidgetId];

@@ -514,7 +514,7 @@ function readConfigFromFile(fileName, oldFolder = false) {
         var newConfig = JSON.parse(fileData);
         // check Version
         var version = 1;
-        if ( newConfig.version ) {
+        if (newConfig.version) {
           version = parseInt(newConfig.version, 10);
         }
         console.log("version of config-file: " + version)
@@ -745,6 +745,8 @@ function submit_modal() {
   var modalClass = $("#selectModal").attr("data-class");
   var buttonId = $("#selectModal").attr("data-button");
   console.log(modalClass);
+  console.log(buttonId);
+
   var value = "";
   if (modalClass.indexOf("tate") > 0) {
     // submit state
@@ -768,6 +770,11 @@ function submit_modal() {
           "</option>"
         )
       );
+      let widgetID = $("#" + buttonId).closest("tbody").find("td.prop-uuid").attr("data-uuid");
+      $("#" + widgetID + " .info")
+        .text(stateId)
+        .attr("title", stateId)
+        .removeClass("danger");
 
       $("#" + buttonId)
         .closest("tr")
@@ -895,6 +902,8 @@ function modalPreviewFile() {
 
   if (file) {
     reader.readAsDataURL(file);
+    // console.log("############# image loaded: ")
+    // console.log(file);
   }
 }
 

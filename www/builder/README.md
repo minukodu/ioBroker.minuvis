@@ -11,6 +11,11 @@ Big thanks to authors for these icon sets.
 
 ## Changelog
 
+### 2.0.0-alpha.2 (2021-04-05)
+* (svallant) scaleWidth for imgoutpout and imgbutton
+* (svallant) classes for headline
+* (svallant) display of state or title in builder
+
 ### 2.0.0-alpha (2021-03-08)
 * (svallant) several improvements for version 2
 

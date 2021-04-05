@@ -60,6 +60,9 @@ For more information visit https://minukodu.de/en or watch at youtube https://yo
 
 
 ## Changelog
+### 2.0.0-alpha.2 (2021-04-05)
+* updated app to V2.0.0-alpha.2
+
 ### 2.0.0-alpha (2021-03-08)
 * updated app to V2.0.0-alpha
 

@@ -432,7 +432,7 @@ input.colorinput {
 
 .addWidgetToPageHolder.widget-dropdown-holder {
   margin-bottom: 120px;
-} 
+}
 .addWidgetToPageHolder.widget-dropdown-holder .dropdown-menu {
   column-count: 3;
   left: 50px !important;
@@ -441,8 +441,8 @@ input.colorinput {
 .widgetcard.widget-dropdown-holder {
   transform: scale(0.7);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -3px;
+  left: 3px;
   z-index: 9;
 }
 
@@ -544,7 +544,7 @@ hr.widget-inline-seperator {
 .grid-stack-item-content {
   font-size: 12px;
   color: #2c3e50;
-  text-align: center;
+  /* text-align: center; */
   background-color: #eee;
   inset: 1px !important;
 }
@@ -558,9 +558,27 @@ hr.widget-inline-seperator {
   height: 100%;
   width: 100%;
 }
+.grid-widget .type {
+  margin-left: 5px;
+  max-width: 99%;
+  overflow: hidden;
+  padding: 2px;
+  min-height: 26px;
+}
+.grid-widget .info {
+  background-color: #fff;
+  margin-left: 5px;
+  max-width: 70%;
+  overflow: hidden;
+}
+.grid-widget .info.danger {
+  background-color: red;
+  color: white;
+}
 .grid-widget .link-holder {
-  float: right;
-  margin: 4px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
 }
 .grid-widget .link-holder a {
   padding: 4px;

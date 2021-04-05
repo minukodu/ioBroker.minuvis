@@ -191,6 +191,11 @@ var widgetJSON = {
       default: "100",
       tooltip: "size of the font"
     },
+    color: {
+      type: "color",
+      default: "#FFFFFF",
+      tooltip: "font-color"
+    },
     titleIcon: {
       type: "icon",
       default: "audio_play",
@@ -205,6 +210,11 @@ var widgetJSON = {
       type: "string",
       default: "NONE",
       tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    classes: {
+      type: "string",
+      default: "left",
+      tooltip: "additional classnames like left, center, right or custom classnames with space as separator"
     },
   },
   imgButton: {
@@ -281,6 +291,11 @@ var widgetJSON = {
       type: "file",
       default: "---",
       tooltip: "image base64 encoded"
+    },
+    scaleWidth: {
+      type: "boolean",
+      default: "false",
+      tooltip: "scale image to 100% width not 100% height"
     },
   },
   switch: {
@@ -1798,6 +1813,11 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
+    },
+    scaleWidth: {
+      type: "boolean",
+      default: "false",
+      tooltip: "scale image to 100% width not 100% height"
     },
   },
   linkbutton: {

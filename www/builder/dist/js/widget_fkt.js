@@ -162,7 +162,12 @@ function init_widget_settings_form(widgettype, uuid) {
                           disabled="disabled">`;
           break;
         case "string":
+          onChangeFkt = "return true;";
+          if (prop === "title" || prop === "url") {
+            onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
+          }
           formInput += `<input id="` + inputUUID + `" type="text" 
+                          onChange="` + onChangeFkt + `" 
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
                           title="` + objProp.default + `" 
@@ -320,7 +325,7 @@ function copyWidget(element, uuid, targetUUID, card) {
   //create newUUID
   widgetData.UUID = UUID();
   // add to Page
-  addWidgetToPage(widgetData.type, targetUUID, widgetData, grids[targetUUID], card);
+  addWidgetToPage(widgetData.type, targetUUID, widgetData, grids[targetUUID], card, true);
 
 }
 
@@ -410,11 +415,14 @@ function handleCardWidget(widgetUUID, nbOfCols = 18) {
   // grid= grids[widgetUUID];
   // grid.addWidget({ w: 2, h: 2, x: 1, y: 1, maxH: 10, content: "content", uuid: "uuid" });
 
+  return widgetUUID;
 }
 
-function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = false) {
+function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = false, copy = false) {
   console.log(widget);
   console.log(targetUUID);
+  console.log(grid);
+
 
   // filler is now headline
   if (widget === "filler") {
@@ -425,13 +433,33 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
 
   uuid = widgetData.UUID || UUID();
 
+  // info-text to Widgets
+  widgetInfo = "";
+  if (widget !== "card") {
+    if (widgetJSON[widget].stateId) {
+      widgetInfo = widgetData.stateId || widgetJSON[widget].stateId.default;
+    } else if (widgetJSON[widget].title) {
+      widgetInfo = widgetData.title || widgetJSON[widget].title.default;
+    } else if (widgetJSON[widget].url) {
+      widgetInfo = widgetData.url || widgetJSON[widget].url.default;
+    }
+  }
+  $("#" + uuid + " .info").text(widgetInfo);
+  $("#" + uuid + " .info").attr("title", widgetInfo);
+
+  widgetInfoClass = "";
+  if (widgetInfo === "undefined" || widgetInfo === "no state selected") {
+    widgetInfoClass = "danger";
+  }
+
   targetClass = "pageWidget";
   if (card === true || card === "true") { targetClass = "cardWidget" };
 
   if (widgetJSON[widget]) {
 
     var content = ``;
-    content += `<div class="grid-widget ` + targetClass + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><span>` + widget + `</span><br/>`;
+    content += `<div class="grid-widget ` + targetClass + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><div class="type" title="` + widget + `">` + widget + `</div>`;
+    content += `<div class="info ` + widgetInfoClass + `" title="` + widgetInfo + `">` + widgetInfo + `</div>`;
     content += `<span class="link-holder">`;
     content += `<a href="#" class="link-copy-widget" title="copy widget" onclick="copyWidget(this,'` + uuid + `','` + targetUUID + `','` + card + `');return false;"><i class="fa fa-copy"></i></a>`;
     content += `<a href="#" class="link-delete-widget" title="delete widget" onclick="deleteWidget(this,'` + uuid + `','` + targetUUID + `');return false;"><i class="far fa-trash-alt"></i></a>`;
@@ -530,11 +558,18 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
       .attr("id", "propsTable-" + uuid)
       .addClass("sidebar-settings-table")
       .hide();
-
   }
 
   if (widget === "card") {
-    handleCardWidget(uuid);
+    let cardUUID = handleCardWidget(uuid);
+    console.log("handleCardWidget returned: " + cardUUID);
+    console.log(widgetData);
+    if (copy === true) {
+      for (var widget in widgetData.widgets) {
+        widgetData.widgets[widget].UUID = UUID();
+        addWidgetToPage(widgetData.widgets[widget].type, cardUUID, widgetData.widgets[widget], grids[cardUUID], true);
+      }
+    }
   }
 
   return uuid;
