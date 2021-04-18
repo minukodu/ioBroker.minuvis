@@ -10,6 +10,9 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.0.0-beta.1 (2021-04-18)
+* (svallant) color for headline
+* (svallant) noIcon-icon for icon-selection
 
 ### 2.0.0-alpha.2 (2021-04-05)
 * (svallant) scaleWidth for imgoutpout and imgbutton

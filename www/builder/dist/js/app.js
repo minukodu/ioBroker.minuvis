@@ -1,7 +1,7 @@
 // App
 
 //////////////////////////////////
-var version = "2.0.0-alpha.2";
+var version = "2.0.0-beta.1";
 //////////////////////////////////
 
 var numberOfCols = 18; // 18 cols grid
