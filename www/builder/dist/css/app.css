@@ -90,7 +90,8 @@ html {
 
 #css,
 #theme,
-#bannerData {
+#bannerData,
+#imExportSection {
   display: none;
 }
 
@@ -575,6 +576,13 @@ hr.widget-inline-seperator {
   background-color: red;
   color: white;
 }
+
+.grid-widget.imgoutput .info.danger,
+.grid-widget.linkbutton .info.danger {
+  background-color: yellow;
+  color: black;
+}
+
 .grid-widget .link-holder {
   position: absolute;
   top: 4px;
@@ -614,6 +622,11 @@ input.disabled {
   top: 20px;
 }
 
+.modal-header {
+  background: #17a2b8;
+  color: white;
+}
+
 .modal .icon-select,
 .modal .states-select {
   border: none;
@@ -625,6 +638,12 @@ input.disabled {
   min-width: 30px;
   height: 60px;
   border: 1px solid #222;
+}
+
+#importWarningNoTheme {
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
 }
 
 .iconpicker .iconpicker-items {

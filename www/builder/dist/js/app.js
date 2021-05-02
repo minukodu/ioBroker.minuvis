@@ -1,7 +1,7 @@
 // App
 
 //////////////////////////////////
-var version = "2.0.0-beta.1";
+var version = "2.0.0-rc.1";
 //////////////////////////////////
 
 var numberOfCols = 18; // 18 cols grid
@@ -75,6 +75,7 @@ function init() {
     $("#theme").hide();
     $("#bannerData").hide();
     $(".page").hide();
+    $("#imExportSection").hide();
     $($(this).attr("href")).show();
     //console.log($(this).attr("href"));
   });
@@ -86,6 +87,7 @@ function init() {
     $(".page").hide();
     $("#theme").hide();
     $("#bannerData").hide();
+    $("#imExportSection").hide();
     $("#css").show();
   });
 
@@ -96,6 +98,7 @@ function init() {
     $(".page").hide();
     $("#css").hide();
     $("#bannerData").hide();
+    $("#imExportSection").hide();
     $("#theme").show();
   });
 
@@ -106,6 +109,7 @@ function init() {
     $(".page").hide();
     $("#css").hide();
     $("#theme").hide();
+    $("#imExportSection").hide();
     $("#bannerData").show();
   });
 
@@ -133,6 +137,7 @@ function init() {
       $("#css").hide();
       $("#theme").hide();
       $("#bannerData").hide();
+      $("#imExportSection").hide();
       var pageUUID = addPage();
       $("#"+pageUUID).addClass("rendered");
     });
@@ -232,15 +237,36 @@ function init() {
     $("#imExport-config-nav-item").click(function (event) {
       event.preventDefault();
       generateConfig(false);
+      console.log("read appconfig");
       var outConfig = localStorage.getItem("appConfig");
-      $("#imExport-config-holder textarea").val("");
-      $("#imExport-config-holder textarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
-      $("#imExportModal").modal("show");
+      console.log("show appconfig");
+      console.log(outConfig);
+
+
+      $("#imExportTextarea").val("");
+      $("#imExportTextarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
+
+      $(".sidebar-settings-table").hide();
+      $(".widget-settings-table").hide();
+      $(".page").hide();
+      $("#theme").hide();
+      $("#bannerData").hide();
+      $("#css").hide();
+      $("#imExportSection").show();
+
+      console.log("show imExportTextarea");
     });
 
     $(".btn-importConfig").click(function (event) {
       event.preventDefault();
-      importConfig($("#imExport-config-holder textarea").val());
+      importConfig($("#imExportTextarea").val(), 0, null);
+    });
+
+    $("#btn-importSettingsConfirm").click(function (event) {
+      event.preventDefault();
+      let widgetWidth = parseInt($("#importSettingsSelectRows input:radio:checked").val(),10);
+      let theme = $("#importSettingsSelectTheme input:radio:checked").val();
+      importConfig($("#imExportTextarea").val(), widgetWidth, theme);
     });
 
     // show loading

@@ -237,6 +237,7 @@ function init_widget_settings_form(widgettype, uuid) {
           formInput += ``; // TODO
           break;
         case "pageList":
+          onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
           formInput += `<select id="` + inputUUID + `"  
                           class="widget-prop form-control form-control-sm  type-pageList prop-` + prop + `" 
                           type="text" 
@@ -245,7 +246,7 @@ function init_widget_settings_form(widgettype, uuid) {
                           data-type="` + objProp.type + `" 
                           title="` + objProp.default + `" 
                           value="` + objProp.default + `" 
-                          onchange="updatePageListProp(this)" 
+                          onchange="` + onChangeFkt + `" 
                           onfocus="buildPageLinksSelect(this)" 
                           >
                           <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
@@ -420,6 +421,7 @@ function handleCardWidget(widgetUUID, nbOfCols = 18) {
 
 function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = false, copy = false) {
   console.log(widget);
+  console.log(widgetData);
   console.log(targetUUID);
   console.log(grid);
 
@@ -442,13 +444,15 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
       widgetInfo = widgetData.title || widgetJSON[widget].title.default;
     } else if (widgetJSON[widget].url) {
       widgetInfo = widgetData.url || widgetJSON[widget].url.default;
+    } else if (widgetJSON[widget].targetpage) {
+      widgetInfo = widgetData.targetpage || widgetJSON[widget].targetpage.default;
     }
   }
   $("#" + uuid + " .info").text(widgetInfo);
   $("#" + uuid + " .info").attr("title", widgetInfo);
 
   widgetInfoClass = "";
-  if (widgetInfo === "undefined" || widgetInfo === "no state selected") {
+  if (widgetInfo === "undefined" || widgetInfo === "no state selected" || widgetInfo === "startpage") {
     widgetInfoClass = "danger";
   }
 
@@ -458,7 +462,7 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
   if (widgetJSON[widget]) {
 
     var content = ``;
-    content += `<div class="grid-widget ` + targetClass + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><div class="type" title="` + widget + `">` + widget + `</div>`;
+    content += `<div class="grid-widget ` + targetClass + ` ` + widget + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><div class="type" title="` + widget + `">` + widget + `</div>`;
     content += `<div class="info ` + widgetInfoClass + `" title="` + widgetInfo + `">` + widgetInfo + `</div>`;
     content += `<span class="link-holder">`;
     content += `<a href="#" class="link-copy-widget" title="copy widget" onclick="copyWidget(this,'` + uuid + `','` + targetUUID + `','` + card + `');return false;"><i class="fa fa-copy"></i></a>`;

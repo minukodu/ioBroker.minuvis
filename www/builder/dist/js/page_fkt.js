@@ -137,6 +137,7 @@ function addAllWidgetsToOnePage(pageData) {
   console.log(grids);
 
   let pageUUID = pageData.UUID;
+  let headLineTextColor = pageData.headLineTextColor;
   for (var widgetId in pageData.widgets) {
     //console.log(appConfig.pages[pageId].widgets[widgetId]);
     var widget = pageData.widgets[widgetId];
@@ -194,6 +195,7 @@ function addAllWidgetsToOnePage(pageData) {
         fillerWidget.titleIcon = widget.titleIcon;
         fillerWidget.titleIconFamily = widget.titleIconFamily;
         fillerWidget.title = widget.title
+        fillerWidget.color = headLineTextColor;
         // set border
         widget.borderTop = true;
         widget.borderRight = true;
@@ -278,7 +280,8 @@ function addAllWidgetsToOnePage(pageData) {
             fillerWidget.timestamp = false;
             fillerWidget.titleIcon = cardWidget.titleIcon;
             fillerWidget.titleIconFamily = cardWidget.titleIconFamily;
-            fillerWidget.title = cardWidget.title
+            fillerWidget.title = cardWidget.title;
+            fillerWidget.color = headLineTextColor;
             // set fullwidth
             if (fillerFullWidth === true) {
               fillerWidget.widgetWidth = 18;
@@ -290,6 +293,7 @@ function addAllWidgetsToOnePage(pageData) {
           // set full width if title of card
           if (cardWidget.cardtitle) {
             cardWidget.widgetWidth = 18; // width 
+            cardWidget.color = headLineTextColor;
           }
         }
         // end imported widgetdata ####################################################################################################
@@ -306,6 +310,7 @@ function showPage(UUID) {
   $("#css").hide();
   $("#theme").hide();
   $("#bannerData").hide();
+  $("#imExportSection").hide();
   $(".page").hide();
   $(".widget-holder").removeClass("active");
   $(UUID + " .widget-holder").addClass("active");
@@ -473,6 +478,7 @@ function addPage(pageData = {}, nbOfCols = 18) {
       $("#css").hide();
       $("#theme").hide();
       $("#bannerData").hide();
+      $("#imExportSection").hide();
       $(".page").hide();
       loadWidgets(uuid);
       $("#" + uuid).show(100);
@@ -483,6 +489,8 @@ function addPage(pageData = {}, nbOfCols = 18) {
     .click(function () {
       $("#css").hide();
       $("#theme").hide();
+      $("#bannerData").hide();
+      $("#imExportSection").hide();
       $(".page").hide();
       $(".widget-holder").removeClass("active");
       $("#" + uuid + " .widget-holder").addClass("active");

@@ -1,6 +1,6 @@
 {
   "name": "iobroker.minuvis",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-rc.1",
   "description": "Visualization for all devices",
   "author": {
     "name": "svallant",

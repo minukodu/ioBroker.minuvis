@@ -34,6 +34,149 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+  <!-- MODALS ############################################ -->
+  <!-- Select Modal -->
+  <div class="modal modal-xl fade" id="selectModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Select value</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="hide-at-start icon-select form-control mb-5"></div>
+
+            <div class="hide-at-start states-select form-control mb-5">
+              <input class="typeahead" type="text" placeholder="select state by typing ..." />
+              <div id="modal-states-info-text"></div>
+            </div>
+
+            <div class="hide-at-start file-select form-control mb-5">
+              <input id="modalFileInput" type="file" accept="image/png, image/jpeg" placeholder="select image"
+                onchange="modalPreviewFile()" />
+              <div id="modal-file-preview"><img height=100></img></div>
+            </div>
+
+            <div class="hide-at-start fa-icon-select form-group mb-5">
+              <div class="btn-group">
+                <button type="button" class="btn btn-light iconpicker-component">
+                  <i class="fa fa-fw fa-heart"></i>
+                </button>
+                <button type="button" class="icp icp-dd btn btn-light dropdown-toggle" data-selected="fa-car"
+                  data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu"></div>
+              </div>
+            </div>
+
+            <div class="hide-at-start mfd-icon-select form-group mb-5">
+              <div class="btn-group">
+                <button type="button" class="btn iconpicker-component border border-primary icon-holder">
+                  <i class="mfd-icon audio_audio"></i>
+                </button>
+                <button type="button" id="icp-mfd" class="icp icp-dd icp-mfd btn-primary dropdown-toggle"
+                  data-selected="mfd-icon audio_audio" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span>Select Icon</span>
+                </button>
+                <div class="dropdown-menu"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ok btn-primary">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Select Modal -->
+  <!-- config Show Modal -->
+  <div class="modal modal-xl fade" id="configShowModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">view configuration</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <div id="qrcode-holder" style="width: 200px; height: 200px"></div>
+          <div id="show-config-holder">
+            <pre></pre>
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /config Show Modal -->
+  <!-- importSettings Modal -->
+  <div class="modal modal-xl fade" id="importSettingsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-warning" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">import settings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">select standard-width of widgets in 18-row-grid</div>
+          <div id="importSettingsSelectRows">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="selectRows" id="selectRows1" value="9" checked>
+              <label class="form-check-label" for="selectRows1">
+                50% (9 of 18)
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="selectRows" id="selectRows2" value="18">
+              <label class="form-check-label" for="selectRows2">
+                100% (18 of 18)
+              </label>
+            </div>
+          </div>
+          <div class="mt-3 mb-3">select theme</div>
+          <div id="importSettingsSelectTheme">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="selectTheme" id="selectTheme1" value="dark" checked>
+              <label class="form-check-label" for="selectTheme1">
+                dark theme
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="selectTheme" id="selectTheme2" value="light">
+              <label class="form-check-label" for="selectTheme2">
+                light theme
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-importSettingsConfirm" class="btn btn-primary" data-dismiss="modal">
+            start import
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /im/export Modal Modal -->
+  <!-- MODALS ############################################ -->
+
+
+
   <div id="workingNote">
     <div class='workingNoteInner'><i class='fas fa-spinner fa-spin'></i><span class='text'>
         generating pages from config... please wait
@@ -261,7 +404,7 @@
           <div class="row mb-2">
             <!-- pages -->
             <div class="col col-lg-9">
-              <div id="pages" class="list-group mt-3">
+              <div id="pages" class="editorSection list-group mt-3">
                 <div class="tab-content" id="myTabContent">
                   <!-- page will be inserted here -->
                 </div>
@@ -269,10 +412,10 @@
               </div>
               <!-- /pages -->
               <!-- banner -->
-              <div id="bannerData" class="list-group mt-3"></div>
+              <div id="bannerData" class="editorSection list-group mt-3"></div>
               <!-- /banner -->
               <!-- theme -->
-              <div id="theme" class="list-group mt-3">
+              <div id="theme" class="editorSection list-group mt-3">
                 <div id="theme-button-group" class="btn-group mb-2" role="group">
                   <button id="btn-theme-light" class="btn btn-primary btn-sm">
                     load default light theme
@@ -288,7 +431,7 @@
               </div>
               <!-- /theme -->
               <!-- css -->
-              <div id="css" class="list-group mt-3">
+              <div id="css" class="editorSection list-group mt-3">
                 <div class="form-group">
                   <label for="CssTextarea">Global CSS for HTML Widgets</label>
                   <textarea class="form-control rounded-0" id="CssTextarea" rows="20"
@@ -297,6 +440,24 @@
                 </div>
               </div>
               <!-- /css -->
+              <!-- im/export -->
+              <div id="imExportSection" class="editorSection list-group mt-3">
+                <button type="button" class="btn btn-primary btn-importConfig">
+                  import
+                </button>
+                <div class="form-group">
+                  <div id="imExport-qrcode-holder" style="width: 200px; height: 200px"></div>
+                  <div id="imExport-config-holder">
+                    <label for="imExportTextarea"></label>
+                    <textarea class="form-control rounded-0" id="imExportTextarea" rows="20" placeholder="paste configuration here">
+                  </textarea>
+                  </div>
+                </div>
+                <button type="button" class="mb-5 btn btn-primary btn-importConfig">
+                  import
+                </button>
+              </div>
+              <!-- /im/export  -->
             </div>
             <!-- col settings-editor-->
             <div id="settings-holder-wrapper" class="col col-lg-3">
@@ -338,123 +499,6 @@
     </footer>
   </div>
   <!-- ./wrapper -->
-  <!-- Select Modal -->
-  <div class="modal modal-xl fade" id="selectModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Select value</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="hide-at-start icon-select form-control mb-5"></div>
-
-            <div class="hide-at-start states-select form-control mb-5">
-              <input class="typeahead" type="text" placeholder="select state by typing ..." />
-              <div id="modal-states-info-text"></div>
-            </div>
-
-            <div class="hide-at-start file-select form-control mb-5">
-              <input id="modalFileInput" type="file" accept="image/png, image/jpeg" placeholder="select image"
-                onchange="modalPreviewFile()" />
-              <div id="modal-file-preview"><img height=100></img></div>
-            </div>
-
-            <div class="hide-at-start fa-icon-select form-group mb-5">
-              <div class="btn-group">
-                <button type="button" class="btn btn-light iconpicker-component">
-                  <i class="fa fa-fw fa-heart"></i>
-                </button>
-                <button type="button" class="icp icp-dd btn btn-light dropdown-toggle" data-selected="fa-car"
-                  data-toggle="dropdown">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu"></div>
-              </div>
-            </div>
-
-            <div class="hide-at-start mfd-icon-select form-group mb-5">
-              <div class="btn-group">
-                <button type="button" class="btn iconpicker-component border border-primary icon-holder">
-                  <i class="mfd-icon audio_audio"></i>
-                </button>
-                <button type="button" id="icp-mfd" class="icp icp-dd icp-mfd btn-primary dropdown-toggle"
-                  data-selected="mfd-icon audio_audio" data-toggle="dropdown">
-                  <span class="caret"></span>
-                  <span>Select Icon</span>
-                </button>
-                <div class="dropdown-menu"></div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-ok btn-primary">Ok</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Select Modal -->
-  <!-- config Show Modal -->
-  <div class="modal modal-xl fade" id="configShowModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">view configuration</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <!-- <div id="qrcode-holder" style="width: 200px; height: 200px"></div>
-          <div id="show-config-holder">
-            <pre></pre>
-          </div> -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /config Show Modal -->
-  <!-- im/export Modal -->
-  <div class="modal modal-xl fade" id="imExportModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">import/export configuration</h5>
-          <button type="button" class="ml-3 btn btn-primary btn-importConfig" data-dismiss="modal">
-            import
-          </button>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="qrcode-holder" style="width: 200px; height: 200px"></div>
-          <div id="imExport-config-holder">
-            <textarea></textarea>
-          </div>
-        </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-importConfig" data-dismiss="modal">
-          import
-        </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-  </div>
-  <!-- /im/export Modal Modal -->
   <!-- loading overlay -->
   <div id="loading">
     <div class="loader"></div>
