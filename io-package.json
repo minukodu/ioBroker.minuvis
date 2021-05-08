@@ -301,6 +301,8 @@
         "localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
         "singleton": true,
         "noConfig": true,
+        "connectionType": "local",
+        "dataSource": "assumption",
         "welcomeScreen": {
             "link": "minuvis/builder/index.html",
             "name": "minuvis builder",
