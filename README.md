@@ -113,7 +113,7 @@ For more information visit https://minukodu.de/en or watch at youtube https://yo
 ## License
 MIT License
 
-Copyright (c) 2020 svallant <svallant@gmx.eu>
+Copyright (c) 2021 svallant <svallant@gmx.eu>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
