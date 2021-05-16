@@ -16,7 +16,7 @@ Visualization for all devices
 
 ########################################################################
 
-# IMPORTANT !!!
+# IMPORTANT !!!!
 
 if you are upgrading from version < 1.3.0 please note:
 
