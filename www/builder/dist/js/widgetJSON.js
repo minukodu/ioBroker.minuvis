@@ -363,6 +363,11 @@ var widgetJSON = {
       default: "none",
       tooltip: "type of state"
     },
+    zoom: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the widget in percent"
+    }
   },
   indicator: {
     type: "indicator",
@@ -831,6 +836,11 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
+    },
+    zoom: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the widget in percent"
     },
     color: {
       type: "color",

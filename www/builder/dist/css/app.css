@@ -753,6 +753,10 @@ input.typeahead {
   border: 1px solid;
 }
 
+#imExport-qrcode-holder {
+  padding-top: 10px;
+}
+
 #preview-qrcode-holder {
   margin-bottom: 2em;
   font-size: 0.7em;

@@ -251,6 +251,20 @@ function generateConfig(saveInFile = true) {
   //console.log(JSON.stringify(newConfig));
   localStorage.setItem("appConfig", JSON.stringify(newConfig));
 
+  // qr-code
+  let qrCodeData = {
+    url: newConfig.dataprovider.url,
+    type: newConfig.dataprovider.type,
+    // configStateId: newConfig.dataprovider.configStateId,
+    fileName: newConfig.dataprovider.fileName,
+  };
+  let qrCodeDataString = JSON.stringify(qrCodeData);
+  $("#imExport-qrcode-holder").html("");
+  let qrCode = qrcode(0, 'M');
+  qrCode.addData(qrCodeDataString, "Byte");
+  qrCode.make();
+  $("#imExport-qrcode-holder").html(qrCode.createImgTag());
+
   ////////////////////////////////////////////////////////////////// no qrCode at the moment
   // qr-code
   // let qrCodeData = {
@@ -268,7 +282,7 @@ function generateConfig(saveInFile = true) {
   // console.log("generate QR-Code from: " + qrCodeDataString);
   // qrCode.makeCode(qrCodeDataString);
   // hide QR-Code at the moment ........................................................####################################
-  $("#imExport-qrcode-holder").hide();
+  //$("#imExport-qrcode-holder").hide();
   console.log("generated QR-Code");
   console.log(saveInFile);
   console.log(socket);
@@ -623,7 +637,7 @@ function readConfigFromFile(fileName, oldFolder = false) {
 
 function deleteConfigFile(fileName) {
   if (socket) {
-    socket.emit("unlink", null, filePath + "/" + fileName, function (error) {
+    socket.emit("unlink", metaInfoSocketIO, filePath + "/" + fileName, function (error) {
       console.log(error);
       show_message("file deleted: " + fileName, "success");
     });
@@ -994,16 +1008,13 @@ function removeFileExtension(fileName) {
 }
 
 function showPreviewQrCode(url) {
-  $("#preview-qrcode-holder").html("");
-  let preViewQrCode = new QRCode(
-    document.getElementById("preview-qrcode-holder"),
-    {
-      width: 200,
-      height: 200,
-    }
-  );
   console.log("generate QR-Code from: " + url);
-  preViewQrCode.makeCode(url);
+  $("#preview-qrcode-holder").html("");
+  let preViewQrCode = qrcode(0, 'M');
+  preViewQrCode.addData(url, "Byte");
+  preViewQrCode.make();
+  $("#preview-qrcode-holder").html(preViewQrCode.createImgTag());
+  //console.log("generated QR-Code from: " + url);
 }
 
 function clearBrowserCache() {

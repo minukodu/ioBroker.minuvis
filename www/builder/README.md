@@ -10,6 +10,13 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.0.0-rc.2 (2021-05-16)
+* (svallant) bugfix in file-delete-function
+* (svallant) bugfix in qrcode-creation
+* (svallant) zoom for output-widget
+* (svallant) zoom for switch-widget
+* (svallant) update for app-icon
+
 ### 2.0.0-rc.1 (2021-05-02)
 * (svallant) modal for import-settings
 * (svallant) theme-selection at import

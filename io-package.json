@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "2.0.0-rc.1",
+        "version": "2.0.0-rc.2",
         "news": {
+            "2.0.0-rc.2": {
+                "en": "updated app to V2.0.0-rc.2",
+                "de": "App auf V2.0.0-rc.2 aktualisiert",
+                "ru": "обновлено приложение до V2.0.0-rc.2",
+                "pt": "aplicativo atualizado para V2.0.0-rc.2",
+                "nl": "bijgewerkte app naar V2.0.0-rc.2",
+                "fr": "application mise à jour à V2.0.0-rc.2",
+                "it": "app aggiornata alla V2.0.0-rc.2",
+                "es": "aplicación actualizada a V2.0.0-rc.2",
+                "pl": "zaktualizowana aplikacja do wersji V2.0.0-rc.2",
+                "zh-cn": "将应用更新为V2.0.0-rc.2"
+            },
             "2.0.0-rc.1": {
                 "en": "updated app to V2.0.0-rc.1",
                 "de": "App auf V2.0.0-rc.1 aktualisiert",

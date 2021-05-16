@@ -7,7 +7,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
   <title>MINUKODU | Builder</title>
-
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/assets/site.webmanifest">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
   <!-- x.editable style -->
@@ -446,7 +447,7 @@
                   import
                 </button>
                 <div class="form-group">
-                  <div id="imExport-qrcode-holder" style="width: 200px; height: 200px"></div>
+                  <div id="imExport-qrcode-holder"></div>
                   <div id="imExport-config-holder">
                     <label for="imExportTextarea"></label>
                     <textarea class="form-control rounded-0" id="imExportTextarea" rows="20" placeholder="paste configuration here">
@@ -537,7 +538,7 @@
   <!-- uuid -->
   <script src="dist/js/uuid-v4.js"></script>
   <!-- qrcode -->
-  <script src="dist/js/qrcode.min.js"></script>
+  <script src="dist/js/qrcode.js"></script>
   <!-- cssjson -->
   <script src="dist/js/cssjson.js"></script>
   <!-- momentjs -->
