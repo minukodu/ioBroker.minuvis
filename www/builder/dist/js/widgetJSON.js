@@ -455,6 +455,82 @@ var widgetJSON = {
       tooltip: "color when state is false"
     },
   },
+  dropDown: {
+    type: "dropDown",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    values: {
+      type: "string",
+      default: "1,2,3,4,5,6,7,8,9",
+      tooltip: "comma-separated list of values"
+    },
+    descriptions: {
+      type: "string",
+      default: "one,two,three,four,five,six,seven,eight,nine",
+      tooltip: "comma-separated list of descriptions"
+    },
+  },
   textInput: {
     type: "textInput",
     widgetPosX: {
@@ -876,6 +952,92 @@ var widgetJSON = {
       type: "numeraljs",
       default: "0.00",
       tooltip: "click mouse and see at <a href='http://numeraljs.com/#format' target='_blank'>http://numeraljs.com/#format</a>"
+    },
+  },
+  schedex: {
+    type: "schedex",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state<br>json-array of latitude and longitude"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    weekdayNames: {
+      type: "string",
+      default: "mon,tue,wed,thu,fri,sat,sun",
+      tooltip: "comma-separated list of abbreviations of the weekdays"
+    },
+    activateVisible: {
+      type: "boolean",
+      default: "true",
+      tooltip: "visibility of activate-check-box"
+    },
+    activateLabel: {
+      type: "string",
+      default: "active",
+      tooltip: "label for activate-check-box"
+    },
+    readOnly: {
+      type: "boolean",
+      default: "false",
+      tooltip: "do not allow changes of value"
     },
   },
   openstreetmap: {

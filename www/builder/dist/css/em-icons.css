@@ -1,0 +1,4032 @@
+.em:before,
+.em-icon.set,
+.em-icon {
+  display: inline-block;
+  font-size: inherit;
+  text-rendering: auto;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  background: transparent;
+}
+
+.iconpicker-component .em-icon,
+.iconpicker-item .em-icon {
+  font-size: 40px;
+  line-height: 40px;
+  font-style: normal;
+  background: transparent;
+}
+
+.icon-select .em-icon,
+.widget .em-icon {
+  font-size: 30px;
+  line-height: 40px;
+  display: inline-block;
+  width: 40px;
+  font-style: normal;
+  background: transparent;
+}
+
+.widget-inline .icon-select .em-icon,
+.widget-inline .em-icon {
+  font-size: 20px;
+  line-height: 25px;
+  display: inline-block;
+  width: 25px;
+  font-style: normal;
+  background: transparent;
+}
+
+.nav-icon.em-icon {
+  color: #fff;
+}
+
+.em-icon.em-1F600::before {
+  content: "\1F600";
+}
+.em-icon.em-1F603::before {
+  content: "\1F603";
+}
+.em-icon.em-1F604::before {
+  content: "\1F604";
+}
+.em-icon.em-1F601::before {
+  content: "\1F601";
+}
+.em-icon.em-1F606::before {
+  content: "\1F606";
+}
+.em-icon.em-1F605::before {
+  content: "\1F605";
+}
+.em-icon.em-1F923::before {
+  content: "\1F923";
+}
+.em-icon.em-1F602::before {
+  content: "\1F602";
+}
+.em-icon.em-1F642::before {
+  content: "\1F642";
+}
+.em-icon.em-1F643::before {
+  content: "\1F643";
+}
+.em-icon.em-1F609::before {
+  content: "\1F609";
+}
+.em-icon.em-1F60A::before {
+  content: "\1F60A";
+}
+.em-icon.em-1F607::before {
+  content: "\1F607";
+}
+.em-icon.em-1F970::before {
+  content: "\1F970";
+}
+.em-icon.em-1F60D::before {
+  content: "\1F60D";
+}
+.em-icon.em-1F929::before {
+  content: "\1F929";
+}
+.em-icon.em-1F618::before {
+  content: "\1F618";
+}
+.em-icon.em-1F617::before {
+  content: "\1F617";
+}
+.em-icon.em-263A::before {
+  content: "\263A";
+}
+.em-icon.em-1F61A::before {
+  content: "\1F61A";
+}
+.em-icon.em-1F619::before {
+  content: "\1F619";
+}
+.em-icon.em-1F972::before {
+  content: "\1F972";
+}
+.em-icon.em-1F60B::before {
+  content: "\1F60B";
+}
+.em-icon.em-1F61B::before {
+  content: "\1F61B";
+}
+.em-icon.em-1F61C::before {
+  content: "\1F61C";
+}
+.em-icon.em-1F92A::before {
+  content: "\1F92A";
+}
+.em-icon.em-1F61D::before {
+  content: "\1F61D";
+}
+.em-icon.em-1F911::before {
+  content: "\1F911";
+}
+.em-icon.em-1F917::before {
+  content: "\1F917";
+}
+.em-icon.em-1F92D::before {
+  content: "\1F92D";
+}
+.em-icon.em-1F92B::before {
+  content: "\1F92B";
+}
+.em-icon.em-1F914::before {
+  content: "\1F914";
+}
+.em-icon.em-1F910::before {
+  content: "\1F910";
+}
+.em-icon.em-1F928::before {
+  content: "\1F928";
+}
+.em-icon.em-1F610::before {
+  content: "\1F610";
+}
+.em-icon.em-1F611::before {
+  content: "\1F611";
+}
+.em-icon.em-1F636::before {
+  content: "\1F636";
+}
+.em-icon.em-1F60F::before {
+  content: "\1F60F";
+}
+.em-icon.em-1F612::before {
+  content: "\1F612";
+}
+.em-icon.em-1F644::before {
+  content: "\1F644";
+}
+.em-icon.em-1F62C::before {
+  content: "\1F62C";
+}
+.em-icon.em-1F925::before {
+  content: "\1F925";
+}
+.em-icon.em-1F60C::before {
+  content: "\1F60C";
+}
+.em-icon.em-1F614::before {
+  content: "\1F614";
+}
+.em-icon.em-1F62A::before {
+  content: "\1F62A";
+}
+.em-icon.em-1F924::before {
+  content: "\1F924";
+}
+.em-icon.em-1F634::before {
+  content: "\1F634";
+}
+.em-icon.em-1F637::before {
+  content: "\1F637";
+}
+.em-icon.em-1F912::before {
+  content: "\1F912";
+}
+.em-icon.em-1F915::before {
+  content: "\1F915";
+}
+.em-icon.em-1F922::before {
+  content: "\1F922";
+}
+.em-icon.em-1F92E::before {
+  content: "\1F92E";
+}
+.em-icon.em-1F927::before {
+  content: "\1F927";
+}
+.em-icon.em-1F975::before {
+  content: "\1F975";
+}
+.em-icon.em-1F976::before {
+  content: "\1F976";
+}
+.em-icon.em-1F974::before {
+  content: "\1F974";
+}
+.em-icon.em-1F635::before {
+  content: "\1F635";
+}
+.em-icon.em-1F92F::before {
+  content: "\1F92F";
+}
+.em-icon.em-1F920::before {
+  content: "\1F920";
+}
+.em-icon.em-1F973::before {
+  content: "\1F973";
+}
+.em-icon.em-1F978::before {
+  content: "\1F978";
+}
+.em-icon.em-1F60E::before {
+  content: "\1F60E";
+}
+.em-icon.em-1F913::before {
+  content: "\1F913";
+}
+.em-icon.em-1F9D0::before {
+  content: "\1F9D0";
+}
+.em-icon.em-1F615::before {
+  content: "\1F615";
+}
+.em-icon.em-1F61F::before {
+  content: "\1F61F";
+}
+.em-icon.em-1F641::before {
+  content: "\1F641";
+}
+.em-icon.em-2639::before {
+  content: "\2639";
+}
+.em-icon.em-1F62E::before {
+  content: "\1F62E";
+}
+.em-icon.em-1F62F::before {
+  content: "\1F62F";
+}
+.em-icon.em-1F632::before {
+  content: "\1F632";
+}
+.em-icon.em-1F633::before {
+  content: "\1F633";
+}
+.em-icon.em-1F97A::before {
+  content: "\1F97A";
+}
+.em-icon.em-1F626::before {
+  content: "\1F626";
+}
+.em-icon.em-1F627::before {
+  content: "\1F627";
+}
+.em-icon.em-1F628::before {
+  content: "\1F628";
+}
+.em-icon.em-1F630::before {
+  content: "\1F630";
+}
+.em-icon.em-1F625::before {
+  content: "\1F625";
+}
+.em-icon.em-1F622::before {
+  content: "\1F622";
+}
+.em-icon.em-1F62D::before {
+  content: "\1F62D";
+}
+.em-icon.em-1F631::before {
+  content: "\1F631";
+}
+.em-icon.em-1F616::before {
+  content: "\1F616";
+}
+.em-icon.em-1F623::before {
+  content: "\1F623";
+}
+.em-icon.em-1F61E::before {
+  content: "\1F61E";
+}
+.em-icon.em-1F613::before {
+  content: "\1F613";
+}
+.em-icon.em-1F629::before {
+  content: "\1F629";
+}
+.em-icon.em-1F62B::before {
+  content: "\1F62B";
+}
+.em-icon.em-1F971::before {
+  content: "\1F971";
+}
+.em-icon.em-1F624::before {
+  content: "\1F624";
+}
+.em-icon.em-1F621::before {
+  content: "\1F621";
+}
+.em-icon.em-1F620::before {
+  content: "\1F620";
+}
+.em-icon.em-1F92C::before {
+  content: "\1F92C";
+}
+.em-icon.em-1F608::before {
+  content: "\1F608";
+}
+.em-icon.em-1F47F::before {
+  content: "\1F47F";
+}
+.em-icon.em-1F480::before {
+  content: "\1F480";
+}
+.em-icon.em-2620::before {
+  content: "\2620";
+}
+.em-icon.em-1F4A9::before {
+  content: "\1F4A9";
+}
+.em-icon.em-1F921::before {
+  content: "\1F921";
+}
+.em-icon.em-1F479::before {
+  content: "\1F479";
+}
+.em-icon.em-1F47A::before {
+  content: "\1F47A";
+}
+.em-icon.em-1F47B::before {
+  content: "\1F47B";
+}
+.em-icon.em-1F47D::before {
+  content: "\1F47D";
+}
+.em-icon.em-1F47E::before {
+  content: "\1F47E";
+}
+.em-icon.em-1F916::before {
+  content: "\1F916";
+}
+.em-icon.em-1F63A::before {
+  content: "\1F63A";
+}
+.em-icon.em-1F638::before {
+  content: "\1F638";
+}
+.em-icon.em-1F639::before {
+  content: "\1F639";
+}
+.em-icon.em-1F63B::before {
+  content: "\1F63B";
+}
+.em-icon.em-1F63C::before {
+  content: "\1F63C";
+}
+.em-icon.em-1F63D::before {
+  content: "\1F63D";
+}
+.em-icon.em-1F640::before {
+  content: "\1F640";
+}
+.em-icon.em-1F63F::before {
+  content: "\1F63F";
+}
+.em-icon.em-1F63E::before {
+  content: "\1F63E";
+}
+.em-icon.em-1F648::before {
+  content: "\1F648";
+}
+.em-icon.em-1F649::before {
+  content: "\1F649";
+}
+.em-icon.em-1F64A::before {
+  content: "\1F64A";
+}
+.em-icon.em-1F48B::before {
+  content: "\1F48B";
+}
+.em-icon.em-1F48C::before {
+  content: "\1F48C";
+}
+.em-icon.em-1F498::before {
+  content: "\1F498";
+}
+.em-icon.em-1F49D::before {
+  content: "\1F49D";
+}
+.em-icon.em-1F496::before {
+  content: "\1F496";
+}
+.em-icon.em-1F497::before {
+  content: "\1F497";
+}
+.em-icon.em-1F493::before {
+  content: "\1F493";
+}
+.em-icon.em-1F49E::before {
+  content: "\1F49E";
+}
+.em-icon.em-1F495::before {
+  content: "\1F495";
+}
+.em-icon.em-1F49F::before {
+  content: "\1F49F";
+}
+.em-icon.em-2763::before {
+  content: "\2763";
+}
+.em-icon.em-1F494::before {
+  content: "\1F494";
+}
+.em-icon.em-2764::before {
+  content: "\2764";
+}
+.em-icon.em-1F9E1::before {
+  content: "\1F9E1";
+}
+.em-icon.em-1F49B::before {
+  content: "\1F49B";
+}
+.em-icon.em-1F49A::before {
+  content: "\1F49A";
+}
+.em-icon.em-1F499::before {
+  content: "\1F499";
+}
+.em-icon.em-1F49C::before {
+  content: "\1F49C";
+}
+.em-icon.em-1F90E::before {
+  content: "\1F90E";
+}
+.em-icon.em-1F5A4::before {
+  content: "\1F5A4";
+}
+.em-icon.em-1F90D::before {
+  content: "\1F90D";
+}
+.em-icon.em-1F4AF::before {
+  content: "\1F4AF";
+}
+.em-icon.em-1F4A2::before {
+  content: "\1F4A2";
+}
+.em-icon.em-1F4A5::before {
+  content: "\1F4A5";
+}
+.em-icon.em-1F4AB::before {
+  content: "\1F4AB";
+}
+.em-icon.em-1F4A6::before {
+  content: "\1F4A6";
+}
+.em-icon.em-1F4A8::before {
+  content: "\1F4A8";
+}
+.em-icon.em-1F573::before {
+  content: "\1F573";
+}
+.em-icon.em-1F4A3::before {
+  content: "\1F4A3";
+}
+.em-icon.em-1F4AC::before {
+  content: "\1F4AC";
+}
+.em-icon.em-1F5E8::before {
+  content: "\1F5E8";
+}
+.em-icon.em-1F5EF::before {
+  content: "\1F5EF";
+}
+.em-icon.em-1F4AD::before {
+  content: "\1F4AD";
+}
+.em-icon.em-1F4A4::before {
+  content: "\1F4A4";
+}
+.em-icon.em-1F44B::before {
+  content: "\1F44B";
+}
+.em-icon.em-1F91A::before {
+  content: "\1F91A";
+}
+.em-icon.em-1F590::before {
+  content: "\1F590";
+}
+.em-icon.em-270B::before {
+  content: "\270B";
+}
+.em-icon.em-1F596::before {
+  content: "\1F596";
+}
+.em-icon.em-1F44C::before {
+  content: "\1F44C";
+}
+.em-icon.em-1F90C::before {
+  content: "\1F90C";
+}
+.em-icon.em-1F90F::before {
+  content: "\1F90F";
+}
+.em-icon.em-270C::before {
+  content: "\270C";
+}
+.em-icon.em-1F91E::before {
+  content: "\1F91E";
+}
+.em-icon.em-1F91F::before {
+  content: "\1F91F";
+}
+.em-icon.em-1F918::before {
+  content: "\1F918";
+}
+.em-icon.em-1F919::before {
+  content: "\1F919";
+}
+.em-icon.em-1F448::before {
+  content: "\1F448";
+}
+.em-icon.em-1F449::before {
+  content: "\1F449";
+}
+.em-icon.em-1F446::before {
+  content: "\1F446";
+}
+.em-icon.em-1F595::before {
+  content: "\1F595";
+}
+.em-icon.em-1F447::before {
+  content: "\1F447";
+}
+.em-icon.em-261D::before {
+  content: "\261D";
+}
+.em-icon.em-1F44D::before {
+  content: "\1F44D";
+}
+.em-icon.em-1F44E::before {
+  content: "\1F44E";
+}
+.em-icon.em-270A::before {
+  content: "\270A";
+}
+.em-icon.em-1F44A::before {
+  content: "\1F44A";
+}
+.em-icon.em-1F91B::before {
+  content: "\1F91B";
+}
+.em-icon.em-1F91C::before {
+  content: "\1F91C";
+}
+.em-icon.em-1F44F::before {
+  content: "\1F44F";
+}
+.em-icon.em-1F64C::before {
+  content: "\1F64C";
+}
+.em-icon.em-1F450::before {
+  content: "\1F450";
+}
+.em-icon.em-1F932::before {
+  content: "\1F932";
+}
+.em-icon.em-1F91D::before {
+  content: "\1F91D";
+}
+.em-icon.em-1F64F::before {
+  content: "\1F64F";
+}
+.em-icon.em-270D::before {
+  content: "\270D";
+}
+.em-icon.em-1F485::before {
+  content: "\1F485";
+}
+.em-icon.em-1F933::before {
+  content: "\1F933";
+}
+.em-icon.em-1F4AA::before {
+  content: "\1F4AA";
+}
+.em-icon.em-1F9BE::before {
+  content: "\1F9BE";
+}
+.em-icon.em-1F9BF::before {
+  content: "\1F9BF";
+}
+.em-icon.em-1F9B5::before {
+  content: "\1F9B5";
+}
+.em-icon.em-1F9B6::before {
+  content: "\1F9B6";
+}
+.em-icon.em-1F442::before {
+  content: "\1F442";
+}
+.em-icon.em-1F9BB::before {
+  content: "\1F9BB";
+}
+.em-icon.em-1F443::before {
+  content: "\1F443";
+}
+.em-icon.em-1F9E0::before {
+  content: "\1F9E0";
+}
+.em-icon.em-1FAC0::before {
+  content: "\1FAC0";
+}
+.em-icon.em-1FAC1::before {
+  content: "\1FAC1";
+}
+.em-icon.em-1F9B7::before {
+  content: "\1F9B7";
+}
+.em-icon.em-1F9B4::before {
+  content: "\1F9B4";
+}
+.em-icon.em-1F440::before {
+  content: "\1F440";
+}
+.em-icon.em-1F441::before {
+  content: "\1F441";
+}
+.em-icon.em-1F445::before {
+  content: "\1F445";
+}
+.em-icon.em-1F444::before {
+  content: "\1F444";
+}
+.em-icon.em-1F476::before {
+  content: "\1F476";
+}
+.em-icon.em-1F9D2::before {
+  content: "\1F9D2";
+}
+.em-icon.em-1F466::before {
+  content: "\1F466";
+}
+.em-icon.em-1F467::before {
+  content: "\1F467";
+}
+.em-icon.em-1F9D1::before {
+  content: "\1F9D1";
+}
+.em-icon.em-1F471::before {
+  content: "\1F471";
+}
+.em-icon.em-1F468::before {
+  content: "\1F468";
+}
+.em-icon.em-1F9D4::before {
+  content: "\1F9D4";
+}
+.em-icon.em-1F469::before {
+  content: "\1F469";
+}
+.em-icon.em-1F9D3::before {
+  content: "\1F9D3";
+}
+.em-icon.em-1F474::before {
+  content: "\1F474";
+}
+.em-icon.em-1F475::before {
+  content: "\1F475";
+}
+.em-icon.em-1F64D::before {
+  content: "\1F64D";
+}
+.em-icon.em-1F64E::before {
+  content: "\1F64E";
+}
+.em-icon.em-1F645::before {
+  content: "\1F645";
+}
+.em-icon.em-1F646::before {
+  content: "\1F646";
+}
+.em-icon.em-1F481::before {
+  content: "\1F481";
+}
+.em-icon.em-1F64B::before {
+  content: "\1F64B";
+}
+.em-icon.em-1F9CF::before {
+  content: "\1F9CF";
+}
+.em-icon.em-1F647::before {
+  content: "\1F647";
+}
+.em-icon.em-1F926::before {
+  content: "\1F926";
+}
+.em-icon.em-1F937::before {
+  content: "\1F937";
+}
+.em-icon.em-1F46E::before {
+  content: "\1F46E";
+}
+.em-icon.em-1F575::before {
+  content: "\1F575";
+}
+.em-icon.em-1F482::before {
+  content: "\1F482";
+}
+.em-icon.em-1F977::before {
+  content: "\1F977";
+}
+.em-icon.em-1F477::before {
+  content: "\1F477";
+}
+.em-icon.em-1F934::before {
+  content: "\1F934";
+}
+.em-icon.em-1F478::before {
+  content: "\1F478";
+}
+.em-icon.em-1F473::before {
+  content: "\1F473";
+}
+.em-icon.em-1F472::before {
+  content: "\1F472";
+}
+.em-icon.em-1F9D5::before {
+  content: "\1F9D5";
+}
+.em-icon.em-1F935::before {
+  content: "\1F935";
+}
+.em-icon.em-1F470::before {
+  content: "\1F470";
+}
+.em-icon.em-1F930::before {
+  content: "\1F930";
+}
+.em-icon.em-1F931::before {
+  content: "\1F931";
+}
+.em-icon.em-1F47C::before {
+  content: "\1F47C";
+}
+.em-icon.em-1F385::before {
+  content: "\1F385";
+}
+.em-icon.em-1F936::before {
+  content: "\1F936";
+}
+.em-icon.em-1F9B8::before {
+  content: "\1F9B8";
+}
+.em-icon.em-1F9B9::before {
+  content: "\1F9B9";
+}
+.em-icon.em-1F9D9::before {
+  content: "\1F9D9";
+}
+.em-icon.em-1F9DA::before {
+  content: "\1F9DA";
+}
+.em-icon.em-1F9DB::before {
+  content: "\1F9DB";
+}
+.em-icon.em-1F9DC::before {
+  content: "\1F9DC";
+}
+.em-icon.em-1F9DD::before {
+  content: "\1F9DD";
+}
+.em-icon.em-1F9DE::before {
+  content: "\1F9DE";
+}
+.em-icon.em-1F9DF::before {
+  content: "\1F9DF";
+}
+.em-icon.em-1F486::before {
+  content: "\1F486";
+}
+.em-icon.em-1F487::before {
+  content: "\1F487";
+}
+.em-icon.em-1F6B6::before {
+  content: "\1F6B6";
+}
+.em-icon.em-1F9CD::before {
+  content: "\1F9CD";
+}
+.em-icon.em-1F9CE::before {
+  content: "\1F9CE";
+}
+.em-icon.em-1F3C3::before {
+  content: "\1F3C3";
+}
+.em-icon.em-1F483::before {
+  content: "\1F483";
+}
+.em-icon.em-1F57A::before {
+  content: "\1F57A";
+}
+.em-icon.em-1F574::before {
+  content: "\1F574";
+}
+.em-icon.em-1F46F::before {
+  content: "\1F46F";
+}
+.em-icon.em-1F9D6::before {
+  content: "\1F9D6";
+}
+.em-icon.em-1F9D7::before {
+  content: "\1F9D7";
+}
+.em-icon.em-1F93A::before {
+  content: "\1F93A";
+}
+.em-icon.em-1F3C7::before {
+  content: "\1F3C7";
+}
+.em-icon.em-26F7::before {
+  content: "\26F7";
+}
+.em-icon.em-1F3C2::before {
+  content: "\1F3C2";
+}
+.em-icon.em-1F3CC::before {
+  content: "\1F3CC";
+}
+.em-icon.em-1F3C4::before {
+  content: "\1F3C4";
+}
+.em-icon.em-1F6A3::before {
+  content: "\1F6A3";
+}
+.em-icon.em-1F3CA::before {
+  content: "\1F3CA";
+}
+.em-icon.em-26F9::before {
+  content: "\26F9";
+}
+.em-icon.em-1F3CB::before {
+  content: "\1F3CB";
+}
+.em-icon.em-1F6B4::before {
+  content: "\1F6B4";
+}
+.em-icon.em-1F6B5::before {
+  content: "\1F6B5";
+}
+.em-icon.em-1F938::before {
+  content: "\1F938";
+}
+.em-icon.em-1F93C::before {
+  content: "\1F93C";
+}
+.em-icon.em-1F93D::before {
+  content: "\1F93D";
+}
+.em-icon.em-1F93E::before {
+  content: "\1F93E";
+}
+.em-icon.em-1F939::before {
+  content: "\1F939";
+}
+.em-icon.em-1F9D8::before {
+  content: "\1F9D8";
+}
+.em-icon.em-1F6C0::before {
+  content: "\1F6C0";
+}
+.em-icon.em-1F6CC::before {
+  content: "\1F6CC";
+}
+.em-icon.em-1F46D::before {
+  content: "\1F46D";
+}
+.em-icon.em-1F46B::before {
+  content: "\1F46B";
+}
+.em-icon.em-1F46C::before {
+  content: "\1F46C";
+}
+.em-icon.em-1F48F::before {
+  content: "\1F48F";
+}
+.em-icon.em-1F491::before {
+  content: "\1F491";
+}
+.em-icon.em-1F46A::before {
+  content: "\1F46A";
+}
+.em-icon.em-1F5E3::before {
+  content: "\1F5E3";
+}
+.em-icon.em-1F464::before {
+  content: "\1F464";
+}
+.em-icon.em-1F465::before {
+  content: "\1F465";
+}
+.em-icon.em-1FAC2::before {
+  content: "\1FAC2";
+}
+.em-icon.em-1F463::before {
+  content: "\1F463";
+}
+.em-icon.em-1F3FB::before {
+  content: "\1F3FB";
+}
+.em-icon.em-1F3FC::before {
+  content: "\1F3FC";
+}
+.em-icon.em-1F3FD::before {
+  content: "\1F3FD";
+}
+.em-icon.em-1F3FE::before {
+  content: "\1F3FE";
+}
+.em-icon.em-1F3FF::before {
+  content: "\1F3FF";
+}
+.em-icon.em-1F9B0::before {
+  content: "\1F9B0";
+}
+.em-icon.em-1F9B1::before {
+  content: "\1F9B1";
+}
+.em-icon.em-1F9B3::before {
+  content: "\1F9B3";
+}
+.em-icon.em-1F9B2::before {
+  content: "\1F9B2";
+}
+.em-icon.em-1F435::before {
+  content: "\1F435";
+}
+.em-icon.em-1F412::before {
+  content: "\1F412";
+}
+.em-icon.em-1F98D::before {
+  content: "\1F98D";
+}
+.em-icon.em-1F9A7::before {
+  content: "\1F9A7";
+}
+.em-icon.em-1F436::before {
+  content: "\1F436";
+}
+.em-icon.em-1F415::before {
+  content: "\1F415";
+}
+.em-icon.em-1F9AE::before {
+  content: "\1F9AE";
+}
+.em-icon.em-1F429::before {
+  content: "\1F429";
+}
+.em-icon.em-1F43A::before {
+  content: "\1F43A";
+}
+.em-icon.em-1F98A::before {
+  content: "\1F98A";
+}
+.em-icon.em-1F99D::before {
+  content: "\1F99D";
+}
+.em-icon.em-1F431::before {
+  content: "\1F431";
+}
+.em-icon.em-1F408::before {
+  content: "\1F408";
+}
+.em-icon.em-1F981::before {
+  content: "\1F981";
+}
+.em-icon.em-1F42F::before {
+  content: "\1F42F";
+}
+.em-icon.em-1F405::before {
+  content: "\1F405";
+}
+.em-icon.em-1F406::before {
+  content: "\1F406";
+}
+.em-icon.em-1F434::before {
+  content: "\1F434";
+}
+.em-icon.em-1F40E::before {
+  content: "\1F40E";
+}
+.em-icon.em-1F984::before {
+  content: "\1F984";
+}
+.em-icon.em-1F993::before {
+  content: "\1F993";
+}
+.em-icon.em-1F98C::before {
+  content: "\1F98C";
+}
+.em-icon.em-1F9AC::before {
+  content: "\1F9AC";
+}
+.em-icon.em-1F42E::before {
+  content: "\1F42E";
+}
+.em-icon.em-1F402::before {
+  content: "\1F402";
+}
+.em-icon.em-1F403::before {
+  content: "\1F403";
+}
+.em-icon.em-1F404::before {
+  content: "\1F404";
+}
+.em-icon.em-1F437::before {
+  content: "\1F437";
+}
+.em-icon.em-1F416::before {
+  content: "\1F416";
+}
+.em-icon.em-1F417::before {
+  content: "\1F417";
+}
+.em-icon.em-1F43D::before {
+  content: "\1F43D";
+}
+.em-icon.em-1F40F::before {
+  content: "\1F40F";
+}
+.em-icon.em-1F411::before {
+  content: "\1F411";
+}
+.em-icon.em-1F410::before {
+  content: "\1F410";
+}
+.em-icon.em-1F42A::before {
+  content: "\1F42A";
+}
+.em-icon.em-1F42B::before {
+  content: "\1F42B";
+}
+.em-icon.em-1F999::before {
+  content: "\1F999";
+}
+.em-icon.em-1F992::before {
+  content: "\1F992";
+}
+.em-icon.em-1F418::before {
+  content: "\1F418";
+}
+.em-icon.em-1F9A3::before {
+  content: "\1F9A3";
+}
+.em-icon.em-1F98F::before {
+  content: "\1F98F";
+}
+.em-icon.em-1F99B::before {
+  content: "\1F99B";
+}
+.em-icon.em-1F42D::before {
+  content: "\1F42D";
+}
+.em-icon.em-1F401::before {
+  content: "\1F401";
+}
+.em-icon.em-1F400::before {
+  content: "\1F400";
+}
+.em-icon.em-1F439::before {
+  content: "\1F439";
+}
+.em-icon.em-1F430::before {
+  content: "\1F430";
+}
+.em-icon.em-1F407::before {
+  content: "\1F407";
+}
+.em-icon.em-1F43F::before {
+  content: "\1F43F";
+}
+.em-icon.em-1F9AB::before {
+  content: "\1F9AB";
+}
+.em-icon.em-1F994::before {
+  content: "\1F994";
+}
+.em-icon.em-1F987::before {
+  content: "\1F987";
+}
+.em-icon.em-1F43B::before {
+  content: "\1F43B";
+}
+.em-icon.em-1F428::before {
+  content: "\1F428";
+}
+.em-icon.em-1F43C::before {
+  content: "\1F43C";
+}
+.em-icon.em-1F9A5::before {
+  content: "\1F9A5";
+}
+.em-icon.em-1F9A6::before {
+  content: "\1F9A6";
+}
+.em-icon.em-1F9A8::before {
+  content: "\1F9A8";
+}
+.em-icon.em-1F998::before {
+  content: "\1F998";
+}
+.em-icon.em-1F9A1::before {
+  content: "\1F9A1";
+}
+.em-icon.em-1F43E::before {
+  content: "\1F43E";
+}
+.em-icon.em-1F983::before {
+  content: "\1F983";
+}
+.em-icon.em-1F414::before {
+  content: "\1F414";
+}
+.em-icon.em-1F413::before {
+  content: "\1F413";
+}
+.em-icon.em-1F423::before {
+  content: "\1F423";
+}
+.em-icon.em-1F424::before {
+  content: "\1F424";
+}
+.em-icon.em-1F425::before {
+  content: "\1F425";
+}
+.em-icon.em-1F426::before {
+  content: "\1F426";
+}
+.em-icon.em-1F427::before {
+  content: "\1F427";
+}
+.em-icon.em-1F54A::before {
+  content: "\1F54A";
+}
+.em-icon.em-1F985::before {
+  content: "\1F985";
+}
+.em-icon.em-1F986::before {
+  content: "\1F986";
+}
+.em-icon.em-1F9A2::before {
+  content: "\1F9A2";
+}
+.em-icon.em-1F989::before {
+  content: "\1F989";
+}
+.em-icon.em-1F9A4::before {
+  content: "\1F9A4";
+}
+.em-icon.em-1FAB6::before {
+  content: "\1FAB6";
+}
+.em-icon.em-1F9A9::before {
+  content: "\1F9A9";
+}
+.em-icon.em-1F99A::before {
+  content: "\1F99A";
+}
+.em-icon.em-1F99C::before {
+  content: "\1F99C";
+}
+.em-icon.em-1F438::before {
+  content: "\1F438";
+}
+.em-icon.em-1F40A::before {
+  content: "\1F40A";
+}
+.em-icon.em-1F422::before {
+  content: "\1F422";
+}
+.em-icon.em-1F98E::before {
+  content: "\1F98E";
+}
+.em-icon.em-1F40D::before {
+  content: "\1F40D";
+}
+.em-icon.em-1F432::before {
+  content: "\1F432";
+}
+.em-icon.em-1F409::before {
+  content: "\1F409";
+}
+.em-icon.em-1F995::before {
+  content: "\1F995";
+}
+.em-icon.em-1F996::before {
+  content: "\1F996";
+}
+.em-icon.em-1F433::before {
+  content: "\1F433";
+}
+.em-icon.em-1F40B::before {
+  content: "\1F40B";
+}
+.em-icon.em-1F42C::before {
+  content: "\1F42C";
+}
+.em-icon.em-1F9AD::before {
+  content: "\1F9AD";
+}
+.em-icon.em-1F41F::before {
+  content: "\1F41F";
+}
+.em-icon.em-1F420::before {
+  content: "\1F420";
+}
+.em-icon.em-1F421::before {
+  content: "\1F421";
+}
+.em-icon.em-1F988::before {
+  content: "\1F988";
+}
+.em-icon.em-1F419::before {
+  content: "\1F419";
+}
+.em-icon.em-1F41A::before {
+  content: "\1F41A";
+}
+.em-icon.em-1F40C::before {
+  content: "\1F40C";
+}
+.em-icon.em-1F98B::before {
+  content: "\1F98B";
+}
+.em-icon.em-1F41B::before {
+  content: "\1F41B";
+}
+.em-icon.em-1F41C::before {
+  content: "\1F41C";
+}
+.em-icon.em-1F41D::before {
+  content: "\1F41D";
+}
+.em-icon.em-1FAB2::before {
+  content: "\1FAB2";
+}
+.em-icon.em-1F41E::before {
+  content: "\1F41E";
+}
+.em-icon.em-1F997::before {
+  content: "\1F997";
+}
+.em-icon.em-1FAB3::before {
+  content: "\1FAB3";
+}
+.em-icon.em-1F577::before {
+  content: "\1F577";
+}
+.em-icon.em-1F578::before {
+  content: "\1F578";
+}
+.em-icon.em-1F982::before {
+  content: "\1F982";
+}
+.em-icon.em-1F99F::before {
+  content: "\1F99F";
+}
+.em-icon.em-1FAB0::before {
+  content: "\1FAB0";
+}
+.em-icon.em-1FAB1::before {
+  content: "\1FAB1";
+}
+.em-icon.em-1F9A0::before {
+  content: "\1F9A0";
+}
+.em-icon.em-1F490::before {
+  content: "\1F490";
+}
+.em-icon.em-1F338::before {
+  content: "\1F338";
+}
+.em-icon.em-1F4AE::before {
+  content: "\1F4AE";
+}
+.em-icon.em-1F3F5::before {
+  content: "\1F3F5";
+}
+.em-icon.em-1F339::before {
+  content: "\1F339";
+}
+.em-icon.em-1F940::before {
+  content: "\1F940";
+}
+.em-icon.em-1F33A::before {
+  content: "\1F33A";
+}
+.em-icon.em-1F33B::before {
+  content: "\1F33B";
+}
+.em-icon.em-1F33C::before {
+  content: "\1F33C";
+}
+.em-icon.em-1F337::before {
+  content: "\1F337";
+}
+.em-icon.em-1F331::before {
+  content: "\1F331";
+}
+.em-icon.em-1FAB4::before {
+  content: "\1FAB4";
+}
+.em-icon.em-1F332::before {
+  content: "\1F332";
+}
+.em-icon.em-1F333::before {
+  content: "\1F333";
+}
+.em-icon.em-1F334::before {
+  content: "\1F334";
+}
+.em-icon.em-1F335::before {
+  content: "\1F335";
+}
+.em-icon.em-1F33E::before {
+  content: "\1F33E";
+}
+.em-icon.em-1F33F::before {
+  content: "\1F33F";
+}
+.em-icon.em-2618::before {
+  content: "\2618";
+}
+.em-icon.em-1F340::before {
+  content: "\1F340";
+}
+.em-icon.em-1F341::before {
+  content: "\1F341";
+}
+.em-icon.em-1F342::before {
+  content: "\1F342";
+}
+.em-icon.em-1F343::before {
+  content: "\1F343";
+}
+.em-icon.em-1F347::before {
+  content: "\1F347";
+}
+.em-icon.em-1F348::before {
+  content: "\1F348";
+}
+.em-icon.em-1F349::before {
+  content: "\1F349";
+}
+.em-icon.em-1F34A::before {
+  content: "\1F34A";
+}
+.em-icon.em-1F34B::before {
+  content: "\1F34B";
+}
+.em-icon.em-1F34C::before {
+  content: "\1F34C";
+}
+.em-icon.em-1F34D::before {
+  content: "\1F34D";
+}
+.em-icon.em-1F96D::before {
+  content: "\1F96D";
+}
+.em-icon.em-1F34E::before {
+  content: "\1F34E";
+}
+.em-icon.em-1F34F::before {
+  content: "\1F34F";
+}
+.em-icon.em-1F350::before {
+  content: "\1F350";
+}
+.em-icon.em-1F351::before {
+  content: "\1F351";
+}
+.em-icon.em-1F352::before {
+  content: "\1F352";
+}
+.em-icon.em-1F353::before {
+  content: "\1F353";
+}
+.em-icon.em-1FAD0::before {
+  content: "\1FAD0";
+}
+.em-icon.em-1F95D::before {
+  content: "\1F95D";
+}
+.em-icon.em-1F345::before {
+  content: "\1F345";
+}
+.em-icon.em-1FAD2::before {
+  content: "\1FAD2";
+}
+.em-icon.em-1F965::before {
+  content: "\1F965";
+}
+.em-icon.em-1F951::before {
+  content: "\1F951";
+}
+.em-icon.em-1F346::before {
+  content: "\1F346";
+}
+.em-icon.em-1F954::before {
+  content: "\1F954";
+}
+.em-icon.em-1F955::before {
+  content: "\1F955";
+}
+.em-icon.em-1F33D::before {
+  content: "\1F33D";
+}
+.em-icon.em-1F336::before {
+  content: "\1F336";
+}
+.em-icon.em-1FAD1::before {
+  content: "\1FAD1";
+}
+.em-icon.em-1F952::before {
+  content: "\1F952";
+}
+.em-icon.em-1F96C::before {
+  content: "\1F96C";
+}
+.em-icon.em-1F966::before {
+  content: "\1F966";
+}
+.em-icon.em-1F9C4::before {
+  content: "\1F9C4";
+}
+.em-icon.em-1F9C5::before {
+  content: "\1F9C5";
+}
+.em-icon.em-1F344::before {
+  content: "\1F344";
+}
+.em-icon.em-1F95C::before {
+  content: "\1F95C";
+}
+.em-icon.em-1F330::before {
+  content: "\1F330";
+}
+.em-icon.em-1F35E::before {
+  content: "\1F35E";
+}
+.em-icon.em-1F950::before {
+  content: "\1F950";
+}
+.em-icon.em-1F956::before {
+  content: "\1F956";
+}
+.em-icon.em-1FAD3::before {
+  content: "\1FAD3";
+}
+.em-icon.em-1F968::before {
+  content: "\1F968";
+}
+.em-icon.em-1F96F::before {
+  content: "\1F96F";
+}
+.em-icon.em-1F95E::before {
+  content: "\1F95E";
+}
+.em-icon.em-1F9C7::before {
+  content: "\1F9C7";
+}
+.em-icon.em-1F9C0::before {
+  content: "\1F9C0";
+}
+.em-icon.em-1F356::before {
+  content: "\1F356";
+}
+.em-icon.em-1F357::before {
+  content: "\1F357";
+}
+.em-icon.em-1F969::before {
+  content: "\1F969";
+}
+.em-icon.em-1F953::before {
+  content: "\1F953";
+}
+.em-icon.em-1F354::before {
+  content: "\1F354";
+}
+.em-icon.em-1F35F::before {
+  content: "\1F35F";
+}
+.em-icon.em-1F355::before {
+  content: "\1F355";
+}
+.em-icon.em-1F32D::before {
+  content: "\1F32D";
+}
+.em-icon.em-1F96A::before {
+  content: "\1F96A";
+}
+.em-icon.em-1F32E::before {
+  content: "\1F32E";
+}
+.em-icon.em-1F32F::before {
+  content: "\1F32F";
+}
+.em-icon.em-1FAD4::before {
+  content: "\1FAD4";
+}
+.em-icon.em-1F959::before {
+  content: "\1F959";
+}
+.em-icon.em-1F9C6::before {
+  content: "\1F9C6";
+}
+.em-icon.em-1F95A::before {
+  content: "\1F95A";
+}
+.em-icon.em-1F373::before {
+  content: "\1F373";
+}
+.em-icon.em-1F958::before {
+  content: "\1F958";
+}
+.em-icon.em-1F372::before {
+  content: "\1F372";
+}
+.em-icon.em-1FAD5::before {
+  content: "\1FAD5";
+}
+.em-icon.em-1F963::before {
+  content: "\1F963";
+}
+.em-icon.em-1F957::before {
+  content: "\1F957";
+}
+.em-icon.em-1F37F::before {
+  content: "\1F37F";
+}
+.em-icon.em-1F9C8::before {
+  content: "\1F9C8";
+}
+.em-icon.em-1F9C2::before {
+  content: "\1F9C2";
+}
+.em-icon.em-1F96B::before {
+  content: "\1F96B";
+}
+.em-icon.em-1F371::before {
+  content: "\1F371";
+}
+.em-icon.em-1F358::before {
+  content: "\1F358";
+}
+.em-icon.em-1F359::before {
+  content: "\1F359";
+}
+.em-icon.em-1F35A::before {
+  content: "\1F35A";
+}
+.em-icon.em-1F35B::before {
+  content: "\1F35B";
+}
+.em-icon.em-1F35C::before {
+  content: "\1F35C";
+}
+.em-icon.em-1F35D::before {
+  content: "\1F35D";
+}
+.em-icon.em-1F360::before {
+  content: "\1F360";
+}
+.em-icon.em-1F362::before {
+  content: "\1F362";
+}
+.em-icon.em-1F363::before {
+  content: "\1F363";
+}
+.em-icon.em-1F364::before {
+  content: "\1F364";
+}
+.em-icon.em-1F365::before {
+  content: "\1F365";
+}
+.em-icon.em-1F96E::before {
+  content: "\1F96E";
+}
+.em-icon.em-1F361::before {
+  content: "\1F361";
+}
+.em-icon.em-1F95F::before {
+  content: "\1F95F";
+}
+.em-icon.em-1F960::before {
+  content: "\1F960";
+}
+.em-icon.em-1F961::before {
+  content: "\1F961";
+}
+.em-icon.em-1F980::before {
+  content: "\1F980";
+}
+.em-icon.em-1F99E::before {
+  content: "\1F99E";
+}
+.em-icon.em-1F990::before {
+  content: "\1F990";
+}
+.em-icon.em-1F991::before {
+  content: "\1F991";
+}
+.em-icon.em-1F9AA::before {
+  content: "\1F9AA";
+}
+.em-icon.em-1F366::before {
+  content: "\1F366";
+}
+.em-icon.em-1F367::before {
+  content: "\1F367";
+}
+.em-icon.em-1F368::before {
+  content: "\1F368";
+}
+.em-icon.em-1F369::before {
+  content: "\1F369";
+}
+.em-icon.em-1F36A::before {
+  content: "\1F36A";
+}
+.em-icon.em-1F382::before {
+  content: "\1F382";
+}
+.em-icon.em-1F370::before {
+  content: "\1F370";
+}
+.em-icon.em-1F9C1::before {
+  content: "\1F9C1";
+}
+.em-icon.em-1F967::before {
+  content: "\1F967";
+}
+.em-icon.em-1F36B::before {
+  content: "\1F36B";
+}
+.em-icon.em-1F36C::before {
+  content: "\1F36C";
+}
+.em-icon.em-1F36D::before {
+  content: "\1F36D";
+}
+.em-icon.em-1F36E::before {
+  content: "\1F36E";
+}
+.em-icon.em-1F36F::before {
+  content: "\1F36F";
+}
+.em-icon.em-1F37C::before {
+  content: "\1F37C";
+}
+.em-icon.em-1F95B::before {
+  content: "\1F95B";
+}
+.em-icon.em-2615::before {
+  content: "\2615";
+}
+.em-icon.em-1FAD6::before {
+  content: "\1FAD6";
+}
+.em-icon.em-1F375::before {
+  content: "\1F375";
+}
+.em-icon.em-1F376::before {
+  content: "\1F376";
+}
+.em-icon.em-1F37E::before {
+  content: "\1F37E";
+}
+.em-icon.em-1F377::before {
+  content: "\1F377";
+}
+.em-icon.em-1F378::before {
+  content: "\1F378";
+}
+.em-icon.em-1F379::before {
+  content: "\1F379";
+}
+.em-icon.em-1F37A::before {
+  content: "\1F37A";
+}
+.em-icon.em-1F37B::before {
+  content: "\1F37B";
+}
+.em-icon.em-1F942::before {
+  content: "\1F942";
+}
+.em-icon.em-1F943::before {
+  content: "\1F943";
+}
+.em-icon.em-1F964::before {
+  content: "\1F964";
+}
+.em-icon.em-1F9CB::before {
+  content: "\1F9CB";
+}
+.em-icon.em-1F9C3::before {
+  content: "\1F9C3";
+}
+.em-icon.em-1F9C9::before {
+  content: "\1F9C9";
+}
+.em-icon.em-1F9CA::before {
+  content: "\1F9CA";
+}
+.em-icon.em-1F962::before {
+  content: "\1F962";
+}
+.em-icon.em-1F37D::before {
+  content: "\1F37D";
+}
+.em-icon.em-1F374::before {
+  content: "\1F374";
+}
+.em-icon.em-1F944::before {
+  content: "\1F944";
+}
+.em-icon.em-1F52A::before {
+  content: "\1F52A";
+}
+.em-icon.em-1F3FA::before {
+  content: "\1F3FA";
+}
+.em-icon.em-1F30D::before {
+  content: "\1F30D";
+}
+.em-icon.em-1F30E::before {
+  content: "\1F30E";
+}
+.em-icon.em-1F30F::before {
+  content: "\1F30F";
+}
+.em-icon.em-1F310::before {
+  content: "\1F310";
+}
+.em-icon.em-1F5FA::before {
+  content: "\1F5FA";
+}
+.em-icon.em-1F5FE::before {
+  content: "\1F5FE";
+}
+.em-icon.em-1F9ED::before {
+  content: "\1F9ED";
+}
+.em-icon.em-1F3D4::before {
+  content: "\1F3D4";
+}
+.em-icon.em-26F0::before {
+  content: "\26F0";
+}
+.em-icon.em-1F30B::before {
+  content: "\1F30B";
+}
+.em-icon.em-1F5FB::before {
+  content: "\1F5FB";
+}
+.em-icon.em-1F3D5::before {
+  content: "\1F3D5";
+}
+.em-icon.em-1F3D6::before {
+  content: "\1F3D6";
+}
+.em-icon.em-1F3DC::before {
+  content: "\1F3DC";
+}
+.em-icon.em-1F3DD::before {
+  content: "\1F3DD";
+}
+.em-icon.em-1F3DE::before {
+  content: "\1F3DE";
+}
+.em-icon.em-1F3DF::before {
+  content: "\1F3DF";
+}
+.em-icon.em-1F3DB::before {
+  content: "\1F3DB";
+}
+.em-icon.em-1F3D7::before {
+  content: "\1F3D7";
+}
+.em-icon.em-1F9F1::before {
+  content: "\1F9F1";
+}
+.em-icon.em-1FAA8::before {
+  content: "\1FAA8";
+}
+.em-icon.em-1FAB5::before {
+  content: "\1FAB5";
+}
+.em-icon.em-1F6D6::before {
+  content: "\1F6D6";
+}
+.em-icon.em-1F3D8::before {
+  content: "\1F3D8";
+}
+.em-icon.em-1F3DA::before {
+  content: "\1F3DA";
+}
+.em-icon.em-1F3E0::before {
+  content: "\1F3E0";
+}
+.em-icon.em-1F3E1::before {
+  content: "\1F3E1";
+}
+.em-icon.em-1F3E2::before {
+  content: "\1F3E2";
+}
+.em-icon.em-1F3E3::before {
+  content: "\1F3E3";
+}
+.em-icon.em-1F3E4::before {
+  content: "\1F3E4";
+}
+.em-icon.em-1F3E5::before {
+  content: "\1F3E5";
+}
+.em-icon.em-1F3E6::before {
+  content: "\1F3E6";
+}
+.em-icon.em-1F3E8::before {
+  content: "\1F3E8";
+}
+.em-icon.em-1F3E9::before {
+  content: "\1F3E9";
+}
+.em-icon.em-1F3EA::before {
+  content: "\1F3EA";
+}
+.em-icon.em-1F3EB::before {
+  content: "\1F3EB";
+}
+.em-icon.em-1F3EC::before {
+  content: "\1F3EC";
+}
+.em-icon.em-1F3ED::before {
+  content: "\1F3ED";
+}
+.em-icon.em-1F3EF::before {
+  content: "\1F3EF";
+}
+.em-icon.em-1F3F0::before {
+  content: "\1F3F0";
+}
+.em-icon.em-1F492::before {
+  content: "\1F492";
+}
+.em-icon.em-1F5FC::before {
+  content: "\1F5FC";
+}
+.em-icon.em-1F5FD::before {
+  content: "\1F5FD";
+}
+.em-icon.em-26EA::before {
+  content: "\26EA";
+}
+.em-icon.em-1F54C::before {
+  content: "\1F54C";
+}
+.em-icon.em-1F6D5::before {
+  content: "\1F6D5";
+}
+.em-icon.em-1F54D::before {
+  content: "\1F54D";
+}
+.em-icon.em-26E9::before {
+  content: "\26E9";
+}
+.em-icon.em-1F54B::before {
+  content: "\1F54B";
+}
+.em-icon.em-26F2::before {
+  content: "\26F2";
+}
+.em-icon.em-26FA::before {
+  content: "\26FA";
+}
+.em-icon.em-1F301::before {
+  content: "\1F301";
+}
+.em-icon.em-1F303::before {
+  content: "\1F303";
+}
+.em-icon.em-1F3D9::before {
+  content: "\1F3D9";
+}
+.em-icon.em-1F304::before {
+  content: "\1F304";
+}
+.em-icon.em-1F305::before {
+  content: "\1F305";
+}
+.em-icon.em-1F306::before {
+  content: "\1F306";
+}
+.em-icon.em-1F307::before {
+  content: "\1F307";
+}
+.em-icon.em-1F309::before {
+  content: "\1F309";
+}
+.em-icon.em-2668::before {
+  content: "\2668";
+}
+.em-icon.em-1F3A0::before {
+  content: "\1F3A0";
+}
+.em-icon.em-1F3A1::before {
+  content: "\1F3A1";
+}
+.em-icon.em-1F3A2::before {
+  content: "\1F3A2";
+}
+.em-icon.em-1F488::before {
+  content: "\1F488";
+}
+.em-icon.em-1F3AA::before {
+  content: "\1F3AA";
+}
+.em-icon.em-1F682::before {
+  content: "\1F682";
+}
+.em-icon.em-1F683::before {
+  content: "\1F683";
+}
+.em-icon.em-1F684::before {
+  content: "\1F684";
+}
+.em-icon.em-1F685::before {
+  content: "\1F685";
+}
+.em-icon.em-1F686::before {
+  content: "\1F686";
+}
+.em-icon.em-1F687::before {
+  content: "\1F687";
+}
+.em-icon.em-1F688::before {
+  content: "\1F688";
+}
+.em-icon.em-1F689::before {
+  content: "\1F689";
+}
+.em-icon.em-1F68A::before {
+  content: "\1F68A";
+}
+.em-icon.em-1F69D::before {
+  content: "\1F69D";
+}
+.em-icon.em-1F69E::before {
+  content: "\1F69E";
+}
+.em-icon.em-1F68B::before {
+  content: "\1F68B";
+}
+.em-icon.em-1F68C::before {
+  content: "\1F68C";
+}
+.em-icon.em-1F68D::before {
+  content: "\1F68D";
+}
+.em-icon.em-1F68E::before {
+  content: "\1F68E";
+}
+.em-icon.em-1F690::before {
+  content: "\1F690";
+}
+.em-icon.em-1F691::before {
+  content: "\1F691";
+}
+.em-icon.em-1F692::before {
+  content: "\1F692";
+}
+.em-icon.em-1F693::before {
+  content: "\1F693";
+}
+.em-icon.em-1F694::before {
+  content: "\1F694";
+}
+.em-icon.em-1F695::before {
+  content: "\1F695";
+}
+.em-icon.em-1F696::before {
+  content: "\1F696";
+}
+.em-icon.em-1F697::before {
+  content: "\1F697";
+}
+.em-icon.em-1F698::before {
+  content: "\1F698";
+}
+.em-icon.em-1F699::before {
+  content: "\1F699";
+}
+.em-icon.em-1F6FB::before {
+  content: "\1F6FB";
+}
+.em-icon.em-1F69A::before {
+  content: "\1F69A";
+}
+.em-icon.em-1F69B::before {
+  content: "\1F69B";
+}
+.em-icon.em-1F69C::before {
+  content: "\1F69C";
+}
+.em-icon.em-1F3CE::before {
+  content: "\1F3CE";
+}
+.em-icon.em-1F3CD::before {
+  content: "\1F3CD";
+}
+.em-icon.em-1F6F5::before {
+  content: "\1F6F5";
+}
+.em-icon.em-1F9BD::before {
+  content: "\1F9BD";
+}
+.em-icon.em-1F9BC::before {
+  content: "\1F9BC";
+}
+.em-icon.em-1F6FA::before {
+  content: "\1F6FA";
+}
+.em-icon.em-1F6B2::before {
+  content: "\1F6B2";
+}
+.em-icon.em-1F6F4::before {
+  content: "\1F6F4";
+}
+.em-icon.em-1F6F9::before {
+  content: "\1F6F9";
+}
+.em-icon.em-1F6FC::before {
+  content: "\1F6FC";
+}
+.em-icon.em-1F68F::before {
+  content: "\1F68F";
+}
+.em-icon.em-1F6E3::before {
+  content: "\1F6E3";
+}
+.em-icon.em-1F6E4::before {
+  content: "\1F6E4";
+}
+.em-icon.em-1F6E2::before {
+  content: "\1F6E2";
+}
+.em-icon.em-26FD::before {
+  content: "\26FD";
+}
+.em-icon.em-1F6A8::before {
+  content: "\1F6A8";
+}
+.em-icon.em-1F6A5::before {
+  content: "\1F6A5";
+}
+.em-icon.em-1F6A6::before {
+  content: "\1F6A6";
+}
+.em-icon.em-1F6D1::before {
+  content: "\1F6D1";
+}
+.em-icon.em-1F6A7::before {
+  content: "\1F6A7";
+}
+.em-icon.em-2693::before {
+  content: "\2693";
+}
+.em-icon.em-26F5::before {
+  content: "\26F5";
+}
+.em-icon.em-1F6F6::before {
+  content: "\1F6F6";
+}
+.em-icon.em-1F6A4::before {
+  content: "\1F6A4";
+}
+.em-icon.em-1F6F3::before {
+  content: "\1F6F3";
+}
+.em-icon.em-26F4::before {
+  content: "\26F4";
+}
+.em-icon.em-1F6E5::before {
+  content: "\1F6E5";
+}
+.em-icon.em-1F6A2::before {
+  content: "\1F6A2";
+}
+.em-icon.em-2708::before {
+  content: "\2708";
+}
+.em-icon.em-1F6E9::before {
+  content: "\1F6E9";
+}
+.em-icon.em-1F6EB::before {
+  content: "\1F6EB";
+}
+.em-icon.em-1F6EC::before {
+  content: "\1F6EC";
+}
+.em-icon.em-1FA82::before {
+  content: "\1FA82";
+}
+.em-icon.em-1F4BA::before {
+  content: "\1F4BA";
+}
+.em-icon.em-1F681::before {
+  content: "\1F681";
+}
+.em-icon.em-1F69F::before {
+  content: "\1F69F";
+}
+.em-icon.em-1F6A0::before {
+  content: "\1F6A0";
+}
+.em-icon.em-1F6A1::before {
+  content: "\1F6A1";
+}
+.em-icon.em-1F6F0::before {
+  content: "\1F6F0";
+}
+.em-icon.em-1F680::before {
+  content: "\1F680";
+}
+.em-icon.em-1F6F8::before {
+  content: "\1F6F8";
+}
+.em-icon.em-1F6CE::before {
+  content: "\1F6CE";
+}
+.em-icon.em-1F9F3::before {
+  content: "\1F9F3";
+}
+.em-icon.em-231B::before {
+  content: "\231B";
+}
+.em-icon.em-23F3::before {
+  content: "\23F3";
+}
+.em-icon.em-231A::before {
+  content: "\231A";
+}
+.em-icon.em-23F0::before {
+  content: "\23F0";
+}
+.em-icon.em-23F1::before {
+  content: "\23F1";
+}
+.em-icon.em-23F2::before {
+  content: "\23F2";
+}
+.em-icon.em-1F570::before {
+  content: "\1F570";
+}
+.em-icon.em-1F55B::before {
+  content: "\1F55B";
+}
+.em-icon.em-1F567::before {
+  content: "\1F567";
+}
+.em-icon.em-1F550::before {
+  content: "\1F550";
+}
+.em-icon.em-1F55C::before {
+  content: "\1F55C";
+}
+.em-icon.em-1F551::before {
+  content: "\1F551";
+}
+.em-icon.em-1F55D::before {
+  content: "\1F55D";
+}
+.em-icon.em-1F552::before {
+  content: "\1F552";
+}
+.em-icon.em-1F55E::before {
+  content: "\1F55E";
+}
+.em-icon.em-1F553::before {
+  content: "\1F553";
+}
+.em-icon.em-1F55F::before {
+  content: "\1F55F";
+}
+.em-icon.em-1F554::before {
+  content: "\1F554";
+}
+.em-icon.em-1F560::before {
+  content: "\1F560";
+}
+.em-icon.em-1F555::before {
+  content: "\1F555";
+}
+.em-icon.em-1F561::before {
+  content: "\1F561";
+}
+.em-icon.em-1F556::before {
+  content: "\1F556";
+}
+.em-icon.em-1F562::before {
+  content: "\1F562";
+}
+.em-icon.em-1F557::before {
+  content: "\1F557";
+}
+.em-icon.em-1F563::before {
+  content: "\1F563";
+}
+.em-icon.em-1F558::before {
+  content: "\1F558";
+}
+.em-icon.em-1F564::before {
+  content: "\1F564";
+}
+.em-icon.em-1F559::before {
+  content: "\1F559";
+}
+.em-icon.em-1F565::before {
+  content: "\1F565";
+}
+.em-icon.em-1F55A::before {
+  content: "\1F55A";
+}
+.em-icon.em-1F566::before {
+  content: "\1F566";
+}
+.em-icon.em-1F311::before {
+  content: "\1F311";
+}
+.em-icon.em-1F312::before {
+  content: "\1F312";
+}
+.em-icon.em-1F313::before {
+  content: "\1F313";
+}
+.em-icon.em-1F314::before {
+  content: "\1F314";
+}
+.em-icon.em-1F315::before {
+  content: "\1F315";
+}
+.em-icon.em-1F316::before {
+  content: "\1F316";
+}
+.em-icon.em-1F317::before {
+  content: "\1F317";
+}
+.em-icon.em-1F318::before {
+  content: "\1F318";
+}
+.em-icon.em-1F319::before {
+  content: "\1F319";
+}
+.em-icon.em-1F31A::before {
+  content: "\1F31A";
+}
+.em-icon.em-1F31B::before {
+  content: "\1F31B";
+}
+.em-icon.em-1F31C::before {
+  content: "\1F31C";
+}
+.em-icon.em-1F321::before {
+  content: "\1F321";
+}
+.em-icon.em-2600::before {
+  content: "\2600";
+}
+.em-icon.em-1F31D::before {
+  content: "\1F31D";
+}
+.em-icon.em-1F31E::before {
+  content: "\1F31E";
+}
+.em-icon.em-1FA90::before {
+  content: "\1FA90";
+}
+.em-icon.em-2B50::before {
+  content: "\2B50";
+}
+.em-icon.em-1F31F::before {
+  content: "\1F31F";
+}
+.em-icon.em-1F320::before {
+  content: "\1F320";
+}
+.em-icon.em-1F30C::before {
+  content: "\1F30C";
+}
+.em-icon.em-2601::before {
+  content: "\2601";
+}
+.em-icon.em-26C5::before {
+  content: "\26C5";
+}
+.em-icon.em-26C8::before {
+  content: "\26C8";
+}
+.em-icon.em-1F324::before {
+  content: "\1F324";
+}
+.em-icon.em-1F325::before {
+  content: "\1F325";
+}
+.em-icon.em-1F326::before {
+  content: "\1F326";
+}
+.em-icon.em-1F327::before {
+  content: "\1F327";
+}
+.em-icon.em-1F328::before {
+  content: "\1F328";
+}
+.em-icon.em-1F329::before {
+  content: "\1F329";
+}
+.em-icon.em-1F32A::before {
+  content: "\1F32A";
+}
+.em-icon.em-1F32B::before {
+  content: "\1F32B";
+}
+.em-icon.em-1F32C::before {
+  content: "\1F32C";
+}
+.em-icon.em-1F300::before {
+  content: "\1F300";
+}
+.em-icon.em-1F308::before {
+  content: "\1F308";
+}
+.em-icon.em-1F302::before {
+  content: "\1F302";
+}
+.em-icon.em-2602::before {
+  content: "\2602";
+}
+.em-icon.em-2614::before {
+  content: "\2614";
+}
+.em-icon.em-26F1::before {
+  content: "\26F1";
+}
+.em-icon.em-26A1::before {
+  content: "\26A1";
+}
+.em-icon.em-2744::before {
+  content: "\2744";
+}
+.em-icon.em-2603::before {
+  content: "\2603";
+}
+.em-icon.em-26C4::before {
+  content: "\26C4";
+}
+.em-icon.em-2604::before {
+  content: "\2604";
+}
+.em-icon.em-1F525::before {
+  content: "\1F525";
+}
+.em-icon.em-1F4A7::before {
+  content: "\1F4A7";
+}
+.em-icon.em-1F30A::before {
+  content: "\1F30A";
+}
+.em-icon.em-1F383::before {
+  content: "\1F383";
+}
+.em-icon.em-1F384::before {
+  content: "\1F384";
+}
+.em-icon.em-1F386::before {
+  content: "\1F386";
+}
+.em-icon.em-1F387::before {
+  content: "\1F387";
+}
+.em-icon.em-1F9E8::before {
+  content: "\1F9E8";
+}
+.em-icon.em-2728::before {
+  content: "\2728";
+}
+.em-icon.em-1F388::before {
+  content: "\1F388";
+}
+.em-icon.em-1F389::before {
+  content: "\1F389";
+}
+.em-icon.em-1F38A::before {
+  content: "\1F38A";
+}
+.em-icon.em-1F38B::before {
+  content: "\1F38B";
+}
+.em-icon.em-1F38D::before {
+  content: "\1F38D";
+}
+.em-icon.em-1F38E::before {
+  content: "\1F38E";
+}
+.em-icon.em-1F38F::before {
+  content: "\1F38F";
+}
+.em-icon.em-1F390::before {
+  content: "\1F390";
+}
+.em-icon.em-1F391::before {
+  content: "\1F391";
+}
+.em-icon.em-1F9E7::before {
+  content: "\1F9E7";
+}
+.em-icon.em-1F380::before {
+  content: "\1F380";
+}
+.em-icon.em-1F381::before {
+  content: "\1F381";
+}
+.em-icon.em-1F397::before {
+  content: "\1F397";
+}
+.em-icon.em-1F39F::before {
+  content: "\1F39F";
+}
+.em-icon.em-1F3AB::before {
+  content: "\1F3AB";
+}
+.em-icon.em-1F396::before {
+  content: "\1F396";
+}
+.em-icon.em-1F3C6::before {
+  content: "\1F3C6";
+}
+.em-icon.em-1F3C5::before {
+  content: "\1F3C5";
+}
+.em-icon.em-1F947::before {
+  content: "\1F947";
+}
+.em-icon.em-1F948::before {
+  content: "\1F948";
+}
+.em-icon.em-1F949::before {
+  content: "\1F949";
+}
+.em-icon.em-26BD::before {
+  content: "\26BD";
+}
+.em-icon.em-26BE::before {
+  content: "\26BE";
+}
+.em-icon.em-1F94E::before {
+  content: "\1F94E";
+}
+.em-icon.em-1F3C0::before {
+  content: "\1F3C0";
+}
+.em-icon.em-1F3D0::before {
+  content: "\1F3D0";
+}
+.em-icon.em-1F3C8::before {
+  content: "\1F3C8";
+}
+.em-icon.em-1F3C9::before {
+  content: "\1F3C9";
+}
+.em-icon.em-1F3BE::before {
+  content: "\1F3BE";
+}
+.em-icon.em-1F94F::before {
+  content: "\1F94F";
+}
+.em-icon.em-1F3B3::before {
+  content: "\1F3B3";
+}
+.em-icon.em-1F3CF::before {
+  content: "\1F3CF";
+}
+.em-icon.em-1F3D1::before {
+  content: "\1F3D1";
+}
+.em-icon.em-1F3D2::before {
+  content: "\1F3D2";
+}
+.em-icon.em-1F94D::before {
+  content: "\1F94D";
+}
+.em-icon.em-1F3D3::before {
+  content: "\1F3D3";
+}
+.em-icon.em-1F3F8::before {
+  content: "\1F3F8";
+}
+.em-icon.em-1F94A::before {
+  content: "\1F94A";
+}
+.em-icon.em-1F94B::before {
+  content: "\1F94B";
+}
+.em-icon.em-1F945::before {
+  content: "\1F945";
+}
+.em-icon.em-26F3::before {
+  content: "\26F3";
+}
+.em-icon.em-26F8::before {
+  content: "\26F8";
+}
+.em-icon.em-1F3A3::before {
+  content: "\1F3A3";
+}
+.em-icon.em-1F93F::before {
+  content: "\1F93F";
+}
+.em-icon.em-1F3BD::before {
+  content: "\1F3BD";
+}
+.em-icon.em-1F3BF::before {
+  content: "\1F3BF";
+}
+.em-icon.em-1F6F7::before {
+  content: "\1F6F7";
+}
+.em-icon.em-1F94C::before {
+  content: "\1F94C";
+}
+.em-icon.em-1F3AF::before {
+  content: "\1F3AF";
+}
+.em-icon.em-1FA80::before {
+  content: "\1FA80";
+}
+.em-icon.em-1FA81::before {
+  content: "\1FA81";
+}
+.em-icon.em-1F3B1::before {
+  content: "\1F3B1";
+}
+.em-icon.em-1F52E::before {
+  content: "\1F52E";
+}
+.em-icon.em-1FA84::before {
+  content: "\1FA84";
+}
+.em-icon.em-1F9FF::before {
+  content: "\1F9FF";
+}
+.em-icon.em-1F3AE::before {
+  content: "\1F3AE";
+}
+.em-icon.em-1F579::before {
+  content: "\1F579";
+}
+.em-icon.em-1F3B0::before {
+  content: "\1F3B0";
+}
+.em-icon.em-1F3B2::before {
+  content: "\1F3B2";
+}
+.em-icon.em-1F9E9::before {
+  content: "\1F9E9";
+}
+.em-icon.em-1F9F8::before {
+  content: "\1F9F8";
+}
+.em-icon.em-1FA85::before {
+  content: "\1FA85";
+}
+.em-icon.em-1FA86::before {
+  content: "\1FA86";
+}
+.em-icon.em-2660::before {
+  content: "\2660";
+}
+.em-icon.em-2665::before {
+  content: "\2665";
+}
+.em-icon.em-2666::before {
+  content: "\2666";
+}
+.em-icon.em-2663::before {
+  content: "\2663";
+}
+.em-icon.em-265F::before {
+  content: "\265F";
+}
+.em-icon.em-1F0CF::before {
+  content: "\1F0CF";
+}
+.em-icon.em-1F004::before {
+  content: "\1F004";
+}
+.em-icon.em-1F3B4::before {
+  content: "\1F3B4";
+}
+.em-icon.em-1F3AD::before {
+  content: "\1F3AD";
+}
+.em-icon.em-1F5BC::before {
+  content: "\1F5BC";
+}
+.em-icon.em-1F3A8::before {
+  content: "\1F3A8";
+}
+.em-icon.em-1F9F5::before {
+  content: "\1F9F5";
+}
+.em-icon.em-1FAA1::before {
+  content: "\1FAA1";
+}
+.em-icon.em-1F9F6::before {
+  content: "\1F9F6";
+}
+.em-icon.em-1FAA2::before {
+  content: "\1FAA2";
+}
+.em-icon.em-1F453::before {
+  content: "\1F453";
+}
+.em-icon.em-1F576::before {
+  content: "\1F576";
+}
+.em-icon.em-1F97D::before {
+  content: "\1F97D";
+}
+.em-icon.em-1F97C::before {
+  content: "\1F97C";
+}
+.em-icon.em-1F9BA::before {
+  content: "\1F9BA";
+}
+.em-icon.em-1F454::before {
+  content: "\1F454";
+}
+.em-icon.em-1F455::before {
+  content: "\1F455";
+}
+.em-icon.em-1F456::before {
+  content: "\1F456";
+}
+.em-icon.em-1F9E3::before {
+  content: "\1F9E3";
+}
+.em-icon.em-1F9E4::before {
+  content: "\1F9E4";
+}
+.em-icon.em-1F9E5::before {
+  content: "\1F9E5";
+}
+.em-icon.em-1F9E6::before {
+  content: "\1F9E6";
+}
+.em-icon.em-1F457::before {
+  content: "\1F457";
+}
+.em-icon.em-1F458::before {
+  content: "\1F458";
+}
+.em-icon.em-1F97B::before {
+  content: "\1F97B";
+}
+.em-icon.em-1FA71::before {
+  content: "\1FA71";
+}
+.em-icon.em-1FA72::before {
+  content: "\1FA72";
+}
+.em-icon.em-1FA73::before {
+  content: "\1FA73";
+}
+.em-icon.em-1F459::before {
+  content: "\1F459";
+}
+.em-icon.em-1F45A::before {
+  content: "\1F45A";
+}
+.em-icon.em-1F45B::before {
+  content: "\1F45B";
+}
+.em-icon.em-1F45C::before {
+  content: "\1F45C";
+}
+.em-icon.em-1F45D::before {
+  content: "\1F45D";
+}
+.em-icon.em-1F6CD::before {
+  content: "\1F6CD";
+}
+.em-icon.em-1F392::before {
+  content: "\1F392";
+}
+.em-icon.em-1FA74::before {
+  content: "\1FA74";
+}
+.em-icon.em-1F45E::before {
+  content: "\1F45E";
+}
+.em-icon.em-1F45F::before {
+  content: "\1F45F";
+}
+.em-icon.em-1F97E::before {
+  content: "\1F97E";
+}
+.em-icon.em-1F97F::before {
+  content: "\1F97F";
+}
+.em-icon.em-1F460::before {
+  content: "\1F460";
+}
+.em-icon.em-1F461::before {
+  content: "\1F461";
+}
+.em-icon.em-1FA70::before {
+  content: "\1FA70";
+}
+.em-icon.em-1F462::before {
+  content: "\1F462";
+}
+.em-icon.em-1F451::before {
+  content: "\1F451";
+}
+.em-icon.em-1F452::before {
+  content: "\1F452";
+}
+.em-icon.em-1F3A9::before {
+  content: "\1F3A9";
+}
+.em-icon.em-1F393::before {
+  content: "\1F393";
+}
+.em-icon.em-1F9E2::before {
+  content: "\1F9E2";
+}
+.em-icon.em-1FA96::before {
+  content: "\1FA96";
+}
+.em-icon.em-26D1::before {
+  content: "\26D1";
+}
+.em-icon.em-1F4FF::before {
+  content: "\1F4FF";
+}
+.em-icon.em-1F484::before {
+  content: "\1F484";
+}
+.em-icon.em-1F48D::before {
+  content: "\1F48D";
+}
+.em-icon.em-1F48E::before {
+  content: "\1F48E";
+}
+.em-icon.em-1F507::before {
+  content: "\1F507";
+}
+.em-icon.em-1F508::before {
+  content: "\1F508";
+}
+.em-icon.em-1F509::before {
+  content: "\1F509";
+}
+.em-icon.em-1F50A::before {
+  content: "\1F50A";
+}
+.em-icon.em-1F4E2::before {
+  content: "\1F4E2";
+}
+.em-icon.em-1F4E3::before {
+  content: "\1F4E3";
+}
+.em-icon.em-1F4EF::before {
+  content: "\1F4EF";
+}
+.em-icon.em-1F514::before {
+  content: "\1F514";
+}
+.em-icon.em-1F515::before {
+  content: "\1F515";
+}
+.em-icon.em-1F3BC::before {
+  content: "\1F3BC";
+}
+.em-icon.em-1F3B5::before {
+  content: "\1F3B5";
+}
+.em-icon.em-1F3B6::before {
+  content: "\1F3B6";
+}
+.em-icon.em-1F399::before {
+  content: "\1F399";
+}
+.em-icon.em-1F39A::before {
+  content: "\1F39A";
+}
+.em-icon.em-1F39B::before {
+  content: "\1F39B";
+}
+.em-icon.em-1F3A4::before {
+  content: "\1F3A4";
+}
+.em-icon.em-1F3A7::before {
+  content: "\1F3A7";
+}
+.em-icon.em-1F4FB::before {
+  content: "\1F4FB";
+}
+.em-icon.em-1F3B7::before {
+  content: "\1F3B7";
+}
+.em-icon.em-1FA97::before {
+  content: "\1FA97";
+}
+.em-icon.em-1F3B8::before {
+  content: "\1F3B8";
+}
+.em-icon.em-1F3B9::before {
+  content: "\1F3B9";
+}
+.em-icon.em-1F3BA::before {
+  content: "\1F3BA";
+}
+.em-icon.em-1F3BB::before {
+  content: "\1F3BB";
+}
+.em-icon.em-1FA95::before {
+  content: "\1FA95";
+}
+.em-icon.em-1F941::before {
+  content: "\1F941";
+}
+.em-icon.em-1FA98::before {
+  content: "\1FA98";
+}
+.em-icon.em-1F4F1::before {
+  content: "\1F4F1";
+}
+.em-icon.em-1F4F2::before {
+  content: "\1F4F2";
+}
+.em-icon.em-260E::before {
+  content: "\260E";
+}
+.em-icon.em-1F4DE::before {
+  content: "\1F4DE";
+}
+.em-icon.em-1F4DF::before {
+  content: "\1F4DF";
+}
+.em-icon.em-1F4E0::before {
+  content: "\1F4E0";
+}
+.em-icon.em-1F50B::before {
+  content: "\1F50B";
+}
+.em-icon.em-1F50C::before {
+  content: "\1F50C";
+}
+.em-icon.em-1F4BB::before {
+  content: "\1F4BB";
+}
+.em-icon.em-1F5A5::before {
+  content: "\1F5A5";
+}
+.em-icon.em-1F5A8::before {
+  content: "\1F5A8";
+}
+.em-icon.em-2328::before {
+  content: "\2328";
+}
+.em-icon.em-1F5B1::before {
+  content: "\1F5B1";
+}
+.em-icon.em-1F5B2::before {
+  content: "\1F5B2";
+}
+.em-icon.em-1F4BD::before {
+  content: "\1F4BD";
+}
+.em-icon.em-1F4BE::before {
+  content: "\1F4BE";
+}
+.em-icon.em-1F4BF::before {
+  content: "\1F4BF";
+}
+.em-icon.em-1F4C0::before {
+  content: "\1F4C0";
+}
+.em-icon.em-1F9EE::before {
+  content: "\1F9EE";
+}
+.em-icon.em-1F3A5::before {
+  content: "\1F3A5";
+}
+.em-icon.em-1F39E::before {
+  content: "\1F39E";
+}
+.em-icon.em-1F4FD::before {
+  content: "\1F4FD";
+}
+.em-icon.em-1F3AC::before {
+  content: "\1F3AC";
+}
+.em-icon.em-1F4FA::before {
+  content: "\1F4FA";
+}
+.em-icon.em-1F4F7::before {
+  content: "\1F4F7";
+}
+.em-icon.em-1F4F8::before {
+  content: "\1F4F8";
+}
+.em-icon.em-1F4F9::before {
+  content: "\1F4F9";
+}
+.em-icon.em-1F4FC::before {
+  content: "\1F4FC";
+}
+.em-icon.em-1F50D::before {
+  content: "\1F50D";
+}
+.em-icon.em-1F50E::before {
+  content: "\1F50E";
+}
+.em-icon.em-1F56F::before {
+  content: "\1F56F";
+}
+.em-icon.em-1F4A1::before {
+  content: "\1F4A1";
+}
+.em-icon.em-1F526::before {
+  content: "\1F526";
+}
+.em-icon.em-1F3EE::before {
+  content: "\1F3EE";
+}
+.em-icon.em-1FA94::before {
+  content: "\1FA94";
+}
+.em-icon.em-1F4D4::before {
+  content: "\1F4D4";
+}
+.em-icon.em-1F4D5::before {
+  content: "\1F4D5";
+}
+.em-icon.em-1F4D6::before {
+  content: "\1F4D6";
+}
+.em-icon.em-1F4D7::before {
+  content: "\1F4D7";
+}
+.em-icon.em-1F4D8::before {
+  content: "\1F4D8";
+}
+.em-icon.em-1F4D9::before {
+  content: "\1F4D9";
+}
+.em-icon.em-1F4DA::before {
+  content: "\1F4DA";
+}
+.em-icon.em-1F4D3::before {
+  content: "\1F4D3";
+}
+.em-icon.em-1F4D2::before {
+  content: "\1F4D2";
+}
+.em-icon.em-1F4C3::before {
+  content: "\1F4C3";
+}
+.em-icon.em-1F4DC::before {
+  content: "\1F4DC";
+}
+.em-icon.em-1F4C4::before {
+  content: "\1F4C4";
+}
+.em-icon.em-1F4F0::before {
+  content: "\1F4F0";
+}
+.em-icon.em-1F5DE::before {
+  content: "\1F5DE";
+}
+.em-icon.em-1F4D1::before {
+  content: "\1F4D1";
+}
+.em-icon.em-1F516::before {
+  content: "\1F516";
+}
+.em-icon.em-1F3F7::before {
+  content: "\1F3F7";
+}
+.em-icon.em-1F4B0::before {
+  content: "\1F4B0";
+}
+.em-icon.em-1FA99::before {
+  content: "\1FA99";
+}
+.em-icon.em-1F4B4::before {
+  content: "\1F4B4";
+}
+.em-icon.em-1F4B5::before {
+  content: "\1F4B5";
+}
+.em-icon.em-1F4B6::before {
+  content: "\1F4B6";
+}
+.em-icon.em-1F4B7::before {
+  content: "\1F4B7";
+}
+.em-icon.em-1F4B8::before {
+  content: "\1F4B8";
+}
+.em-icon.em-1F4B3::before {
+  content: "\1F4B3";
+}
+.em-icon.em-1F9FE::before {
+  content: "\1F9FE";
+}
+.em-icon.em-1F4B9::before {
+  content: "\1F4B9";
+}
+.em-icon.em-2709::before {
+  content: "\2709";
+}
+.em-icon.em-1F4E7::before {
+  content: "\1F4E7";
+}
+.em-icon.em-1F4E8::before {
+  content: "\1F4E8";
+}
+.em-icon.em-1F4E9::before {
+  content: "\1F4E9";
+}
+.em-icon.em-1F4E4::before {
+  content: "\1F4E4";
+}
+.em-icon.em-1F4E5::before {
+  content: "\1F4E5";
+}
+.em-icon.em-1F4E6::before {
+  content: "\1F4E6";
+}
+.em-icon.em-1F4EB::before {
+  content: "\1F4EB";
+}
+.em-icon.em-1F4EA::before {
+  content: "\1F4EA";
+}
+.em-icon.em-1F4EC::before {
+  content: "\1F4EC";
+}
+.em-icon.em-1F4ED::before {
+  content: "\1F4ED";
+}
+.em-icon.em-1F4EE::before {
+  content: "\1F4EE";
+}
+.em-icon.em-1F5F3::before {
+  content: "\1F5F3";
+}
+.em-icon.em-270F::before {
+  content: "\270F";
+}
+.em-icon.em-2712::before {
+  content: "\2712";
+}
+.em-icon.em-1F58B::before {
+  content: "\1F58B";
+}
+.em-icon.em-1F58A::before {
+  content: "\1F58A";
+}
+.em-icon.em-1F58C::before {
+  content: "\1F58C";
+}
+.em-icon.em-1F58D::before {
+  content: "\1F58D";
+}
+.em-icon.em-1F4DD::before {
+  content: "\1F4DD";
+}
+.em-icon.em-1F4BC::before {
+  content: "\1F4BC";
+}
+.em-icon.em-1F4C1::before {
+  content: "\1F4C1";
+}
+.em-icon.em-1F4C2::before {
+  content: "\1F4C2";
+}
+.em-icon.em-1F5C2::before {
+  content: "\1F5C2";
+}
+.em-icon.em-1F4C5::before {
+  content: "\1F4C5";
+}
+.em-icon.em-1F4C6::before {
+  content: "\1F4C6";
+}
+.em-icon.em-1F5D2::before {
+  content: "\1F5D2";
+}
+.em-icon.em-1F5D3::before {
+  content: "\1F5D3";
+}
+.em-icon.em-1F4C7::before {
+  content: "\1F4C7";
+}
+.em-icon.em-1F4C8::before {
+  content: "\1F4C8";
+}
+.em-icon.em-1F4C9::before {
+  content: "\1F4C9";
+}
+.em-icon.em-1F4CA::before {
+  content: "\1F4CA";
+}
+.em-icon.em-1F4CB::before {
+  content: "\1F4CB";
+}
+.em-icon.em-1F4CC::before {
+  content: "\1F4CC";
+}
+.em-icon.em-1F4CD::before {
+  content: "\1F4CD";
+}
+.em-icon.em-1F4CE::before {
+  content: "\1F4CE";
+}
+.em-icon.em-1F587::before {
+  content: "\1F587";
+}
+.em-icon.em-1F4CF::before {
+  content: "\1F4CF";
+}
+.em-icon.em-1F4D0::before {
+  content: "\1F4D0";
+}
+.em-icon.em-2702::before {
+  content: "\2702";
+}
+.em-icon.em-1F5C3::before {
+  content: "\1F5C3";
+}
+.em-icon.em-1F5C4::before {
+  content: "\1F5C4";
+}
+.em-icon.em-1F5D1::before {
+  content: "\1F5D1";
+}
+.em-icon.em-1F512::before {
+  content: "\1F512";
+}
+.em-icon.em-1F513::before {
+  content: "\1F513";
+}
+.em-icon.em-1F50F::before {
+  content: "\1F50F";
+}
+.em-icon.em-1F510::before {
+  content: "\1F510";
+}
+.em-icon.em-1F511::before {
+  content: "\1F511";
+}
+.em-icon.em-1F5DD::before {
+  content: "\1F5DD";
+}
+.em-icon.em-1F528::before {
+  content: "\1F528";
+}
+.em-icon.em-1FA93::before {
+  content: "\1FA93";
+}
+.em-icon.em-26CF::before {
+  content: "\26CF";
+}
+.em-icon.em-2692::before {
+  content: "\2692";
+}
+.em-icon.em-1F6E0::before {
+  content: "\1F6E0";
+}
+.em-icon.em-1F5E1::before {
+  content: "\1F5E1";
+}
+.em-icon.em-2694::before {
+  content: "\2694";
+}
+.em-icon.em-1F52B::before {
+  content: "\1F52B";
+}
+.em-icon.em-1FA83::before {
+  content: "\1FA83";
+}
+.em-icon.em-1F3F9::before {
+  content: "\1F3F9";
+}
+.em-icon.em-1F6E1::before {
+  content: "\1F6E1";
+}
+.em-icon.em-1FA9A::before {
+  content: "\1FA9A";
+}
+.em-icon.em-1F527::before {
+  content: "\1F527";
+}
+.em-icon.em-1FA9B::before {
+  content: "\1FA9B";
+}
+.em-icon.em-1F529::before {
+  content: "\1F529";
+}
+.em-icon.em-2699::before {
+  content: "\2699";
+}
+.em-icon.em-1F5DC::before {
+  content: "\1F5DC";
+}
+.em-icon.em-2696::before {
+  content: "\2696";
+}
+.em-icon.em-1F9AF::before {
+  content: "\1F9AF";
+}
+.em-icon.em-1F517::before {
+  content: "\1F517";
+}
+.em-icon.em-26D3::before {
+  content: "\26D3";
+}
+.em-icon.em-1FA9D::before {
+  content: "\1FA9D";
+}
+.em-icon.em-1F9F0::before {
+  content: "\1F9F0";
+}
+.em-icon.em-1F9F2::before {
+  content: "\1F9F2";
+}
+.em-icon.em-1FA9C::before {
+  content: "\1FA9C";
+}
+.em-icon.em-2697::before {
+  content: "\2697";
+}
+.em-icon.em-1F9EA::before {
+  content: "\1F9EA";
+}
+.em-icon.em-1F9EB::before {
+  content: "\1F9EB";
+}
+.em-icon.em-1F9EC::before {
+  content: "\1F9EC";
+}
+.em-icon.em-1F52C::before {
+  content: "\1F52C";
+}
+.em-icon.em-1F52D::before {
+  content: "\1F52D";
+}
+.em-icon.em-1F4E1::before {
+  content: "\1F4E1";
+}
+.em-icon.em-1F489::before {
+  content: "\1F489";
+}
+.em-icon.em-1FA78::before {
+  content: "\1FA78";
+}
+.em-icon.em-1F48A::before {
+  content: "\1F48A";
+}
+.em-icon.em-1FA79::before {
+  content: "\1FA79";
+}
+.em-icon.em-1FA7A::before {
+  content: "\1FA7A";
+}
+.em-icon.em-1F6AA::before {
+  content: "\1F6AA";
+}
+.em-icon.em-1F6D7::before {
+  content: "\1F6D7";
+}
+.em-icon.em-1FA9E::before {
+  content: "\1FA9E";
+}
+.em-icon.em-1FA9F::before {
+  content: "\1FA9F";
+}
+.em-icon.em-1F6CF::before {
+  content: "\1F6CF";
+}
+.em-icon.em-1F6CB::before {
+  content: "\1F6CB";
+}
+.em-icon.em-1FA91::before {
+  content: "\1FA91";
+}
+.em-icon.em-1F6BD::before {
+  content: "\1F6BD";
+}
+.em-icon.em-1FAA0::before {
+  content: "\1FAA0";
+}
+.em-icon.em-1F6BF::before {
+  content: "\1F6BF";
+}
+.em-icon.em-1F6C1::before {
+  content: "\1F6C1";
+}
+.em-icon.em-1FAA4::before {
+  content: "\1FAA4";
+}
+.em-icon.em-1FA92::before {
+  content: "\1FA92";
+}
+.em-icon.em-1F9F4::before {
+  content: "\1F9F4";
+}
+.em-icon.em-1F9F7::before {
+  content: "\1F9F7";
+}
+.em-icon.em-1F9F9::before {
+  content: "\1F9F9";
+}
+.em-icon.em-1F9FA::before {
+  content: "\1F9FA";
+}
+.em-icon.em-1F9FB::before {
+  content: "\1F9FB";
+}
+.em-icon.em-1FAA3::before {
+  content: "\1FAA3";
+}
+.em-icon.em-1F9FC::before {
+  content: "\1F9FC";
+}
+.em-icon.em-1FAA5::before {
+  content: "\1FAA5";
+}
+.em-icon.em-1F9FD::before {
+  content: "\1F9FD";
+}
+.em-icon.em-1F9EF::before {
+  content: "\1F9EF";
+}
+.em-icon.em-1F6D2::before {
+  content: "\1F6D2";
+}
+.em-icon.em-1F6AC::before {
+  content: "\1F6AC";
+}
+.em-icon.em-26B0::before {
+  content: "\26B0";
+}
+.em-icon.em-1FAA6::before {
+  content: "\1FAA6";
+}
+.em-icon.em-26B1::before {
+  content: "\26B1";
+}
+.em-icon.em-1F5FF::before {
+  content: "\1F5FF";
+}
+.em-icon.em-1FAA7::before {
+  content: "\1FAA7";
+}
+.em-icon.em-1F3E7::before {
+  content: "\1F3E7";
+}
+.em-icon.em-1F6AE::before {
+  content: "\1F6AE";
+}
+.em-icon.em-1F6B0::before {
+  content: "\1F6B0";
+}
+.em-icon.em-267F::before {
+  content: "\267F";
+}
+.em-icon.em-1F6B9::before {
+  content: "\1F6B9";
+}
+.em-icon.em-1F6BA::before {
+  content: "\1F6BA";
+}
+.em-icon.em-1F6BB::before {
+  content: "\1F6BB";
+}
+.em-icon.em-1F6BC::before {
+  content: "\1F6BC";
+}
+.em-icon.em-1F6BE::before {
+  content: "\1F6BE";
+}
+.em-icon.em-1F6C2::before {
+  content: "\1F6C2";
+}
+.em-icon.em-1F6C3::before {
+  content: "\1F6C3";
+}
+.em-icon.em-1F6C4::before {
+  content: "\1F6C4";
+}
+.em-icon.em-1F6C5::before {
+  content: "\1F6C5";
+}
+.em-icon.em-26A0::before {
+  content: "\26A0";
+}
+.em-icon.em-1F6B8::before {
+  content: "\1F6B8";
+}
+.em-icon.em-26D4::before {
+  content: "\26D4";
+}
+.em-icon.em-1F6AB::before {
+  content: "\1F6AB";
+}
+.em-icon.em-1F6B3::before {
+  content: "\1F6B3";
+}
+.em-icon.em-1F6AD::before {
+  content: "\1F6AD";
+}
+.em-icon.em-1F6AF::before {
+  content: "\1F6AF";
+}
+.em-icon.em-1F6B1::before {
+  content: "\1F6B1";
+}
+.em-icon.em-1F6B7::before {
+  content: "\1F6B7";
+}
+.em-icon.em-1F4F5::before {
+  content: "\1F4F5";
+}
+.em-icon.em-1F51E::before {
+  content: "\1F51E";
+}
+.em-icon.em-2622::before {
+  content: "\2622";
+}
+.em-icon.em-2623::before {
+  content: "\2623";
+}
+.em-icon.em-2B06::before {
+  content: "\2B06";
+}
+.em-icon.em-2197::before {
+  content: "\2197";
+}
+.em-icon.em-27A1::before {
+  content: "\27A1";
+}
+.em-icon.em-2198::before {
+  content: "\2198";
+}
+.em-icon.em-2B07::before {
+  content: "\2B07";
+}
+.em-icon.em-2199::before {
+  content: "\2199";
+}
+.em-icon.em-2B05::before {
+  content: "\2B05";
+}
+.em-icon.em-2196::before {
+  content: "\2196";
+}
+.em-icon.em-2195::before {
+  content: "\2195";
+}
+.em-icon.em-2194::before {
+  content: "\2194";
+}
+.em-icon.em-21A9::before {
+  content: "\21A9";
+}
+.em-icon.em-21AA::before {
+  content: "\21AA";
+}
+.em-icon.em-2934::before {
+  content: "\2934";
+}
+.em-icon.em-2935::before {
+  content: "\2935";
+}
+.em-icon.em-1F503::before {
+  content: "\1F503";
+}
+.em-icon.em-1F504::before {
+  content: "\1F504";
+}
+.em-icon.em-1F519::before {
+  content: "\1F519";
+}
+.em-icon.em-1F51A::before {
+  content: "\1F51A";
+}
+.em-icon.em-1F51B::before {
+  content: "\1F51B";
+}
+.em-icon.em-1F51C::before {
+  content: "\1F51C";
+}
+.em-icon.em-1F51D::before {
+  content: "\1F51D";
+}
+.em-icon.em-1F6D0::before {
+  content: "\1F6D0";
+}
+.em-icon.em-269B::before {
+  content: "\269B";
+}
+.em-icon.em-1F549::before {
+  content: "\1F549";
+}
+.em-icon.em-2721::before {
+  content: "\2721";
+}
+.em-icon.em-2638::before {
+  content: "\2638";
+}
+.em-icon.em-262F::before {
+  content: "\262F";
+}
+.em-icon.em-271D::before {
+  content: "\271D";
+}
+.em-icon.em-2626::before {
+  content: "\2626";
+}
+.em-icon.em-262A::before {
+  content: "\262A";
+}
+.em-icon.em-262E::before {
+  content: "\262E";
+}
+.em-icon.em-1F54E::before {
+  content: "\1F54E";
+}
+.em-icon.em-1F52F::before {
+  content: "\1F52F";
+}
+.em-icon.em-2648::before {
+  content: "\2648";
+}
+.em-icon.em-2649::before {
+  content: "\2649";
+}
+.em-icon.em-264A::before {
+  content: "\264A";
+}
+.em-icon.em-264B::before {
+  content: "\264B";
+}
+.em-icon.em-264C::before {
+  content: "\264C";
+}
+.em-icon.em-264D::before {
+  content: "\264D";
+}
+.em-icon.em-264E::before {
+  content: "\264E";
+}
+.em-icon.em-264F::before {
+  content: "\264F";
+}
+.em-icon.em-2650::before {
+  content: "\2650";
+}
+.em-icon.em-2651::before {
+  content: "\2651";
+}
+.em-icon.em-2652::before {
+  content: "\2652";
+}
+.em-icon.em-2653::before {
+  content: "\2653";
+}
+.em-icon.em-26CE::before {
+  content: "\26CE";
+}
+.em-icon.em-1F500::before {
+  content: "\1F500";
+}
+.em-icon.em-1F501::before {
+  content: "\1F501";
+}
+.em-icon.em-1F502::before {
+  content: "\1F502";
+}
+.em-icon.em-25B6::before {
+  content: "\25B6";
+}
+.em-icon.em-23E9::before {
+  content: "\23E9";
+}
+.em-icon.em-23ED::before {
+  content: "\23ED";
+}
+.em-icon.em-23EF::before {
+  content: "\23EF";
+}
+.em-icon.em-25C0::before {
+  content: "\25C0";
+}
+.em-icon.em-23EA::before {
+  content: "\23EA";
+}
+.em-icon.em-23EE::before {
+  content: "\23EE";
+}
+.em-icon.em-1F53C::before {
+  content: "\1F53C";
+}
+.em-icon.em-23EB::before {
+  content: "\23EB";
+}
+.em-icon.em-1F53D::before {
+  content: "\1F53D";
+}
+.em-icon.em-23EC::before {
+  content: "\23EC";
+}
+.em-icon.em-23F8::before {
+  content: "\23F8";
+}
+.em-icon.em-23F9::before {
+  content: "\23F9";
+}
+.em-icon.em-23FA::before {
+  content: "\23FA";
+}
+.em-icon.em-23CF::before {
+  content: "\23CF";
+}
+.em-icon.em-1F3A6::before {
+  content: "\1F3A6";
+}
+.em-icon.em-1F505::before {
+  content: "\1F505";
+}
+.em-icon.em-1F506::before {
+  content: "\1F506";
+}
+.em-icon.em-1F4F6::before {
+  content: "\1F4F6";
+}
+.em-icon.em-1F4F3::before {
+  content: "\1F4F3";
+}
+.em-icon.em-1F4F4::before {
+  content: "\1F4F4";
+}
+.em-icon.em-2640::before {
+  content: "\2640";
+}
+.em-icon.em-2642::before {
+  content: "\2642";
+}
+.em-icon.em-26A7::before {
+  content: "\26A7";
+}
+.em-icon.em-2716::before {
+  content: "\2716";
+}
+.em-icon.em-2795::before {
+  content: "\2795";
+}
+.em-icon.em-2796::before {
+  content: "\2796";
+}
+.em-icon.em-2797::before {
+  content: "\2797";
+}
+.em-icon.em-267E::before {
+  content: "\267E";
+}
+.em-icon.em-203C::before {
+  content: "\203C";
+}
+.em-icon.em-2049::before {
+  content: "\2049";
+}
+.em-icon.em-2753::before {
+  content: "\2753";
+}
+.em-icon.em-2754::before {
+  content: "\2754";
+}
+.em-icon.em-2755::before {
+  content: "\2755";
+}
+.em-icon.em-2757::before {
+  content: "\2757";
+}
+.em-icon.em-3030::before {
+  content: "\3030";
+}
+.em-icon.em-1F4B1::before {
+  content: "\1F4B1";
+}
+.em-icon.em-1F4B2::before {
+  content: "\1F4B2";
+}
+.em-icon.em-2695::before {
+  content: "\2695";
+}
+.em-icon.em-267B::before {
+  content: "\267B";
+}
+.em-icon.em-269C::before {
+  content: "\269C";
+}
+.em-icon.em-1F531::before {
+  content: "\1F531";
+}
+.em-icon.em-1F4DB::before {
+  content: "\1F4DB";
+}
+.em-icon.em-1F530::before {
+  content: "\1F530";
+}
+.em-icon.em-2B55::before {
+  content: "\2B55";
+}
+.em-icon.em-2705::before {
+  content: "\2705";
+}
+.em-icon.em-2611::before {
+  content: "\2611";
+}
+.em-icon.em-2714::before {
+  content: "\2714";
+}
+.em-icon.em-274C::before {
+  content: "\274C";
+}
+.em-icon.em-274E::before {
+  content: "\274E";
+}
+.em-icon.em-27B0::before {
+  content: "\27B0";
+}
+.em-icon.em-27BF::before {
+  content: "\27BF";
+}
+.em-icon.em-303D::before {
+  content: "\303D";
+}
+.em-icon.em-2733::before {
+  content: "\2733";
+}
+.em-icon.em-2734::before {
+  content: "\2734";
+}
+.em-icon.em-2747::before {
+  content: "\2747";
+}
+.em-icon.em-00A9::before {
+  content: "\00A9";
+}
+.em-icon.em-00AE::before {
+  content: "\00AE";
+}
+.em-icon.em-2122::before {
+  content: "\2122";
+}
+.em-icon.em-1F51F::before {
+  content: "\1F51F";
+}
+.em-icon.em-1F520::before {
+  content: "\1F520";
+}
+.em-icon.em-1F521::before {
+  content: "\1F521";
+}
+.em-icon.em-1F522::before {
+  content: "\1F522";
+}
+.em-icon.em-1F523::before {
+  content: "\1F523";
+}
+.em-icon.em-1F524::before {
+  content: "\1F524";
+}
+.em-icon.em-1F170::before {
+  content: "\1F170";
+}
+.em-icon.em-1F18E::before {
+  content: "\1F18E";
+}
+.em-icon.em-1F171::before {
+  content: "\1F171";
+}
+.em-icon.em-1F191::before {
+  content: "\1F191";
+}
+.em-icon.em-1F192::before {
+  content: "\1F192";
+}
+.em-icon.em-1F193::before {
+  content: "\1F193";
+}
+.em-icon.em-2139::before {
+  content: "\2139";
+}
+.em-icon.em-1F194::before {
+  content: "\1F194";
+}
+.em-icon.em-24C2::before {
+  content: "\24C2";
+}
+.em-icon.em-1F195::before {
+  content: "\1F195";
+}
+.em-icon.em-1F196::before {
+  content: "\1F196";
+}
+.em-icon.em-1F17E::before {
+  content: "\1F17E";
+}
+.em-icon.em-1F197::before {
+  content: "\1F197";
+}
+.em-icon.em-1F17F::before {
+  content: "\1F17F";
+}
+.em-icon.em-1F198::before {
+  content: "\1F198";
+}
+.em-icon.em-1F199::before {
+  content: "\1F199";
+}
+.em-icon.em-1F19A::before {
+  content: "\1F19A";
+}
+.em-icon.em-1F201::before {
+  content: "\1F201";
+}
+.em-icon.em-1F202::before {
+  content: "\1F202";
+}
+.em-icon.em-1F237::before {
+  content: "\1F237";
+}
+.em-icon.em-1F236::before {
+  content: "\1F236";
+}
+.em-icon.em-1F22F::before {
+  content: "\1F22F";
+}
+.em-icon.em-1F250::before {
+  content: "\1F250";
+}
+.em-icon.em-1F239::before {
+  content: "\1F239";
+}
+.em-icon.em-1F21A::before {
+  content: "\1F21A";
+}
+.em-icon.em-1F232::before {
+  content: "\1F232";
+}
+.em-icon.em-1F251::before {
+  content: "\1F251";
+}
+.em-icon.em-1F238::before {
+  content: "\1F238";
+}
+.em-icon.em-1F234::before {
+  content: "\1F234";
+}
+.em-icon.em-1F233::before {
+  content: "\1F233";
+}
+.em-icon.em-3297::before {
+  content: "\3297";
+}
+.em-icon.em-3299::before {
+  content: "\3299";
+}
+.em-icon.em-1F23A::before {
+  content: "\1F23A";
+}
+.em-icon.em-1F235::before {
+  content: "\1F235";
+}
+.em-icon.em-1F534::before {
+  content: "\1F534";
+}
+.em-icon.em-1F7E0::before {
+  content: "\1F7E0";
+}
+.em-icon.em-1F7E1::before {
+  content: "\1F7E1";
+}
+.em-icon.em-1F7E2::before {
+  content: "\1F7E2";
+}
+.em-icon.em-1F535::before {
+  content: "\1F535";
+}
+.em-icon.em-1F7E3::before {
+  content: "\1F7E3";
+}
+.em-icon.em-1F7E4::before {
+  content: "\1F7E4";
+}
+.em-icon.em-26AB::before {
+  content: "\26AB";
+}
+.em-icon.em-26AA::before {
+  content: "\26AA";
+}
+.em-icon.em-1F7E5::before {
+  content: "\1F7E5";
+}
+.em-icon.em-1F7E7::before {
+  content: "\1F7E7";
+}
+.em-icon.em-1F7E8::before {
+  content: "\1F7E8";
+}
+.em-icon.em-1F7E9::before {
+  content: "\1F7E9";
+}
+.em-icon.em-1F7E6::before {
+  content: "\1F7E6";
+}
+.em-icon.em-1F7EA::before {
+  content: "\1F7EA";
+}
+.em-icon.em-1F7EB::before {
+  content: "\1F7EB";
+}
+.em-icon.em-2B1B::before {
+  content: "\2B1B";
+}
+.em-icon.em-2B1C::before {
+  content: "\2B1C";
+}
+.em-icon.em-25FC::before {
+  content: "\25FC";
+}
+.em-icon.em-25FB::before {
+  content: "\25FB";
+}
+.em-icon.em-25FE::before {
+  content: "\25FE";
+}
+.em-icon.em-25FD::before {
+  content: "\25FD";
+}
+.em-icon.em-25AA::before {
+  content: "\25AA";
+}
+.em-icon.em-25AB::before {
+  content: "\25AB";
+}
+.em-icon.em-1F536::before {
+  content: "\1F536";
+}
+.em-icon.em-1F537::before {
+  content: "\1F537";
+}
+.em-icon.em-1F538::before {
+  content: "\1F538";
+}
+.em-icon.em-1F539::before {
+  content: "\1F539";
+}
+.em-icon.em-1F53A::before {
+  content: "\1F53A";
+}
+.em-icon.em-1F53B::before {
+  content: "\1F53B";
+}
+.em-icon.em-1F4A0::before {
+  content: "\1F4A0";
+}
+.em-icon.em-1F518::before {
+  content: "\1F518";
+}
+.em-icon.em-1F533::before {
+  content: "\1F533";
+}
+.em-icon.em-1F532::before {
+  content: "\1F532";
+}
+.em-icon.em-1F3C1::before {
+  content: "\1F3C1";
+}
+.em-icon.em-1F6A9::before {
+  content: "\1F6A9";
+}
+.em-icon.em-1F38C::before {
+  content: "\1F38C";
+}
+.em-icon.em-1F3F4::before {
+  content: "\1F3F4";
+}
+.em-icon.em-1F3F3::before {
+  content: "\1F3F3";
+}

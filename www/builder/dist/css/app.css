@@ -157,6 +157,12 @@ input.colorinput {
   overflow: hidden;
   width: 250px;
   background: #fff;
+  cursor: zoom-in;
+}
+
+#message-holder.showAll {
+  overflow: visible;
+  cursor: zoom-out;
 }
 
 .alert {
@@ -551,7 +557,7 @@ hr.widget-inline-seperator {
 }
 
 .grid-stack-item-content.selected {
-  background-color: white;
+  background-color: #cdcdcd;
   border: 5px solid red;
 }
 
@@ -648,6 +654,11 @@ input.disabled {
 
 .iconpicker .iconpicker-items {
   max-height: 600px;
+}
+
+.iconpicker-selected.bg-secondary {
+  background: transparent !important;
+  border: 2px solid orange;
 }
 
 #show-config-holder {

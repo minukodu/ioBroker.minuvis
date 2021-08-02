@@ -1,7 +1,7 @@
 // App
 
 //////////////////////////////////
-var version = "2.0.0-rc.2";
+var version = "2.1.0";
 //////////////////////////////////
 
 var numberOfCols = 18; // 18 cols grid
@@ -293,16 +293,19 @@ function init() {
 
   let MfdIconList = getMfdIcons();
   let MdiIconList = getMdiIcons();
+  let EmIconList = getEmIcons();
   icons = MfdIconList.concat(MdiIconList);
+  icons = icons.concat(EmIconList);
 
 
   // console.error("icons:");
+  // console.error(icons);
   // console.error(Object.keys(icons).length);
 
   $("#icp-mfd").iconpicker({
     title: 'Select Icon',
     //icons: getMfdIcons(),
-    //icons: getMdiIcons(),
+    // icons: getMdiIcons(),
     icons: icons,
     selectedCustomClass: 'bg-secondary',
   });
