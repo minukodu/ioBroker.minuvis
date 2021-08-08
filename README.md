@@ -24,9 +24,11 @@ Version 2 is out now
 
 if you are upgrading from version < 1.3.0 please note:
 
-* upgrade to versio v1.4 first and resave config-files in new place
+* upgrade to version v1.4 first and resave config-files in new place
 * BREAKING CHANGES in version 2 see: https://minukodu.de/en/news/minuvis-20-iobroker-available
 * instructions for update v1 -> v2 see: https://minukodu.de/en/news/update-minuvis-v1-v2
+
+* If you want to keep Version 1, use this Docker-Image: https://hub.docker.com/r/sepp68/minuvis-image
 
 ########################################################################
 
