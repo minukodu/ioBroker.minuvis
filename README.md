@@ -16,16 +16,17 @@ Visualization for all devices
 
 ########################################################################
 
+Version 2 is out now 
+
+########################################################################
+
 # IMPORTANT !!!!
 
 if you are upgrading from version < 1.3.0 please note:
 
-* the storing-place of the config-files has changed
-* you cannot save you config-file at the old place
-* read config-file with the red dropdown-button
-* the file will get a prefix "OF_"
-* now save the config-file
-* prefix will disappear and config-file is saved at new place
+* upgrade to versio v1.4 first and resave config-files in new place
+* BREAKING CHANGES in version 2 see: https://minukodu.de/en/news/minuvis-20-iobroker-available
+* instructions for update v1 -> v2 see: https://minukodu.de/en/news/update-minuvis-v1-v2
 
 ########################################################################
 
