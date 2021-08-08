@@ -75,8 +75,6 @@
                 "pl": "zaktualizowana aplikacja do wersji V2.0.0-alpha",
                 "zh-cn": "将应用更新为V2.0.0-alpha"
             },
-        "version": "1.4.0",
-        "news": {
             "1.4.0": {
                 "en": "updated app to V1.13.0",
                 "de": "App auf V1.13.0 aktualisiert",
