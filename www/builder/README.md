@@ -10,6 +10,42 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.1.0 (2021-07-31)
+* (svallant) new schedex-widget
+* (svallant) new dropDown-widget
+* (svallant) new unicode-emoji-icons
+* (svallant) small layout-changes
+
+### 2.0.0 (2021-05-22)
+* (svallant) security-update of handlebars.js
+* (svallant) bugfix: filename must have 6 characters
+* (svallant) bugfix: import file backuped twice
+* (svallant) show all messages on click on message
+
+### 2.0.0-rc.2 (2021-05-16)
+* (svallant) bugfix in file-delete-function
+* (svallant) bugfix in qrcode-creation
+* (svallant) zoom for output-widget
+* (svallant) zoom for switch-widget
+* (svallant) update for app-icon
+
+### 2.0.0-rc.1 (2021-05-02)
+* (svallant) modal for import-settings
+* (svallant) theme-selection at import
+* (svallant) backup config before import
+* (svallant) config-check of linkbutton
+
+### 2.0.0-beta.1 (2021-04-18)
+* (svallant) color for headline
+* (svallant) noIcon-icon for icon-selection
+
+### 2.0.0-alpha.2 (2021-04-05)
+* (svallant) scaleWidth for imgoutpout and imgbutton
+* (svallant) classes for headline
+* (svallant) display of state or title in builder
+
+### 2.0.0-alpha (2021-03-08)
+* (svallant) several improvements for version 2
 
 ### 1.12.0 (2021-01-21)
 * (svallant) new donut-widget

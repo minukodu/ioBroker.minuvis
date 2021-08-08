@@ -1,6 +1,6 @@
 
 
-function init_widget_dropdown(pageUUID) {
+function init_widget_dropdown(targetUUID, card = false) {
   var widgetDropdown = `
 	<div class="dropdown widget-dropdown ml-3" data-toggle="dropdown">
 	  <button class="btn btn-sm btn-primary dropdown-toggle" type="button">
@@ -13,22 +13,31 @@ function init_widget_dropdown(pageUUID) {
   `;
   var widgetDropdownOption = `<a class="dropdown-item" href="#">OptionText</a>`;
 
-  var widgetId = "wg-" + pageUUID;
+  var widgetId = "wg-" + targetUUID;
 
   $(widgetDropdown)
     .attr("id", widgetId)
-    .appendTo("#" + pageUUID + " .widget-dropdown-holder");
+    .appendTo("#" + targetUUID + " .widget-dropdown-holder");
 
   for (var widget in widgetJSON) {
+    // do not add Card in card
+    if (card === true && widgetJSON[widget].type === "card") {
+      continue;
+    }
+
     //console.log(widget);
     $(widgetDropdownOption)
       .text(widgetJSON[widget].type)
       .attr("data-widgetName", widgetJSON[widget].type)
-      .attr("data-pageUUID", pageUUID)
+      .attr("data-targetUUID", targetUUID)
+      .attr("data-target", targetUUID)
       .click(function () {
         addWidgetToPage(
           $(this).attr("data-widgetName"),
-          $(this).attr("data-pageUUID")
+          $(this).attr("data-targetUUID"),
+          null,
+          grids[targetUUID],
+          card
         );
       })
       .appendTo("#" + widgetId + " .dropdown-menu");
@@ -36,49 +45,44 @@ function init_widget_dropdown(pageUUID) {
   $("#" + widgetId).dropdown();
 }
 
-function init_widget_inline_dropdown(widgettype, uuid) {
-  var widgetInlineDropdown = `
-    <select 
-      data-tooltip="tooltip" 
-      data-placement="top" 
-      data-html="true"  
-      title="select widget-type" 
-      class="form-control form-control-sm widget-inline-dropdown" 
-      onchange="updateWidget(this)" id="
-  `;
-  widgetInlineDropdown += "widgetttypeselect-" + uuid;
-  widgetInlineDropdown += `">`;
+function showPropsTable(uuid, gridstackNode) {
 
-  for (widget in widgetJSON) {
-    //console.log(widget);
-    var selected = ``;
-    if (widgetJSON[widget].type == widgettype) {
-      selected = ` selected="selected" `;
-    }
+  if (gridstackNode) {
+    // console.log("Position: " + gridstackNode.x + ":" + gridstackNode.y);
+    $(".sidebar-settings-table").hide();
+    $(".widget-settings-table").hide();
+    $("#propsTable-" + uuid).show();
+    $("#propsTable-" + uuid + " .widget-settings-table").show();
+    $("#props-" + uuid).show();
 
-    widgetInlineDropdown += `<option value="`;
-    widgetInlineDropdown += widgetJSON[widget].type;
-    widgetInlineDropdown += `"`;
-    widgetInlineDropdown += selected;
-    widgetInlineDropdown += `>`;
-    widgetInlineDropdown += widgetJSON[widget].type;
-    widgetInlineDropdown += `</option>`;
   }
-
-  widgetInlineDropdown += `</select>`;
-  return widgetInlineDropdown;
 }
 
-function init_widget_inline_form(widgettype, uuid) {
+function init_widget_settings_form(widgettype, uuid) {
 
-  var widget_inline_form = `<form class="form-inline widget widget-inline ` + widgettype + ` " id="` + uuid + `" data-widgettype="` + widgettype + `">`;
+  var settingTableHeight = $(window).height() - 150;
 
-  widget_inline_form += `<i class="fas fa-arrows-alt handle"></i>`;
+  var widget_settings_form = `<table id="props-` + uuid + `"class="table table-striped widget-settings-table" data-toggle="table" data-height="` + settingTableHeight + `">`;
 
-  widget_inline_form += init_widget_inline_dropdown(widgettype, uuid);
+  widget_settings_form += `<thead><tr><th>Property</th><th>value</th></tr></thead>`;
+
+  // Type
+  widget_settings_form += `<tr><td class="prop-name">`;
+  widget_settings_form += `type`;
+  widget_settings_form += `</td><td class="prop-widgettype" data-widgettype="` + widgettype + `" >`;
+  widget_settings_form += widgettype;
+  widget_settings_form += `</td></tr>`;
+  // UUID
+  widget_settings_form += `<tr><td class="prop-name">`;
+  widget_settings_form += `UUID`;
+  widget_settings_form += `</td><td class="prop-uuid" data-uuid="` + uuid + `">`;
+  widget_settings_form += uuid;
+  widget_settings_form += `</td></tr>`;
+
+
 
   for (prop in widgetJSON[widgettype]) {
-    //widget_inline_form += prop + " :: " + widgetJSON[widgettype][prop];
+    //widget_settings_form += prop + " :: " + widgetJSON[widgettype][prop];
 
     if (prop !== "type") {
 
@@ -90,14 +94,27 @@ function init_widget_inline_form(widgettype, uuid) {
       // console.log(objProp);
 
       switch (objProp.type) {
+        case "file":
+          formInput += `<select id="` + inputUUID + `"  
+                          class="widget-prop form-control form-control-sm  type-file prop-` + prop + `" 
+                          type="text" 
+                          placeholder="` + prop + `" 
+                          data-prop="` + prop + `" 
+                          data-type="` + objProp.type + `" 
+                          title="` + objProp.default + `" 
+                          data-toggle="modal" 
+                          data-target="#selectModal" 
+                          data-select="fileSelect" 
+                          value="` + objProp.default + `" 
+                          >
+                          <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
+                          </select>`;
+          break;
         case "icon":
           formInput += `<button id="` + inputUUID + `" 
                           class="widget-prop btn btn-light btn-sm icon-select iconSelect type-icon prop-` + prop + `" 
                           type="button" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           data-toggle="modal" 
                           data-target="#selectModal" 
                           data-select="iconSelect" 
@@ -110,27 +127,21 @@ function init_widget_inline_form(widgettype, uuid) {
         case "iconFamily":
           formInput += `<input id="` + inputUUID + `" 
                           type="text" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
                           value="` + objProp.default + `" 
                           disabled="disabled" 
-                          class="widget-prop form-control form-control-sm hidden type-iconFamily iconFamily prop-` + prop + `">`;
+                          class="widget-prop form-control form-control-sm type-iconFamily iconFamily prop-` + prop + `">`;
           break;
         case "stateId":
           formInput += `<select id="` + inputUUID + `"  
                           class="widget-prop form-control form-control-sm  type-stateId prop-` + prop + `" 
                           type="text" 
                           placeholder="` + prop + `" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           data-toggle="modal" 
                           data-target="#selectModal" 
                           data-select="stateSelect" 
@@ -144,19 +155,22 @@ function init_widget_inline_form(widgettype, uuid) {
           formInput += `<input id="` + inputUUID + `" type="text" 
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          class="widget-prop form-control form-control-sm hidden ` + prop + ` prop-` + prop + `"  
+                          title="` + objProp.default + `" 
+                          class="widget-prop form-control form-control-sm ` + prop + ` prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `" 
                           disabled="disabled">`;
           break;
         case "string":
+          onChangeFkt = "return true;";
+          if (prop === "title" || prop === "url") {
+            onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
+          }
           formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
+                          onChange="` + onChangeFkt + `" 
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           class="widget-prop form-control form-control-sm type-string prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `" >`;
@@ -164,7 +178,7 @@ function init_widget_inline_form(widgettype, uuid) {
         case "number":
 
           var min = "";
-          if (objProp.min) {
+          if (objProp.min !== null && objProp.min !== undefined) {
             min = ` min="` + objProp.min + `" `;
           }
           var max = "";
@@ -173,12 +187,9 @@ function init_widget_inline_form(widgettype, uuid) {
           }
 
           formInput += `<input id="` + inputUUID + `" type="number" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           ` + min + max + ` 
                           class="widget-prop form-control form-control-sm type-number prop-` + prop + `"  
                           placeholder="` + prop + `"
@@ -186,23 +197,17 @@ function init_widget_inline_form(widgettype, uuid) {
           break;
         case "color":
           formInput += `<input id="` + inputUUID + `" type="color" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           class="widget-prop form-control form-control-sm colorInput type-color prop-` + prop + `"  
                           value="` + objProp.default + `" >`;
           break;
         case "boolean":
           formInput += `<input id="` + inputUUID + `" type="checkbox" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           class="widget-prop form-control form-control-sm form-check ml-1 mr-1 type-boolean prop-` + prop + `"  
                           value="` + objProp.default + `" 
                           onchange="updateBooleanProp(this)" 
@@ -210,12 +215,9 @@ function init_widget_inline_form(widgettype, uuid) {
           break;
         case "momentjs":
           formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           class="widget-prop form-control form-control-sm nothidden momentjs type-momentjs prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `"  
@@ -224,12 +226,9 @@ function init_widget_inline_form(widgettype, uuid) {
           break;
         case "numeraljs":
           formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           class="widget-prop form-control form-control-sm numeraljs type-numeraljs prop-` + prop + `"  
                           placeholder="` + prop + `" 
                           value="` + objProp.default + `"  >`;
@@ -238,18 +237,16 @@ function init_widget_inline_form(widgettype, uuid) {
           formInput += ``; // TODO
           break;
         case "pageList":
+          onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
           formInput += `<select id="` + inputUUID + `"  
                           class="widget-prop form-control form-control-sm  type-pageList prop-` + prop + `" 
                           type="text" 
                           placeholder="` + prop + `" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true"  
                           data-prop="` + prop + `" 
                           data-type="` + objProp.type + `" 
-                          title="` + objProp.tooltip + `" 
+                          title="` + objProp.default + `" 
                           value="` + objProp.default + `" 
-                          onchange="updatePageListProp(this)" 
+                          onchange="` + onChangeFkt + `" 
                           onfocus="buildPageLinksSelect(this)" 
                           >
                           <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
@@ -272,49 +269,28 @@ function init_widget_inline_form(widgettype, uuid) {
       if (prop == "area1Name" || prop == "showAsIndicator") {
         formInput = `<hr class="widget-inline-seperator"><div class="newlinespacer"></div>` + formInput;
       }
-      widget_inline_form += formInput;
+
+      widget_settings_form += `<tr><td 
+                                      class="prop-name"
+                                      data-tooltip="tooltip" 
+                                      data-placement="top" 
+                                      data-html="true"  
+                                      title="` + objProp.tooltip + `" 
+                              >`;
+      widget_settings_form += prop;
+      widget_settings_form += `</td><td class="prop-value">`;
+
+      widget_settings_form += formInput;
+
+      widget_settings_form += `</td></tr>`;
     }
 
   }
 
-  widget_inline_form += `<span class="widget-buttons">`;
-  widget_inline_form += `<button type="button" 
-                            class="btn btn-sm btn-primary btn-widget-add" 
-                            data-tooltip="tooltip" 
-                            data-placement="top" 
-                            data-html="true" 
-                            title="add widget"  
-                            onclick="addWidget(this)" 
-                            >
-                          <i class="fas fa-plus">
-                          </i></button>`;
-  widget_inline_form += `<button type="button" 
-                            class="btn btn-sm btn-primary btn-widget-copy" 
-                            data-tooltip="tooltip" 
-                            data-placement="top" 
-                            data-html="true" 
-                            title="copy widget"  
-                            onclick="copyWidget(this)" 
-                            >
-                          <i class="far fa-copy">
-                          </i></button>`;
-  widget_inline_form += `<button type="button" 
-                          class="btn btn-sm btn-danger btn-widget-delete" 
-                          data-tooltip="tooltip" 
-                          data-placement="top" 
-                          data-html="true" 
-                          title="delete widget"  
-                          onclick="deleteWidget(this)" 
-                          >
-                        <i class="far fa-trash-alt">
-                        </i></button>`;
-  widget_inline_form += `</span>`;
+  widget_settings_form += `</table>`;
 
-  widget_inline_form += `</form>`;
-
-  return widget_inline_form;
+  return widget_settings_form;
 }
-
 
 function buildPageLinksSelect(element) {
   let options = "";
@@ -331,95 +307,227 @@ function buildPageLinksSelect(element) {
   $(element).html(options);
 }
 
-function deleteWidget(element) {
-  $(element).closest(".widget").remove();
-  addCompactModeClass();
-}
-function copyWidget(element) {
-  var thisWidget = $(element).closest(".widget").first();
-  var uuid = UUID();
-  var copiedWidget = thisWidget
-    .clone(true)
-    .attr("id", uuid)
-    .attr("data-id", uuid);
-  copiedWidget.children().each(function () {
-    $(this).attr("id", UUID());
-  });
-
-
-  // console.log(thisWidget);
-  // console.log(copiedWidget);  
-  thisWidget.after(copiedWidget);
-  addCompactModeClass();
+function deleteWidget(element, uuid, pageUUID) {
+  if (!e) var e = window.event;
+  e.cancelBubble = true;
+  if (e.stopPropagation) e.stopPropagation();
+  console.log("delete Item");
+  // console.log(document.getElementById(uuid).parentElement.parentElement);
+  grids[pageUUID].removeWidget(document.getElementById(uuid).parentElement.parentElement);
+  grids[pageUUID].update();
 }
 
-function addWidget(element) {
-  var thisWidget = $(element).closest(".widget").first();
-  var newWidget = init_widget_inline_form("switch", UUID());
-  thisWidget.after(newWidget);
-  addCompactModeClass();
-}
+function copyWidget(element, uuid, targetUUID, card) {
+  if (!e) var e = window.event;
+  e.cancelBubble = true;
+  if (e.stopPropagation) e.stopPropagation();
+  //read settings
+  var widgetData = readWidgetConfig(uuid);
+  //create newUUID
+  widgetData.UUID = UUID();
+  // add to Page
+  addWidgetToPage(widgetData.type, targetUUID, widgetData, grids[targetUUID], card, true);
 
-function updatePageListProp(element) {
-  //console.log($(element).find("option:selected").text());
-  $(element).val($(element).find("option:selected").text());
-}
-
-function updateWidget(element) {
-  // console.log(element.id);
-  // console.log(element.value);
-
-  elementParent = $(element).parent();
-  newWidgetType = element.value;
-
-  $(elementParent).replaceWith($(init_widget_inline_form(newWidgetType, UUID())));
-  $(".tooltip").remove();
-  $('[data-tooltip="tooltip"]').tooltip();
-
-  addCompactModeClass();
 }
 
 function updateBooleanProp(element) {
   $(element).val($(element)[0].checked);
 }
 
+function selectWidget(element, UUID) {
+  // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.x);
+  // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.y);
+  if (!e) var e = window.event;
+  e.cancelBubble = true;
+  if (e.stopPropagation) e.stopPropagation();
 
-function addWidgetToPage(widget, pageUUID, widgetData = null) {
-  // console.log(widget);
-  //console.log(pageUUID);
-  uuid = UUID();
+  $('.grid-stack-item-content.selected').removeClass('selected');
+  $(element).parent().addClass('selected');
+  showPropsTable(UUID, $(element).closest(".grid-stack-item")[0].gridstackNode);
+}
+
+function updateWidgetSize(item) {
+  // update width and height
+  // console.log(item);
+  // console.log($("#props-" + item.uuid + " .prop-widgetPosX"));
+  $("#props-" + item.uuid + " .prop-widgetPosX").val(item.x);
+  $("#props-" + item.uuid + " .prop-widgetPosX").attr("value", item.x);
+  $("#props-" + item.uuid + " .prop-widgetPosX").attr("data-widgetPosX", item.x);
+  $("#props-" + item.uuid + " .prop-widgetPosY").val(item.y);
+  $("#props-" + item.uuid + " .prop-widgetPosY").attr("value", item.y);
+  $("#props-" + item.uuid + " .prop-widgetPosY").attr("data-widgetPosY", item.y);
+
+
+  $("#props-" + item.uuid + " .prop-widgetHeight").val(item.h);
+  $("#props-" + item.uuid + " .prop-widgetHeight").attr("value", item.h);
+  $("#props-" + item.uuid + " .prop-widgetHeight").attr("data-widgetHeight", item.h);
+  $("#props-" + item.uuid + " .prop-widgetWidth").val(item.w);
+  $("#props-" + item.uuid + " .prop-widgetWidth").attr("value", item.w);
+  $("#props-" + item.uuid + " .prop-widgetWidth").attr("data-widgetWidth", item.w);
+
+  $('.grid-stack-item-content.selected').removeClass('selected');
+  $("#" + item.uuid).parent().addClass('selected');
+  showPropsTable(item.uuid, item);
+
+}
+function handleCardWidget(widgetUUID, nbOfCols = 18) {
+
+  $("#" + widgetUUID).append("<div class='widgetcard widget-dropdown-holder'></div><div class='widgetcard widget-holder'><div class='grid-holder'></div></div>");
+
+  // gridOptions
+  let gridOptions = {
+    column: nbOfCols, // 6,12 or 18
+    minRow: 1, // don't collapse when empty
+    cellHeight: "67px", //"67px",
+    disableOneColumnMode: true,
+    float: true,
+    dragIn: false, // class that can be dragged from outside
+    dragOut: false,
+    dragInOptions: {}, // clone
+    removable: false, // drag-out delete class
+    removeTimeout: 100,
+    resizable: { autoHide: true, handles: 'se,sw' },
+    acceptWidgets: function (el) { return false; } // function example, else can be simple: true | false | '.someClass' value
+  };
+
+  // #######################################################################################
+  // INIT Grid
+  grids[widgetUUID] = GridStack.addGrid($("#" + widgetUUID + " .grid-holder"), gridOptions);
+  $("#" + widgetUUID + " .grid-holder .grid-stack").addClass("grid-stack-" + nbOfCols);
+  // console.log("################## GRID INIT");
+
+  // console.log(widgetUUID);
+  // console.log(grids[widgetUUID]);
+  grids[widgetUUID].on('change', function (event, items) {
+    // console.log(event);
+    // console.log(items);
+    items.forEach(function (item) {
+      updateWidgetSize(item);
+    });
+  });
+  grids[widgetUUID].on('added', function (event, items) {
+    items.forEach(function (item) {
+      updateWidgetSize(item);
+    });
+  });
+
+  init_widget_dropdown(widgetUUID, true);
+
+  // grid= grids[widgetUUID];
+  // grid.addWidget({ w: 2, h: 2, x: 1, y: 1, maxH: 10, content: "content", uuid: "uuid" });
+
+  return widgetUUID;
+}
+
+function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = false, copy = false) {
+  console.log(widget);
+  console.log(widgetData);
+  console.log(targetUUID);
+  console.log(grid);
+
+
+  // filler is now headline
+  if (widget === "filler") {
+    widget = "headline";
+  }
+
+  widgetData = widgetData || {};
+
+  uuid = widgetData.UUID || UUID();
+
+  // info-text to Widgets
+  widgetInfo = "";
+  if (widget !== "card") {
+    if (widgetJSON[widget].stateId) {
+      widgetInfo = widgetData.stateId || widgetJSON[widget].stateId.default;
+    } else if (widgetJSON[widget].title) {
+      widgetInfo = widgetData.title || widgetJSON[widget].title.default;
+    } else if (widgetJSON[widget].url) {
+      widgetInfo = widgetData.url || widgetJSON[widget].url.default;
+    } else if (widgetJSON[widget].targetpage) {
+      widgetInfo = widgetData.targetpage || widgetJSON[widget].targetpage.default;
+    }
+  }
+  $("#" + uuid + " .info").text(widgetInfo);
+  $("#" + uuid + " .info").attr("title", widgetInfo);
+
+  widgetInfoClass = "";
+  if (widgetInfo === "undefined" || widgetInfo === "no state selected" || widgetInfo === "startpage") {
+    widgetInfoClass = "danger";
+  }
+
+  targetClass = "pageWidget";
+  if (card === true || card === "true") { targetClass = "cardWidget" };
 
   if (widgetJSON[widget]) {
 
-    // form
-    $(init_widget_inline_form(widget, uuid, widgetData))
-      .insertBefore("#" + pageUUID + " .widget-holder-end");
+    var content = ``;
+    content += `<div class="grid-widget ` + targetClass + ` ` + widget + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><div class="type" title="` + widget + `">` + widget + `</div>`;
+    content += `<div class="info ` + widgetInfoClass + `" title="` + widgetInfo + `">` + widgetInfo + `</div>`;
+    content += `<span class="link-holder">`;
+    content += `<a href="#" class="link-copy-widget" title="copy widget" onclick="copyWidget(this,'` + uuid + `','` + targetUUID + `','` + card + `');return false;"><i class="fa fa-copy"></i></a>`;
+    content += `<a href="#" class="link-delete-widget" title="delete widget" onclick="deleteWidget(this,'` + uuid + `','` + targetUUID + `');return false;"><i class="far fa-trash-alt"></i></a>`;
+    content += `</span>`;
+    content += `</div>`;
 
+    // check for width and height
+    if (!widgetData.widgetHeight) {
+      widgetData.widgetHeight = 1;
+      if (widget === "card") {
+        widgetData.widgetHeight = 3;
+      }
+    }
+    if (!widgetData.widgetWidth) {
+      widgetData.widgetWidth = 6
+    }
+    let widgetMinHeight = 1;
+    if (widget === "card") {
+      widgetMinHeight = 1; //2
+    }
+    let widgetMinWidth = 1;
+    if (widget === "card") {
+      widgetMinWidth = 1; //6
+    }
+
+    var newWidgetSettings = init_widget_settings_form(widget, uuid, widgetData);
+    $("#settings-holder").append($(newWidgetSettings));
+
+    //add to grid
+    grid.addWidget({ w: widgetData.widgetWidth, h: widgetData.widgetHeight, x: widgetData.widgetPosX, y: widgetData.widgetPosY, minH: widgetMinHeight, maxH: 100, minW: widgetMinWidth, content: content, uuid: uuid });
 
     for (data in widgetData) {
       // console.log("widgetdata");
       // console.log(data);
-      $("#" + uuid + " .prop-" + data).val(widgetData[data]);
-      $("#" + uuid + " .prop-" + data).attr("value", widgetData[data]);
-      $("#" + uuid + " .prop-" + data).attr("data-" + data, widgetData[data]);
+      // console.log(widgetData);
+      // console.log(uuid);
+      $("#props-" + uuid + " .prop-" + data).val(widgetData[data]);
+      $("#props-" + uuid + " .prop-" + data).attr("value", widgetData[data]);
+      $("#props-" + uuid + " .prop-" + data).attr("data-" + data, widgetData[data]);
     }
 
+    // disable input of width and height
+    $("#props-" + uuid + " .prop-widgetHeight").attr("disabled", "disabled");
+    $("#props-" + uuid + " .prop-widgetWidth").attr("disabled", "disabled");
+
     // add icon classes to i-Element
-    var iconElements = $("#" + uuid + " .type-icon i");
+    var iconElements = $("#props-" + uuid + " .type-icon i");
     iconElements.each(function () {
       $(this).removeClass()
         .addClass($(this).parent().val())
-        .addClass($(this).parent().next(".type-iconFamily").val());
+        .addClass($(this).parent().parent().parent().next().find(".type-iconFamily").val());
+
+      // console.log("######################################");
+      // console.log($(this).parent().parent().parent().next().find(".type-iconFamily"));
     });
     // add stateId to state-Select
-    var stateIdElements = $("#" + uuid + " .type-stateId");
+    var stateIdElements = $("#props-" + uuid + " .type-stateId");
     stateIdElements.each(function () {
       var stateId = $(this).attr("data-stateid");
       $(this).find("option").remove();
       $(this).append($('<option selected="selected" value="' + stateId + '">' + stateId + '</option>'));
     });
     // add checked to boolean
-    var booleanElements = $("#" + uuid + " .type-boolean");
+    var booleanElements = $("#props-" + uuid + " .type-boolean");
     booleanElements.each(function () {
       var value = $(this).val();
       if (value == "true") {
@@ -428,8 +536,15 @@ function addWidgetToPage(widget, pageUUID, widgetData = null) {
         $(this).removeAttr("checked");
       }
     });
+    // add file to file-Select
+    var fileElements = $("#props-" + uuid + " .type-file");
+    fileElements.each(function () {
+      var value = $(this).attr("value");
+      $(this).find("option").remove();
+      $(this).append($('<option selected="selected" value="' + value + '">' + value + '</option>'));
+    });
     // add targetpage to pageList
-    var pageListElements = $("#" + uuid + " .type-pageList");
+    var pageListElements = $("#props-" + uuid + " .type-pageList");
     pageListElements.each(function () {
       var pageLink = $(this).attr("value");
       $(this).find("option").remove();
@@ -437,80 +552,32 @@ function addWidgetToPage(widget, pageUUID, widgetData = null) {
     });
 
 
+    $("#props-" + uuid).bootstrapTable();
 
-    $(".tooltip").remove();
-    $('[data-tooltip="tooltip"]').tooltip();
+    $("#props-" + uuid + " .tooltip").remove();
+    $("#props-" + uuid + ' [data-tooltip="tooltip"]').tooltip();
 
+    $("#props-" + uuid)
+      .closest(".bootstrap-table")
+      .attr("id", "propsTable-" + uuid)
+      .addClass("sidebar-settings-table")
+      .hide();
   }
-  // make sortable
-  init_sortable();
-  // set compactMode-Class
-  addCompactModeClass();
-  // return uuid
+
+  if (widget === "card") {
+    let cardUUID = handleCardWidget(uuid);
+    console.log("handleCardWidget returned: " + cardUUID);
+    console.log(widgetData);
+    if (copy === true) {
+      for (var widget in widgetData.widgets) {
+        widgetData.widgets[widget].UUID = UUID();
+        addWidgetToPage(widgetData.widgets[widget].type, cardUUID, widgetData.widgets[widget], grids[cardUUID], true);
+      }
+    }
+  }
+
   return uuid;
 }
-
-function valueSwitcherSelectChange(selectObj, value = 0) {
-  console.log("valueSwitcherSelectChange");
-  console.log(selectObj);
-  widgetUUID = $(selectObj).closest(".widget").attr("id");
-  console.log(widgetUUID);
-
-  if (value == 0) {
-    value = parseInt(selectObj.value, 10);
-  }
-
-  $("#" + widgetUUID + " .button2").hide();
-  $("#" + widgetUUID + " .button3").hide();
-  $("#" + widgetUUID + " .button4").hide();
-  if (value > 1) {
-    $("#" + widgetUUID + " .button2").show();
-  }
-  if (value > 2) {
-    $("#" + widgetUUID + " .button3").show();
-  }
-  if (value > 3) {
-    $("#" + widgetUUID + " .button4").show();
-  }
-}
-
-function timeSwitchAddStateToSwitch(selectedObj) {
-  let widgetUUID = $(selectedObj).closest(".widget").attr("id");
-  let inputClone = $("#" + widgetUUID + " .statesToSwitchInputGroup").first().clone(false);
-  let inputCount = $("#" + widgetUUID + " .statesToSwitchInputGroup").length;
-  let oldClass = "stateSelectToSwitch0";
-  let newClass = "stateSelectToSwitch" + inputCount;
-
-  // console.log(inputClone);
-  // console.log(inputCount);
-
-  inputClone.addClass(newClass);
-  $("#" + widgetUUID + " .formStatesToSwitch").append(inputClone);
-  $("#" + widgetUUID + " ." + newClass + " button").attr("data-select", newClass)
-  $("#" + widgetUUID + " ." + newClass + " ." + oldClass).removeClass(oldClass).addClass(newClass);
-};
-
-function timeSwitchAddStatesToSwitch(thisWidget, idsOfStatesToSet) {
-  console.log("idsOfStatesToSet");
-  console.log(idsOfStatesToSet);
-  let inputCount = 0;
-  let inputForm = $(thisWidget).find(".statesToSwitchInputGroup").first();
-  for (const stateId of idsOfStatesToSet) {
-    let oldClass = "stateSelectToSwitch0";
-    let newClass = "stateSelectToSwitch" + inputCount;
-    if (inputCount == 0) {
-      $(thisWidget).find("input.stateSelectToSwitch0").val(stateId);
-    } else {
-      let newInput = $(inputForm).clone(false);
-      $(newInput).find("input.stateSelectToSwitch0").val(stateId);
-      $(newInput).find("." + oldClass).removeClass(oldClass).addClass(newClass);
-      console.log($(newInput).find("." + newClass + " button"));
-      $(newInput).find("button").attr("data-select", newClass)
-      $(thisWidget).find(".formStatesToSwitch").append(newInput);
-    }
-    inputCount++;
-  }
-};
 
 function validateTimePickerFormat(elem) {
   console.log("validateTimePickerFormat");

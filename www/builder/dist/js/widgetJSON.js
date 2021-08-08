@@ -1,24 +1,201 @@
 var widgetJSON = {
-  gridChanger: {
-    type: "gridChanger",
-    nbOfRows: {
+  card: {
+    type: "card",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of card"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of card"
+    },
+    widgetHeight: {
       type: "number",
       default: "1",
       min: "1",
-      max: "5",
-      tooltip: "number of rows 1 .. 5"
+      max: "99",
+      tooltip: "height of card"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of card"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    showInModal: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show widget in modal"
     },
   },
-  timestamp: {
-    type: "timestamp",
-    stateId: {
-      type: "stateId",
-      default: "no state selected",
-      tooltip: "id of state"
+  datetime: {
+    type: "datetime",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    fontSize: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the font"
+    },
+    format: {
+      type: "momentjs",
+      default: "DD.MM.YYYY[ - ]HH:mm:ss",
+      tooltip: "see at <a href='https://momentjs.com/'  target='_blank'>https://momentjs.com/</a>"
+    },
+    timeOffsetMin: {
+      type: "number",
+      default: "0",
+      tooltip: "time offset in minutes"
+    },
+    showAnalog: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show as analog watch"
     },
   },
-  switch: {
-    type: "switch",
+  headline: {
+    type: "headline",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    fontSize: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the font"
+    },
+    color: {
+      type: "color",
+      default: "#FFFFFF",
+      tooltip: "font-color"
+    },
     titleIcon: {
       type: "icon",
       default: "audio_play",
@@ -33,6 +210,67 @@ var widgetJSON = {
       type: "string",
       default: "NONE",
       tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    },
+    classes: {
+      type: "string",
+      default: "left",
+      tooltip: "additional classnames like left, center, right or custom classnames with space as separator"
+    },
+  },
+  imgButton: {
+    type: "imgButton",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -44,23 +282,147 @@ var widgetJSON = {
       default: "none",
       tooltip: "type of state"
     },
+    setValue: {
+      type: "string",
+      default: "true",
+      tooltip: "value if Button is pressed"
+    },
+    bgImage: {
+      type: "file",
+      default: "---",
+      tooltip: "image base64 encoded"
+    },
+    scaleWidth: {
+      type: "boolean",
+      default: "false",
+      tooltip: "scale image to 100% width not 100% height"
+    },
+  },
+  switch: {
+    type: "switch",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    zoom: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the widget in percent"
+    }
   },
   indicator: {
     type: "indicator",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -93,22 +455,202 @@ var widgetJSON = {
       tooltip: "color when state is false"
     },
   },
+  dropDown: {
+    type: "dropDown",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    values: {
+      type: "string",
+      default: "1,2,3,4,5,6,7,8,9",
+      tooltip: "comma-separated list of values"
+    },
+    descriptions: {
+      type: "string",
+      default: "one,two,three,four,five,six,seven,eight,nine",
+      tooltip: "comma-separated list of descriptions"
+    },
+  },
+  textInput: {
+    type: "textInput",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+  },
   range: {
     type: "range",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -160,73 +702,12 @@ var widgetJSON = {
       default: "5",
       tooltip: "step value of range"
     },
-    unit: {
-      type: "string",
-      default: "%",
-      tooltip: "unit of the value"
-    },
-  },
-  slider: {
-    type: "slider",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
-    },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
-    },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
-    },
-    stateId: {
-      type: "stateId",
-      default: "no state selected",
-      tooltip: "id of state"
-    },
-    stateIdType: {
-      type: "stateIdType",
-      default: "none",
-      tooltip: "type of state"
-    },
-    minIcon: {
-      type: "icon",
-      default: "text_min",
-      tooltip: "icon in minimal position"
-    },
-    minIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of min-icon"
-    },
-    min: {
+    decimals: {
       type: "number",
-      default: "10",
-      tooltip: "minimal value of slider"
-    },
-    maxIcon: {
-      type: "icon",
-      default: "text_max",
-      tooltip: "icon in maximal position"
-    },
-    maxIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of max-icon"
-    },
-    max: {
-      type: "number",
-      default: "90",
-      tooltip: "maximal value of slider"
-    },
-    step: {
-      type: "number",
-      default: "5",
-      tooltip: "step value of slider"
+      default: "0",
+      min: 0,
+      max: 5,
+      tooltip: "digits behind comma"
     },
     unit: {
       type: "string",
@@ -236,20 +717,58 @@ var widgetJSON = {
   },
   donut: {
     type: "donut",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -260,11 +779,6 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
-    },
-    updateOnComplete: {
-      type: "boolean",
-      default: "true",
-      tooltip: "update state at completion instead on every change"
     },
     readOnly: {
       type: "boolean",
@@ -285,6 +799,13 @@ var widgetJSON = {
       type: "number",
       default: "5",
       tooltip: "step value of range"
+    },
+    decimals: {
+      type: "number",
+      default: "0",
+      min: 0,
+      max: 5,
+      tooltip: "digits behind comma"
     },
     color: {
       type: "color",
@@ -316,23 +837,71 @@ var widgetJSON = {
       default: "%",
       tooltip: "unit of the value"
     },
-  },
-  output: {
-    type: "output",
-    titleIcon: {
+    icon: {
       type: "icon",
       default: "audio_play",
-      tooltip: "title-icon"
+      tooltip: "icon on donut"
     },
-    titleIconFamily: {
+    iconFamily: {
       type: "iconFamily",
       default: "mfd-icon",
       tooltip: "family of icon"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+  },
+  output: {
+    type: "output",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -343,6 +912,11 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
+    },
+    zoom: {
+      type: "number",
+      default: "100",
+      tooltip: "size of the widget in percent"
     },
     color: {
       type: "color",
@@ -380,22 +954,60 @@ var widgetJSON = {
       tooltip: "click mouse and see at <a href='http://numeraljs.com/#format' target='_blank'>http://numeraljs.com/#format</a>"
     },
   },
-  openstreetmap: {
-    type: "openstreetmap",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+  schedex: {
+    type: "schedex",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -407,10 +1019,91 @@ var widgetJSON = {
       default: "none",
       tooltip: "type of state"
     },
-    height: {
+    weekdayNames: {
       type: "string",
-      default: "600px",
-      tooltip: "height of the widget"
+      default: "mon,tue,wed,thu,fri,sat,sun",
+      tooltip: "comma-separated list of abbreviations of the weekdays"
+    },
+    activateVisible: {
+      type: "boolean",
+      default: "true",
+      tooltip: "visibility of activate-check-box"
+    },
+    activateLabel: {
+      type: "string",
+      default: "active",
+      tooltip: "label for activate-check-box"
+    },
+    readOnly: {
+      type: "boolean",
+      default: "false",
+      tooltip: "do not allow changes of value"
+    },
+  },
+  openstreetmap: {
+    type: "openstreetmap",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state<br>json-array of latitude and longitude"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
     },
     zoom: {
       type: "number",
@@ -420,20 +1113,58 @@ var widgetJSON = {
   },
   valueswitcher: {
     type: "valueswitcher",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title :: NONE=no title, ICONONLY=show icon without text"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -565,20 +1296,58 @@ var widgetJSON = {
   },
   datepicker: {
     type: "datepicker",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -598,20 +1367,58 @@ var widgetJSON = {
   },
   timepicker: {
     type: "timepicker",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -626,20 +1433,58 @@ var widgetJSON = {
   },
   colorpicker: {
     type: "colorpicker",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -654,20 +1499,58 @@ var widgetJSON = {
   },
   huecolorpicker: {
     type: "huecolorpicker",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -687,21 +1570,60 @@ var widgetJSON = {
   },
   iframe: {
     type: "iframe",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
     },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+
     url: {
       type: "string",
       default: "https://minukodu.de",
@@ -712,29 +1634,63 @@ var widgetJSON = {
       default: "600",
       tooltip: "update-time: reloads widget after xxx seconds"
     },
-    height: {
-      type: "string",
-      default: "600px",
-      tooltip: "height of the widget"
-    },
   },
   flot: {
     type: "flot",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
     },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+
     url: {
       type: "string",
       default: "http://94.130.57.38:8082/flot/index.html?l%5B0%5D%5Bid%5D=yr.0.forecast.day0.temperatureActual&l%5B0%5D%5Boffset%5D=0&l%5B0%5D%5Baggregate%5D=minmax&l%5B0%5D%5Bcolor%5D=%23FF0000&l%5B0%5D%5Bthickness%5D=3&l%5B0%5D%5Bshadowsize%5D=1&l%5B0%5D%5Bname%5D=Temperatur&l%5B0%5D%5Byaxe%5D=rightColor&l%5B0%5D%5Bxaxe%5D=bottom&l%5B0%5D%5BignoreNull%5D=&l%5B0%5D%5BafterComma%5D=1&l%5B0%5D%5Bdashes%5D=false&l%5B0%5D%5BdashLength%5D=10&l%5B0%5D%5BspaceLength%5D=10&l%5B0%5D%5Bmin%5D=-10&l%5B0%5D%5Bmax%5D=40&l%5B0%5D%5Bunit%5D=%C2%B0C&l%5B0%5D%5Bfill%5D=0&l%5B1%5D%5Bid%5D=yr.0.forecast.day0.windSpeed&l%5B1%5D%5Boffset%5D=0&l%5B1%5D%5Baggregate%5D=minmax&l%5B1%5D%5Bcolor%5D=%2300FF00&l%5B1%5D%5Bthickness%5D=1&l%5B1%5D%5Bshadowsize%5D=1&l%5B1%5D%5Bname%5D=WindSpeed&l%5B1%5D%5Byaxe%5D=rightColor&l%5B1%5D%5Bxaxe%5D=off&l%5B1%5D%5BignoreNull%5D=&l%5B1%5D%5BafterComma%5D=0&l%5B1%5D%5Bdashes%5D=false&l%5B1%5D%5BdashLength%5D=10&l%5B1%5D%5BspaceLength%5D=10&l%5B1%5D%5Bmin%5D=0&l%5B1%5D%5Bmax%5D=100&l%5B1%5D%5Bunit%5D=km%2Fh&l%5B1%5D%5Bfill%5D=0.2&l%5B2%5D%5Bid%5D=yr.0.forecast.day0.pressure&l%5B2%5D%5Boffset%5D=0&l%5B2%5D%5Baggregate%5D=minmax&l%5B2%5D%5Bcolor%5D=%2300ffff&l%5B2%5D%5Bmin%5D=900&l%5B2%5D%5Bmax%5D=1100&l%5B2%5D%5Bthickness%5D=3&l%5B2%5D%5Bshadowsize%5D=3&l%5B2%5D%5Bunit%5D=mBar&l%5B2%5D%5Bname%5D=Pressure&l%5B2%5D%5Byaxe%5D=leftColor&l%5B2%5D%5Bxaxe%5D=off&l%5B2%5D%5BignoreNull%5D=&l%5B2%5D%5BafterComma%5D=0&l%5B2%5D%5Bdashes%5D=false&l%5B2%5D%5BdashLength%5D=10&l%5B2%5D%5BspaceLength%5D=10&l%5B2%5D%5Bfill%5D=0&timeType=relative&relativeEnd=now&range=4320&aggregateType=count&aggregateSpan=300&noBorder=noborder&window_bg=%23363636&bg=%23363636&legend=nw&hoverDetail=false&useComma=false&zoom=false&noedit=false&animation=0&x_labels_color=%23ffffff&y_labels_color=%23ffffff",
@@ -744,11 +1700,6 @@ var widgetJSON = {
       type: "number",
       default: "600",
       tooltip: "update-time: reloads widget after xxx seconds"
-    },
-    height: {
-      type: "string",
-      default: "600px",
-      tooltip: "height of the widget"
     },
     area1Name: {
       type: "string",
@@ -787,26 +1738,76 @@ var widgetJSON = {
     },
     area4Time: {
       type: "number",
-      default: "302400",
+      default: "43200",
       tooltip: "time in minutes of area 4"
+    },
+    showInModal: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show widget in modal"
+    },
+    modalWidgetHeight: {
+      type: "number",
+      default: "7",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget in modal"
     },
   },
   jsontable: {
     type: "jsontable",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -846,20 +1847,58 @@ var widgetJSON = {
   },
   html: {
     type: "html",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     stateId: {
       type: "stateId",
@@ -871,105 +1910,172 @@ var widgetJSON = {
       default: "none",
       tooltip: "type of state"
     },
-    height: {
-      type: "string",
-      default: "500px",
-      tooltip: "height of the widget"
-    },
   },
   imgoutput: {
     type: "imgoutput",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     url: {
       type: "string",
       default: "https://minukodu.de/sites/default/files/styles/artikelslideshowfull/public/2020-04/github_webapp_0.jpg",
       tooltip: "url of the image"
     },
-    height: {
-      type: "string",
-      default: "300px",
-      tooltip: "height of the widget"
-    },
-  },
-  filler: {
-    type: "filler",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
-    },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
-    },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
-    },
-    showAsHeader: {
+    urlFromState: {
       type: "boolean",
       default: "false",
-      tooltip: "show like a small header"
+      tooltip: "URL of imgage is value of state"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    scaleWidth: {
+      type: "boolean",
+      default: "false",
+      tooltip: "scale image to 100% width not 100% height"
     },
   },
   linkbutton: {
     type: "linkbutton",
-    titleIcon: {
-      type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
     },
-    titleIconFamily: {
-      type: "iconFamily",
-      default: "mfd-icon",
-      tooltip: "family of icon"
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
     },
-    title: {
-      type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
     },
     targetpage: {
       type: "pageList",
       default: "startpage",
       tooltip: "name of the page to link"
     },
-  },
-  compactModeStart: {
-    type: "compactModeStart",
-    titleIcon: {
+    linkIcon: {
       type: "icon",
-      default: "audio_play",
-      tooltip: "title-icon"
+      default: "edit_numeric_1",
+      tooltip: "icon for button"
     },
-    titleIconFamily: {
+    linkIconFamily: {
       type: "iconFamily",
       default: "mfd-icon",
-      tooltip: "family of icon"
+      tooltip: "family of linkIcon"
     },
-    title: {
+    linkText: {
       type: "string",
-      default: "NONE",
-      tooltip: "title <br/>NONE=no title <br/>ICONONLY=show icon without text<br/>NOICON_+text =show title without icon"
+      default: "startpage",
+      tooltip: "text of link"
     },
-  },
-  compactModeEnd: {
-    type: "compactModeEnd",
+    extLink: {
+      type: "boolean",
+      default: "false",
+      tooltip: "link is to external site"
+    },
+    extUrl: {
+      type: "string",
+      default: "http://minukodu.de",
+      tooltip: "url of external link"
+    },
   },
 };

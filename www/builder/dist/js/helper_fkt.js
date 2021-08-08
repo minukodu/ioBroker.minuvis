@@ -1,29 +1,170 @@
-function importConfig(data = null) {
-
+function importConfig(data = null, widgetWidth = 0, theme = "dark") {
   try {
+    //////////////////////////////////////////////////////////////////////////
     var newConfig = JSON.parse(data);
     // reset all UUIDs
     setAllByKey(newConfig, "UUID", null);
     // console.log(newConfig);
-    localStorage.setItem("appConfig", JSON.stringify(newConfig));
-    generatePages();
+    // generate pages
+    console.log("import from version: " + parseInt(newConfig.version, 10));
+    if (newConfig.version && parseInt(newConfig.version, 10) > 1) {
+      // save in localstorage
+      localStorage.setItem("appConfig", JSON.stringify(newConfig));
+      // show loading
+      workingBuffer.push({
+        jobUUID: UUID(),
+        jobfunction: addWorkingNote,
+        args: "generate pages with import-data",
+      });
+      //generatePages();
+      workingBuffer.push({
+        jobUUID: UUID(),
+        jobfunction: generateImportPages,
+        args: null,
+      });
+      // hide loading
+      workingBuffer.push({
+        jobUUID: UUID(),
+        jobfunction: removeWorkingNote,
+        args: null,
+      });
+    } else {
+      if (socket) {
+        // import V1-Config-data
+        console.log("import older version");
+        if (widgetWidth < 9) {
+          $("#imExport-config-holder textarea").val(data);
+          $("#importSettingsModal").modal("show");
+          return;
+        }
+        // backup old config
+        backupConfig(socket, data);
+        // select theme
+        let headLineTextColor = "#ffffff"; // default white
+        if (theme === "light") {
+          newConfig.theme = CSSJSON.toJSON(getDefaultLightTheme());
+          headLineTextColor = "#1f1f21";
+        } else {
+          newConfig.theme = CSSJSON.toJSON(getDefaultDarkTheme());
+        }
+
+        // get states
+        statesForImport = JSON.parse(JSON.stringify(arrStates));
+
+        // convert compactMode => Card
+        var newConfigString = JSON.stringify(newConfig);
+        newConfigString = newConfigString.replaceAll(
+          '{"UUID":null,"type":"compactModeStart"',
+          '{"UUID":null,"type":"card","widgets":[{"UUID":null,"type":"filler","cardtitle":true'
+        );
+        newConfigString = newConfigString.replaceAll(
+          ',{"UUID":null,"type":"compactModeEnd"}',
+          "]}"
+        );
+        newConfig = JSON.parse(newConfigString);
+        console.log("converted compactMode => card");
+        console.log(newConfig);
+
+        importWidgetWidth = widgetWidth;
+        importWidgetHeight = 1;
+        console.log("importWidgetWidth: " + importWidgetWidth);
+
+        for (var pageId in newConfig.pages) {
+          for (var widgetId in newConfig.pages[pageId].widgets) {
+            // adding stateId-Typ
+            for (var key in statesForImport) {
+              if (
+                statesForImport[key]._id ==
+                newConfig.pages[pageId].widgets[widgetId].stateId
+              ) {
+                newConfig.pages[pageId].widgets[widgetId].stateIdType =
+                  statesForImport[key].common.type;
+                break;
+              }
+            }
+            newConfig.pages[pageId].widgets[widgetId].widgetWidth = importWidgetWidth;
+            newConfig.pages[pageId].widgets[widgetId].widgetHeight = importWidgetHeight;
+            newConfig.pages[pageId].widgets[widgetId].imported = true;
+          }
+          newConfig.pages[pageId].headLineTextColor = headLineTextColor;
+        }
+        // reset banner
+        newConfig.banner = {};
+        newConfig.banner.useBanner = false;
+        newConfig.banner.stateId = "undefined";
+        newConfig.banner.stateIdType = "string";
+        //console.log(newConfig);
+        // save in localstorage
+        localStorage.setItem("appConfig", JSON.stringify(newConfig));
+        // show loading
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: addWorkingNote,
+          args: "generate pages with import-data",
+        });
+        //generatePages();
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: generateImportPages,
+          args: null,
+        });
+        // hide loading
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: removeWorkingNote,
+          args: null,
+        });
+      } else {
+        show_message(
+          "Error importing config: Please connect socket first",
+          "danger"
+        );
+      }
+    }
   } catch (e) {
-    console.error(e)
-    show_message(
-      e,
-      "danger"
-    );
+    console.error(e);
+    show_message(e, "danger");
   }
 }
+function backupConfig(socket, data) {
+  //backup config in file: backup_%ISO_DATE_TIME%.json
+  if (socket) {
+    let fileName = "backup_" + new Date().toISOString() + ".json";
+    socket.emit(
+      "writeFile",
+      metaInfoSocketIO,
+      filePath + "/" + fileName,
+      data,
+      function (error) {
+        if (error) {
+          console.log("Error backup data in file: " + error);
+          console.log(error.name + ": " + error.message);
+          show_message("Error backup data: " + fileName, "danger");
+        } else {
+          console.log("Saving Config in file successfull");
+          show_message("data backup in: " + fileName, "success");
+        }
+      }
+    );
+  }
+};
 
+function generateImportPages() {
+  // helper function
+  // to set fromImport = true
+  generatePages(numberOfCols, true);
+}
 
 function generateConfig(saveInFile = true) {
+  console.log("generating config");
+
   var newConfig = {};
 
   newConfig.timestamp = moment();
+  newConfig.version = version;
 
   newConfig.settings = {};
-  newConfig.settings.LayoutDunkel = !$("#chkLightMode")[0].checked;
+  // newConfig.settings.LayoutDunkel = !$("#chkLightMode")[0].checked;
   newConfig.settings.SplitterOpen = $("#chkSplitterOpen")[0].checked;
 
   newConfig.dataprovider = {};
@@ -31,10 +172,15 @@ function generateConfig(saveInFile = true) {
   newConfig.dataprovider.url = $("#data-url-port").val();
   newConfig.dataprovider.fileName = $("#select-configfile").val() + ".json";
 
-  if (newConfig.dataprovider.fileName.length < 1) {
+  if (newConfig.dataprovider.fileName.length < 6) {
     newConfig.dataprovider.fileName = "config_" + moment() + ".json";
   }
-  if (newConfig.dataprovider.fileName.substring(newConfig.dataprovider.fileName.length - 5, newConfig.dataprovider.fileName.length) !== ".json") {
+  if (
+    newConfig.dataprovider.fileName.substring(
+      newConfig.dataprovider.fileName.length - 5,
+      newConfig.dataprovider.fileName.length
+    ) !== ".json"
+  ) {
     newConfig.dataprovider.fileName = newConfig.dataprovider.fileName + ".json";
   }
 
@@ -44,30 +190,159 @@ function generateConfig(saveInFile = true) {
   $("#pages .page").each(function () {
     var newPage = {};
     newPage.UUID = $(this).attr("id");
-    newPage.title = $(this).find(".page-title").val();
-    newPage.icon = $(this).find(".iconSelectPage").attr("data-icon");
-    newPage.iconFamily = $(this).find(".iconSelectPage").attr("data-family") || defaultIconFamily;
-    newPage.startpage = false;
-    if ($(this).find(".isstartpage").get([0]).checked === true) {
-      newPage.startpage = true;
-    }
-    // pageOrder
-    pageOrder = $(this).find("input.page-order").val();
-    if (pageOrder < 1 || pageOrder > 99) {
-      pageOrder = pageOrderNb;
-    }
-    newPage.order = pageOrder;
-    pageOrderNb++;
 
-    // read widgets
-    newPage.widgets = [];
-    $(this).find(".widget-holder .widget").each(function () {
-      newWidget = {};
-      newWidget.UUID = $(this).attr("id");
-      newWidget.type = $(this).data("widgettype");
+    if ($("#" + newPage.UUID).hasClass("notRendered") === true) {
+      // notRendered ==> Read from localStorage
+      newPage = getPageDatafromLocalStorage(newPage.UUID);
+    } else {
+      newPage.title = $(this).find(".page-title").val();
+      newPage.icon = $(this).find(".iconSelectPage").attr("data-icon");
+      newPage.iconFamily =
+        $(this).find(".iconSelectPage").attr("data-family") ||
+        defaultIconFamily;
+      newPage.startpage = false;
+      if ($(this).find(".isstartpage").get([0]).checked === true) {
+        newPage.startpage = true;
+      }
+      // pageOrder
+      pageOrder = $(this).find("input.page-order").val();
+      if (pageOrder < 1 || pageOrder > 99) {
+        pageOrder = pageOrderNb;
+      }
+      newPage.order = pageOrder;
+      pageOrderNb++;
+
+      // read widgets
+      newPage.widgets = [];
+      $(this)
+        .find(".grid-widget.pageWidget")
+        .each(function () {
+          newWidget = readWidgetConfig($(this).attr("id"));
+          // write value
+          console.log(newWidget);
+          newPage.widgets.push(newWidget);
+        });
+    }
+
+    newConfig.pages.push(newPage);
+  });
+
+  // sort page in config by page.order
+
+  sortedPages = sortPages(newConfig.pages);
+  // console.log(sortedPages);
+
+  //get banner-Data
+  newConfig.banner = {};
+  newConfig.banner.useBanner = $("#bannerUseBanner")[0].checked;
+  newConfig.banner.stateId = $("#bannerStateId").val();
+  newConfig.banner.stateIdType = $("#bannerStateIdType").val();
+
+  //get theme
+  newConfig.theme = CSSJSON.toJSON($("#theme textarea").val());
+
+  //get global CSS for HTML Widgets
+  newConfig.css = CSSJSON.toJSON($("#css textarea").val());
+
+  // get config of AlarmPage
+  newConfig.alarmpage = $("#chkAlarmPage")[0].checked;
+  //console.log(newConfig);
+  //console.log(JSON.stringify(newConfig));
+  localStorage.setItem("appConfig", JSON.stringify(newConfig));
+
+  // qr-code
+  let qrCodeData = {
+    url: newConfig.dataprovider.url,
+    type: newConfig.dataprovider.type,
+    // configStateId: newConfig.dataprovider.configStateId,
+    fileName: newConfig.dataprovider.fileName,
+  };
+  let qrCodeDataString = JSON.stringify(qrCodeData);
+  $("#imExport-qrcode-holder").html("");
+  let qrCode = qrcode(0, 'M');
+  qrCode.addData(qrCodeDataString, "Byte");
+  qrCode.make();
+  $("#imExport-qrcode-holder").html(qrCode.createImgTag());
+  console.log("generated QR-Code");
+  // console.log(saveInFile);
+  // console.log(socket);
+
+  if (saveInFile === true) {
+    // save in File (minukodu-config-FileName)
+    if (socket) {
+      console.log("save in File " + newConfig.dataprovider.fileName);
+      //(filename, data, mode, callback)
+
+      socket.emit(
+        "writeFile",
+        metaInfoSocketIO,
+        filePath + "/" + newConfig.dataprovider.fileName,
+        JSON.stringify(newConfig),
+        function (error) {
+          if (error) {
+            console.log("Error saving Config in file: " + error);
+            console.log(error.name + ": " + error.message);
+            show_message(
+              "Error storing config in: " + newConfig.dataprovider.fileName,
+              "danger"
+            );
+          } else {
+            console.log("Saving Config in file successfull");
+            show_message(
+              "Stored config in: " + newConfig.dataprovider.fileName,
+              "success"
+            );
+            readConfigFiles(); // Update File dropdown
+          }
+        }
+      );
+    } else {
+      show_message(
+        "Error storing config: Please connect socket first",
+        "danger"
+      );
+    }
+  }
+  if (workBufferWorking === true) {
+    workBufferWorking = false;
+  }
+  return newConfig;
+}
+
+function readWidgetConfig(widgetUUID) {
+  var newWidget = {};
+  newWidget.UUID = widgetUUID;
+  var settingsTable = $("#props-" + newWidget.UUID);
+  newWidget.type = settingsTable.find(".prop-widgettype").data("widgettype");
+
+  // read widgets-props
+  settingsTable.find(".widget-prop").each(function () {
+    //console.log(this);
+    propName = $(this).data("prop");
+    propValue = $(this).val();
+    propType = $(this).data("type");
+
+    if (propType == "boolean") {
+      propValue = stringToBoolean(propValue);
+    }
+    if (propType == "number") {
+      propValue = parseFloat(propValue);
+    }
+    newWidget[propName] = propValue;
+  });
+  if (newWidget.type === "card") {
+    newWidget.widgets = [];
+
+    $("#" + newWidget.UUID + " .cardWidget").each(function () {
+      var cardWidget = {};
+      cardWidget.UUID = $(this).attr("id");
+      var settingsTable = $("#props-" + cardWidget.UUID);
+      cardWidget.type = settingsTable
+        .find(".prop-widgettype")
+        .data("widgettype");
 
       // read widgets-props
-      $(this).find(".widget-prop").each(function () {
+      settingsTable.find(".widget-prop").each(function () {
         //console.log(this);
         propName = $(this).data("prop");
         propValue = $(this).val();
@@ -79,81 +354,14 @@ function generateConfig(saveInFile = true) {
         if (propType == "number") {
           propValue = parseFloat(propValue);
         }
-        newWidget[propName] = propValue;
-      })
-      // write value
-      newPage.widgets.push(newWidget);
+        cardWidget[propName] = propValue;
+      });
+      console.log("CardWidget:");
+      console.log(cardWidget);
+      newWidget.widgets.push(cardWidget);
     });
-
-    newConfig.pages.push(newPage);
-  });
-
-  // sort page in config by page.order
-
-  sortedPages = sortPages(newConfig.pages);
-  // console.log(sortedPages);
-
-
-  //get global CSS for HTML Widgets
-  newConfig.css = CSSJSON.toJSON($("#css textarea").val());
-
-  newConfig.alarmpage = false;
-  //console.log(newConfig);
-  //console.log(JSON.stringify(newConfig));
-  localStorage.setItem('appConfig', JSON.stringify(newConfig));
-
-  let qrCodeData = {
-    url: newConfig.dataprovider.url,
-    type: newConfig.dataprovider.type,
-    // configStateId: newConfig.dataprovider.configStateId,
-    fileName: newConfig.dataprovider.fileName,
   }
-  let qrCodeDataString = JSON.stringify(qrCodeData);
-  $("#qrcode-holder").html("");
-  let qrCode = new QRCode(document.getElementById("qrcode-holder"), {
-    width: 200,
-    height: 200
-  });
-  qrCode.makeCode(qrCodeDataString);
-
-
-  if (saveInFile) {
-    // save in File (minukodu-config-FileName)
-    if (socket) {
-      var fileName = newConfig.dataprovider.fileName;
-
-      if (fileName.substring(0, 3) == "OF_") {
-        // file in old Folder
-        fileName = fileName.substring(3);
-        newConfig.dataprovider.fileName = fileName;
-      }
-
-      //(filename, data, mode, callback)
-      var meta = metaInfoSocketIO;
-      if (fileName.substring(0, 3) == "OF_") {
-        // file in old Folder
-        fileName = fileName.substring(3);
-        meta = null;
-      }
-      console.log("save in File " + fileName);
-
-      socket.emit("writeFile", metaInfoSocketIO, filePath + "/" + fileName, JSON.stringify(newConfig),
-        function (error) {
-          if (error) {
-            console.log("Error saving Config in file: " + error);
-            show_message("Error storing config in: " + fileName, "danger");
-          } else {
-            console.log("Saving Config in file successfull");
-            show_message("Stored config in: " + fileName, "success");
-            readConfigFiles(); // Update File dropdown
-          }
-        });
-    } else {
-      show_message("Error storing config: Please connect socket first", "danger");
-    }
-  }
-  return newConfig;
-
+  return newWidget;
 }
 
 function init_sortable() {
@@ -163,7 +371,7 @@ function init_sortable() {
   [].forEach.call(widgetHolders, function (elem) {
     new Sortable(elem, {
       group: {
-        name: "shared"
+        name: "shared",
       },
       animation: 150,
       handle: ".handle",
@@ -178,7 +386,7 @@ function init_sortable() {
       onEnd: function (/**Event*/ evt) {
         // expand Widgets
         // $(".widget").find(".card-body").show();
-      }
+      },
     });
   });
 }
@@ -255,7 +463,6 @@ function connect_socket() {
     readConfigFiles(true);
   });
 
-
   function readVariables() {
     console.log("read variables");
 
@@ -300,12 +507,10 @@ function connect_socket() {
       $("#btn-read-variables").removeAttr("disabled");
       $("#btn-read-variables .btn-label i").attr("class", "fas fa-list");
     });
-  };
-
-};
+  }
+}
 
 function readConfigFiles(oldFolder = false) {
-
   $("#btn-read-configfiles .btn-label i").attr(
     "class",
     "fas fa-spinner fa-spin"
@@ -313,40 +518,41 @@ function readConfigFiles(oldFolder = false) {
   $("#btn-read-configfiles").attr("disabled", "disabled");
 
   var meta = metaInfoSocketIO;
-  var prefix = "";
   if (oldFolder === true) {
     meta = null;
-    prefix = "OF_";
   }
 
   socket.emit("readDir", meta, "/" + filePath + "/", function (err, list) {
-
     console.log(err);
     console.log(list);
     $("#filelist li").remove();
     let fileCount = 0;
     for (let file of list) {
       fileCount++;
-      if (fileCount === list.length && $("#select-configfile").val().length < 1) {
-        var filename = prefix + removeFileExtension(file.file);
-        $("#select-configfile").val(filename)
+      if (
+        fileCount === list.length &&
+        $("#select-configfile").val().length < 1
+      ) {
+        $("#select-configfile").val(removeFileExtension(file.file));
       }
-      if (file.isDir === false && file.file.substring(file.file.length - 5, file.file.length) === ".json") {
-        var filename = prefix + removeFileExtension(file.file);
-        $("#filelist").prepend('<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="selectFileFromList(this)">' + filename + '</a></li>');
+      if (
+        file.isDir === false &&
+        file.file.substring(file.file.length - 5, file.file.length) === ".json"
+      ) {
+        $("#filelist").prepend(
+          '<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="selectFileFromList(this)">' +
+          removeFileExtension(file.file) +
+          "</a></li>"
+        );
       }
     }
 
     show_message("Found " + list.length + " config-files.", "success");
 
-
-
     $("#btn-read-configfiles").removeAttr("disabled");
     $("#btn-read-configfiles .btn-label i").attr("class", "fas fa-list");
-
-  })
-
-};
+  });
+}
 
 function selectFileFromList(elem) {
   //console.log(elem);
@@ -354,53 +560,86 @@ function selectFileFromList(elem) {
   readConfigFromFile(elem.text + ".json");
 }
 
-function readConfigFromFile(fileName) {
-
+function readConfigFromFile(fileName, oldFolder = false) {
   var meta = metaInfoSocketIO;
-  if (fileName.substring(0, 3) == "OF_") {
-    // file in old Folder
-    fileName = fileName.substring(3);
-    meta = null;
-  }
-
+  console.log("readFile: " + filePath + "/" + fileName);
   if (socket) {
-    socket.emit("readFile", meta, filePath + "/" + fileName, function (error, fileData, mimeType) {
-      console.log(mimeType);
-      //console.log(fileData);
-      console.log(error);
-      localStorage.setItem('appConfig', fileData);
-      generatePages();
-    });
+    socket.emit(
+      "readFile",
+      meta,
+      filePath + "/" + fileName,
+      function (error, fileData, mimeType) {
+        console.log(mimeType);
+        //console.log(fileData);
+        console.log(error);
+        var newConfig = JSON.parse(fileData);
+        // check Version
+        var version = 1;
+        if (newConfig.version) {
+          version = parseInt(newConfig.version, 10);
+        }
+        console.log("version of config-file: " + version);
+        show_message("version of config-file: " + version, "success");
+
+        if (version < 2) {
+          // import data from older version
+          importConfig(fileData, 0, null);
+          return;
+        }
+        // version ok
+        localStorage.setItem("appConfig", fileData);
+        // show loading
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: addWorkingNote,
+          args: "read config from file",
+        });
+        //addPage();
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: generatePages,
+          args: numberOfCols,
+        });
+        // hide loading
+        workingBuffer.push({
+          jobUUID: UUID(),
+          jobfunction: removeWorkingNote,
+          args: null,
+        });
+        //generateConfig();
+        //generatePages();
+      }
+    );
   } else {
     show_message("Error loading config: Please connect socket first", "danger");
   }
-};
+}
 
 function deleteConfigFile(fileName) {
-  var meta = metaInfoSocketIO;
   if (socket) {
-    socket.emit("unlink", meta, filePath + "/" + fileName, function (error) {
+    socket.emit("unlink", metaInfoSocketIO, filePath + "/" + fileName, function (error) {
       console.log(error);
       show_message("file deleted: " + fileName, "success");
     });
   } else {
     show_message("Error delete file: Please connect socket first", "danger");
   }
-};
+}
 
 function init_statesTypeahead() {
-
   // console.log("arrStates");
   // console.log(arrStates);
 
   // default to prevent errors
-  let arrStatesTypeAhead = [{
-    _id: "please connect first",
-    common: {
-      name: "no entries yet",
-      type: "undefined"
-    }
-  }];
+  let arrStatesTypeAhead = [
+    {
+      _id: "please connect first",
+      common: {
+        name: "no entries yet",
+        type: "undefined",
+      },
+    },
+  ];
 
   if (arrStates) {
     arrStatesTypeAhead = JSON.parse(JSON.stringify(arrStates));
@@ -414,16 +653,16 @@ function init_statesTypeahead() {
   // console.log("statesSearchEngine");
   // console.log(statesSearchEngine);
 
-  $(".states-select .typeahead").typeahead('destroy');
+  $(".states-select .typeahead").typeahead("destroy");
   $(".states-select .typeahead").typeahead(
     {
       hint: true,
       highlight: true,
-      minLength: 1
+      minLength: 1,
     },
     {
       name: "states",
-      display: '_id',
+      display: "_id",
       // source: statesSearchEngine,
       // source: substringMatcher(variables),
       source: substringMatcher(arrStatesTypeAhead),
@@ -435,9 +674,11 @@ function init_statesTypeahead() {
         //   '</div>'
         // ].join('\n'),
         //suggestion: Handlebars.compile('<div>{{name}} -- {{num}}</div>')
-        suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}&nbsp;&nbsp;&nbsp;&nbsp;type: <stateIdType>{{common.type}}</stateIdType></small></div>')
+        suggestion: Handlebars.compile(
+          "<div><div><strong>{{_id}}</strong></div><div><small>{{common.name}}&nbsp;&nbsp;&nbsp;&nbsp;type: <stateIdType>{{common.type}}</stateIdType></small></div>"
+        ),
         //suggestion: Handlebars.compile('<div><div><strong>{{_id}}</strong></div><div><small>Beschreibung<small></div>')
-      }
+      },
     }
   );
 }
@@ -466,11 +707,10 @@ var substringMatcher = function (strs) {
     // console.log(lowerCaseQ);
 
     var arrFllterResult = strs.filter(function (el) {
-
       let rName = -1;
       try {
         rName = el.common.name.toLowerCase().indexOf(lowerCaseQ);
-      } catch (e) { };
+      } catch (e) { }
 
       return el._id.toLowerCase().indexOf(lowerCaseQ) > -1 || rName > -1;
     });
@@ -481,9 +721,13 @@ var substringMatcher = function (strs) {
   };
 };
 
+function toggleAllMessages() {
+  $("#message-holder").toggleClass("showAll");
+}
+
 function show_message(message = "message", color = "danger") {
   $("#message-holder")
-    .prepend('<div class="message alert" role="alert"></div>')
+    .prepend('<div class="message alert" role="alert" onclick="toggleAllMessages();"></div>')
     .find(".alert")
     .first()
     .addClass("bg-" + color)
@@ -492,7 +736,7 @@ function show_message(message = "message", color = "danger") {
     .fadeOut("fast")
     .fadeIn("fast")
     .fadeOut("fast")
-    .fadeIn("fast")
+    .fadeIn("fast");
 }
 
 function init_modal() {
@@ -508,12 +752,10 @@ function init_modal() {
     $(this).attr("data-class", modalClass);
     $(this).attr("data-button", button.attr("id"));
 
+    $(this).find("div.hide-at-start").hide();
 
-    $(this)
-      .find("div.hide-at-start")
-      .hide();
-
-    //console.log(modalClass);
+    // console.log("modalClass");
+    // console.log(modalClass);
 
     if (modalClass.indexOf("tate") > 0) {
       // do we have states ???
@@ -522,29 +764,26 @@ function init_modal() {
         nbVariables = variables.length;
       }
       var infoBgClass = "bg-success pt-1 pb-1 pl-1";
-      var infoText = nbVariables + " states to select"
+      var infoText = nbVariables + " states to select";
       if (nbVariables < 1) {
         infoBgClass = "bg-danger pt-1 pb-1 pl-1";
-        infoText = "Please connect and read states first !"
+        infoText = "Please connect and read states first !";
       }
       $("#modal-states-info-text")
         .removeClass()
         .addClass(infoBgClass)
         .text(infoText);
 
-      $(this)
-        .find("div.states-select")
-        .show();
+      $(this).find("div.states-select").show();
     }
     if (modalClass.indexOf("iconFa") > 0) {
-      $(this)
-        .find("div.fa-icon-select")
-        .show();
+      $(this).find("div.fa-icon-select").show();
     }
     if (modalClass.indexOf("conSe") > 0) {
-      $(this)
-        .find("div.mfd-icon-select")
-        .show();
+      $(this).find("div.mfd-icon-select").show();
+    }
+    if (modalClass.indexOf("ileSe") > 0) {
+      $(this).find("div.file-select").show();
     }
     //$('#mfd-iconselect-dropdown.dropdown').dropdown("hide");
   });
@@ -557,26 +796,24 @@ function init_modal() {
     submit_modal();
   });
   // init icon dropdown
-  $('.icon-select select').text("");
-  $('.icon-select').load('dist/js/iconselect.html', function () {
-    $('#mfd-iconselect-dropdown.dropdown').dropdown();
+  $(".icon-select select").text("");
+  $(".icon-select").load("dist/js/iconselect.html", function () {
+    $("#mfd-iconselect-dropdown.dropdown").dropdown();
     init_iconselect_dropdown();
   });
-
 }
 
 function init_iconselect_dropdown() {
-
-  $('#mfd-iconselect-dropdown .dropdown-menu button').click(function (event) {
+  $("#mfd-iconselect-dropdown .dropdown-menu button").click(function (event) {
     event.preventDefault();
     console.log($(this).data("iconvalue"));
-    $('#mfd-iconselect-dropdown .icon-holder i')
+    $("#mfd-iconselect-dropdown .icon-holder i")
       .removeClass()
       .addClass("mfd-icon " + $(this).data("iconvalue"))
       .attr("data-iconvalue", $(this).data("iconvalue"));
-    console.log($('#mfd-iconselect-dropdown .icon-holder i'));
+    console.log($("#mfd-iconselect-dropdown .icon-holder i"));
     //$('#mfd-iconselect-dropdown.dropdown').dropdown("hide");
-    $("#selectModal").modal('hide');
+    $("#selectModal").modal("hide");
   });
 }
 
@@ -585,29 +822,54 @@ function submit_modal() {
   var modalClass = $("#selectModal").attr("data-class");
   var buttonId = $("#selectModal").attr("data-button");
   console.log(modalClass);
+  console.log(buttonId);
+
   var value = "";
   if (modalClass.indexOf("tate") > 0) {
     // submit state
     family = "none";
-    stateId = $("#selectModal .tt-input")
-      .not(".tt-hint")
-      .val();
+    stateId = $("#selectModal .tt-input").not(".tt-hint").val();
 
     stateIdType = getStateType(stateId);
 
     console.log(stateId + " :: " + stateIdType);
 
     if (stateId.length > 0) {
-
       $("#" + buttonId).attr("value", stateId);
       $("#" + buttonId).val(stateId);
       $("#" + buttonId + " option").remove();
-      $("#" + buttonId).append($('<option selected="selected" value="' + stateId + '">' + stateId + '</option>'));
-      $("#" + buttonId).next(".stateIdType").attr("value", stateIdType);
-      $("#" + buttonId).next(".stateIdType").val(stateIdType);
+      $("#" + buttonId).append(
+        $(
+          '<option selected="selected" value="' +
+          stateId +
+          '">' +
+          stateId +
+          "</option>"
+        )
+      );
+      let widgetID = $("#" + buttonId)
+        .closest("tbody")
+        .find("td.prop-uuid")
+        .attr("data-uuid");
+      $("#" + widgetID + " .info")
+        .text(stateId)
+        .attr("title", stateId)
+        .removeClass("danger");
+
+      $("#" + buttonId)
+        .closest("tr")
+        .next()
+        .find(".prop-stateIdType")
+        .first()
+        .attr("value", stateIdType);
+      $("#" + buttonId)
+        .closest("tr")
+        .next()
+        .find(".prop-stateIdType")
+        .first()
+        .first()
+        .val(stateIdType);
     }
-
-
   } else if (modalClass.indexOf("conSelectPage") > 0) {
     // submit mfd-icon
     //value = $("#mfd-iconselect-dropdown .icon-holder i").attr("data-iconvalue");
@@ -624,14 +886,11 @@ function submit_modal() {
       value = values[1];
     }
 
-
     console.log("from modal:");
     console.log(value);
 
-    $("#" + pageId + " ." + modalClass)
-      .attr("data-icon", value);
-    $("#" + pageId + " ." + modalClass)
-      .attr("data-family", family);
+    $("#" + pageId + " ." + modalClass).attr("data-icon", value);
+    $("#" + pageId + " ." + modalClass).attr("data-family", family);
     $("#" + pageId + " ." + modalClass)
       .find("i")
       .removeClass()
@@ -641,7 +900,6 @@ function submit_modal() {
       .find("i.nav-icon")
       .removeClass()
       .addClass(family + " nav-icon " + value);
-
   } else if (modalClass.indexOf("conSelect") > 0) {
     // submit mfd-icon
     //value = $("#mfd-iconselect-dropdown .icon-holder i").attr("data-iconvalue");
@@ -658,31 +916,89 @@ function submit_modal() {
       value = values[1];
     }
 
+    //////// no Icon possible
+    if (value === "aa_noIcon") {
+      family = "noIcon";
+    }
 
     console.log("from modal:");
     console.log(value);
 
-
     $("#" + buttonId).attr("value", value);
     $("#" + buttonId).val(value);
     $("#" + buttonId).attr("data-family", family);
-    $("#" + buttonId + " i").removeClass().addClass(family + " " + value);
-    $("#" + buttonId).next(".iconFamily").attr("value", family);
-    $("#" + buttonId).next(".iconFamily").val(family);
+    $("#" + buttonId + " i")
+      .removeClass()
+      .addClass(family + " " + value);
+
+    $("#" + buttonId)
+      .closest("tr")
+      .next()
+      .find(".type-iconFamily")
+      .first()
+      .attr("value", family);
+    $("#" + buttonId)
+      .closest("tr")
+      .next()
+      .find(".type-iconFamily")
+      .first()
+      .first()
+      .val(family);
+  } else if (modalClass.indexOf("ileSelect") > 0) {
+    // submit file
+
+    value = $("#modal-file-preview img").attr("src");
+
+    // console.log("from modal:");
+    // console.log(value);
+
+    $("#" + buttonId).attr("value", value);
+    $("#" + buttonId).val(value);
+    $("#" + buttonId + " option").remove();
+    $("#" + buttonId).append(
+      $(
+        '<option selected="selected" value="' +
+        value +
+        '">' +
+        value +
+        "</option>"
+      )
+    );
+  }
+}
+
+function modalPreviewFile() {
+  const file = $("#modalFileInput")[0].files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener(
+    "load",
+    function () {
+      // convert image file to base64 string
+      $("#modal-file-preview img").attr("src", reader.result);
+    },
+    false
+  );
+
+  if (file) {
+    reader.readAsDataURL(file);
+    // console.log("############# image loaded: ")
+    // console.log(file);
   }
 }
 
 function removeFileExtension(fileName) {
-  return fileName.split('.').slice(0, -1).join('.');
+  return fileName.split(".").slice(0, -1).join(".");
 }
 
 function showPreviewQrCode(url) {
+  console.log("generate QR-Code from: " + url);
   $("#preview-qrcode-holder").html("");
-  let preViewQrCode = new QRCode(document.getElementById("preview-qrcode-holder"), {
-    width: 200,
-    height: 200
-  });
-  preViewQrCode.makeCode(url);
+  let preViewQrCode = qrcode(0, 'M');
+  preViewQrCode.addData(url, "Byte");
+  preViewQrCode.make();
+  $("#preview-qrcode-holder").html(preViewQrCode.createImgTag());
+  //console.log("generated QR-Code from: " + url);
 }
 
 function clearBrowserCache() {
@@ -693,7 +1009,10 @@ function clearBrowserCache() {
 
 function addCompactModeClass() {
   $(".widget").removeClass("compactMode").removeAttr("data-compactMode");
-  $('.compactModeStart').nextUntil('.compactModeEnd', '.widget').addClass("compactMode").attr("data-compactMode", "compactMode");
+  $(".compactModeStart")
+    .nextUntil(".compactModeEnd", ".widget")
+    .addClass("compactMode")
+    .attr("data-compactMode", "compactMode");
 }
 
 function getStateType(stateId) {
@@ -708,7 +1027,9 @@ function getStateType(stateId) {
     arrFllterResult = arrStates.filter(function (el) {
       return el._id === stateId;
     });
-  } catch (e) { console.error(e) }
+  } catch (e) {
+    console.error(e);
+  }
 
   // console.log("arrFllterResult:");
   // console.log(arrFllterResult);
@@ -722,7 +1043,6 @@ function getStateType(stateId) {
 }
 
 function sanitize(input) {
-
   var replacement = "_";
 
   var illegalRe = /[\/\?<>\\:\*\|"]/g;
@@ -731,8 +1051,8 @@ function sanitize(input) {
   var windowsReservedRe = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i;
   var windowsTrailingRe = /[\. ]+$/;
 
-  if (typeof input !== 'string') {
-    throw new Error('Input must be string');
+  if (typeof input !== "string") {
+    throw new Error("Input must be string");
   }
   var sanitized = input
     .replace(illegalRe, replacement)
@@ -770,10 +1090,24 @@ function stringToBoolean(val) {
   }
 }
 
+function addWorkingNote(html = "generating pages") {
+  //console.log(new Date().toISOString() + " show working note: " + html);
+  $("#workingNote .text").html(html);
+  $("#workingNote").css("display", "block");
+  $("#loading").show();
+  workBufferWorking = false;
+}
+function removeWorkingNote() {
+  //console.log(new Date().toISOString() + " hide working note");
+  $("#workingNote").css("display", "none");
+  $("#loading").hide();
+  workBufferWorking = false;
+}
+
 findAllByKey = function (obj, keyToFind) {
   return Object.entries(obj).reduce(
     (acc, [key, value]) =>
-      (key == keyToFind)
+      key == keyToFind
         ? acc.concat(value)
         : typeof value === "object"
           ? acc.concat(this.findAllByKey(value, keyToFind))
@@ -784,9 +1118,10 @@ findAllByKey = function (obj, keyToFind) {
 
 function setAllByKey(obj, keyToFind, valueToSet) {
   for (var key in obj) {
-    if (typeof obj[key] == "object") { setAllByKey(obj[key], keyToFind, valueToSet) }
-    else if (key == keyToFind) {
+    if (typeof obj[key] == "object") {
+      setAllByKey(obj[key], keyToFind, valueToSet);
+    } else if (key == keyToFind) {
       obj[key] = valueToSet;
     }
   }
-};
+}

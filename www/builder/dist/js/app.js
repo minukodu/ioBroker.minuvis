@@ -1,8 +1,10 @@
 // App
 
-//////////////////////
-var version = "1.12.0";
-//////////////////////
+//////////////////////////////////
+var version = "2.1.0";
+//////////////////////////////////
+
+var numberOfCols = 18; // 18 cols grid
 
 var appPath = "minuvis/app/";
 
@@ -14,6 +16,12 @@ var showInfoText = false;
 var filePath = "minukodu";
 var metaInfoSocketIO = "0_userdata.0";
 var defaultIconFamily = "mfd-icon";
+var grids = [];
+
+var workingBuffer = [];
+var workBufferWorking = false;
+var workBufferWorkingEdge = false;
+var workBufferInterval = 1000; //50;
 
 var templates = getTemplates();
 // console.log("getTemplates()");
@@ -21,6 +29,26 @@ var templates = getTemplates();
 
 numeral.locale('de');
 let is_development = false;
+
+workWithBuffer = function () {
+
+  // console.log(workBufferWorking);
+  // console.log(workBufferWorkingEdge);
+
+
+  if (workBufferWorking === false && workBufferWorkingEdge === true) {
+    workingBuffer.splice(0, 1); // remove job
+    workBufferWorkingEdge = workBufferWorking;
+  }
+  if (workingBuffer.length === 0 || workBufferWorking === true) { return };
+
+  console.log(workingBuffer.length);
+  workBufferWorking = true;
+  workBufferWorkingEdge = workBufferWorking;
+
+  retVal = workingBuffer[0].jobfunction(workingBuffer[0].args);
+
+}
 
 function init() {
   console.log("App init");
@@ -44,25 +72,74 @@ function init() {
   $(".nav-item a.menu-link-page").on("click", function (e) {
     e.preventDefault();
     $("#css").hide();
+    $("#theme").hide();
+    $("#bannerData").hide();
     $(".page").hide();
+    $("#imExportSection").hide();
     $($(this).attr("href")).show();
     //console.log($(this).attr("href"));
   });
 
   $("#css-nav-item a").on("click", function (e) {
     e.preventDefault();
+    $(".sidebar-settings-table").hide();
+    $(".widget-settings-table").hide();
     $(".page").hide();
+    $("#theme").hide();
+    $("#bannerData").hide();
+    $("#imExportSection").hide();
     $("#css").show();
   });
 
+  $("#theme-nav-item a").on("click", function (e) {
+    e.preventDefault();
+    $(".sidebar-settings-table").hide();
+    $(".widget-settings-table").hide();
+    $(".page").hide();
+    $("#css").hide();
+    $("#bannerData").hide();
+    $("#imExportSection").hide();
+    $("#theme").show();
+  });
+
+  $("#banner-nav-item a").on("click", function (e) {
+    e.preventDefault();
+    $(".sidebar-settings-table").hide();
+    $(".widget-settings-table").hide();
+    $(".page").hide();
+    $("#css").hide();
+    $("#theme").hide();
+    $("#imExportSection").hide();
+    $("#bannerData").show();
+  });
+
+  $("#btn-theme-light").on("click", function (e) {
+    e.preventDefault();
+    $("#theme textarea").val();
+    $("#theme textarea").val(getDefaultLightTheme());
+  });
+
+  $("#btn-theme-dark").on("click", function (e) {
+    e.preventDefault();
+    $("#theme textarea").val();
+    $("#theme textarea").val(getDefaultDarkTheme());
+  });
+
   $(document).ready(function () {
+    // init banner section
+    initBannerData();
     // init buttons
     $("#btn-ul-config").click(function () {
       $("#upload-config-file").click();
     });
     $("#btn-add-page").click(function () {
       //console.log("Handler for add Page called.");
-      addPage();
+      $("#css").hide();
+      $("#theme").hide();
+      $("#bannerData").hide();
+      $("#imExportSection").hide();
+      var pageUUID = addPage();
+      $("#"+pageUUID).addClass("rendered");
     });
     $("#btn-connect").click(function (event) {
       connect_socket();
@@ -75,11 +152,22 @@ function init() {
       $("#select-configfile").val(sanitize(this.value));
 
     });
+    $("#select-configfile").on("click", function () {
+      //console.log(this.value);
+      this.select();
+
+    });
 
     $("#btn-save-file").on("click", function (event) {
       event.preventDefault();
       console.log("Save config in file");
-      generateConfig();
+      // show loading
+      workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "save config to file" });
+      //addPage();
+      workingBuffer.push({ jobUUID: UUID(), jobfunction: generateConfig, args: true });
+      // hide loading
+      workingBuffer.push({ jobUUID: UUID(), jobfunction: removeWorkingNote, args: null });
+      //generateConfig();
     });
 
     $("#btn-load-file").on("click", function (event) {
@@ -146,33 +234,55 @@ function init() {
       $("#configShowModal").modal("show");
     });
 
-    $("#btn-widgets-collapse-all").click(function (event) {
-      event.preventDefault();
-      $(".widget").find(".card-body").toggle();
-    });
-
     $("#imExport-config-nav-item").click(function (event) {
       event.preventDefault();
       generateConfig(false);
+      console.log("read appconfig");
       var outConfig = localStorage.getItem("appConfig");
-      $("#imExport-config-holder textarea").val("");
-      $("#imExport-config-holder textarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
-      $("#imExportModal").modal("show");
+      console.log("show appconfig");
+      console.log(outConfig);
+
+
+      $("#imExportTextarea").val("");
+      $("#imExportTextarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
+
+      $(".sidebar-settings-table").hide();
+      $(".widget-settings-table").hide();
+      $(".page").hide();
+      $("#theme").hide();
+      $("#bannerData").hide();
+      $("#css").hide();
+      $("#imExportSection").show();
+
+      console.log("show imExportTextarea");
     });
 
     $(".btn-importConfig").click(function (event) {
       event.preventDefault();
-      importConfig($("#imExport-config-holder textarea").val());
+      importConfig($("#imExportTextarea").val(), 0, null);
     });
 
-    // $("#preview-qrcode").click(function (event) {
-    //   event.preventDefault();
-    //   showPreviewQrCode();
-    // });
+    $("#btn-importSettingsConfirm").click(function (event) {
+      event.preventDefault();
+      let widgetWidth = parseInt($("#importSettingsSelectRows input:radio:checked").val(),10);
+      let theme = $("#importSettingsSelectTheme input:radio:checked").val();
+      importConfig($("#imExportTextarea").val(), widgetWidth, theme);
+    });
 
-    addPage();
+    // show loading
+    workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "add page" });
+    //addPage();
+    workingBuffer.push({ jobUUID: UUID(), jobfunction: addPage, args: {} });
+    // show loading
+    workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "generate pages" });
     // if config then generate Pages
-    generatePages();
+    //generatePages();
+    workingBuffer.push({ jobUUID: UUID(), jobfunction: generatePages, args: numberOfCols });
+    // hide loading
+    workingBuffer.push({ jobUUID: UUID(), jobfunction: removeWorkingNote, args: null });
+
+    // start worker
+    wBInterval = setInterval(workWithBuffer, workBufferInterval);
 
   });
 
@@ -183,16 +293,19 @@ function init() {
 
   let MfdIconList = getMfdIcons();
   let MdiIconList = getMdiIcons();
+  let EmIconList = getEmIcons();
   icons = MfdIconList.concat(MdiIconList);
+  icons = icons.concat(EmIconList);
 
 
   // console.error("icons:");
+  // console.error(icons);
   // console.error(Object.keys(icons).length);
 
   $("#icp-mfd").iconpicker({
     title: 'Select Icon',
     //icons: getMfdIcons(),
-    //icons: getMdiIcons(),
+    // icons: getMdiIcons(),
     icons: icons,
     selectedCustomClass: 'bg-secondary',
   });
@@ -207,3 +320,4 @@ function init() {
 }
 
 init();
+
