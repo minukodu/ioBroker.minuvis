@@ -54,6 +54,11 @@ var widgetJSON = {
       default: "false",
       tooltip: "show widget in modal"
     },
+    classes: {
+      type: "string",
+      default: "",
+      tooltip: "additional custom classnames with space as separator"
+    },
   },
   datetime: {
     type: "datetime",
