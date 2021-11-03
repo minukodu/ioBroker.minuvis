@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "minuvis",
-        "version": "2.2.0",
+        "version": "2.2.1",
         "news": {
+            "2.2.1": {
+                "en": "updated app to V2.2.1",
+                "de": "App auf V2.2.1 aktualisiert",
+                "ru": "обновлено приложение до V2.2.1",
+                "pt": "aplicativo atualizado para V2.2.1",
+                "nl": "bijgewerkte app naar V2.2.1",
+                "fr": "application mise à jour à V2.2.1",
+                "it": "app aggiornata alla V2.2.1",
+                "es": "aplicación actualizada a V2.2.1",
+                "pl": "zaktualizowana aplikacja do wersji V2.2.1",
+                "zh-cn": "将应用更新为V2.2.1"
+            },
             "2.2.0": {
                 "en": "updated app to V2.2.0",
                 "de": "App auf V2.2.0 aktualisiert",
@@ -26,282 +38,6 @@
                 "es": "aplicación actualizada a V2.1.0",
                 "pl": "zaktualizowana aplikacja do wersji V2.1.0",
                 "zh-cn": "将应用更新为V2.1.0"
-            },
-            "2.0.0-rc.2": {
-                "en": "updated app to V2.0.0-rc.2",
-                "de": "App auf V2.0.0-rc.2 aktualisiert",
-                "ru": "обновлено приложение до V2.0.0-rc.2",
-                "pt": "aplicativo atualizado para V2.0.0-rc.2",
-                "nl": "bijgewerkte app naar V2.0.0-rc.2",
-                "fr": "application mise à jour à V2.0.0-rc.2",
-                "it": "app aggiornata alla V2.0.0-rc.2",
-                "es": "aplicación actualizada a V2.0.0-rc.2",
-                "pl": "zaktualizowana aplikacja do wersji V2.0.0-rc.2",
-                "zh-cn": "将应用更新为V2.0.0-rc.2"
-            },
-            "2.0.0-rc.1": {
-                "en": "updated app to V2.0.0-rc.1",
-                "de": "App auf V2.0.0-rc.1 aktualisiert",
-                "ru": "обновлено приложение до V2.0.0-rc.1",
-                "pt": "aplicativo atualizado para V2.0.0-rc.1",
-                "nl": "bijgewerkte app naar V2.0.0-rc.1",
-                "fr": "application mise à jour à V2.0.0-rc.1",
-                "it": "app aggiornata alla V2.0.0-rc.1",
-                "es": "aplicación actualizada a V2.0.0-rc.1",
-                "pl": "zaktualizowana aplikacja do wersji V2.0.0-rc.1",
-                "zh-cn": "将应用更新为V2.0.0-rc.1"
-            },
-            "2.0.0-beta.1": {
-                "en": "updated app to V2.0.0-beta.1",
-                "de": "App auf V2.0.0-beta.1 aktualisiert",
-                "ru": "обновлено приложение до V2.0.0-beta.1",
-                "pt": "aplicativo atualizado para V2.0.0-beta.1",
-                "nl": "bijgewerkte app naar V2.0.0-beta.1",
-                "fr": "application mise à jour à V2.0.0-beta.1",
-                "it": "app aggiornata alla V2.0.0-beta.1",
-                "es": "aplicación actualizada a V2.0.0-beta.1",
-                "pl": "zaktualizowana aplikacja do wersji V2.0.0-beta.1",
-                "zh-cn": "将应用更新为V2.0.0-beta.1"
-            },
-            "2.0.0-alpha.2": {
-                "en": "updated app to V2.0.0-alpha.2",
-                "de": "App auf V2.0.0-alpha.2 aktualisiert",
-                "ru": "обновлено приложение до V2.0.0-alpha.2",
-                "pt": "aplicativo atualizado para V2.0.0-alpha.2",
-                "nl": "bijgewerkte app naar V2.0.0-alpha.2",
-                "fr": "application mise à jour à V2.0.0-alpha.2",
-                "it": "app aggiornata alla V2.0.0-alpha.2",
-                "es": "aplicación actualizada a V2.0.0-alpha.2",
-                "pl": "zaktualizowana aplikacja do wersji V2.0.0-alpha.2",
-                "zh-cn": "将应用更新为V2.0.0-alpha.2"
-            },
-            "2.0.0-alpha": {
-                "en": "updated app to V2.0.0-alpha",
-                "de": "App auf V2.0.0-alpha aktualisiert",
-                "ru": "обновлено приложение до V2.0.0-alpha",
-                "pt": "aplicativo atualizado para V2.0.0-alpha",
-                "nl": "bijgewerkte app naar V2.0.0-alpha",
-                "fr": "application mise à jour à V2.0.0-alpha",
-                "it": "app aggiornata alla V2.0.0-alpha",
-                "es": "aplicación actualizada a V2.0.0-alpha",
-                "pl": "zaktualizowana aplikacja do wersji V2.0.0-alpha",
-                "zh-cn": "将应用更新为V2.0.0-alpha"
-            },
-            "1.4.0": {
-                "en": "updated app to V1.13.0",
-                "de": "App auf V1.13.0 aktualisiert",
-                "ru": "обновлено приложение до V1.13.0",
-                "pt": "aplicativo atualizado para V1.13.0",
-                "nl": "bijgewerkte app naar V1.13.0",
-                "fr": "application mise à jour à V1.13.0",
-                "it": "app aggiornata alla V1.13.0",
-                "es": "aplicación actualizada a V1.13.0",
-                "pl": "zaktualizowana aplikacja do wersji 1.13.0",
-                "zh-cn": "将应用更新为V1.13.0"
-            },
-            "1.3.1": {
-                "en": "updated app to V1.12.1",
-                "de": "App auf V1.12.1 aktualisiert",
-                "ru": "обновлено приложение до V1.12.1",
-                "pt": "aplicativo atualizado para V1.12.1",
-                "nl": "bijgewerkte app naar V1.12.1",
-                "fr": "application mise à jour à V1.12.1",
-                "it": "app aggiornata alla V1.12.1",
-                "es": "aplicación actualizada a V1.12.1",
-                "pl": "zaktualizowana aplikacja do wersji 1.12.1",
-                "zh-cn": "将应用更新为V1.12.1"
-            },
-            "1.3.0": {
-                "en": "updated builder and app to V1.12.0",
-                "de": "Builder und App auf V1.12.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.12.0",
-                "pt": "construtor e aplicativo atualizados para V1.12.0",
-                "nl": "bijgewerkte builder en app naar V1.12.0",
-                "fr": "constructeur et application mis à jour à V1.12.0",
-                "it": "builder e app aggiornati alla V1.12.0",
-                "es": "constructor y aplicación actualizados a V1.12.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.12.0",
-                "zh-cn": "将生成器和应用更新为V1.12.0"
-            },
-            "1.2.0": {
-                "en": "updated builder and app to V1.11.0",
-                "de": "Builder und App auf V1.11.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.11.0",
-                "pt": "construtor e aplicativo atualizados para V1.11.0",
-                "nl": "bijgewerkte builder en app naar V1.11.0",
-                "fr": "constructeur et application mis à jour à V1.11.0",
-                "it": "builder e app aggiornati alla V1.11.0",
-                "es": "constructor y aplicación actualizados a V1.11.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.10.0",
-                "zh-cn": "将生成器和应用更新为V1.11.0"
-            },
-            "1.1.0": {
-                "en": "updated builder and app to V1.10.0",
-                "de": "Builder und App auf V1.10.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.10.0",
-                "pt": "construtor e aplicativo atualizados para V1.10.0",
-                "nl": "bijgewerkte builder en app naar V1.10.0",
-                "fr": "constructeur et application mis à jour à V1.10.0",
-                "it": "builder e app aggiornati alla V1.10.0",
-                "es": "constructor y aplicación actualizados a V1.10.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.10.0",
-                "zh-cn": "将生成器和应用更新为V1.10.0"
-            },
-            "1.0.0": {
-                "en": "create version V1.0.0",
-                "de": "Version V1.0.0 erstellen",
-                "ru": "создать версию V1.0.0",
-                "pt": "crie a versão V1.0.0",
-                "nl": "maak versie V1.0.0",
-                "fr": "créer la version V1.0.0",
-                "it": "creare la versione V1.0.0",
-                "es": "crear la versión V1.0.0",
-                "pl": "utwórz wersję V1.0.0",
-                "zh-cn": "创建版本V1.0.0"
-            },
-            "0.0.12": {
-                "en": "updated builder and app to V1.9.0",
-                "de": "Builder und App auf V1.9.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.9.0",
-                "pt": "construtor e aplicativo atualizados para V1.9.0",
-                "nl": "bijgewerkte builder en app naar V1.9.0",
-                "fr": "constructeur et application mis à jour à V1.9.0",
-                "it": "builder e app aggiornati alla V1.9.0",
-                "es": "constructor y aplicación actualizados a V1.9.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.9.0",
-                "zh-cn": "将生成器和应用更新为V1.9.0"
-            },
-            "0.0.11": {
-                "en": "updated builder and app to V1.8.0",
-                "de": "Builder und App auf V1.8.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.8.0",
-                "pt": "construtor e aplicativo atualizados para V1.8.0",
-                "nl": "bijgewerkte builder en app naar V1.8.0",
-                "fr": "constructeur et application mis à jour à V1.8.0",
-                "it": "builder e app aggiornati alla V1.8.0",
-                "es": "constructor y aplicación actualizados a V1.8.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.8.0",
-                "zh-cn": "将生成器和应用更新为V1.8.0"
-            },
-            "0.0.10": {
-                "en": "updated builder and app to V1.6.0",
-                "de": "Builder und App auf V1.6.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.6.0",
-                "pt": "construtor e aplicativo atualizados para V1.6.0",
-                "nl": "bijgewerkte builder en app naar V1.6.0",
-                "fr": "constructeur et application mis à jour à V1.6.0",
-                "it": "builder e app aggiornati alla V1.6.0",
-                "es": "constructor y aplicación actualizados a V1.6.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.6.0",
-                "zh-cn": "将生成器和应用更新为V1.6.0"
-            },
-            "0.0.9": {
-                "en": "updated builder and app to V1.5.0",
-                "de": "Builder und App auf V1.5.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.5.0",
-                "pt": "construtor e aplicativo atualizados para V1.5.0",
-                "nl": "bijgewerkte builder en app naar V1.5.0",
-                "fr": "constructeur et application mis à jour à V1.5.0",
-                "it": "builder e app aggiornati alla V1.5.0",
-                "es": "constructor y aplicación actualizados a V1.5.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.5.0",
-                "zh-cn": "将生成器和应用更新为V1.5.0"
-            },
-            "0.0.8": {
-                "en": "bugfix number of buttons for valueswitcher",
-                "de": "Bugfix Anzahl der Schaltflächen für den valueswitcher",
-                "ru": "исправление количества кнопок для переключателя значений",
-                "pt": "número de bug corrigido de botões para o valueswitcher",
-                "nl": "bugfix aantal knoppen voor waardenwitcher",
-                "fr": "bugfix nombre de boutons pour valueswitcher",
-                "it": "bugfix numero di pulsanti per Value Switcher",
-                "es": "número de botones de corrección de errores para valuewitcher",
-                "pl": "poprawka liczby przycisków przełącznika wartości",
-                "zh-cn": "错误修正值切换器的按钮数量"
-            },
-            "0.0.7": {
-                "en": "updated builder and app to V1.4.0",
-                "de": "Builder und App auf V1.4.0 aktualisiert",
-                "ru": "обновлен конструктор и приложение до версии V1.4.0",
-                "pt": "construtor e aplicativo atualizados para V1.4.0",
-                "nl": "bijgewerkte builder en app naar V1.4.0",
-                "fr": "constructeur et application mis à jour à V1.4.0",
-                "it": "builder e app aggiornati alla V1.4.0",
-                "es": "constructor y aplicación actualizados a V1.4.0",
-                "pl": "zaktualizowany kreator i aplikacja do wersji 1.4.0",
-                "zh-cn": "将生成器和应用更新为V1.4.0"
-            },
-            "0.0.6": {
-                "en": "updated builder and app to V1.2.1",
-                "de": "aktualisiert generator, und die app auf V1.2.1",
-                "ru": "обновлено строитель и приложения для v1.2.1",
-                "pt": "atualizado builder e app para V1.2.1",
-                "nl": "bijgewerkt builder-app naar V1.2.1",
-                "fr": "mise à jour du générateur et de l'application de V1.2.1",
-                "it": "aggiornato generatore e app V1.2.1",
-                "es": "actualizado el generador y aplicación a la V1.2.1",
-                "pl": "aktualizacja budowniczy i aplikacje dla v1.2.1",
-                "zh-cn": "更新的建设者和应用程序，以V1。2.1"
-            },
-            "0.0.5": {
-                "en": "adaptions for iobroker.repositories",
-                "de": "Anpassungen für iobroker.repositories",
-                "ru": "приспособления для iobroker.repositories",
-                "pt": "adaptações para iobroker.repositories",
-                "nl": "aanpassingen voor iobroker.repositories",
-                "fr": "des adaptations pour iobroker.repositories",
-                "it": "adattamenti per iobroker.repositories",
-                "es": "adaptaciones para iobroker.repositories",
-                "pl": "udogodnienia dla iobroker.repositories",
-                "zh-cn": "适应对于iobroker.repositories"
-            },
-            "0.0.4": {
-                "en": "updated Readme.md",
-                "de": "Readme.md aktualisiert",
-                "ru": "обновленный файл Readme.md",
-                "pt": "Readme.md atualizado",
-                "nl": "bijgewerkte Readme.md",
-                "fr": "Readme.md mis à jour",
-                "it": "Readme.md aggiornato",
-                "es": "Readme.md actualizado",
-                "pl": "zaktualizowano plik Readme.md",
-                "zh-cn": "更新了Readme.md"
-            },
-            "0.0.3": {
-                "en": "updated builder and app to V1.0.4",
-                "de": "Builder und App auf V1.0.4 aktualisiert",
-                "ru": "обновленный компоновщик и приложение до V1.0.4",
-                "pt": "construtor e aplicativo atualizados para a V1.0.4",
-                "nl": "bijgewerkte builder en app naar V1.0.4",
-                "fr": "générateur et application mis à jour vers V1.0.4",
-                "it": "builder e app aggiornati a V1.0.4",
-                "es": "generador y aplicación actualizados a V1.0.4",
-                "pl": "zaktualizowany konstruktor i aplikacja do wersji 1.0.4",
-                "zh-cn": "将生成器和应用更新为V1.0.4"
-            },
-            "0.0.2": {
-                "en": "updated builder and app to V1.0.2",
-                "de": "Builder und App auf V1.0.2 aktualisiert",
-                "ru": "обновленный компоновщик и приложение до V1.0.2",
-                "pt": "construtor e aplicativo atualizados para a V1.0.2",
-                "nl": "bijgewerkte builder en app naar V1.0.2",
-                "fr": "générateur et application mis à jour vers V1.0.2",
-                "it": "builder e app aggiornati alla V1.0.2",
-                "es": "generador y aplicación actualizados a V1.0.2",
-                "pl": "zaktualizowany konstruktor i aplikacja do wersji 1.0.2",
-                "zh-cn": "将生成器和应用更新为V1.0.2"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
             }
         },
         "title": "minuVis",
@@ -360,7 +96,7 @@
         },
         "dependencies": [
             {
-                "js-controller": ">=2.0.38",
+                "js-controller": ">=2.0.0",
                 "web": ">=1.5.4"
             }
         ]
