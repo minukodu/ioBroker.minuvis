@@ -246,6 +246,8 @@ function generateConfig(saveInFile = true) {
 
   // get config of AlarmPage
   newConfig.alarmpage = $("#chkAlarmPage")[0].checked;
+  // get config of iobroker.minuaru
+  newConfig.minuaru = $("#chkMinuAru")[0].checked;
   //console.log(newConfig);
   //console.log(JSON.stringify(newConfig));
   localStorage.setItem("appConfig", JSON.stringify(newConfig));

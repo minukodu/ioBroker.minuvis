@@ -201,6 +201,11 @@ var widgetJSON = {
       default: "#FFFFFF",
       tooltip: "font-color"
     },
+    useThemeColor: {
+      type: "boolean",
+      default: "false",
+      tooltip: "use color of theme: var(--text-color)"
+    },
     titleIcon: {
       type: "icon",
       default: "audio_play",
