@@ -10,6 +10,11 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.3.0 (2022-01-30)
+* (svallant) support for ioBroker.minuaru
+* (svallant) fix material-button-bug in default themes
+* (svallant) "useThemeColor" for headline-widget
+
 ### 2.2.0 (2021-09-03)
 * (svallant) custom classnames for card-widget
 

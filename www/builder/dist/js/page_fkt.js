@@ -39,6 +39,11 @@ function generatePages(nbOfCols = 18, fromImport = false) {
   if (appConfig && appConfig.alarmpage) {
     $("#chkAlarmPage")[0].checked = appConfig.alarmpage;
   }
+  // ioBroker.minaru
+  $("#chkMinuAru")[0].checked = false;
+  if (appConfig && appConfig.minuaru) {
+    $("#chkMinuAru")[0].checked = appConfig.minuaru;
+  }
 
   localStorage.removeItem("pageData");
   let pageData = {};

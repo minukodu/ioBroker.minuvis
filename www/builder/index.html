@@ -354,7 +354,7 @@
                 </div>
               </form>
             </li>
-            <li id="alarmPage-nav-item" class="nav-item settings hidden">
+            <li id="alarmPage-nav-item" class="nav-item settings">
               <form>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="chkAlarmPage" />
@@ -362,6 +362,15 @@
                     use Alarmpage
                   </label>
                 </div>
+              </form>
+            </li>
+            <li id="alarmPage-nav-item" class="nav-item settings">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="chkMinuAru" />
+                <label class="form-check-label" for="chkMinuAru">
+                  use ioBroker.minuaru.0
+                </label>
+              </div>
               </form>
             </li>
             <li id="nbOfCols-nav-item" class="nav-item settings mb-2 hidden">
@@ -452,7 +461,8 @@
                   <div id="imExport-qrcode-holder"></div>
                   <div id="imExport-config-holder">
                     <label for="imExportTextarea"></label>
-                    <textarea class="form-control rounded-0" id="imExportTextarea" rows="20" placeholder="paste configuration here">
+                    <textarea class="form-control rounded-0" id="imExportTextarea" rows="20"
+                      placeholder="paste configuration here">
                   </textarea>
                   </div>
                 </div>

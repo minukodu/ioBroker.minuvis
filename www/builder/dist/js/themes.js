@@ -94,7 +94,7 @@ function getDefaultLightTheme() {
         --material-segment-active-background-color: #c8c8c8;
         --material-segment-text-color: rgba(0, 0, 0, 0.38);
         --material-segment-active-text-color: #353535;
-        --material-button-background-color: #2979ff;
+        --material-button-background-color:  var(--highlight-color);
         --material-button-text-color: #ffffff;
         --material-button-disabled-background-color: rgba(79, 79, 79, 0.26);
         --material-button-disabled-color: rgba(0, 0, 0, 0.26);
@@ -247,7 +247,7 @@ function getDefaultDarkTheme() {
         --material-segment-active-background-color: #404040;
         --material-segment-text-color: rgba(255, 255, 255, 0.62);
         --material-segment-active-text-color: #cacaca;
-        --material-button-background-color: #d68600;
+        --material-button-background-color:  var(--highlight-color);
         --material-button-text-color: #ffffff;
         --material-button-disabled-background-color: rgba(176, 176, 176, 0.74);
         --material-button-disabled-color: rgba(255, 255, 255, 0.74);
