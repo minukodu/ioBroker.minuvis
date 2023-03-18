@@ -2,7 +2,6 @@
   "common": {
     "name": "minuvis",
     "version": "2.3.2",
-    "news": {
       "news": {
         "2.3.2": {
             "en": "remove bug in io-package.json file",
@@ -138,5 +137,4 @@
     "native": {},
     "objects": [],
     "instanceObjects": []
-  }
 }
