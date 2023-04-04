@@ -540,6 +540,16 @@ var widgetJSON = {
       default: "one,two,three,four,five,six,seven,eight,nine",
       tooltip: "comma-separated list of descriptions"
     },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
+    },
   },
   textInput: {
     type: "textInput",
@@ -605,6 +615,16 @@ var widgetJSON = {
       type: "stateIdType",
       default: "none",
       tooltip: "type of state"
+    },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
     },
   },
   range: {
@@ -1302,6 +1322,16 @@ var widgetJSON = {
       type: "color",
       default: "#FFFFFF",
       tooltip: "color for value 4"
+    },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
     },
   },
   datepicker: {

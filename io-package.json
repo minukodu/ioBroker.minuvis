@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "minuvis",
-    "version": "2.3.2",
+    "version": "2.3.3",
       "news": {
+        "2.3.3": {
+          "en": "updated app to V2.3.3",
+          "de": "App auf V2.3.3 aktualisiert",
+          "ru": "обновлено приложение до V2.3.3",
+          "pt": "aplicativo atualizado para V2.3.3",
+          "nl": "bijgewerkte app naar V2.3.3",
+          "fr": "application mise à jour à V2.3.3",
+          "it": "app aggiornata alla V2.3.3",
+          "es": "aplicación actualizada a V2.3.3",
+          "pl": "zaktualizowana aplikacja do wersji V2.3.3",
+          "zh-cn": "将应用更新为V2.3.3"
+        },
         "2.3.2": {
             "en": "remove bug in io-package.json file",
             "de": "bug in io-package entfernen. json file",
