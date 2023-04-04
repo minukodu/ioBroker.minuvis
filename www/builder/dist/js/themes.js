@@ -136,9 +136,9 @@ function getDefaultLightTheme() {
         --material-toast-background-color: rgba(0, 0, 0, 0.8);
         --material-toast-text-color: white;
         --material-toast-button-text-color: #bbdefb;
-        --material-select-input-color: var(--material-text-color);
-        --material-select-input-active-color: rgba(0, 0, 0, 0.15);
-        --material-select-input-inactive-color: rgba(0, 0, 0, 0.81);
+        --material-select-input-color: var(--material-text-input-text-color);
+        --material-select-input-active-color: var(--material-text-input-active-color);
+        --material-select-input-inactive-color: var(--material-text-input-active-color);
         --material-select-border-color: rgba(0, 0, 0, 0.12);
         --material-popover-background-color: #fafafa;
         --material-popover-text-color: var(--material-text-color);
@@ -261,9 +261,9 @@ function getDefaultDarkTheme() {
         --material-radio-button-active-color: #00828b;
         --material-radio-button-inactive-color: #8e8e8e;
         --material-radio-button-disabled-color: #505050;
-        --material-text-input-text-color: rgba(255, 255, 255, 0.75);
-        --material-text-input-active-color: rgba(255, 255, 255, 0.75);
-        --material-text-input-inactive-color: rgba(255, 255, 255, 0.3);
+        --material-text-input-text-color: rgba(255, 255, 255, 1.0);
+        --material-text-input-active-color: rgba(255, 255, 255, 1.0);
+        --material-text-input-inactive-color: rgba(255, 255, 255, 1.0);
         --material-search-background-color: #424242;
         --material-dialog-background-color: #424242;
         --material-dialog-text-color: var(--material-text-color);
@@ -289,9 +289,9 @@ function getDefaultDarkTheme() {
         --material-toast-background-color: #ccc;
         --material-toast-text-color: #000;
         --material-toast-button-text-color: #583905;
-        --material-select-input-color: var(--material-text-color);
-        --material-select-input-active-color: rgba(255, 255, 255, 0.85);
-        --material-select-input-inactive-color: rgba(255, 255, 255, 0.19);
+        --material-select-input-color: var(--material-text-input-text-color);
+        --material-select-input-active-color: var(--material-text-input-active-color);
+        --material-select-input-inactive-color: var(--material-text-input-active-color);
         --material-select-border-color: rgba(255, 255, 255, 0.88);
         --material-popover-background-color: var(--material-alert-dialog-background-color);
         --material-popover-text-color: var(--material-text-color);

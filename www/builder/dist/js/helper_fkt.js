@@ -493,6 +493,25 @@ function connect_socket() {
       //console.log(variables);
 
       arrStates = [];
+      // add "undefined" as state in Liste
+      let stateUndefined = {
+        "_id": "undefined",
+        "type": "state",
+        "common": {
+          "name": "undefined",
+          "type": "undefined",
+          "read": false,
+          "write": false,
+          "role": "undefined",
+          "unit": "",
+          "def": 0,
+          "desc": "undefined"
+        },
+        "native": {},
+        "enums": {}
+      }
+      arrStates.push(stateUndefined);
+      // now all states from iobroker
       for (const item in variablesAsObj) {
         arrStates.push(variablesAsObj[item]);
       }
@@ -853,11 +872,14 @@ function submit_modal() {
         .closest("tbody")
         .find("td.prop-uuid")
         .attr("data-uuid");
-      $("#" + widgetID + " .info")
-        .text(stateId)
-        .attr("title", stateId)
-        .removeClass("danger");
-
+      // only update widget .info if main-stateId
+      if ($("#" + buttonId).hasClass("prop-stateId") === true) {
+        $("#" + widgetID + " .info")
+          .text(stateId)
+          .attr("title", stateId)
+          .removeClass("danger");
+      }
+      ///////////////////////
       $("#" + buttonId)
         .closest("tr")
         .next()

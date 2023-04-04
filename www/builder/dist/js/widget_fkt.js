@@ -522,7 +522,9 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
     // add stateId to state-Select
     var stateIdElements = $("#props-" + uuid + " .type-stateId");
     stateIdElements.each(function () {
-      var stateId = $(this).attr("data-stateid");
+      // we can have more than one stateID
+      var stateIdProp = $(this).attr("data-prop");
+      var stateId = $(this).attr("data-" + stateIdProp);
       $(this).find("option").remove();
       $(this).append($('<option selected="selected" value="' + stateId + '">' + stateId + '</option>'));
     });

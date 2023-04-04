@@ -10,6 +10,14 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.3.3 (2023-04-04)
+* (svallant) support invisible widgets
+* (svallant) improve css for disabled widgets
+* (svallant) add undefined in states-id-list
+
+### 2.3.2 (2023-03-24)
+* (svallant) support disabled widgets
+
 ### 2.3.0 (2022-01-30)
 * (svallant) support for ioBroker.minuaru
 * (svallant) fix material-button-bug in default themes
