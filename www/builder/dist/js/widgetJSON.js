@@ -377,7 +377,17 @@ var widgetJSON = {
       type: "number",
       default: "100",
       tooltip: "size of the widget in percent"
-    }
+    },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
+    },
   },
   indicator: {
     type: "indicator",
@@ -744,6 +754,16 @@ var widgetJSON = {
       default: "%",
       tooltip: "unit of the value"
     },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
+    },
   },
   donut: {
     type: "donut",
@@ -876,6 +896,16 @@ var widgetJSON = {
       type: "iconFamily",
       default: "mfd-icon",
       tooltip: "family of icon"
+    },
+    stateIdDisabled: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisDisableInput",
+      tooltip: "id of state to disable widget"
+    },
+    stateIdInvisible: {
+      type: "stateId",
+      default: "0_userdata.0.minuvisInvisibleWidget",
+      tooltip: "id of state to hide widget"
     },
   },
   output: {
