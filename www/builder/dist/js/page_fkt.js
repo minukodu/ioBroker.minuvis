@@ -28,6 +28,28 @@ function generatePages(nbOfCols = 18, fromImport = false) {
     $("#data-url-port").attr("value", appConfig.dataprovider.url);
   }
 
+  // reset and set authentication
+  $("#chkAuth")[0].checked = false;
+  $("#username").val("");
+  $("#password").val("");
+  $("#credentialswrapper").hide();
+
+  try {
+    $("#chkAuth")[0].checked = appConfig.authentication.useauthentication;
+    $("#username").val(appConfig.authentication.username);
+    $("#password").val(atob(appConfig.authentication.password));
+    if (appConfig.authentication.useauthentication === true) {
+      $("#credentialswrapper").show();
+    } else {
+      $("#credentialswrapper").hide();
+    }
+
+  } catch (e) {
+    console.log("error@authdata:");
+    console.log(e);
+  }
+
+
   // settings
   if (appConfig && appConfig.settings) {
     $("#chkSplitterOpen")[0].checked = appConfig.settings.SplitterOpen;
@@ -77,9 +99,8 @@ function generatePages(nbOfCols = 18, fromImport = false) {
     console.log("store pageData in localStorage");
     localStorage.setItem("pageData", JSON.stringify(pageData));
 
-
-
   }
+
   // delete and set banner
   // console.log("write bannerdata:");
   // console.log(appConfig.banner);

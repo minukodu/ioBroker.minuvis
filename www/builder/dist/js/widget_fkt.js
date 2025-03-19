@@ -1,6 +1,4 @@
-
-
-function init_widget_dropdown(targetUUID, card = false) {
+function init_widget_dropdown (targetUUID, card = false) {
   var widgetDropdown = `
 	<div class="dropdown widget-dropdown ml-3" data-toggle="dropdown">
 	  <button class="btn btn-sm btn-primary dropdown-toggle" type="button">
@@ -13,372 +11,726 @@ function init_widget_dropdown(targetUUID, card = false) {
   `;
   var widgetDropdownOption = `<a class="dropdown-item" href="#">OptionText</a>`;
 
-  var widgetId = "wg-" + targetUUID;
+  var widgetId = 'wg-' + targetUUID;
 
-  $(widgetDropdown)
-    .attr("id", widgetId)
-    .appendTo("#" + targetUUID + " .widget-dropdown-holder");
+  $ (widgetDropdown)
+    .attr ('id', widgetId)
+    .appendTo ('#' + targetUUID + ' .widget-dropdown-holder');
 
   for (var widget in widgetJSON) {
     // do not add Card in card
-    if (card === true && widgetJSON[widget].type === "card") {
+    if (card === true && widgetJSON[widget].type === 'card') {
+      continue;
+    }
+    // do not add arrayitems
+    if (widgetJSON[widget].type === 'arrayItem') {
       continue;
     }
 
     //console.log(widget);
-    $(widgetDropdownOption)
-      .text(widgetJSON[widget].type)
-      .attr("data-widgetName", widgetJSON[widget].type)
-      .attr("data-targetUUID", targetUUID)
-      .attr("data-target", targetUUID)
-      .click(function () {
-        addWidgetToPage(
-          $(this).attr("data-widgetName"),
-          $(this).attr("data-targetUUID"),
+    $ (widgetDropdownOption)
+      .text (widgetJSON[widget].type)
+      .attr ('data-widgetName', widgetJSON[widget].type)
+      .attr ('data-targetUUID', targetUUID)
+      .attr ('data-target', targetUUID)
+      .click (function () {
+        addWidgetToPage (
+          $ (this).attr ('data-widgetName'),
+          $ (this).attr ('data-targetUUID'),
           null,
           grids[targetUUID],
           card
         );
       })
-      .appendTo("#" + widgetId + " .dropdown-menu");
+      .appendTo ('#' + widgetId + ' .dropdown-menu');
   }
-  $("#" + widgetId).dropdown();
+  $ ('#' + widgetId).dropdown ();
 }
 
-function showPropsTable(uuid, gridstackNode) {
-
+function showPropsTable (uuid, gridstackNode) {
   if (gridstackNode) {
     // console.log("Position: " + gridstackNode.x + ":" + gridstackNode.y);
-    $(".sidebar-settings-table").hide();
-    $(".widget-settings-table").hide();
-    $("#propsTable-" + uuid).show();
-    $("#propsTable-" + uuid + " .widget-settings-table").show();
-    $("#props-" + uuid).show();
-
+    $ ('.sidebar-settings-table').hide ();
+    $ ('.widget-settings-table').hide ();
+    $ ('#propsTable-' + uuid).show ();
+    $ ('#propsTable-' + uuid + ' .widget-settings-table').show ();
+    $ ('#props-' + uuid).show ();
   }
 }
 
-function init_widget_settings_form(widgettype, uuid) {
+function init_widget_settings_form (widgettype, uuid) {
+  var settingTableHeight = $ (window).height () - 150;
 
-  var settingTableHeight = $(window).height() - 150;
-
-  var widget_settings_form = `<table id="props-` + uuid + `"class="table table-striped widget-settings-table" data-toggle="table" data-height="` + settingTableHeight + `">`;
+  var widget_settings_form =
+    `<table id="props-` +
+    uuid +
+    `"class="table table-striped widget-settings-table" data-toggle="table" data-height="` +
+    settingTableHeight +
+    `">`;
 
   widget_settings_form += `<thead><tr><th>Property</th><th>value</th></tr></thead>`;
 
   // Type
   widget_settings_form += `<tr><td class="prop-name">`;
   widget_settings_form += `type`;
-  widget_settings_form += `</td><td class="prop-widgettype" data-widgettype="` + widgettype + `" >`;
+  widget_settings_form +=
+    `</td><td class="prop-widgettype" data-widgettype="` + widgettype + `" >`;
   widget_settings_form += widgettype;
   widget_settings_form += `</td></tr>`;
   // UUID
   widget_settings_form += `<tr><td class="prop-name">`;
   widget_settings_form += `UUID`;
-  widget_settings_form += `</td><td class="prop-uuid" data-uuid="` + uuid + `">`;
+  widget_settings_form +=
+    `</td><td class="prop-uuid" data-uuid="` + uuid + `">`;
   widget_settings_form += uuid;
   widget_settings_form += `</td></tr>`;
 
-
-
+  let key = 0; // no array key
   for (prop in widgetJSON[widgettype]) {
-    //widget_settings_form += prop + " :: " + widgetJSON[widgettype][prop];
-
-    if (prop !== "type") {
-
-      var formInput = "";
-      var inputUUID = UUID();
-      var objProp = widgetJSON[widgettype][prop];
-
-      // console.log(prop);
-      // console.log(objProp);
-
-      switch (objProp.type) {
-        case "file":
-          formInput += `<select id="` + inputUUID + `"  
-                          class="widget-prop form-control form-control-sm  type-file prop-` + prop + `" 
-                          type="text" 
-                          placeholder="` + prop + `" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          data-toggle="modal" 
-                          data-target="#selectModal" 
-                          data-select="fileSelect" 
-                          value="` + objProp.default + `" 
-                          >
-                          <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
-                          </select>`;
-          break;
-        case "icon":
-          formInput += `<button id="` + inputUUID + `" 
-                          class="widget-prop btn btn-light btn-sm icon-select iconSelect type-icon prop-` + prop + `" 
-                          type="button" 
-                          title="` + objProp.default + `" 
-                          data-toggle="modal" 
-                          data-target="#selectModal" 
-                          data-select="iconSelect" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          value="` + objProp.default + `" type="text">
-                            <i class="mfd-icon ` + objProp.default + `"></i>
-                        </button>`;
-          break;
-        case "iconFamily":
-          formInput += `<input id="` + inputUUID + `" 
-                          type="text" 
-                          title="` + objProp.default + `" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          value="` + objProp.default + `" 
-                          disabled="disabled" 
-                          class="widget-prop form-control form-control-sm type-iconFamily iconFamily prop-` + prop + `">`;
-          break;
-        case "stateId":
-          formInput += `<select id="` + inputUUID + `"  
-                          class="widget-prop form-control form-control-sm  type-stateId prop-` + prop + `" 
-                          type="text" 
-                          placeholder="` + prop + `" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          data-toggle="modal" 
-                          data-target="#selectModal" 
-                          data-select="stateSelect" 
-                          value="` + objProp.default + `" 
-                          >
-                          <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
-                          </select>`;
-
-          break;
-        case "stateIdType":
-          formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm ` + prop + ` prop-` + prop + `"  
-                          placeholder="` + prop + `" 
-                          value="` + objProp.default + `" 
-                          disabled="disabled">`;
-          break;
-        case "string":
-          onChangeFkt = "return true;";
-          if (prop === "title" || prop === "url") {
-            onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
-          }
-          formInput += `<input id="` + inputUUID + `" type="text" 
-                          onChange="` + onChangeFkt + `" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm type-string prop-` + prop + `"  
-                          placeholder="` + prop + `" 
-                          value="` + objProp.default + `" >`;
-          break;
-        case "number":
-
-          var min = "";
-          if (objProp.min !== null && objProp.min !== undefined) {
-            min = ` min="` + objProp.min + `" `;
-          }
-          var max = "";
-          if (objProp.max) {
-            max = ` max="` + objProp.max + `" `;
-          }
-
-          formInput += `<input id="` + inputUUID + `" type="number" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          ` + min + max + ` 
-                          class="widget-prop form-control form-control-sm type-number prop-` + prop + `"  
-                          placeholder="` + prop + `"
-                          value="` + objProp.default + `" >`;
-          break;
-        case "color":
-          formInput += `<input id="` + inputUUID + `" type="color" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm colorInput type-color prop-` + prop + `"  
-                          value="` + objProp.default + `" >`;
-          break;
-        case "boolean":
-          formInput += `<input id="` + inputUUID + `" type="checkbox" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm form-check ml-1 mr-1 type-boolean prop-` + prop + `"  
-                          value="` + objProp.default + `" 
-                          onchange="updateBooleanProp(this)" 
-                          >`;
-          break;
-        case "momentjs":
-          formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm nothidden momentjs type-momentjs prop-` + prop + `"  
-                          placeholder="` + prop + `" 
-                          value="` + objProp.default + `"  
-                          onkeyup="validateTimePickerFormat(this)" >
-                          <span class="formatExample nothidden">Example: ` + moment().format(objProp.default) + `</span>`;
-          break;
-        case "numeraljs":
-          formInput += `<input id="` + inputUUID + `" type="text" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          class="widget-prop form-control form-control-sm numeraljs type-numeraljs prop-` + prop + `"  
-                          placeholder="` + prop + `" 
-                          value="` + objProp.default + `"  >`;
-          break;
-        case "colorFormat":
-          formInput += ``; // TODO
-          break;
-        case "pageList":
-          onChangeFkt = "$('#" + uuid + " .info').text($(this)[0].value).removeClass('danger');";
-          formInput += `<select id="` + inputUUID + `"  
-                          class="widget-prop form-control form-control-sm  type-pageList prop-` + prop + `" 
-                          type="text" 
-                          placeholder="` + prop + `" 
-                          data-prop="` + prop + `" 
-                          data-type="` + objProp.type + `" 
-                          title="` + objProp.default + `" 
-                          value="` + objProp.default + `" 
-                          onchange="` + onChangeFkt + `" 
-                          onfocus="buildPageLinksSelect(this)" 
-                          >
-                          <option selected="selected" value="` + objProp.default + `">` + objProp.default + `</option>                          
-                          </select>`;
-          break;
-
-
-
-        default:
-          //formInput += `<input type="number" class="form-control" placeholder="`;
-          formInput += prop + " ?????????????????????";
-          // formInput += `">`; 
-          break;
-      }
-      // seperator after prop
-      if (prop == "stateIdType" || prop == "url") {
-        formInput += `<hr class="widget-inline-seperator"><div class="newlinespacer"></div>`;
-      }
-      // seperator before prop
-      if (prop == "area1Name" || prop == "showAsIndicator") {
-        formInput = `<hr class="widget-inline-seperator"><div class="newlinespacer"></div>` + formInput;
-      }
-
-      widget_settings_form += `<tr><td 
-                                      class="prop-name"
-                                      data-tooltip="tooltip" 
-                                      data-placement="top" 
-                                      data-html="true"  
-                                      title="` + objProp.tooltip + `" 
-                              >`;
-      widget_settings_form += prop;
-      widget_settings_form += `</td><td class="prop-value">`;
-
-      widget_settings_form += formInput;
-
-      widget_settings_form += `</td></tr>`;
-    }
-
+    widget_settings_form += createWidgetFormByPropType (
+      widgetJSON,
+      widgettype,
+      prop,
+      key
+    );
   }
-
   widget_settings_form += `</table>`;
 
   return widget_settings_form;
 }
 
-function buildPageLinksSelect(element) {
-  let options = "";
-  let value = $(element).val();
-  $(".page .page-title").each(function () {
-    console.log(this);
-    selected = "";
-    if ($(this).val() == value) {
+function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
+  //console.log("createWidgetFormByPropType: " + widgettype);
+  var widget_settings_form = '';
+
+  //widget_settings_form += prop + " :: " + widgetJSON[widgettype][prop];
+  //console.log ('createWidgetFormByPropType: prop: ' + prop);
+
+  if (prop !== 'type') {
+    var formInput = '';
+    var inputUUID = UUID ();
+    var objProp = widgetJSON[widgettype][prop];
+
+    // handle array
+    if (objProp && objProp.type && objProp.type === 'array') {
+      // array has items, so count up
+      for (let key = 1; key < objProp.maxItems + 1; key++) {
+        for (prop in widgetJSON[objProp.items]) {
+          widget_settings_form += createWidgetFormByPropType (
+            widgetJSON,
+            objProp.items,
+            prop,
+            key
+          );
+        }
+      }
+      return widget_settings_form;
+    }
+
+    // console.log(prop);
+    // console.log(objProp);
+    // console.log("createWidgetFormByPropType: " + objProp.type);
+
+    //handle array keys
+    let arrayclass = '';
+    let itemOfArraySpan = '';
+    let arrayWidgetType = 'no-array';
+    if (key > 0) {
+      arrayclass = 'in-array ' + widgettype;
+      itemOfArraySpan = `<span class="itemofarrayspan">${widgettype} ${key}: </span>`;
+      arrayWidgetType = widgettype;
+    }
+
+    switch (objProp.type) {
+      case 'file':
+        formInput +=
+          `<select id="` +
+          inputUUID +
+          `"  
+                          class="widget-prop form-control form-control-sm  type-file prop-` +
+          prop +
+          `" 
+                          type="text" 
+                          placeholder="` +
+          prop +
+          `" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          data-toggle="modal" 
+                          data-target="#selectModal" 
+                          data-select="fileSelect" 
+                          value="` +
+          objProp.default +
+          `" 
+                          >
+                          <option selected="selected" value="` +
+          objProp.default +
+          `">` +
+          objProp.default +
+          `</option>                          
+                          </select>`;
+        break;
+      case 'icon':
+        formInput +=
+          `<button id="` +
+          inputUUID +
+          `" 
+                          class="widget-prop btn btn-light btn-sm icon-select iconSelect type-icon prop-` +
+          prop +
+          `" 
+                          type="button" 
+                          title="` +
+          objProp.default +
+          `" 
+                          data-toggle="modal" 
+                          data-target="#selectModal" 
+                          data-select="iconSelect" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          value="` +
+          objProp.default +
+          `" type="text">
+                            <i class="mfd-icon ` +
+          objProp.default +
+          `"></i>
+                        </button>`;
+        break;
+      case 'iconFamily':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" 
+                          type="text" 
+                          title="` +
+          objProp.default +
+          `" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          value="` +
+          objProp.default +
+          `" 
+                          disabled="disabled" 
+                          class="widget-prop form-control form-control-sm type-iconFamily iconFamily prop-` +
+          prop +
+          `">`;
+        break;
+      case 'stateId':
+        formInput +=
+          `<select id="` +
+          inputUUID +
+          `"  
+                          class="widget-prop form-control form-control-sm  type-stateId prop-` +
+          prop +
+          `" 
+                          type="text" 
+                          placeholder="` +
+          prop +
+          `" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          data-toggle="modal" 
+                          data-target="#selectModal" 
+                          data-select="stateSelect" 
+                          value="` +
+          objProp.default +
+          `" 
+                          >
+                          <option selected="selected" value="` +
+          objProp.default +
+          `">` +
+          objProp.default +
+          `</option>                          
+                          </select>`;
+
+        break;
+      case 'stateIdType':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="text" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm ` +
+          prop +
+          ` prop-` +
+          prop +
+          `"  
+                          placeholder="` +
+          prop +
+          `" 
+                          value="` +
+          objProp.default +
+          `" 
+                          disabled="disabled">`;
+        break;
+      case 'string':
+        onChangeFkt = 'return true;';
+        if (prop === 'title' || prop === 'url') {
+          onChangeFkt =
+            "$('#" +
+            uuid +
+            " .info').text($(this)[0].value).removeClass('danger');";
+        }
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="text" 
+                          onChange="` +
+          onChangeFkt +
+          `" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm type-string prop-` +
+          prop +
+          `"  
+                          placeholder="` +
+          prop +
+          `" 
+                          value="` +
+          objProp.default +
+          `" >`;
+        break;
+      case 'number':
+        var min = '';
+        if (objProp.min !== null && objProp.min !== undefined) {
+          min = ` min="` + objProp.min + `" `;
+        }
+        var max = '';
+        if (objProp.max) {
+          max = ` max="` + objProp.max + `" `;
+        }
+
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="number" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          ` +
+          min +
+          max +
+          ` 
+                          class="widget-prop form-control form-control-sm type-number prop-` +
+          prop +
+          `"  
+                          placeholder="` +
+          prop +
+          `"
+                          value="` +
+          objProp.default +
+          `" >`;
+        break;
+      case 'color':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="color" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm colorInput type-color prop-` +
+          prop +
+          `"  
+                          value="` +
+          objProp.default +
+          `" >`;
+        break;
+      case 'boolean':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="checkbox" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm form-check ml-1 mr-1 type-boolean prop-` +
+          prop +
+          `"  
+                          value="` +
+          objProp.default +
+          `" 
+                          onchange="updateBooleanProp(this)" 
+                          >`;
+        break;
+      case 'momentjs':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="text" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm nothidden momentjs type-momentjs prop-` +
+          prop +
+          `"  
+                          placeholder="` +
+          prop +
+          `" 
+                          value="` +
+          objProp.default +
+          `"  
+                          onkeyup="validateTimePickerFormat(this)" >
+                          <span class="formatExample nothidden">Example: ` +
+          moment ().format (objProp.default) +
+          `</span>`;
+        break;
+      case 'numeraljs':
+        formInput +=
+          `<input id="` +
+          inputUUID +
+          `" type="text" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          class="widget-prop form-control form-control-sm numeraljs type-numeraljs prop-` +
+          prop +
+          `"  
+                          placeholder="` +
+          prop +
+          `" 
+                          value="` +
+          objProp.default +
+          `"  >`;
+        break;
+      case 'colorFormat':
+        formInput += ``; // TODO
+        break;
+      case 'pageList':
+        onChangeFkt =
+          "$('#" +
+          uuid +
+          " .info').text($(this)[0].value).removeClass('danger');";
+        formInput +=
+          `<select id="` +
+          inputUUID +
+          `"  
+                          class="widget-prop form-control form-control-sm  type-pageList prop-` +
+          prop +
+          `" 
+                          data-arraykey="` +
+          key +
+          `" 
+                          data-arraytype="` +
+          arrayWidgetType +
+          `" 
+                          type="text" 
+                          placeholder="` +
+          prop +
+          `" 
+                          data-prop="` +
+          prop +
+          `" 
+                          data-type="` +
+          objProp.type +
+          `" 
+                          title="` +
+          objProp.default +
+          `" 
+                          value="` +
+          objProp.default +
+          `" 
+                          onchange="` +
+          onChangeFkt +
+          `" 
+                          onfocus="buildPageLinksSelect(this)" 
+                          >
+                          <option selected="selected" value="` +
+          objProp.default +
+          `">` +
+          objProp.default +
+          `</option>                          
+                          </select>`;
+        break;
+
+      default:
+        //formInput += `<input type="number" class="form-control" placeholder="`;
+        formInput += prop + ' ?????????????????????';
+        // formInput += `">`;
+        break;
+    }
+    // seperator after prop
+    if (prop == 'stateIdType' || prop == 'url') {
+      formInput += `<hr class="widget-inline-seperator"><div class="newlinespacer"></div>`;
+    }
+    // seperator before prop
+    if (prop == 'area1Name' || prop == 'showAsIndicator') {
+      formInput =
+        `<hr class="widget-inline-seperator"><div class="newlinespacer"></div>` +
+        formInput;
+    }
+
+    widget_settings_form +=
+      `<tr class="` +
+      arrayclass +
+      `"><td 
+                                      class="prop-name"
+                                      data-tooltip="tooltip" 
+                                      data-placement="top" 
+                                      data-html="true"  
+                                      title="` +
+      objProp.tooltip +
+      `" 
+                              >`;
+    widget_settings_form += itemOfArraySpan + prop;
+    widget_settings_form += `</td><td class="prop-value">`;
+
+    widget_settings_form += formInput;
+
+    widget_settings_form += `</td></tr>`;
+  }
+  //console.log("createWidgetFormByPropType return: " + widget_settings_form);
+  return widget_settings_form;
+}
+
+function buildPageLinksSelect (element) {
+  let options = '';
+  let value = $ (element).val ();
+  $ ('.page .page-title').each (function () {
+    console.log (this);
+    selected = '';
+    if ($ (this).val () == value) {
       selected = "selected='selected'";
     }
-    options += "<option " + selected + " value='" + $(this).val() + "'>" + $(this).val() + "</option>";
-  })
-  $(element).html("");
-  $(element).html(options);
+    options +=
+      '<option ' +
+      selected +
+      " value='" +
+      $ (this).val () +
+      "'>" +
+      $ (this).val () +
+      '</option>';
+  });
+  $ (element).html ('');
+  $ (element).html (options);
 }
 
-function deleteWidget(element, uuid, pageUUID) {
+function deleteWidget (element, uuid, pageUUID) {
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation();
-  console.log("delete Item");
+  if (e.stopPropagation) e.stopPropagation ();
+  console.log ('delete Item');
   // console.log(document.getElementById(uuid).parentElement.parentElement);
-  grids[pageUUID].removeWidget(document.getElementById(uuid).parentElement.parentElement);
-  grids[pageUUID].update();
+  grids[pageUUID].removeWidget (
+    document.getElementById (uuid).parentElement.parentElement
+  );
+  grids[pageUUID].update ();
 }
 
-function copyWidget(element, uuid, targetUUID, card) {
+function copyWidget (element, uuid, targetUUID, card) {
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation();
+  if (e.stopPropagation) e.stopPropagation ();
   //read settings
-  var widgetData = readWidgetConfig(uuid);
+  var widgetData = readWidgetConfig (uuid);
   //create newUUID
-  widgetData.UUID = UUID();
+  widgetData.UUID = UUID ();
   // add to Page
-  addWidgetToPage(widgetData.type, targetUUID, widgetData, grids[targetUUID], card, true);
-
+  addWidgetToPage (
+    widgetData.type,
+    targetUUID,
+    widgetData,
+    grids[targetUUID],
+    card,
+    true
+  );
 }
 
-function updateBooleanProp(element) {
-  $(element).val($(element)[0].checked);
+function updateBooleanProp (element) {
+  $ (element).val ($ (element)[0].checked);
 }
 
-function selectWidget(element, UUID) {
+function selectWidget (element, UUID) {
   // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.x);
   // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.y);
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation();
+  if (e.stopPropagation) e.stopPropagation ();
 
-  $('.grid-stack-item-content.selected').removeClass('selected');
-  $(element).parent().addClass('selected');
-  showPropsTable(UUID, $(element).closest(".grid-stack-item")[0].gridstackNode);
+  $ ('.grid-stack-item-content.selected').removeClass ('selected');
+  $ (element).parent ().addClass ('selected');
+  showPropsTable (
+    UUID,
+    $ (element).closest ('.grid-stack-item')[0].gridstackNode
+  );
 }
 
-function updateWidgetSize(item) {
+function updateWidgetSize (item) {
   // update width and height
   // console.log(item);
   // console.log($("#props-" + item.uuid + " .prop-widgetPosX"));
-  $("#props-" + item.uuid + " .prop-widgetPosX").val(item.x);
-  $("#props-" + item.uuid + " .prop-widgetPosX").attr("value", item.x);
-  $("#props-" + item.uuid + " .prop-widgetPosX").attr("data-widgetPosX", item.x);
-  $("#props-" + item.uuid + " .prop-widgetPosY").val(item.y);
-  $("#props-" + item.uuid + " .prop-widgetPosY").attr("value", item.y);
-  $("#props-" + item.uuid + " .prop-widgetPosY").attr("data-widgetPosY", item.y);
+  $ ('#props-' + item.uuid + ' .prop-widgetPosX').val (item.x);
+  $ ('#props-' + item.uuid + ' .prop-widgetPosX').attr ('value', item.x);
+  $ ('#props-' + item.uuid + ' .prop-widgetPosX').attr (
+    'data-widgetPosX',
+    item.x
+  );
+  $ ('#props-' + item.uuid + ' .prop-widgetPosY').val (item.y);
+  $ ('#props-' + item.uuid + ' .prop-widgetPosY').attr ('value', item.y);
+  $ ('#props-' + item.uuid + ' .prop-widgetPosY').attr (
+    'data-widgetPosY',
+    item.y
+  );
 
+  $ ('#props-' + item.uuid + ' .prop-widgetHeight').val (item.h);
+  $ ('#props-' + item.uuid + ' .prop-widgetHeight').attr ('value', item.h);
+  $ ('#props-' + item.uuid + ' .prop-widgetHeight').attr (
+    'data-widgetHeight',
+    item.h
+  );
+  $ ('#props-' + item.uuid + ' .prop-widgetWidth').val (item.w);
+  $ ('#props-' + item.uuid + ' .prop-widgetWidth').attr ('value', item.w);
+  $ ('#props-' + item.uuid + ' .prop-widgetWidth').attr (
+    'data-widgetWidth',
+    item.w
+  );
 
-  $("#props-" + item.uuid + " .prop-widgetHeight").val(item.h);
-  $("#props-" + item.uuid + " .prop-widgetHeight").attr("value", item.h);
-  $("#props-" + item.uuid + " .prop-widgetHeight").attr("data-widgetHeight", item.h);
-  $("#props-" + item.uuid + " .prop-widgetWidth").val(item.w);
-  $("#props-" + item.uuid + " .prop-widgetWidth").attr("value", item.w);
-  $("#props-" + item.uuid + " .prop-widgetWidth").attr("data-widgetWidth", item.w);
-
-  $('.grid-stack-item-content.selected').removeClass('selected');
-  $("#" + item.uuid).parent().addClass('selected');
-  showPropsTable(item.uuid, item);
-
+  $ ('.grid-stack-item-content.selected').removeClass ('selected');
+  $ ('#' + item.uuid).parent ().addClass ('selected');
+  showPropsTable (item.uuid, item);
 }
-function handleCardWidget(widgetUUID, nbOfCols = 18) {
-
-  $("#" + widgetUUID).append("<div class='widgetcard widget-dropdown-holder'></div><div class='widgetcard widget-holder'><div class='grid-holder'></div></div>");
+function handleCardWidget (widgetUUID, nbOfCols = 18) {
+  $ ('#' + widgetUUID).append (
+    "<div class='widgetcard widget-dropdown-holder'></div><div class='widgetcard widget-holder'><div class='grid-holder'></div></div>"
+  );
 
   // gridOptions
   let gridOptions = {
     column: nbOfCols, // 6,12 or 18
     minRow: 1, // don't collapse when empty
-    cellHeight: "67px", //"67px",
+    cellHeight: '67px', //"67px",
     disableOneColumnMode: true,
     float: true,
     dragIn: false, // class that can be dragged from outside
@@ -386,32 +738,39 @@ function handleCardWidget(widgetUUID, nbOfCols = 18) {
     dragInOptions: {}, // clone
     removable: false, // drag-out delete class
     removeTimeout: 100,
-    resizable: { autoHide: true, handles: 'se,sw' },
-    acceptWidgets: function (el) { return false; } // function example, else can be simple: true | false | '.someClass' value
+    resizable: {autoHide: true, handles: 'se,sw'},
+    acceptWidgets: function (el) {
+      return false;
+    }, // function example, else can be simple: true | false | '.someClass' value
   };
 
   // #######################################################################################
   // INIT Grid
-  grids[widgetUUID] = GridStack.addGrid($("#" + widgetUUID + " .grid-holder"), gridOptions);
-  $("#" + widgetUUID + " .grid-holder .grid-stack").addClass("grid-stack-" + nbOfCols);
+  grids[widgetUUID] = GridStack.addGrid (
+    $ ('#' + widgetUUID + ' .grid-holder'),
+    gridOptions
+  );
+  $ ('#' + widgetUUID + ' .grid-holder .grid-stack').addClass (
+    'grid-stack-' + nbOfCols
+  );
   // console.log("################## GRID INIT");
 
   // console.log(widgetUUID);
   // console.log(grids[widgetUUID]);
-  grids[widgetUUID].on('change', function (event, items) {
+  grids[widgetUUID].on ('change', function (event, items) {
     // console.log(event);
     // console.log(items);
-    items.forEach(function (item) {
-      updateWidgetSize(item);
+    items.forEach (function (item) {
+      updateWidgetSize (item);
     });
   });
-  grids[widgetUUID].on('added', function (event, items) {
-    items.forEach(function (item) {
-      updateWidgetSize(item);
+  grids[widgetUUID].on ('added', function (event, items) {
+    items.forEach (function (item) {
+      updateWidgetSize (item);
     });
   });
 
-  init_widget_dropdown(widgetUUID, true);
+  init_widget_dropdown (widgetUUID, true);
 
   // grid= grids[widgetUUID];
   // grid.addWidget({ w: 2, h: 2, x: 1, y: 1, maxH: 10, content: "content", uuid: "uuid" });
@@ -419,25 +778,31 @@ function handleCardWidget(widgetUUID, nbOfCols = 18) {
   return widgetUUID;
 }
 
-function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = false, copy = false) {
-  console.log(widget);
-  console.log(widgetData);
-  console.log(targetUUID);
-  console.log(grid);
-
+function addWidgetToPage (
+  widget,
+  targetUUID,
+  widgetData = null,
+  grid,
+  card = false,
+  copy = false
+) {
+  console.log (widget);
+  console.log (widgetData);
+  console.log (targetUUID);
+  console.log (grid);
 
   // filler is now headline
-  if (widget === "filler") {
-    widget = "headline";
+  if (widget === 'filler') {
+    widget = 'headline';
   }
 
   widgetData = widgetData || {};
 
-  uuid = widgetData.UUID || UUID();
+  uuid = widgetData.UUID || UUID ();
 
   // info-text to Widgets
-  widgetInfo = "";
-  if (widget !== "card") {
+  widgetInfo = '';
+  if (widget !== 'card') {
     if (widgetJSON[widget].stateId) {
       widgetInfo = widgetData.stateId || widgetJSON[widget].stateId.default;
     } else if (widgetJSON[widget].title) {
@@ -445,135 +810,266 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
     } else if (widgetJSON[widget].url) {
       widgetInfo = widgetData.url || widgetJSON[widget].url.default;
     } else if (widgetJSON[widget].targetpage) {
-      widgetInfo = widgetData.targetpage || widgetJSON[widget].targetpage.default;
+      widgetInfo =
+        widgetData.targetpage || widgetJSON[widget].targetpage.default;
     }
   }
-  $("#" + uuid + " .info").text(widgetInfo);
-  $("#" + uuid + " .info").attr("title", widgetInfo);
+  $ ('#' + uuid + ' .info').text (widgetInfo);
+  $ ('#' + uuid + ' .info').attr ('title', widgetInfo);
 
-  widgetInfoClass = "";
-  if (widgetInfo === "undefined" || widgetInfo === "no state selected" || widgetInfo === "startpage") {
-    widgetInfoClass = "danger";
+  widgetInfoClass = '';
+  if (
+    widgetInfo === 'undefined' ||
+    widgetInfo === 'no state selected' ||
+    widgetInfo === 'startpage'
+  ) {
+    widgetInfoClass = 'danger';
   }
 
-  targetClass = "pageWidget";
-  if (card === true || card === "true") { targetClass = "cardWidget" };
+  targetClass = 'pageWidget';
+  if (card === true || card === 'true') {
+    targetClass = 'cardWidget';
+  }
 
   if (widgetJSON[widget]) {
-
     var content = ``;
-    content += `<div class="grid-widget ` + targetClass + ` ` + widget + `" id="` + uuid + `" onclick="selectWidget(this,'` + uuid + `');"><div class="type" title="` + widget + `">` + widget + `</div>`;
-    content += `<div class="info ` + widgetInfoClass + `" title="` + widgetInfo + `">` + widgetInfo + `</div>`;
+    content +=
+      `<div class="grid-widget ` +
+      targetClass +
+      ` ` +
+      widget +
+      `" id="` +
+      uuid +
+      `" onclick="selectWidget(this,'` +
+      uuid +
+      `');"><div class="type" title="` +
+      widget +
+      `">` +
+      widget +
+      `</div>`;
+    content +=
+      `<div class="info ` +
+      widgetInfoClass +
+      `" title="` +
+      widgetInfo +
+      `">` +
+      widgetInfo +
+      `</div>`;
     content += `<span class="link-holder">`;
-    content += `<a href="#" class="link-copy-widget" title="copy widget" onclick="copyWidget(this,'` + uuid + `','` + targetUUID + `','` + card + `');return false;"><i class="fa fa-copy"></i></a>`;
-    content += `<a href="#" class="link-delete-widget" title="delete widget" onclick="deleteWidget(this,'` + uuid + `','` + targetUUID + `');return false;"><i class="far fa-trash-alt"></i></a>`;
+    content +=
+      `<a href="#" class="link-copy-widget" title="copy widget" onclick="copyWidget(this,'` +
+      uuid +
+      `','` +
+      targetUUID +
+      `','` +
+      card +
+      `');return false;"><i class="fa fa-copy"></i></a>`;
+    content +=
+      `<a href="#" class="link-delete-widget" title="delete widget" onclick="deleteWidget(this,'` +
+      uuid +
+      `','` +
+      targetUUID +
+      `');return false;"><i class="far fa-trash-alt"></i></a>`;
     content += `</span>`;
     content += `</div>`;
 
     // check for width and height
     if (!widgetData.widgetHeight) {
       widgetData.widgetHeight = 1;
-      if (widget === "card") {
+      if (widget === 'card') {
         widgetData.widgetHeight = 3;
       }
     }
     if (!widgetData.widgetWidth) {
-      widgetData.widgetWidth = 6
+      widgetData.widgetWidth = 6;
     }
     let widgetMinHeight = 1;
-    if (widget === "card") {
+    if (widget === 'card') {
       widgetMinHeight = 1; //2
     }
     let widgetMinWidth = 1;
-    if (widget === "card") {
+    if (widget === 'card') {
       widgetMinWidth = 1; //6
     }
 
-    var newWidgetSettings = init_widget_settings_form(widget, uuid, widgetData);
-    $("#settings-holder").append($(newWidgetSettings));
+    var newWidgetSettings = init_widget_settings_form (
+      widget,
+      uuid,
+      widgetData
+    );
+    $ ('#settings-holder').append ($ (newWidgetSettings));
 
     //add to grid
-    grid.addWidget({ w: widgetData.widgetWidth, h: widgetData.widgetHeight, x: widgetData.widgetPosX, y: widgetData.widgetPosY, minH: widgetMinHeight, maxH: 100, minW: widgetMinWidth, content: content, uuid: uuid });
+    grid.addWidget ({
+      w: widgetData.widgetWidth,
+      h: widgetData.widgetHeight,
+      x: widgetData.widgetPosX,
+      y: widgetData.widgetPosY,
+      minH: widgetMinHeight,
+      maxH: 100,
+      minW: widgetMinWidth,
+      content: content,
+      uuid: uuid,
+    });
 
     for (data in widgetData) {
       // console.log("widgetdata");
-      // console.log(data);
+      //console.log(data);
       // console.log(widgetData);
       // console.log(uuid);
-      $("#props-" + uuid + " .prop-" + data).val(widgetData[data]);
-      $("#props-" + uuid + " .prop-" + data).attr("value", widgetData[data]);
-      $("#props-" + uuid + " .prop-" + data).attr("data-" + data, widgetData[data]);
+
+      // handle array-data of widgets
+      if (data.startsWith ('array_')) {
+        for (key in widgetData[data]) {
+          for (prop in widgetData[data][key]) {
+            console.log (prop + ': ' + widgetData[data][key][prop]);
+            $ (
+              '#props-' +
+                uuid +
+                ' .prop-' +
+                prop +
+                '[data-arraykey="' +
+                key +
+                '"]'
+            ).val (widgetData[data][key][prop]);
+            $ (
+              '#props-' +
+                uuid +
+                ' .prop-' +
+                prop +
+                '[data-arraykey="' +
+                key +
+                '"]'
+            ).attr ('value', widgetData[data][key][prop]);
+            $ (
+              '#props-' +
+                uuid +
+                ' .prop-' +
+                prop +
+                '[data-arraykey="' +
+                key +
+                '"]'
+            ).attr ('data-' + prop, widgetData[data][key][prop]);
+          }
+        }
+      } else {
+        $ ('#props-' + uuid + ' .prop-' + data).val (widgetData[data]);
+        $ ('#props-' + uuid + ' .prop-' + data).attr (
+          'value',
+          widgetData[data]
+        );
+        $ ('#props-' + uuid + ' .prop-' + data).attr (
+          'data-' + data,
+          widgetData[data]
+        );
+      }
     }
 
     // disable input of width and height
-    $("#props-" + uuid + " .prop-widgetHeight").attr("disabled", "disabled");
-    $("#props-" + uuid + " .prop-widgetWidth").attr("disabled", "disabled");
+    $ ('#props-' + uuid + ' .prop-widgetHeight').attr ('disabled', 'disabled');
+    $ ('#props-' + uuid + ' .prop-widgetWidth').attr ('disabled', 'disabled');
 
     // add icon classes to i-Element
-    var iconElements = $("#props-" + uuid + " .type-icon i");
-    iconElements.each(function () {
-      $(this).removeClass()
-        .addClass($(this).parent().val())
-        .addClass($(this).parent().parent().parent().next().find(".type-iconFamily").val());
+    var iconElements = $ ('#props-' + uuid + ' .type-icon i');
+    iconElements.each (function () {
+      $ (this)
+        .removeClass ()
+        .addClass ($ (this).parent ().val ())
+        .addClass (
+          $ (this)
+            .parent ()
+            .parent ()
+            .parent ()
+            .next ()
+            .find ('.type-iconFamily')
+            .val ()
+        );
 
       // console.log("######################################");
       // console.log($(this).parent().parent().parent().next().find(".type-iconFamily"));
     });
     // add stateId to state-Select
-    var stateIdElements = $("#props-" + uuid + " .type-stateId");
-    stateIdElements.each(function () {
-      // we can have more than one stateID
-      var stateIdProp = $(this).attr("data-prop");
-      var stateId = $(this).attr("data-" + stateIdProp);
-      $(this).find("option").remove();
-      $(this).append($('<option selected="selected" value="' + stateId + '">' + stateId + '</option>'));
+    var stateIdElements = $ ('#props-' + uuid + ' .type-stateId');
+    stateIdElements.each (function () {
+      var stateId = $ (this).attr ('data-stateid');
+      $ (this).find ('option').remove ();
+      $ (this).append (
+        $ (
+          '<option selected="selected" value="' +
+            stateId +
+            '">' +
+            stateId +
+            '</option>'
+        )
+      );
     });
     // add checked to boolean
-    var booleanElements = $("#props-" + uuid + " .type-boolean");
-    booleanElements.each(function () {
-      var value = $(this).val();
-      if (value == "true") {
-        $(this).attr("checked", "checked");
+    var booleanElements = $ ('#props-' + uuid + ' .type-boolean');
+    booleanElements.each (function () {
+      var value = $ (this).val ();
+      if (value == 'true') {
+        $ (this).attr ('checked', 'checked');
       } else {
-        $(this).removeAttr("checked");
+        $ (this).removeAttr ('checked');
       }
     });
     // add file to file-Select
-    var fileElements = $("#props-" + uuid + " .type-file");
-    fileElements.each(function () {
-      var value = $(this).attr("value");
-      $(this).find("option").remove();
-      $(this).append($('<option selected="selected" value="' + value + '">' + value + '</option>'));
+    var fileElements = $ ('#props-' + uuid + ' .type-file');
+    fileElements.each (function () {
+      var value = $ (this).attr ('value');
+      $ (this).find ('option').remove ();
+      $ (this).append (
+        $ (
+          '<option selected="selected" value="' +
+            value +
+            '">' +
+            value +
+            '</option>'
+        )
+      );
     });
     // add targetpage to pageList
-    var pageListElements = $("#props-" + uuid + " .type-pageList");
-    pageListElements.each(function () {
-      var pageLink = $(this).attr("value");
-      $(this).find("option").remove();
-      $(this).append($('<option selected="selected" value="' + pageLink + '">' + pageLink + '</option>'));
+    var pageListElements = $ ('#props-' + uuid + ' .type-pageList');
+    pageListElements.each (function () {
+      var pageLink = $ (this).attr ('value');
+      $ (this).find ('option').remove ();
+      $ (this).append (
+        $ (
+          '<option selected="selected" value="' +
+            pageLink +
+            '">' +
+            pageLink +
+            '</option>'
+        )
+      );
     });
 
+    $ ('#props-' + uuid).bootstrapTable ();
 
-    $("#props-" + uuid).bootstrapTable();
+    $ ('#props-' + uuid + ' .tooltip').remove ();
+    $ ('#props-' + uuid + ' [data-tooltip="tooltip"]').tooltip ();
 
-    $("#props-" + uuid + " .tooltip").remove();
-    $("#props-" + uuid + ' [data-tooltip="tooltip"]').tooltip();
-
-    $("#props-" + uuid)
-      .closest(".bootstrap-table")
-      .attr("id", "propsTable-" + uuid)
-      .addClass("sidebar-settings-table")
-      .hide();
+    $ ('#props-' + uuid)
+      .closest ('.bootstrap-table')
+      .attr ('id', 'propsTable-' + uuid)
+      .addClass ('sidebar-settings-table')
+      .hide ();
   }
 
-  if (widget === "card") {
-    let cardUUID = handleCardWidget(uuid);
-    console.log("handleCardWidget returned: " + cardUUID);
-    console.log(widgetData);
+  if (widget === 'card') {
+    let cardUUID = handleCardWidget (uuid);
+    console.log ('handleCardWidget returned: ' + cardUUID);
+    console.log (widgetData);
     if (copy === true) {
       for (var widget in widgetData.widgets) {
-        widgetData.widgets[widget].UUID = UUID();
-        addWidgetToPage(widgetData.widgets[widget].type, cardUUID, widgetData.widgets[widget], grids[cardUUID], true);
+        widgetData.widgets[widget].UUID = UUID ();
+        addWidgetToPage (
+          widgetData.widgets[widget].type,
+          cardUUID,
+          widgetData.widgets[widget],
+          grids[cardUUID],
+          true
+        );
       }
     }
   }
@@ -581,17 +1077,22 @@ function addWidgetToPage(widget, targetUUID, widgetData = null, grid, card = fal
   return uuid;
 }
 
-function validateTimePickerFormat(elem) {
-  console.log("validateTimePickerFormat");
-  let format = $(elem).val();
-  console.log($(elem).next());
-  let formatExample = moment().format(format);
-  $(elem).next(".formatExample").text("Example: " + formatExample);
+function validateTimePickerFormat (elem) {
+  console.log ('validateTimePickerFormat');
+  let format = $ (elem).val ();
+  console.log ($ (elem).next ());
+  let formatExample = moment ().format (format);
+  $ (elem).next ('.formatExample').text ('Example: ' + formatExample);
 }
 
-function validateNumeralFormat(elem) {
-  console.log("validateNumeralFormat");
-  let format = $(elem).val();
-  let formatExample = numeral(1000).format(format);
-  $(elem).parent().parent().parent().find(".formatExample").val(formatExample);
+function validateNumeralFormat (elem) {
+  console.log ('validateNumeralFormat');
+  let format = $ (elem).val ();
+  let formatExample = numeral (1000).format (format);
+  $ (elem)
+    .parent ()
+    .parent ()
+    .parent ()
+    .find ('.formatExample')
+    .val (formatExample);
 }

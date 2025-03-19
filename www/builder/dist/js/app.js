@@ -1,21 +1,21 @@
 // App
 
 //////////////////////////////////
-var version = "2.3.4";
+var version = '2.5.0';
 //////////////////////////////////
 
 var numberOfCols = 18; // 18 cols grid
 
-var appPath = "minuvis/app/";
+var appPath = 'minuvis/app/';
 
 var variables = [];
 var variablesAsObj = [];
 var arrStates = [];
 var socket;
 var showInfoText = false;
-var filePath = "minukodu";
-var metaInfoSocketIO = "0_userdata.0";
-var defaultIconFamily = "mfd-icon";
+var filePath = 'minukodu';
+var metaInfoSocketIO = '0_userdata.0';
+var defaultIconFamily = 'mfd-icon';
 var grids = [];
 
 var workingBuffer = [];
@@ -23,172 +23,204 @@ var workBufferWorking = false;
 var workBufferWorkingEdge = false;
 var workBufferInterval = 1000; //50;
 
-var templates = getTemplates();
+var templates = getTemplates ();
 // console.log("getTemplates()");
 // console.log(templates);
 
-numeral.locale('de');
+numeral.locale ('de');
 let is_development = false;
 
 workWithBuffer = function () {
-
   // console.log(workBufferWorking);
   // console.log(workBufferWorkingEdge);
 
-
   if (workBufferWorking === false && workBufferWorkingEdge === true) {
-    workingBuffer.splice(0, 1); // remove job
+    workingBuffer.splice (0, 1); // remove job
     workBufferWorkingEdge = workBufferWorking;
   }
-  if (workingBuffer.length === 0 || workBufferWorking === true) { return };
+  if (workingBuffer.length === 0 || workBufferWorking === true) {
+    return;
+  }
 
-  console.log(workingBuffer.length);
+  console.log (workingBuffer.length);
   workBufferWorking = true;
   workBufferWorkingEdge = workBufferWorking;
 
-  retVal = workingBuffer[0].jobfunction(workingBuffer[0].args);
+  retVal = workingBuffer[0].jobfunction (workingBuffer[0].args);
+};
 
-}
-
-function init() {
-  console.log("App init");
+function init () {
+  console.log ('App init');
   // check if develpoment mode
-  // console.log(window.location.host);
-  // console.log(window.location.host.indexOf("dev"));
-  if (window.location.host.indexOf("dev") == 0) {
-    $("body").addClass("is-development");
-    $("body").prepend(templates.devNote);
-    version = version + "-dev";
+  if (window.location.host.indexOf ('dev') == 0) {
+    $ ('body').addClass ('is-development');
+    $ ('body').prepend (templates.devNote);
+    version = version + '-dev';
     is_development = true;
   }
   // version
-  $("#versionnumber").text("Version " + version);
+  $ ('#versionnumber').text ('Version ' + version);
 
   if (is_development === false) {
     // assume same url and port
-    $("#data-url-port").val(window.location.protocol + "//" + window.location.host);
+    $ ('#data-url-port').val (
+      window.location.protocol + '//' + window.location.host
+    );
   }
 
-  $(".nav-item a.menu-link-page").on("click", function (e) {
-    e.preventDefault();
-    $("#css").hide();
-    $("#theme").hide();
-    $("#bannerData").hide();
-    $(".page").hide();
-    $("#imExportSection").hide();
-    $($(this).attr("href")).show();
+  $ ('#togglePassword').on ('click', function (e) {
+    e.preventDefault ();
+    // toggle the type attribute
+    const type = $ ('#password').attr ('type') === 'password'
+      ? 'text'
+      : 'password';
+    $ ('#password').attr ('type', type);
+    // toggle the eye icon
+    $ ('#togglePassword i').toggleClass ('fa-eye');
+    $ ('#togglePassword i').toggleClass ('fa-eye-slash');
+  });
+
+  $ ('.nav-item a.menu-link-page').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('#css').hide ();
+    $ ('#theme').hide ();
+    $ ('#bannerData').hide ();
+    $ ('.page').hide ();
+    $ ('#imExportSection').hide ();
+    $ ($ (this).attr ('href')).show ();
     //console.log($(this).attr("href"));
   });
 
-  $("#css-nav-item a").on("click", function (e) {
-    e.preventDefault();
-    $(".sidebar-settings-table").hide();
-    $(".widget-settings-table").hide();
-    $(".page").hide();
-    $("#theme").hide();
-    $("#bannerData").hide();
-    $("#imExportSection").hide();
-    $("#css").show();
+  $ ('#css-nav-item a').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('.sidebar-settings-table').hide ();
+    $ ('.widget-settings-table').hide ();
+    $ ('.page').hide ();
+    $ ('#theme').hide ();
+    $ ('#bannerData').hide ();
+    $ ('#imExportSection').hide ();
+    $ ('#css').show ();
   });
 
-  $("#theme-nav-item a").on("click", function (e) {
-    e.preventDefault();
-    $(".sidebar-settings-table").hide();
-    $(".widget-settings-table").hide();
-    $(".page").hide();
-    $("#css").hide();
-    $("#bannerData").hide();
-    $("#imExportSection").hide();
-    $("#theme").show();
+  $ ('#theme-nav-item a').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('.sidebar-settings-table').hide ();
+    $ ('.widget-settings-table').hide ();
+    $ ('.page').hide ();
+    $ ('#css').hide ();
+    $ ('#bannerData').hide ();
+    $ ('#imExportSection').hide ();
+    $ ('#theme').show ();
   });
 
-  $("#banner-nav-item a").on("click", function (e) {
-    e.preventDefault();
-    $(".sidebar-settings-table").hide();
-    $(".widget-settings-table").hide();
-    $(".page").hide();
-    $("#css").hide();
-    $("#theme").hide();
-    $("#imExportSection").hide();
-    $("#bannerData").show();
+  $ ('#banner-nav-item a').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('.sidebar-settings-table').hide ();
+    $ ('.widget-settings-table').hide ();
+    $ ('.page').hide ();
+    $ ('#css').hide ();
+    $ ('#theme').hide ();
+    $ ('#imExportSection').hide ();
+    $ ('#bannerData').show ();
   });
 
-  $("#btn-theme-light").on("click", function (e) {
-    e.preventDefault();
-    $("#theme textarea").val();
-    $("#theme textarea").val(getDefaultLightTheme());
+  $ ('#btn-theme-light').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('#theme textarea').val ();
+    $ ('#theme textarea').val (getDefaultLightTheme ());
   });
 
-  $("#btn-theme-dark").on("click", function (e) {
-    e.preventDefault();
-    $("#theme textarea").val();
-    $("#theme textarea").val(getDefaultDarkTheme());
+  $ ('#btn-theme-dark').on ('click', function (e) {
+    e.preventDefault ();
+    $ ('#theme textarea').val ();
+    $ ('#theme textarea').val (getDefaultDarkTheme ());
   });
 
-  $(document).ready(function () {
+  $ ('#chkAuth').change (function () {
+    if (this.checked != true) {
+      $ ('#credentialswrapper').hide ();
+    } else {
+      $ ('#credentialswrapper').show ();
+    }
+  });
+
+  $ (document).ready (function () {
     // init banner section
-    initBannerData();
+    initBannerData ();
     // init buttons
-    $("#btn-ul-config").click(function () {
-      $("#upload-config-file").click();
+    $ ('#btn-ul-config').click (function () {
+      $ ('#upload-config-file').click ();
     });
-    $("#btn-add-page").click(function () {
+    $ ('#btn-add-page').click (function () {
       //console.log("Handler for add Page called.");
-      $("#css").hide();
-      $("#theme").hide();
-      $("#bannerData").hide();
-      $("#imExportSection").hide();
-      var pageUUID = addPage();
-      $("#"+pageUUID).addClass("rendered");
+      $ ('#css').hide ();
+      $ ('#theme').hide ();
+      $ ('#bannerData').hide ();
+      $ ('#imExportSection').hide ();
+      var pageUUID = addPage ();
+      $ ('#' + pageUUID).addClass ('rendered');
     });
-    $("#btn-connect").click(function (event) {
-      connect_socket();
+    $ ('#btn-connect').click (function (event) {
+      connect_socket ();
     });
-    $("#btn-read-variables").attr("disabled", "disabled");
-    $("#btn-read-configfiles").attr("disabled", "disabled");
+    $ ('#btn-read-variables').attr ('disabled', 'disabled');
+    $ ('#btn-read-configfiles').attr ('disabled', 'disabled');
 
-    $("#select-configfile").on("keyup", function () {
+    $ ('#select-configfile').on ('keyup', function () {
       //console.log(this.value);
-      $("#select-configfile").val(sanitize(this.value));
-
+      $ ('#select-configfile').val (sanitize (this.value));
     });
-    $("#select-configfile").on("click", function () {
+    $ ('#select-configfile').on ('click', function () {
       //console.log(this.value);
-      this.select();
-
+      this.select ();
     });
 
-    $("#btn-save-file").on("click", function (event) {
-      event.preventDefault();
-      console.log("Save config in file");
+    $ ('#credentialswrapper').hide ();
+
+    $ ('#btn-save-file').on ('click', function (event) {
+      event.preventDefault ();
+      console.log ('Save config in file');
       // show loading
-      workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "save config to file" });
+      workingBuffer.push ({
+        jobUUID: UUID (),
+        jobfunction: addWorkingNote,
+        args: 'save config to file',
+      });
       //addPage();
-      workingBuffer.push({ jobUUID: UUID(), jobfunction: generateConfig, args: true });
+      workingBuffer.push ({
+        jobUUID: UUID (),
+        jobfunction: generateConfig,
+        args: true,
+      });
       // hide loading
-      workingBuffer.push({ jobUUID: UUID(), jobfunction: removeWorkingNote, args: null });
+      workingBuffer.push ({
+        jobUUID: UUID (),
+        jobfunction: removeWorkingNote,
+        args: null,
+      });
       //generateConfig();
     });
 
-    $("#btn-load-file").on("click", function (event) {
-      event.preventDefault();
-      console.log("load config from file");
-      readConfigFromFile($("#select-configfile").val() + ".json");
+    $ ('#btn-load-file').on ('click', function (event) {
+      event.preventDefault ();
+      console.log ('load config from file');
+      readConfigFromFile ($ ('#select-configfile').val () + '.json');
     });
 
-    $("#btn-delete-file").on("click", function (event) {
-      event.preventDefault();
-      console.log("delete config-file");
-      deleteConfigFile($("#select-configfile").val() + ".json");
+    $ ('#btn-delete-file').on ('click', function (event) {
+      event.preventDefault ();
+      console.log ('delete config-file');
+      deleteConfigFile ($ ('#select-configfile').val () + '.json');
     });
 
-
-    $("#btn-cache-clear-all").on("click", function (event) {
-      event.preventDefault();
-      let clearCacheConfirmation = confirm("This will delete all your not saved configuration !\n\nis this ok ?")
+    $ ('#btn-cache-clear-all').on ('click', function (event) {
+      event.preventDefault ();
+      let clearCacheConfirmation = confirm (
+        'This will delete all your not saved configuration !\n\nis this ok ?'
+      );
       if (clearCacheConfirmation === true) {
-        console.log("confirmed clear browser cache");
-        clearBrowserCache();
+        console.log ('confirmed clear browser cache');
+        clearBrowserCache ();
       }
     });
 
@@ -198,111 +230,136 @@ function init() {
     // try to read variables
     // variables = JSON.parse(localStorage.getItem("variables") || null);
     // arrStates = JSON.parse(localStorage.getItem("arrStates") || null);
-    init_statesTypeahead();
+    init_statesTypeahead ();
     // init-iconpicker
-    $(".icp").iconpicker();
+    $ ('.icp').iconpicker ();
     // init modal
-    init_modal();
+    init_modal ();
 
-    $("#preview-nav-item").click(function (event) {
-      event.preventDefault();
-      appConfig = generateConfig();
-      const url = encodeURIComponent(appConfig.dataprovider.url);
-      const file = encodeURIComponent(appConfig.dataprovider.fileName);
-      const preViewURL = "/" + appPath + "?url=" + url + "&file=" + file + "&forceUpdate";
+    $ ('#preview-nav-item').click (function (event) {
+      event.preventDefault ();
+      appConfig = generateConfig ();
+      const url = encodeURIComponent (appConfig.dataprovider.url);
+      const file = encodeURIComponent (appConfig.dataprovider.fileName);
+      const preViewURL =
+        '/' + appPath + '?url=' + url + '&file=' + file + '&forceUpdate';
 
-      showPreviewQrCode(window.location.protocol + "//" + window.location.host + preViewURL);
+      showPreviewQrCode (
+        window.location.protocol + '//' + window.location.host + preViewURL
+      );
 
-      window.open(preViewURL, '_blank');
+      window.open (preViewURL, '_blank');
     });
 
-    $("#show-config-nav-item").click(function (event) {
-      event.preventDefault();
-      generateConfig();
-      var outConfig = localStorage.getItem("appConfig");
-      $("#show-config-holder pre").html();
-      $("#show-config-holder pre").html(JSON.stringify(JSON.parse(outConfig), null, 2));
-      $("#configShowModal").modal("show");
+    $ ('#show-config-nav-item').click (function (event) {
+      event.preventDefault ();
+      generateConfig ();
+      var outConfig = localStorage.getItem ('appConfig');
+      $ ('#show-config-holder pre').html ();
+      $ ('#show-config-holder pre').html (
+        JSON.stringify (JSON.parse (outConfig), null, 2)
+      );
+      $ ('#configShowModal').modal ('show');
     });
 
-    $("#only-show-config-nav-item").click(function (event) {
-      event.preventDefault();
-      generateConfig(false);
-      var outConfig = localStorage.getItem("appConfig");
-      $("#show-config-holder pre").html();
-      $("#show-config-holder pre").html(JSON.stringify(JSON.parse(outConfig), null, 2));
-      $("#configShowModal").modal("show");
+    $ ('#only-show-config-nav-item').click (function (event) {
+      event.preventDefault ();
+      generateConfig (false);
+      var outConfig = localStorage.getItem ('appConfig');
+      $ ('#show-config-holder pre').html ();
+      $ ('#show-config-holder pre').html (
+        JSON.stringify (JSON.parse (outConfig), null, 2)
+      );
+      $ ('#configShowModal').modal ('show');
     });
 
-    $("#imExport-config-nav-item").click(function (event) {
-      event.preventDefault();
-      generateConfig(false);
-      console.log("read appconfig");
-      var outConfig = localStorage.getItem("appConfig");
-      console.log("show appconfig");
-      console.log(outConfig);
+    $ ('#imExport-config-nav-item').click (function (event) {
+      event.preventDefault ();
+      generateConfig (false);
+      console.log ('read appconfig');
+      var outConfig = localStorage.getItem ('appConfig');
+      console.log ('show appconfig');
+      console.log (outConfig);
 
+      $ ('#imExportTextarea').val ('');
+      $ ('#imExportTextarea').val (
+        JSON.stringify (JSON.parse (outConfig), null, 2)
+      );
 
-      $("#imExportTextarea").val("");
-      $("#imExportTextarea").val(JSON.stringify(JSON.parse(outConfig), null, 2));
+      $ ('.sidebar-settings-table').hide ();
+      $ ('.widget-settings-table').hide ();
+      $ ('.page').hide ();
+      $ ('#theme').hide ();
+      $ ('#bannerData').hide ();
+      $ ('#css').hide ();
+      $ ('#imExportSection').show ();
 
-      $(".sidebar-settings-table").hide();
-      $(".widget-settings-table").hide();
-      $(".page").hide();
-      $("#theme").hide();
-      $("#bannerData").hide();
-      $("#css").hide();
-      $("#imExportSection").show();
-
-      console.log("show imExportTextarea");
+      console.log ('show imExportTextarea');
     });
 
-    $(".btn-importConfig").click(function (event) {
-      event.preventDefault();
-      importConfig($("#imExportTextarea").val(), 0, null);
+    $ ('.btn-importConfig').click (function (event) {
+      event.preventDefault ();
+      importConfig ($ ('#imExportTextarea').val (), 0, null);
     });
 
-    $("#btn-importSettingsConfirm").click(function (event) {
-      event.preventDefault();
-      let widgetWidth = parseInt($("#importSettingsSelectRows input:radio:checked").val(),10);
-      let theme = $("#importSettingsSelectTheme input:radio:checked").val();
-      importConfig($("#imExportTextarea").val(), widgetWidth, theme);
+    $ ('#btn-importSettingsConfirm').click (function (event) {
+      event.preventDefault ();
+      let widgetWidth = parseInt (
+        $ ('#importSettingsSelectRows input:radio:checked').val (),
+        10
+      );
+      let theme = $ ('#importSettingsSelectTheme input:radio:checked').val ();
+      importConfig ($ ('#imExportTextarea').val (), widgetWidth, theme);
     });
 
     // show loading
-    workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "add page" });
+    workingBuffer.push ({
+      jobUUID: UUID (),
+      jobfunction: addWorkingNote,
+      args: 'add page',
+    });
     //addPage();
-    workingBuffer.push({ jobUUID: UUID(), jobfunction: addPage, args: {} });
+    workingBuffer.push ({jobUUID: UUID (), jobfunction: addPage, args: {}});
     // show loading
-    workingBuffer.push({ jobUUID: UUID(), jobfunction: addWorkingNote, args: "generate pages" });
+    workingBuffer.push ({
+      jobUUID: UUID (),
+      jobfunction: addWorkingNote,
+      args: 'generate pages',
+    });
     // if config then generate Pages
     //generatePages();
-    workingBuffer.push({ jobUUID: UUID(), jobfunction: generatePages, args: numberOfCols });
+    workingBuffer.push ({
+      jobUUID: UUID (),
+      jobfunction: generatePages,
+      args: numberOfCols,
+    });
     // hide loading
-    workingBuffer.push({ jobUUID: UUID(), jobfunction: removeWorkingNote, args: null });
+    workingBuffer.push ({
+      jobUUID: UUID (),
+      jobfunction: removeWorkingNote,
+      args: null,
+    });
 
     // start worker
-    wBInterval = setInterval(workWithBuffer, workBufferInterval);
-
+    wBInterval = setInterval (workWithBuffer, workBufferInterval);
   });
 
   // init mfd-Icon-Dropdown
-  console.log("Init MFD-Icons-Dropdown");
+  console.log ('Init MFD-Icons-Dropdown');
   //console.log(getMfdIcons());
   let icons = {};
 
-  let MfdIconList = getMfdIcons();
-  let MdiIconList = getMdiIcons();
-  let EmIconList = getEmIcons();
-  icons = MfdIconList.concat(MdiIconList);
-  icons = icons.concat(EmIconList);
-
+  let MfdIconList = getMfdIcons ();
+  let MdiIconList = getMdiIcons ();
+  let EmIconList = getEmIcons ();
+  icons = MfdIconList.concat (MdiIconList);
+  icons = icons.concat (EmIconList);
 
   // console.error("icons:");
   // console.error(icons);
   // console.error(Object.keys(icons).length);
 
-  $("#icp-mfd").iconpicker({
+  $ ('#icp-mfd').iconpicker ({
     title: 'Select Icon',
     //icons: getMfdIcons(),
     // icons: getMdiIcons(),
@@ -311,13 +368,11 @@ function init() {
   });
 
   // Bind iconpicker events to the element
-  $("#icp-mfd").on('iconpickerSelected', function (event) {
+  $ ('#icp-mfd').on ('iconpickerSelected', function (event) {
     /* event.iconpickerValue */
-    console.log("#icp-mfd data: " + event.iconpickerValue);
-    $("#icp-mfd").attr("data-iconvalue", event.iconpickerValue)
+    console.log ('#icp-mfd data: ' + event.iconpickerValue);
+    $ ('#icp-mfd').attr ('data-iconvalue', event.iconpickerValue);
   });
-
 }
 
-init();
-
+init ();

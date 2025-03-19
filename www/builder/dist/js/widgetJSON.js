@@ -1824,6 +1824,179 @@ var widgetJSON = {
       tooltip: "height of widget in modal"
     },
   },
+  chart: {
+    type: "chart",
+    widgetPosX: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position X of widget"
+    },
+    widgetPosY: {
+      type: "number",
+      default: "0",
+      min: "0",
+      max: "99",
+      tooltip: "Position Y of widget"
+    },
+    widgetHeight: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget"
+    },
+    widgetWidth: {
+      type: "number",
+      default: "1",
+      min: "1",
+      max: "18",
+      tooltip: "width of widget"
+    },
+    borderTop: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on top side"
+    },
+    borderRight: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on right side"
+    },
+    borderBottom: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw border on bottom side"
+    },
+    borderLeft: {
+      type: "boolean",
+      default: "false",
+      tooltip: "draw border on left side"
+    },
+    timestamp: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show timestamp"
+    },
+    title: {
+      type: "string",
+      default: "title of chart",
+      tooltip: "title of chart"
+    },
+    area1Name: {
+      type: "string",
+      default: "12 hours",
+      tooltip: "name of area 1"
+    },
+    area1Time: {
+      type: "number",
+      default: "720",
+      tooltip: "time in minutes of area 1"
+    },
+    area2Name: {
+      type: "string",
+      default: "day",
+      tooltip: "name of area 2"
+    },
+    area2Time: {
+      type: "number",
+      default: "1440",
+      tooltip: "time in minutes of area 2"
+    },
+    area3Name: {
+      type: "string",
+      default: "week",
+      tooltip: "name of area 3"
+    },
+    area3Time: {
+      type: "number",
+      default: "10080",
+      tooltip: "time in minutes of area 3"
+    },
+    area4Name: {
+      type: "string",
+      default: "month",
+      tooltip: "name of area 4"
+    },
+    area4Time: {
+      type: "number",
+      default: "43200",
+      tooltip: "time in minutes of area 4"
+    },
+    chartlines: {
+      type: "array",
+      items: "chartline",
+      maxItems: 4,
+      default: [],
+      tooltip: "lines in chart"
+    },
+    showInModal: {
+      type: "boolean",
+      default: "false",
+      tooltip: "show widget in modal"
+    },
+    modalWidgetHeight: {
+      type: "number",
+      default: "7",
+      min: "1",
+      max: "99",
+      tooltip: "height of widget in modal"
+    },
+  },
+  chartline: {
+    type: "arrayItem",
+    enabled: {
+      type: "boolean",
+      default: "false",
+      tooltip: "enable chartline"
+    },
+    stateId: {
+      type: "stateId",
+      default: "no state selected",
+      tooltip: "id of state"
+    },
+    stateIdType: {
+      type: "stateIdType",
+      default: "none",
+      tooltip: "type of state"
+    },
+    color: {
+      type: "color",
+      default: "#FF0000",
+      tooltip: "line-color"
+    },
+    min: {
+      type: "number",
+      default: "0",
+      tooltip: "minimal value of line"
+    },
+    max: {
+      type: "number",
+      default: "100",
+      tooltip: "maximal value of line"
+    },
+    unit: {
+      type: "string",
+      default: "°C",
+      tooltip: "unit of the value"
+    },
+    description: {
+      type: "string",
+      default: "temperature",
+      tooltip: "description of the value"
+    },
+    yAxis: {
+      type: "boolean",
+      default: "true",
+      tooltip: "draw Y-Axis of Value"
+    },
+    stepped: {
+      type: "boolean",
+      default: "false",
+      tooltip: "No interpolation between datapoints"
+    },
+  },
   jsontable: {
     type: "jsontable",
     widgetPosX: {
