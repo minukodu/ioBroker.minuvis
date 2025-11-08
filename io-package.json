@@ -128,7 +128,10 @@
       },
       "authors": ["svallant <svallant@gmx.eu>"],
       "keywords": ["Vis SCADA Visualization"],
-      "license": "MIT",
+      "licenseInformation": {
+          "type": "free",
+          "license": "MIT"
+      },
       "platform": "Javascript/Node.js",
       "main": "main.js",
       "icon": "minuvis.png",
