@@ -1,164 +1,123 @@
 {
   "common": {
     "name": "minuvis",
-    "version": "2.3.4",
-      "news": {
-        "2.3.4": {
-          "en": "updated builder and app to V2.3.4",
-          "de": "Builder und App auf V2.3.4 aktualisiert",
-          "ru": "обновленный конструктор и приложение до версии 2.3.4",
-          "pt": "construtor e aplicativo atualizados para V2.3.4",
-          "nl": "geüpdatete bouwer en app naar V2.3.4",
-          "fr": "constructeur et application mis à jour vers V2.3.4",
-          "it": "builder e app aggiornati alla V2.3.4",
-          "es": "constructor y aplicación actualizados a V2.3.4",
-          "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.4",
-          "zh-cn": "将构建器和应用程序更新到 V2.3.4"
-        },
-        "2.3.3": {
-          "en": "updated builder and app to V2.3.3",
-          "de": "Builder und App auf V2.3.3 aktualisiert",
-          "ru": "обновленный конструктор и приложение до версии 2.3.3",
-          "pt": "construtor e aplicativo atualizados para V2.3.3",
-          "nl": "geüpdatete bouwer en app naar V2.3.3",
-          "fr": "constructeur et application mis à jour vers V2.3.3",
-          "it": "builder e app aggiornati alla V2.3.3",
-          "es": "constructor y aplicación actualizados a V2.3.3",
-          "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.3",
-          "zh-cn": "将构建器和应用程序更新到 V2.3.3"
-        },
-        "2.3.2": {
-            "en": "remove bug in io-package.json file",
-            "de": "bug in io-package entfernen. json file",
-            "ru": "удалить баг в io-package. json файл",
-            "pt": "remover bug no io-package. arquivo json",
-            "nl": "verwijder bug in io-package. json dossier",
-            "fr": "supprimer bug dans io-package. json file",
-            "it": "rimuovere bug in io-package. file json",
-            "es": "quita el bicho en io-paquete. json file",
-            "pl": "usunąć bug w io-packaged. json file",
-            "uk": "видалити помилки в io-package. файл json",
-            "zh-cn": "b 用于碘剂。 json档案"
-          },
-        "2.3.1": {
-          "en": "updated app to V2.3.1",
-          "de": "App auf V2.3.1 aktualisiert",
-          "ru": "обновлено приложение до V2.3.1",
-          "pt": "aplicativo atualizado para V2.3.1",
-          "nl": "bijgewerkte app naar V2.3.1",
-          "fr": "application mise à jour à V2.3.1",
-          "it": "app aggiornata alla V2.3.1",
-          "es": "aplicación actualizada a V2.3.1",
-          "pl": "zaktualizowana aplikacja do wersji V2.3.1",
-          "zh-cn": "将应用更新为V2.3.1"
-        },
-        "2.3.0": {
-          "en": "updated builder and app to V2.3.0",
-          "de": "Builder und App auf V2.3.0 aktualisiert",
-          "ru": "обновленный конструктор и приложение до версии 2.3.0",
-          "pt": "construtor e aplicativo atualizados para V2.3.0",
-          "nl": "geüpdatete bouwer en app naar V2.3.0",
-          "fr": "constructeur et application mis à jour vers V2.3.0",
-          "it": "builder e app aggiornati alla V2.3.0",
-          "es": "constructor y aplicación actualizados a V2.3.0",
-          "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.0",
-          "zh-cn": "将构建器和应用程序更新到 V2.3.0"
-        },
-        "2.2.1": {
-          "en": "updated app to V2.2.1",
-          "de": "App auf V2.2.1 aktualisiert",
-          "ru": "обновлено приложение до V2.2.1",
-          "pt": "aplicativo atualizado para V2.2.1",
-          "nl": "bijgewerkte app naar V2.2.1",
-          "fr": "application mise à jour à V2.2.1",
-          "it": "app aggiornata alla V2.2.1",
-          "es": "aplicación actualizada a V2.2.1",
-          "pl": "zaktualizowana aplikacja do wersji V2.2.1",
-          "zh-cn": "将应用更新为V2.2.1"
-        },
-        "2.2.0": {
-          "en": "updated app to V2.2.0",
-          "de": "App auf V2.2.0 aktualisiert",
-          "ru": "обновлено приложение до V2.2.0",
-          "pt": "aplicativo atualizado para V2.2.0",
-          "nl": "bijgewerkte app naar V2.2.0",
-          "fr": "application mise à jour à V2.2.0",
-          "it": "app aggiornata alla V2.2.0",
-          "es": "aplicación actualizada a V2.2.0",
-          "pl": "zaktualizowana aplikacja do wersji V2.2.0",
-          "zh-cn": "将应用更新为V2.2.0"
-        },
-        "2.1.0": {
-          "en": "updated app to V2.1.0",
-          "de": "App auf V2.1.0 aktualisiert",
-          "ru": "обновлено приложение до V2.1.0",
-          "pt": "aplicativo atualizado para V2.1.0",
-          "nl": "bijgewerkte app naar V2.1.0",
-          "fr": "application mise à jour à V2.1.0",
-          "it": "app aggiornata alla V2.1.0",
-          "es": "aplicación actualizada a V2.1.0",
-          "pl": "zaktualizowana aplikacja do wersji V2.1.0",
-          "zh-cn": "将应用更新为V2.1.0"
-        }
+    "version": "2.6.0",
+    "news": {
+      "2.6.0": {
+        "en": "updated builder and app to V2.6.0",
+        "de": "Builder und App auf V2.6.0 aktualisiert",
+        "ru": "обновленный конструктор и приложение до версии 2.6.0",
+        "pt": "construtor e aplicativo atualizados para V2.6.0",
+        "nl": "geüpdatete bouwer en app naar V2.6.0",
+        "fr": "constructeur et application mis à jour vers V2.6.0",
+        "it": "builder e app aggiornati alla V2.6.0",
+        "es": "constructor y aplicación actualizados a V2.6.0",
+        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.0",
+        "uk": "оновлено конструктор і застосунок до версії 2.6.0",
+        "zh-cn": "将构建器和应用程序更新到 V2.6.0"
       },
-      "title": "minuVis",
-      "titleLang": {
-        "en": "minuVis",
-        "de": "minuVis",
-        "ru": "minuVis",
-        "pt": "minuVis",
-        "nl": "minivis",
-        "fr": "minuVis",
-        "it": "minuVis",
-        "es": "minuVis",
-        "pl": "minuVis",
-        "zh-cn": "minuVis"
+      "2.3.4": {
+        "en": "updated builder and app to V2.3.4",
+        "de": "Builder und App auf V2.3.4 aktualisiert",
+        "ru": "обновленный конструктор и приложение до версии 2.3.4",
+        "pt": "construtor e aplicativo atualizados para V2.3.4",
+        "nl": "geüpdatete bouwer en app naar V2.3.4",
+        "fr": "constructeur et application mis à jour vers V2.3.4",
+        "it": "builder e app aggiornati alla V2.3.4",
+        "es": "constructor y aplicación actualizados a V2.3.4",
+        "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.4",
+        "uk": "оновлено конструктор і застосунок до версії 2.3.4",
+        "zh-cn": "将构建器和应用程序更新到 V2.3.4"
       },
-      "desc": {
-        "en": "Visualization for all devices",
-        "de": "Visualisierung für alle Geräte",
-        "ru": "Визуализация для всех устройств",
-        "pt": "Visualização para todos os dispositivos",
-        "nl": "Visualisatie voor alle apparaten",
-        "fr": "Visualisation pour tous les appareils",
-        "it": "Visualizzazione per tutti i dispositivi",
-        "es": "Visualización para todos los dispositivos.",
-        "pl": "Wizualizacja dla wszystkich urządzeń",
-        "zh-cn": "可视化所有设备"
-      },
-      "authors": ["svallant <svallant@gmx.eu>"],
-      "keywords": ["Vis SCADA Visualization"],
-      "license": "MIT",
-      "platform": "Javascript/Node.js",
-      "main": "main.js",
-      "icon": "minuvis.png",
-      "enabled": true,
-      "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
-      "readme": "https://github.com/minukodu/ioBroker.minuvis/blob/master/README.md",
-      "loglevel": "info",
-      "mode": "none",
-      "type": "visualization",
-      "onlyWWW": true,
-      "localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
-      "singleton": true,
-      "noConfig": true,
-      "connectionType": "local",
-      "dataSource": "assumption",
-      "welcomeScreen": {
-        "link": "minuvis/builder/index.html",
-        "name": "minuvis builder",
-        "img": "minuvis/app/android-chrome-512x512.png",
-        "color": "#00828B",
-        "order": 99
-      },
-      "dependencies": [
-        {
-          "js-controller": ">=2.0.0",
-          "web": ">=1.5.4"
-        }
-      ]
+      "2.3.3": {
+        "en": "updated builder and app to V2.3.3",
+        "de": "Builder und App auf V2.3.3 aktualisiert",
+        "ru": "обновленный конструктор и приложение до версии 2.3.3",
+        "pt": "construtor e aplicativo atualizados para V2.3.3",
+        "nl": "geüpdatete bouwer en app naar V2.3.3",
+        "fr": "constructeur et application mis à jour vers V2.3.3",
+        "it": "builder e app aggiornati alla V2.3.3",
+        "es": "constructor y aplicación actualizados a V2.3.3",
+        "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.3",
+         "uk": "оновлено конструктор і застосунок до версії 2.3.3",
+        "zh-cn": "将构建器和应用程序更新到 V2.3.3"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "title": "minuVis",
+    "titleLang": {
+      "en": "minuVis",
+      "de": "minuVis",
+      "ru": "minuVis",
+      "pt": "minuVis",
+      "nl": "minivis",
+      "fr": "minuVis",
+      "it": "minuVis",
+      "es": "minuVis",
+      "pl": "minuVis",
+      "uk": "minuVis",
+      "zh-cn": "minuVis"
+    },
+    "desc": {
+      "en": "Visualization for all devices",
+      "de": "Visualisierung für alle Geräte",
+      "ru": "Визуализация для всех устройств",
+      "pt": "Visualização para todos os dispositivos",
+      "nl": "Visualisatie voor alle apparaten",
+      "fr": "Visualisation pour tous les appareils",
+      "it": "Visualizzazione per tutti i dispositivi",
+      "es": "Visualización para todos los dispositivos.",
+      "pl": "Wizualizacja dla wszystkich urządzeń",
+      "uk": "Візуалізація для всіх пристроїв",
+      "zh-cn": "可视化所有设备"
+    },
+    "authors": [
+      "svallant <svallant@gmx.eu>"
+    ],
+    "keywords": [
+      "Vis SCADA Visualization"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "minuvis.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
+    "readme": "https://github.com/minukodu/ioBroker.minuvis/blob/master/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "none",
+    "localLinks": {
+      "_default": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html"
+    },
+    "type": "visualization",
+    "onlyWWW": true,
+    "singleton": true,
+    "noConfig": true,
+    "connectionType": "local",
+    "dataSource": "assumption",
+    "adminUI": {
+      "config": "json"
+    },
+    "welcomeScreen": {
+      "link": "minuvis/builder/index.html",
+      "name": "minuvis builder",
+      "img": "minuvis/app/android-chrome-512x512.png",
+      "color": "#00828B",
+      "order": 99
+    },
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11",
+        "web": ">=1.5.4",
+        "admin": ">=7.6.17"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }

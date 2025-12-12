@@ -1,6 +1,6 @@
 {
   "name": "iobroker.minuvis",
-  "version": "2.3.4",
+  "version": "2.6.0",
   "description": "Visualization for all devices",
   "author": {
     "name": "svallant",
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/minukodu/ioBroker.minuvis",
   "license": "MIT",
   "keywords": [
-    "Vis SCADA Visualization"
+    "ioBroker Vis SCADA Visualization"
   ],
   "repository": {
     "type": "git",

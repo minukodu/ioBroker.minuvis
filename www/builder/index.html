@@ -365,12 +365,40 @@
               </form>
             </li>
             <li id="alarmPage-nav-item" class="nav-item settings">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="chkMinuAru" />
-                <label class="form-check-label" for="chkMinuAru">
-                  use ioBroker.minuaru.0
-                </label>
-              </div>
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chkMinuAru" />
+                  <label class="form-check-label" for="chkMinuAru">
+                    use ioBroker.minuaru.0
+                  </label>
+                </div>
+              </form>
+            </li>
+            <li id="authentication-nav-item" class="nav-item settings">
+              <form>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="chkAuth" />
+                  <label class="form-check-label" for="chkAuth">
+                    use authentication
+                  </label>
+                </div>
+                <div id="credentialswrapper">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="username" title="username" placeholder="username">
+                  </div>
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" class="form-control" id="password" title="password" placeholder="password">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="togglePassword"><i class="fas fa-eye"></i></span>
+                    </div>
+                  </div>
+                </div>
               </form>
             </li>
             <li id="nbOfCols-nav-item" class="nav-item settings mb-2 hidden">

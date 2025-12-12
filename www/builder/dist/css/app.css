@@ -132,6 +132,11 @@ input.colorinput {
   height: 40px;
 }
 
+#authentication-nav-item {
+  height: 100%;
+  min-height: 40px;
+}
+
 .nav-item.settings {
   color: #fff;
   padding-left: 2em;
