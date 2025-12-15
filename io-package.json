@@ -130,7 +130,6 @@
       "keywords": ["Vis SCADA Visualization"],
       "license": "MIT",
       "platform": "Javascript/Node.js",
-      "main": "main.js",
       "icon": "minuvis.png",
       "enabled": true,
       "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
