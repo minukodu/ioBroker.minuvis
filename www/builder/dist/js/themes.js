@@ -1,14 +1,12 @@
-function getDefaultLightTheme() {
-    let theme =
-        `/* minuvis default light theme */
-        :root {
-        /* variables for iOS components */
+function getDefaultLightTheme () {
+  let theme = `:root {
         --background-color: #efeff4;
         --text-color: #1f1f21;
         --sub-text-color: #999;
         --highlight-color: #0076ff;
         --second-highlight-color: #25a6d9;
-        --border-color: #ccc;
+        --border-color: #cccccc;
+        --chart-grid-color: #cccccc;
         --button-background-color: var(--highlight-color);
         --button-cta-background-color: var(--second-highlight-color);
         --toolbar-background-color: #fafafa;
@@ -72,8 +70,6 @@ function getDefaultLightTheme() {
         --toast-button-text-color: white;
         --select-input-color: var(--text-color);
         --select-input-border-color: var(--border-color);
-
-        /* variables for Material Design components */
         --material-background-color: #eceff1;
         --material-text-color: var(--text-color);
         --material-notification-background-color: #e91e63;
@@ -102,7 +98,7 @@ function getDefaultLightTheme() {
         --material-list-background-color: var(--list-background-color);
         --material-list-item-separator-color: #ccc;
         --material-list-header-text-color: #757575;
-        --material-checkbox-active-color: #37474f;
+        --material-checkbox-active-color: var(--highlight-color);
         --material-checkbox-inactive-color: #717171;
         --material-checkbox-checkmark-color: #ffffff;
         --material-radio-button-active-color: #37474f;
@@ -136,32 +132,29 @@ function getDefaultLightTheme() {
         --material-toast-background-color: rgba(0, 0, 0, 0.8);
         --material-toast-text-color: white;
         --material-toast-button-text-color: #bbdefb;
-        --material-select-input-color: var(--material-text-input-text-color);
-        --material-select-input-active-color: var(--material-text-input-active-color);
-        --material-select-input-inactive-color: var(--material-text-input-active-color);
+        --material-select-input-color: var(--material-text-color);
+        --material-select-input-active-color: rgba(0, 0, 0, 0.15);
+        --material-select-input-inactive-color: rgba(0, 0, 0, 0.81);
         --material-select-border-color: rgba(0, 0, 0, 0.12);
         --material-popover-background-color: #fafafa;
         --material-popover-text-color: var(--material-text-color);
         --material-action-sheet-text-color: #686868;
-
-        /* others */
+        --material-progress-bar-primary-color: #1e88e5;
         --tap-highlight-color: transparent;
-        }`
+        }`;
 
-    return theme;
+  return theme;
 }
 
-function getDefaultDarkTheme() {
-    let theme =
-        `/* minuvis default dark theme */
-        :root {
-        /* variables for iOS components */
+function getDefaultDarkTheme () {
+  let theme = `:root {
         --background-color: #222222;
         --text-color: #fff;
         --sub-text-color: #999;
         --highlight-color: #00828b;
         --second-highlight-color: #da5926;
         --border-color: #5c5c5c;
+        --chart-grid-color: #cccccc;
         --button-background-color: var(--highlight-color);
         --button-cta-background-color: var(--second-highlight-color);
         --button-light-color: white;
@@ -225,8 +218,6 @@ function getDefaultDarkTheme() {
         --toast-button-text-color: #000;
         --select-input-color: var(--text-color);
         --select-input-border-color: var(--border-color);
-
-        /* variables for Material Design components */
         --material-background-color: #303030;
         --material-text-color: #ffffff;
         --material-notification-background-color: #f50057;
@@ -255,15 +246,15 @@ function getDefaultDarkTheme() {
         --material-list-background-color: var(--list-background-color);
         --material-list-item-separator-color: rgba(255, 255, 255, 0.12);
         --material-list-header-text-color: #8a8a8a;
-        --material-checkbox-active-color: #fff;
+        --material-checkbox-active-color:  var(--highlight-color);
         --material-checkbox-inactive-color: #717171;
         --material-checkbox-checkmark-color: #000;
         --material-radio-button-active-color: #00828b;
         --material-radio-button-inactive-color: #8e8e8e;
         --material-radio-button-disabled-color: #505050;
-        --material-text-input-text-color: rgba(255, 255, 255, 1.0);
-        --material-text-input-active-color: rgba(255, 255, 255, 1.0);
-        --material-text-input-inactive-color: rgba(255, 255, 255, 1.0);
+        --material-text-input-text-color: rgba(255, 255, 255, 0.75);
+        --material-text-input-active-color: rgba(255, 255, 255, 0.75);
+        --material-text-input-inactive-color: rgba(255, 255, 255, 0.3);
         --material-search-background-color: #424242;
         --material-dialog-background-color: #424242;
         --material-dialog-text-color: var(--material-text-color);
@@ -289,17 +280,16 @@ function getDefaultDarkTheme() {
         --material-toast-background-color: #ccc;
         --material-toast-text-color: #000;
         --material-toast-button-text-color: #583905;
-        --material-select-input-color: var(--material-text-input-text-color);
-        --material-select-input-active-color: var(--material-text-input-active-color);
-        --material-select-input-inactive-color: var(--material-text-input-active-color);
+        --material-select-input-color: var(--material-text-color);
+        --material-select-input-active-color: rgba(255, 255, 255, 0.85);
+        --material-select-input-inactive-color: rgba(255, 255, 255, 0.19);
         --material-select-border-color: rgba(255, 255, 255, 0.88);
         --material-popover-background-color: var(--material-alert-dialog-background-color);
         --material-popover-text-color: var(--material-text-color);
         --material-action-sheet-text-color: #686868;
-
-        /* others */
+         --material-progress-bar-primary-color: #00828b;
         --tap-highlight-color: transparent;
-        }`
+        }`;
 
-    return theme;
+  return theme;
 }

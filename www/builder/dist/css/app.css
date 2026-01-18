@@ -132,6 +132,11 @@ input.colorinput {
   height: 40px;
 }
 
+#authentication-nav-item {
+  height: 100%;
+  min-height: 40px;
+}
+
 .nav-item.settings {
   color: #fff;
   padding-left: 2em;
@@ -320,6 +325,10 @@ input.colorinput {
   background: #fff;
   min-height: 1000px;
   border-left: 2px #17a2b8 solid;
+}
+
+#widgetClipboard {
+  position: fixed;
 }
 
 #settings-holder {
