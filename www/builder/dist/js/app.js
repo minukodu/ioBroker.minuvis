@@ -1,7 +1,7 @@
 // App
 
 //////////////////////////////////
-var version = '2.6.2';
+var version = '2.6.3';
 //////////////////////////////////
 
 var numberOfCols = 18; // 18 cols grid
@@ -17,6 +17,7 @@ var filePath = 'minukodu';
 var metaInfoSocketIO = '0_userdata.0';
 var defaultIconFamily = 'mfd-icon';
 var grids = [];
+var copiedWidgetdata = {};
 
 var workingBuffer = [];
 var workBufferWorking = false;

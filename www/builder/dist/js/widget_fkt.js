@@ -1,4 +1,4 @@
-function init_widget_dropdown (targetUUID, card = false) {
+function init_widget_dropdown(targetUUID, card = false) {
   var widgetDropdown = `
 	<div class="dropdown widget-dropdown ml-3" data-toggle="dropdown">
 	  <button class="btn btn-sm btn-primary dropdown-toggle" type="button">
@@ -13,9 +13,9 @@ function init_widget_dropdown (targetUUID, card = false) {
 
   var widgetId = 'wg-' + targetUUID;
 
-  $ (widgetDropdown)
-    .attr ('id', widgetId)
-    .appendTo ('#' + targetUUID + ' .widget-dropdown-holder');
+  $(widgetDropdown)
+    .attr('id', widgetId)
+    .appendTo('#' + targetUUID + ' .widget-dropdown-holder');
 
   for (var widget in widgetJSON) {
     // do not add Card in card
@@ -28,38 +28,38 @@ function init_widget_dropdown (targetUUID, card = false) {
     }
 
     //console.log(widget);
-    $ (widgetDropdownOption)
-      .text (widgetJSON[widget].type)
-      .attr ('data-widgetName', widgetJSON[widget].type)
-      .attr ('data-targetUUID', targetUUID)
-      .attr ('data-target', targetUUID)
-      .click (function () {
-        addWidgetToPage (
-          $ (this).attr ('data-widgetName'),
-          $ (this).attr ('data-targetUUID'),
+    $(widgetDropdownOption)
+      .text(widgetJSON[widget].type)
+      .attr('data-widgetName', widgetJSON[widget].type)
+      .attr('data-targetUUID', targetUUID)
+      .attr('data-target', targetUUID)
+      .click(function () {
+        addWidgetToPage(
+          $(this).attr('data-widgetName'),
+          $(this).attr('data-targetUUID'),
           null,
           grids[targetUUID],
           card
         );
       })
-      .appendTo ('#' + widgetId + ' .dropdown-menu');
+      .appendTo('#' + widgetId + ' .dropdown-menu');
   }
-  $ ('#' + widgetId).dropdown ();
+  $('#' + widgetId).dropdown();
 }
 
-function showPropsTable (uuid, gridstackNode) {
+function showPropsTable(uuid, gridstackNode) {
   if (gridstackNode) {
     // console.log("Position: " + gridstackNode.x + ":" + gridstackNode.y);
-    $ ('.sidebar-settings-table').hide ();
-    $ ('.widget-settings-table').hide ();
-    $ ('#propsTable-' + uuid).show ();
-    $ ('#propsTable-' + uuid + ' .widget-settings-table').show ();
-    $ ('#props-' + uuid).show ();
+    $('.sidebar-settings-table').hide();
+    $('.widget-settings-table').hide();
+    $('#propsTable-' + uuid).show();
+    $('#propsTable-' + uuid + ' .widget-settings-table').show();
+    $('#props-' + uuid).show();
   }
 }
 
-function init_widget_settings_form (widgettype, uuid) {
-  var settingTableHeight = $ (window).height () - 150;
+function init_widget_settings_form(widgettype, uuid) {
+  var settingTableHeight = $(window).height() - 150;
 
   var widget_settings_form =
     `<table id="props-` +
@@ -87,7 +87,7 @@ function init_widget_settings_form (widgettype, uuid) {
 
   let key = 0; // no array key
   for (prop in widgetJSON[widgettype]) {
-    widget_settings_form += createWidgetFormByPropType (
+    widget_settings_form += createWidgetFormByPropType(
       widgetJSON,
       widgettype,
       prop,
@@ -99,34 +99,34 @@ function init_widget_settings_form (widgettype, uuid) {
   return widget_settings_form;
 }
 
-function checkLinkReference (element, uuid) {
-  console.log ('checkLinkReference');
+function checkLinkReference(element, uuid) {
+  console.log('checkLinkReference');
   //console.log ($ (element));
-  let elemId = $ (element)[0].id;
+  let elemId = $(element)[0].id;
   //console.log (elemId);
   // sanitize strLinkReferenceing
-  let strLinkReference = $ ('#' + elemId).val ();
+  let strLinkReference = $('#' + elemId).val();
   //console.log (strLinkReference);
-  strLinkReference = strLinkReference.replace (/[^a-z0-9áéíóúñü \.,_-]/gim, '');
-  strLinkReference = strLinkReference.trim ();
-  strLinkReference = strLinkReference.replace (/ /g, '_');
-  console.log (strLinkReference);
-  $ ('#' + elemId).val (strLinkReference);
+  strLinkReference = strLinkReference.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, '');
+  strLinkReference = strLinkReference.trim();
+  strLinkReference = strLinkReference.replace(/ /g, '_');
+  console.log(strLinkReference);
+  $('#' + elemId).val(strLinkReference);
   // write string in data of parent-page
-  let pageLinkReferences = $ ('#' + uuid)
-    .closest ('.page')
-    .attr ('data-linkreferences');
+  let pageLinkReferences = $('#' + uuid)
+    .closest('.page')
+    .attr('data-linkreferences');
   let arrPageLinkReferences = [];
   if (pageLinkReferences) {
-    arrPageLinkReferences = pageLinkReferences.split (' ');
+    arrPageLinkReferences = pageLinkReferences.split(' ');
   }
-  arrPageLinkReferences.push (strLinkReference);
-  $ ('#' + uuid)
-    .closest ('.page')
-    .attr ('data-linkreferences', arrPageLinkReferences.join (' '));
+  arrPageLinkReferences.push(strLinkReference);
+  $('#' + uuid)
+    .closest('.page')
+    .attr('data-linkreferences', arrPageLinkReferences.join(' '));
 }
 
-function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
+function createWidgetFormByPropType(widgetJSON, widgettype, prop, key) {
   //console.log("createWidgetFormByPropType: " + widgettype);
   var widget_settings_form = '';
 
@@ -135,7 +135,7 @@ function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
 
   if (prop !== 'type') {
     var formInput = '';
-    var inputUUID = UUID ();
+    var inputUUID = UUID();
     var objProp = widgetJSON[widgettype][prop];
 
     // handle array
@@ -143,7 +143,7 @@ function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
       // array has items, so count up
       for (let key = 1; key < objProp.maxItems + 1; key++) {
         for (prop in widgetJSON[objProp.items]) {
-          widget_settings_form += createWidgetFormByPropType (
+          widget_settings_form += createWidgetFormByPropType(
             widgetJSON,
             objProp.items,
             prop,
@@ -522,7 +522,7 @@ function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
           `"  
                           onkeyup="validateTimePickerFormat(this)" >
                           <span class="formatExample nothidden">Example: ` +
-          moment ().format (objProp.default) +
+          moment().format(objProp.default) +
           `</span>`;
         break;
       case 'numeraljs':
@@ -645,30 +645,30 @@ function createWidgetFormByPropType (widgetJSON, widgettype, prop, key) {
   return widget_settings_form;
 }
 
-function buildPageLinksSelect (element) {
+function buildPageLinksSelect(element) {
   let options = '';
-  let value = $ (element).val ();
-  $ ('.page .page-title').each (function () {
-    console.log (this);
+  let value = $(element).val();
+  $('.page .page-title').each(function () {
+    console.log(this);
     selected = '';
-    if ($ (this).val () == value) {
+    if ($(this).val() == value) {
       selected = "selected='selected'";
     }
     options +=
       '<option ' +
       selected +
       " value='" +
-      $ (this).val () +
+      $(this).val() +
       "'>" +
-      $ (this).val () +
+      $(this).val() +
       '</option>';
   });
-  $ ('.page').each (function () {
+  $('.page').each(function () {
     //console.log (this);
-    let linkReferences = $ (this).attr ('data-linkreferences');
+    let linkReferences = $(this).attr('data-linkreferences');
     if (linkReferences) {
-      let arrLinkReferences = linkReferences.split (' ');
-      $.each (arrLinkReferences, function (index, linkReference) {
+      let arrLinkReferences = linkReferences.split(' ');
+      $.each(arrLinkReferences, function (index, linkReference) {
         if (linkReference == value) {
           selected = "selected='selected'";
         }
@@ -683,96 +683,134 @@ function buildPageLinksSelect (element) {
       });
     }
   });
-  $ (element).html ('');
-  $ (element).html (options);
+  $(element).html('');
+  $(element).html(options);
 }
 
-function deleteWidget (element, uuid, pageUUID) {
+function deleteWidget(element, uuid, pageUUID) {
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation ();
-  console.log ('delete Item');
+  if (e.stopPropagation) e.stopPropagation();
+  console.log('delete Item');
   // console.log(document.getElementById(uuid).parentElement.parentElement);
-  grids[pageUUID].removeWidget (
-    document.getElementById (uuid).parentElement.parentElement
+  grids[pageUUID].removeWidget(
+    document.getElementById(uuid).parentElement.parentElement
   );
-  grids[pageUUID].update ();
+  grids[pageUUID].update();
 }
 
-function copyWidget (element, uuid, targetUUID, card) {
+function copyWidget(element, uuid, targetUUID, card) {
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation ();
+  if (e.stopPropagation) e.stopPropagation();
   //read settings
-  var widgetData = readWidgetConfig (uuid);
-  //create newUUID
-  widgetData.UUID = UUID ();
-  // add to Page
-  addWidgetToPage (
-    widgetData.type,
-    targetUUID,
-    widgetData,
-    grids[targetUUID],
-    card,
-    true
-  );
+  var widgetData = readWidgetConfig(uuid);
+
+  // is card
+  if (card === true || card === 'true') {
+    // copy within card
+    //create newUUID
+    widgetData.UUID = UUID();
+    // add to Page
+    addWidgetToPage(
+      widgetData.type,
+      targetUUID,
+      widgetData,
+      grids[targetUUID],
+      card,
+      true
+    );
+  } else {
+
+    // store widgetData for paste
+    copiedWidgetdata = widgetData;
+
+    if (copiedWidgetdata.UUID) {
+      $("#widgetClipboard").removeClass("hidden");
+      $("#widgetClipboard .buttontext").text("paste widget '" + copiedWidgetdata.type + "' to active page");
+    }
+  }
+
+
 }
 
-function updateBooleanProp (element) {
-  $ (element).val ($ (element)[0].checked);
+$("#btn-paste-clipboard-widget").click(function () { pasteWidget() });
+
+
+function pasteWidget() {
+  let targetUUID = $(".page:visible").attr("id");
+  let widgetData = copiedWidgetdata;
+  if (widgetData.UUID && targetUUID) {
+    //create newUUID
+    widgetData.UUID = UUID();
+    // add to Page
+    addWidgetToPage(
+      widgetData.type,
+      targetUUID,
+      widgetData,
+      grids[targetUUID],
+      false,
+      true
+    );
+  }
+
 }
 
-function selectWidget (element, UUID) {
+function updateBooleanProp(element) {
+  $(element).val($(element)[0].checked);
+}
+
+function selectWidget(element, UUID) {
   // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.x);
   // console.log($(element).closest(".grid-stack-item")[0].gridstackNode.y);
   if (!e) var e = window.event;
   e.cancelBubble = true;
-  if (e.stopPropagation) e.stopPropagation ();
+  if (e.stopPropagation) e.stopPropagation();
 
-  $ ('.grid-stack-item-content.selected').removeClass ('selected');
-  $ (element).parent ().addClass ('selected');
-  showPropsTable (
+  $('.grid-stack-item-content.selected').removeClass('selected');
+  $(element).parent().addClass('selected');
+  showPropsTable(
     UUID,
-    $ (element).closest ('.grid-stack-item')[0].gridstackNode
+    $(element).closest('.grid-stack-item')[0].gridstackNode
   );
 }
 
-function updateWidgetSize (item) {
+function updateWidgetSize(item) {
   // update width and height
   // console.log(item);
   // console.log($("#props-" + item.uuid + " .prop-widgetPosX"));
-  $ ('#props-' + item.uuid + ' .prop-widgetPosX').val (item.x);
-  $ ('#props-' + item.uuid + ' .prop-widgetPosX').attr ('value', item.x);
-  $ ('#props-' + item.uuid + ' .prop-widgetPosX').attr (
+  $('#props-' + item.uuid + ' .prop-widgetPosX').val(item.x);
+  $('#props-' + item.uuid + ' .prop-widgetPosX').attr('value', item.x);
+  $('#props-' + item.uuid + ' .prop-widgetPosX').attr(
     'data-widgetPosX',
     item.x
   );
-  $ ('#props-' + item.uuid + ' .prop-widgetPosY').val (item.y);
-  $ ('#props-' + item.uuid + ' .prop-widgetPosY').attr ('value', item.y);
-  $ ('#props-' + item.uuid + ' .prop-widgetPosY').attr (
+  $('#props-' + item.uuid + ' .prop-widgetPosY').val(item.y);
+  $('#props-' + item.uuid + ' .prop-widgetPosY').attr('value', item.y);
+  $('#props-' + item.uuid + ' .prop-widgetPosY').attr(
     'data-widgetPosY',
     item.y
   );
 
-  $ ('#props-' + item.uuid + ' .prop-widgetHeight').val (item.h);
-  $ ('#props-' + item.uuid + ' .prop-widgetHeight').attr ('value', item.h);
-  $ ('#props-' + item.uuid + ' .prop-widgetHeight').attr (
+  $('#props-' + item.uuid + ' .prop-widgetHeight').val(item.h);
+  $('#props-' + item.uuid + ' .prop-widgetHeight').attr('value', item.h);
+  $('#props-' + item.uuid + ' .prop-widgetHeight').attr(
     'data-widgetHeight',
     item.h
   );
-  $ ('#props-' + item.uuid + ' .prop-widgetWidth').val (item.w);
-  $ ('#props-' + item.uuid + ' .prop-widgetWidth').attr ('value', item.w);
-  $ ('#props-' + item.uuid + ' .prop-widgetWidth').attr (
+  $('#props-' + item.uuid + ' .prop-widgetWidth').val(item.w);
+  $('#props-' + item.uuid + ' .prop-widgetWidth').attr('value', item.w);
+  $('#props-' + item.uuid + ' .prop-widgetWidth').attr(
     'data-widgetWidth',
     item.w
   );
 
-  $ ('.grid-stack-item-content.selected').removeClass ('selected');
-  $ ('#' + item.uuid).parent ().addClass ('selected');
-  showPropsTable (item.uuid, item);
+  $('.grid-stack-item-content.selected').removeClass('selected');
+  $('#' + item.uuid).parent().addClass('selected');
+  showPropsTable(item.uuid, item);
 }
-function handleCardWidget (widgetUUID, nbOfCols = 18) {
-  $ ('#' + widgetUUID).append (
+function handleCardWidget(widgetUUID, nbOfCols = 18) {
+  $('#' + widgetUUID).append(
     "<div class='widgetcard widget-dropdown-holder'></div><div class='widgetcard widget-holder'><div class='grid-holder'></div></div>"
   );
 
@@ -788,7 +826,7 @@ function handleCardWidget (widgetUUID, nbOfCols = 18) {
     dragInOptions: {}, // clone
     removable: false, // drag-out delete class
     removeTimeout: 100,
-    resizable: {autoHide: true, handles: 'se,sw'},
+    resizable: { autoHide: true, handles: 'se,sw' },
     acceptWidgets: function (el) {
       return false;
     }, // function example, else can be simple: true | false | '.someClass' value
@@ -796,31 +834,31 @@ function handleCardWidget (widgetUUID, nbOfCols = 18) {
 
   // #######################################################################################
   // INIT Grid
-  grids[widgetUUID] = GridStack.addGrid (
-    $ ('#' + widgetUUID + ' .grid-holder'),
+  grids[widgetUUID] = GridStack.addGrid(
+    $('#' + widgetUUID + ' .grid-holder'),
     gridOptions
   );
-  $ ('#' + widgetUUID + ' .grid-holder .grid-stack').addClass (
+  $('#' + widgetUUID + ' .grid-holder .grid-stack').addClass(
     'grid-stack-' + nbOfCols
   );
   // console.log("################## GRID INIT");
 
   // console.log(widgetUUID);
   // console.log(grids[widgetUUID]);
-  grids[widgetUUID].on ('change', function (event, items) {
+  grids[widgetUUID].on('change', function (event, items) {
     // console.log(event);
     // console.log(items);
-    items.forEach (function (item) {
-      updateWidgetSize (item);
+    items.forEach(function (item) {
+      updateWidgetSize(item);
     });
   });
-  grids[widgetUUID].on ('added', function (event, items) {
-    items.forEach (function (item) {
-      updateWidgetSize (item);
+  grids[widgetUUID].on('added', function (event, items) {
+    items.forEach(function (item) {
+      updateWidgetSize(item);
     });
   });
 
-  init_widget_dropdown (widgetUUID, true);
+  init_widget_dropdown(widgetUUID, true);
 
   // grid= grids[widgetUUID];
   // grid.addWidget({ w: 2, h: 2, x: 1, y: 1, maxH: 10, content: "content", uuid: "uuid" });
@@ -828,7 +866,7 @@ function handleCardWidget (widgetUUID, nbOfCols = 18) {
   return widgetUUID;
 }
 
-function addWidgetToPage (
+function addWidgetToPage(
   widget,
   targetUUID,
   widgetData = null,
@@ -836,10 +874,10 @@ function addWidgetToPage (
   card = false,
   copy = false
 ) {
-  console.log (widget);
-  console.log (widgetData);
-  console.log (targetUUID);
-  console.log (grid);
+  console.log(widget);
+  console.log(widgetData);
+  console.log(targetUUID);
+  console.log(grid);
 
   // filler is now headline
   if (widget === 'filler') {
@@ -848,7 +886,7 @@ function addWidgetToPage (
 
   widgetData = widgetData || {};
 
-  uuid = widgetData.UUID || UUID ();
+  uuid = widgetData.UUID || UUID();
 
   // info-text to Widgets
   widgetInfo = '';
@@ -864,8 +902,8 @@ function addWidgetToPage (
         widgetData.targetpage || widgetJSON[widget].targetpage.default;
     }
   }
-  $ ('#' + uuid + ' .info').text (widgetInfo);
-  $ ('#' + uuid + ' .info').attr ('title', widgetInfo);
+  $('#' + uuid + ' .info').text(widgetInfo);
+  $('#' + uuid + ' .info').attr('title', widgetInfo);
 
   widgetInfoClass = '';
   if (
@@ -942,15 +980,15 @@ function addWidgetToPage (
       widgetMinWidth = 1; //6
     }
 
-    var newWidgetSettings = init_widget_settings_form (
+    var newWidgetSettings = init_widget_settings_form(
       widget,
       uuid,
       widgetData
     );
-    $ ('#settings-holder').append ($ (newWidgetSettings));
+    $('#settings-holder').append($(newWidgetSettings));
 
     //add to grid
-    grid.addWidget ({
+    grid.addWidget({
       w: widgetData.widgetWidth,
       h: widgetData.widgetHeight,
       x: widgetData.widgetPosX,
@@ -969,46 +1007,46 @@ function addWidgetToPage (
       // console.log(uuid);
 
       // handle array-data of widgets
-      if (data.startsWith ('array_')) {
+      if (data.startsWith('array_')) {
         for (key in widgetData[data]) {
           for (prop in widgetData[data][key]) {
-            console.log (prop + ': ' + widgetData[data][key][prop]);
-            $ (
+            console.log(prop + ': ' + widgetData[data][key][prop]);
+            $(
               '#props-' +
-                uuid +
-                ' .prop-' +
-                prop +
-                '[data-arraykey="' +
-                key +
-                '"]'
-            ).val (widgetData[data][key][prop]);
-            $ (
+              uuid +
+              ' .prop-' +
+              prop +
+              '[data-arraykey="' +
+              key +
+              '"]'
+            ).val(widgetData[data][key][prop]);
+            $(
               '#props-' +
-                uuid +
-                ' .prop-' +
-                prop +
-                '[data-arraykey="' +
-                key +
-                '"]'
-            ).attr ('value', widgetData[data][key][prop]);
-            $ (
+              uuid +
+              ' .prop-' +
+              prop +
+              '[data-arraykey="' +
+              key +
+              '"]'
+            ).attr('value', widgetData[data][key][prop]);
+            $(
               '#props-' +
-                uuid +
-                ' .prop-' +
-                prop +
-                '[data-arraykey="' +
-                key +
-                '"]'
-            ).attr ('data-' + prop, widgetData[data][key][prop]);
+              uuid +
+              ' .prop-' +
+              prop +
+              '[data-arraykey="' +
+              key +
+              '"]'
+            ).attr('data-' + prop, widgetData[data][key][prop]);
           }
         }
       } else {
-        $ ('#props-' + uuid + ' .prop-' + data).val (widgetData[data]);
-        $ ('#props-' + uuid + ' .prop-' + data).attr (
+        $('#props-' + uuid + ' .prop-' + data).val(widgetData[data]);
+        $('#props-' + uuid + ' .prop-' + data).attr(
           'value',
           widgetData[data]
         );
-        $ ('#props-' + uuid + ' .prop-' + data).attr (
+        $('#props-' + uuid + ' .prop-' + data).attr(
           'data-' + data,
           widgetData[data]
         );
@@ -1016,104 +1054,104 @@ function addWidgetToPage (
     }
 
     // disable input of width and height
-    $ ('#props-' + uuid + ' .prop-widgetHeight').attr ('disabled', 'disabled');
-    $ ('#props-' + uuid + ' .prop-widgetWidth').attr ('disabled', 'disabled');
+    $('#props-' + uuid + ' .prop-widgetHeight').attr('disabled', 'disabled');
+    $('#props-' + uuid + ' .prop-widgetWidth').attr('disabled', 'disabled');
 
     // add icon classes to i-Element
-    var iconElements = $ ('#props-' + uuid + ' .type-icon i');
-    iconElements.each (function () {
-      $ (this)
-        .removeClass ()
-        .addClass ($ (this).parent ().val ())
-        .addClass (
-          $ (this)
-            .parent ()
-            .parent ()
-            .parent ()
-            .next ()
-            .find ('.type-iconFamily')
-            .val ()
+    var iconElements = $('#props-' + uuid + ' .type-icon i');
+    iconElements.each(function () {
+      $(this)
+        .removeClass()
+        .addClass($(this).parent().val())
+        .addClass(
+          $(this)
+            .parent()
+            .parent()
+            .parent()
+            .next()
+            .find('.type-iconFamily')
+            .val()
         );
 
       // console.log("######################################");
       // console.log($(this).parent().parent().parent().next().find(".type-iconFamily"));
     });
     // add stateId to state-Select
-    var stateIdElements = $ ('#props-' + uuid + ' .type-stateId');
-    stateIdElements.each (function () {
-      var stateId = $ (this).attr ('data-stateid');
-      $ (this).find ('option').remove ();
-      $ (this).append (
-        $ (
+    var stateIdElements = $('#props-' + uuid + ' .type-stateId');
+    stateIdElements.each(function () {
+      var stateId = $(this).attr('data-stateid');
+      $(this).find('option').remove();
+      $(this).append(
+        $(
           '<option selected="selected" value="' +
-            stateId +
-            '">' +
-            stateId +
-            '</option>'
+          stateId +
+          '">' +
+          stateId +
+          '</option>'
         )
       );
     });
     // add checked to boolean
-    var booleanElements = $ ('#props-' + uuid + ' .type-boolean');
-    booleanElements.each (function () {
-      var value = $ (this).val ();
+    var booleanElements = $('#props-' + uuid + ' .type-boolean');
+    booleanElements.each(function () {
+      var value = $(this).val();
       if (value == 'true') {
-        $ (this).attr ('checked', 'checked');
+        $(this).attr('checked', 'checked');
       } else {
-        $ (this).removeAttr ('checked');
+        $(this).removeAttr('checked');
       }
     });
     // add file to file-Select
-    var fileElements = $ ('#props-' + uuid + ' .type-file');
-    fileElements.each (function () {
-      var value = $ (this).attr ('value');
-      $ (this).find ('option').remove ();
-      $ (this).append (
-        $ (
+    var fileElements = $('#props-' + uuid + ' .type-file');
+    fileElements.each(function () {
+      var value = $(this).attr('value');
+      $(this).find('option').remove();
+      $(this).append(
+        $(
           '<option selected="selected" value="' +
-            value +
-            '">' +
-            value +
-            '</option>'
+          value +
+          '">' +
+          value +
+          '</option>'
         )
       );
     });
     // add targetpage to pageList
-    var pageListElements = $ ('#props-' + uuid + ' .type-pageList');
-    pageListElements.each (function () {
-      var pageLink = $ (this).attr ('value');
-      $ (this).find ('option').remove ();
-      $ (this).append (
-        $ (
+    var pageListElements = $('#props-' + uuid + ' .type-pageList');
+    pageListElements.each(function () {
+      var pageLink = $(this).attr('value');
+      $(this).find('option').remove();
+      $(this).append(
+        $(
           '<option selected="selected" value="' +
-            pageLink +
-            '">' +
-            pageLink +
-            '</option>'
+          pageLink +
+          '">' +
+          pageLink +
+          '</option>'
         )
       );
     });
 
-    $ ('#props-' + uuid).bootstrapTable ();
+    $('#props-' + uuid).bootstrapTable();
 
-    $ ('#props-' + uuid + ' .tooltip').remove ();
-    $ ('#props-' + uuid + ' [data-tooltip="tooltip"]').tooltip ();
+    $('#props-' + uuid + ' .tooltip').remove();
+    $('#props-' + uuid + ' [data-tooltip="tooltip"]').tooltip();
 
-    $ ('#props-' + uuid)
-      .closest ('.bootstrap-table')
-      .attr ('id', 'propsTable-' + uuid)
-      .addClass ('sidebar-settings-table')
-      .hide ();
+    $('#props-' + uuid)
+      .closest('.bootstrap-table')
+      .attr('id', 'propsTable-' + uuid)
+      .addClass('sidebar-settings-table')
+      .hide();
   }
 
   if (widget === 'card') {
-    let cardUUID = handleCardWidget (uuid);
-    console.log ('handleCardWidget returned: ' + cardUUID);
-    console.log (widgetData);
+    let cardUUID = handleCardWidget(uuid);
+    console.log('handleCardWidget returned: ' + cardUUID);
+    console.log(widgetData);
     if (copy === true) {
       for (var widget in widgetData.widgets) {
-        widgetData.widgets[widget].UUID = UUID ();
-        addWidgetToPage (
+        widgetData.widgets[widget].UUID = UUID();
+        addWidgetToPage(
           widgetData.widgets[widget].type,
           cardUUID,
           widgetData.widgets[widget],
@@ -1127,22 +1165,22 @@ function addWidgetToPage (
   return uuid;
 }
 
-function validateTimePickerFormat (elem) {
-  console.log ('validateTimePickerFormat');
-  let format = $ (elem).val ();
-  console.log ($ (elem).next ());
-  let formatExample = moment ().format (format);
-  $ (elem).next ('.formatExample').text ('Example: ' + formatExample);
+function validateTimePickerFormat(elem) {
+  console.log('validateTimePickerFormat');
+  let format = $(elem).val();
+  console.log($(elem).next());
+  let formatExample = moment().format(format);
+  $(elem).next('.formatExample').text('Example: ' + formatExample);
 }
 
-function validateNumeralFormat (elem) {
-  console.log ('validateNumeralFormat');
-  let format = $ (elem).val ();
-  let formatExample = numeral (1000).format (format);
-  $ (elem)
-    .parent ()
-    .parent ()
-    .parent ()
-    .find ('.formatExample')
-    .val (formatExample);
+function validateNumeralFormat(elem) {
+  console.log('validateNumeralFormat');
+  let format = $(elem).val();
+  let formatExample = numeral(1000).format(format);
+  $(elem)
+    .parent()
+    .parent()
+    .parent()
+    .find('.formatExample')
+    .val(formatExample);
 }

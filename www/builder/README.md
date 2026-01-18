@@ -10,6 +10,10 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.6.3 (2026-01-18)
+* (svallant) link to card for donut- and html-widgets
+* (svallant) new handling for copying widgets
+
 ### 2.6.2 (2026-01-05)
 * (svallant) link to card for indicator, linkbutton and headline
 * (svallant) add hide open-icon in modal-mode for card

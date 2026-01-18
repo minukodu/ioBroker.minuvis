@@ -942,6 +942,16 @@ var widgetJSON = {
       default: '0_userdata.0.minuvisInvisibleWidget',
       tooltip: 'id of state to hide widget',
     },
+    isLink: {
+      type: 'boolean',
+      default: 'false',
+      tooltip: 'is clickable and links to targetpage',
+    },
+    targetpage: {
+      type: 'pageList',
+      default: 'startpage',
+      tooltip: 'name of the page to link',
+    },
   },
   output: {
     type: 'output',
@@ -2192,6 +2202,16 @@ var widgetJSON = {
       type: 'stateIdType',
       default: 'none',
       tooltip: 'type of state',
+    },
+    isLink: {
+      type: 'boolean',
+      default: 'false',
+      tooltip: 'is clickable and links to targetpage',
+    },
+    targetpage: {
+      type: 'pageList',
+      default: 'startpage',
+      tooltip: 'name of the page to link',
     },
   },
   imgoutput: {

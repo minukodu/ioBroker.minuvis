@@ -327,6 +327,10 @@ input.colorinput {
   border-left: 2px #17a2b8 solid;
 }
 
+#widgetClipboard {
+  position: fixed;
+}
+
 #settings-holder {
   position: fixed;
   padding-bottom: 200px;
