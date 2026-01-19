@@ -66,6 +66,9 @@ For more information visit https://minukodu.de/en or watch at youtube https://yo
 
 
 ## Changelog
+### 2.6.4 (2026-01-19)
+* updated app and builder to V2.6.4
+
 ### 2.6.3 (2026-01-18)
 * updated app and builder to V2.6.3
 

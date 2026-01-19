@@ -10,6 +10,9 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.6.4 (2026-01-19)
+* (svallant) change color of copy-button
+
 ### 2.6.3 (2026-01-18)
 * (svallant) link to card for donut- and html-widgets
 * (svallant) new handling for copying widgets
