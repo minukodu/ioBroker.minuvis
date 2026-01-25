@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/minuvis/app/static/css/main.f3f9acdb.css",
-    "main.js": "/minuvis/app/static/js/main.67e59fcc.js",
+    "main.js": "/minuvis/app/static/js/main.1845d985.js",
     "static/media/materialdesignicons-webfont.eot": "/minuvis/app/static/media/materialdesignicons-webfont.d1e00c3d8734cd799469.eot",
     "static/media/materialdesignicons-webfont.ttf?v=5.5.55": "/minuvis/app/static/media/materialdesignicons-webfont.9b167c72ac8787e081cc.ttf",
     "static/media/fa-solid-900.svg": "/minuvis/app/static/media/fa-solid-900.4eb6043220be660d50c5.svg",
@@ -930,10 +930,10 @@
     "static/media/control_minus.svg": "/minuvis/app/static/media/control_minus.f3b4289d86eb5c6512bf.svg",
     "static/media/audio_rec.svg": "/minuvis/app/static/media/audio_rec.fa89fcfd1ae9bd3a02bb.svg",
     "main.f3f9acdb.css.map": "/minuvis/app/static/css/main.f3f9acdb.css.map",
-    "main.67e59fcc.js.map": "/minuvis/app/static/js/main.67e59fcc.js.map"
+    "main.1845d985.js.map": "/minuvis/app/static/js/main.1845d985.js.map"
   },
   "entrypoints": [
     "static/css/main.f3f9acdb.css",
-    "static/js/main.67e59fcc.js"
+    "static/js/main.1845d985.js"
   ]
 }

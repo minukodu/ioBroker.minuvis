@@ -625,6 +625,10 @@ hr.widget-inline-seperator {
 
 /* Gridstack End  */
 
+.datepicker > div {
+  display: block !important;
+}
+
 input.disabled {
   user-select: none;
   -moz-user-select: none;

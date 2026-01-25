@@ -10,6 +10,9 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.6.5 (2026-01-25)
+* (svallant) bugfix datepicker css
+
 ### 2.6.4 (2026-01-19)
 * (svallant) change color of copy-button
 
