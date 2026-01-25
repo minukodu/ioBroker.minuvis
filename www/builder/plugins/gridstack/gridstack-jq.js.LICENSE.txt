@@ -1,0 +1,44 @@
+/*!
+ * Sizzle CSS Selector Engine v2.3.5
+ * https://sizzlejs.com/
+ *
+ * Copyright JS Foundation and other contributors
+ * Released under the MIT license
+ * https://js.foundation/
+ *
+ * Date: 2020-03-14
+ */
+
+/*!
+ * jQuery JavaScript Library v3.5.1
+ * https://jquery.com/
+ *
+ * Includes Sizzle.js
+ * https://sizzlejs.com/
+ *
+ * Copyright JS Foundation and other contributors
+ * Released under the MIT license
+ * https://jquery.org/license
+ *
+ * Date: 2020-05-04T22:49Z
+ */
+
+/*! jQuery UI - v1.12.1 - 2019-11-20
+* http://jqueryui.com
+* Includes: widget.js, data.js, disable-selection.js, scroll-parent.js, widgets/draggable.js, widgets/droppable.js, widgets/resizable.js, widgets/mouse.js
+* Copyright jQuery Foundation and other contributors; Licensed MIT
+*/
+
+// gridstack-GridStackDD.get().ts 3.1.0 @preserve
+
+// gridstack-dd-jqueryui.ts 3.1.0 @preserve
+
+// gridstack-ddi.ts 3.1.0 @preserve
+
+// gridstack-engine.ts 3.1.0 @preserve
+
+// gridstack.ts 3.1.0 @preserve
+
+// index.jq.ts 3.1.0 - everything you need for a Grid that uses Jquery-ui drag&drop (original, full feature) @preserve
+
+// utils.ts 3.1.0 @preserve

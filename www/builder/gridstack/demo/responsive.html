@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Responsive grid demo</title>
+
+  <link rel="stylesheet" href="demo.css"/>
+  <link rel="stylesheet" href="../dist/gridstack-extra.css"/>
+  <script src="../dist/gridstack-h5.js"></script>
+</head>
+<body>
+  <div>
+    <h1>Responsive grid demo</h1>
+    <div>
+      <span>Number of Columns:</span> <span id="column-text"></span>
+    </div>
+    <div>
+      <label>Choose re-layout:</label>
+      <select onchange="layout = this.value">
+        <option value="moveScale">move + scale</option>
+        <option value="move">move</option>
+        <option value="scale">scale</option>
+        <option value="none">none</option>
+      </select>
+    </div>
+    <br/>
+    <div class="grid-stack">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    let grid = GridStack.init({
+      disableOneColumnMode: true, // will manually do 1 column
+      float: true });
+    let text = document.querySelector('#column-text');
+    let layout = 'moveScale';
+    
+    function resizeGrid() {
+      let width = document.body.clientWidth;
+      if (width < 700) {
+        grid.column(1, layout);
+        text.innerHTML = 1;
+      } else if (width < 850) {
+        grid.column(3, layout);
+        text.innerHTML = 3;
+      } else if (width < 950) {
+        grid.column(6, layout);
+        text.innerHTML = 6;
+      } else if (width < 1100) {
+        grid.column(8, layout);
+        text.innerHTML = 8;
+      } else {
+        grid.column(12, layout);
+        text.innerHTML = 12;
+      }
+    };
+    
+    let items = [
+      {x: 0, y: 0, w: 2, h: 2, content: '0'},
+      {x: 2, y: 0, w: 2, content: '1'},
+      {x: 5, y: 0, content: '2'},
+      {x: 1, y: 3, w: 4, content: '3'},
+      {x: 5, y: 2, w: 2, content: '4'},
+      {x: 0, y: 4, w: 12, content: '5'}
+    ];
+    grid.load(items);
+    resizeGrid();
+
+    window.addEventListener('resize', function() {resizeGrid()});
+  </script>
+</body>
+</html>
