@@ -1079,7 +1079,8 @@ function addWidgetToPage(
     // add stateId to state-Select
     var stateIdElements = $('#props-' + uuid + ' .type-stateId');
     stateIdElements.each(function () {
-      var stateId = $(this).attr('data-stateid');
+      //var stateId = $(this).attr('data-stateid');
+      var stateId = $(this).attr('value');
       $(this).find('option').remove();
       $(this).append(
         $(
