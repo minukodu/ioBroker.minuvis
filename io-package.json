@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "minuvis",
-    "version": "2.6.6",
+    "version": "2.7.0",
     "news": {
+      "2.7.0": {
+        "en": "fixing issues detected by repository checker",
+        "de": "Behebung von Problemen, die vom Repository-Prüfer erkannt wurden",
+        "ru": "Исправление ошибок, обнаруженных средством проверки репозитория.",
+        "pt": "Corrigindo problemas detectados pelo verificador de repositório.",
+        "nl": "Het oplossen van problemen die door de repositorychecker zijn gedetecteerd.",
+        "fr": "Correction des problèmes détectés par le vérificateur de dépôt",
+        "it": "risoluzione dei problemi rilevati dal controllo del repository",
+        "es": "Solución de problemas detectados por el verificador de repositorio",
+        "pl": "naprawianie problemów wykrytych przez moduł sprawdzający repozytorium",
+        "uk": "виправлення проблем, виявлених перевірником репозиторію",
+        "zh-cn": "修复存储库检查器检测到的问题"
+      },
       "2.6.6": {
         "en": "updated builder and app to V2.6.6",
         "de": "Builder und App auf V2.6.6 aktualisiert",
