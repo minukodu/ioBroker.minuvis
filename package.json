@@ -14,6 +14,7 @@
   "homepage": "https://github.com/minukodu/ioBroker.minuvis",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "Vis SCADA Visualization"
   ],
   "repository": {
