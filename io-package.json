@@ -16,78 +16,6 @@
         "uk": "виправлення проблем, виявлених перевірником репозиторію",
         "zh-cn": "修复存储库检查器检测到的问题"
       },
-      "2.6.6": {
-        "en": "updated builder and app to V2.6.6",
-        "de": "Builder und App auf V2.6.6 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.6.6",
-        "pt": "construtor e aplicativo atualizados para V2.6.6",
-        "nl": "geüpdatete bouwer en app naar V2.6.6",
-        "fr": "constructeur et application mis à jour vers V2.6.6",
-        "it": "builder e app aggiornati alla V2.6.6",
-        "es": "constructor y aplicación actualizados a V2.6.6",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.6",
-        "zh-cn": "将构建器和应用程序更新到 V2.6.6"
-      },
-      "2.6.5": {
-        "en": "updated builder and app to V2.6.5",
-        "de": "Builder und App auf V2.6.5 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.6.5",
-        "pt": "construtor e aplicativo atualizados para V2.6.5",
-        "nl": "geüpdatete bouwer en app naar V2.6.5",
-        "fr": "constructeur et application mis à jour vers V2.6.5",
-        "it": "builder e app aggiornati alla V2.6.5",
-        "es": "constructor y aplicación actualizados a V2.6.5",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.5",
-        "zh-cn": "将构建器和应用程序更新到 V2.6.5"
-      },
-      "2.6.4": {
-        "en": "updated builder and app to V2.6.4",
-        "de": "Builder und App auf V2.6.4 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.6.4",
-        "pt": "construtor e aplicativo atualizados para V2.6.4",
-        "nl": "geüpdatete bouwer en app naar V2.6.4",
-        "fr": "constructeur et application mis à jour vers V2.6.4",
-        "it": "builder e app aggiornati alla V2.6.4",
-        "es": "constructor y aplicación actualizados a V2.6.4",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.4",
-        "zh-cn": "将构建器和应用程序更新到 V2.6.4"
-      },
-      "2.6.3": {
-        "en": "updated builder and app to V2.6.3",
-        "de": "Builder und App auf V2.6.3 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.6.3",
-        "pt": "construtor e aplicativo atualizados para V2.6.3",
-        "nl": "geüpdatete bouwer en app naar V2.6.3",
-        "fr": "constructeur et application mis à jour vers V2.6.3",
-        "it": "builder e app aggiornati alla V2.6.3",
-        "es": "constructor y aplicación actualizados a V2.6.3",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.3",
-        "zh-cn": "将构建器和应用程序更新到 V2.6.3"
-      },
-      "2.6.2": {
-        "en": "updated builder and app to V2.6.2",
-        "de": "Builder und App auf V2.6.2 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.6.2",
-        "pt": "construtor e aplicativo atualizados para V2.6.2",
-        "nl": "geüpdatete bouwer en app naar V2.6.2",
-        "fr": "constructeur et application mis à jour vers V2.6.2",
-        "it": "builder e app aggiornati alla V2.6.2",
-        "es": "constructor y aplicación actualizados a V2.6.2",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.6.2",
-        "zh-cn": "将构建器和应用程序更新到 V2.6.2"
-      },
-      "2.3.4": {
-        "en": "updated builder and app to V2.3.4",
-        "de": "Builder und App auf V2.3.4 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.3.4",
-        "pt": "construtor e aplicativo atualizados para V2.3.4",
-        "nl": "geüpdatete bouwer en app naar V2.3.4",
-        "fr": "constructeur et application mis à jour vers V2.3.4",
-        "it": "builder e app aggiornati alla V2.3.4",
-        "es": "constructor y aplicación actualizados a V2.3.4",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.4",
-        "zh-cn": "将构建器和应用程序更新到 V2.3.4"
-      },
       "2.3.3": {
         "en": "updated builder and app to V2.3.3",
         "de": "Builder und App auf V2.3.3 aktualisiert",
@@ -195,9 +123,10 @@
       "nl": "Visualisatie voor alle apparaten",
       "fr": "Visualisation pour tous les appareils",
       "it": "Visualizzazione per tutti i dispositivi",
-      "es": "Visualización para todos los dispositivos.",
+      "es": "Visualización para todos los dispositivos",
       "pl": "Wizualizacja dla wszystkich urządzeń",
-      "zh-cn": "可视化所有设备"
+      "uk": "Візуалізація для всіх пристроїв",
+      "zh-cn": "所有设备的可视化"
     },
     "authors": [
       "svallant <svallant@gmx.eu>"
@@ -205,33 +134,60 @@
     "keywords": [
       "Vis SCADA Visualization"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "minuvis.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/master/admin/minuvis.png",
     "readme": "https://github.com/minukodu/ioBroker.minuvis/blob/master/README.md",
     "loglevel": "info",
+    "tier": 3,
     "mode": "none",
     "type": "visualization",
     "onlyWWW": true,
-    "localLink": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
     "singleton": true,
-    "noConfig": true,
     "connectionType": "local",
     "dataSource": "assumption",
-    "welcomeScreen": {
-      "link": "minuvis/builder/index.html",
-      "name": "minuvis builder",
-      "img": "minuvis/app/android-chrome-512x512.png",
-      "color": "#00828B",
-      "order": 99
+    "localLinks": {
+      "_default": {
+        "link": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
+        "icon": "minuvis/app/android-chrome-512x512.png",
+        "name": {
+          "en": "minuvis builder",
+          "de": "minuvis builder",
+          "ru": "minuvis builder",
+          "pt": "construtor minuvis",
+          "nl": "minuvis builder",
+          "fr": "constructeur minuvis",
+          "it": "costruttore di minuvis",
+          "es": "constructor de minuvis",
+          "pl": "konstruktor minuvis",
+          "uk": "конструктор Minuvis",
+          "zh-cn": "微型构建器"
+        },
+        "color": "#00828B"
+      }
+    },
+    "welcomeScreen": [
+      {
+        "link": "minuvis/builder/index.html",
+        "name": "minuvis builder",
+        "img": "minuvis/app/android-chrome-512x512.png",
+        "color": "#00828B",
+        "order": 99
+      }
+    ],
+    "adminUI": {
+      "config": "none"
     },
     "dependencies": [
       {
-        "js-controller": ">=2.0.0",
-        "web": ">=1.5.4"
+        "js-controller": ">=6.0.11",
+        "web": ">=1.5.4",
+        "admin": ">=7.6.17"
       }
     ]
   },
