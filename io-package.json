@@ -1,6 +1,6 @@
 {
-	"common": {
-		"name": "minuvis",
+  "common": {
+    "name": "minuvis",
     "version": "2.7.0",
     "news": {
       "2.7.0": {
@@ -54,148 +54,113 @@
         "zh-cn": "将应用更新为V2.3.1"
       },
       "2.3.0": {
-        "en": "updated builder and app to V2.3.0",
-        "de": "Builder und App auf V2.3.0 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.3.0",
-        "pt": "construtor e aplicativo atualizados para V2.3.0",
-        "nl": "geüpdatete bouwer en app naar V2.3.0",
-        "fr": "constructeur et application mis à jour vers V2.3.0",
-        "it": "builder e app aggiornati alla V2.3.0",
-        "es": "constructor y aplicación actualizados a V2.3.0",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.0",
-        "zh-cn": "将构建器和应用程序更新到 V2.3.0"
-      },
-      "2.2.1": {
-        "en": "updated app to V2.2.1",
-        "de": "App auf V2.2.1 aktualisiert",
-        "ru": "обновлено приложение до V2.2.1",
-        "pt": "aplicativo atualizado para V2.2.1",
-        "nl": "bijgewerkte app naar V2.2.1",
-        "fr": "application mise à jour à V2.2.1",
-        "it": "app aggiornata alla V2.2.1",
-        "es": "aplicación actualizada a V2.2.1",
-        "pl": "zaktualizowana aplikacja do wersji V2.2.1",
-        "zh-cn": "将应用更新为V2.2.1"
-      },
-      "2.2.0": {
-        "en": "updated app to V2.2.0",
-        "de": "App auf V2.2.0 aktualisiert",
-        "ru": "обновлено приложение до V2.2.0",
-        "pt": "aplicativo atualizado para V2.2.0",
-        "nl": "bijgewerkte app naar V2.2.0",
-        "fr": "application mise à jour à V2.2.0",
-        "it": "app aggiornata alla V2.2.0",
-        "es": "aplicación actualizada a V2.2.0",
-        "pl": "zaktualizowana aplikacja do wersji V2.2.0",
-        "zh-cn": "将应用更新为V2.2.0"
-      },
-      "2.1.0": {
-        "en": "updated app to V2.1.0",
-        "de": "App auf V2.1.0 aktualisiert",
-        "ru": "обновлено приложение до V2.1.0",
-        "pt": "aplicativo atualizado para V2.1.0",
-        "nl": "bijgewerkte app naar V2.1.0",
-        "fr": "application mise à jour à V2.1.0",
-        "it": "app aggiornata alla V2.1.0",
-        "es": "aplicación actualizada a V2.1.0",
-        "pl": "zaktualizowana aplikacja do wersji V2.1.0",
-        "zh-cn": "将应用更新为V2.1.0"
+        "en": "updated builder and app to V2.3.3",
+        "de": "Builder und App auf Version 2.3.3 aktualisiert.",
+        "ru": "Обновлены конструктор и приложение до версии 2.3.3.",
+        "pt": "Construtor e aplicativo atualizados para a versão 2.3.3",
+        "nl": "De builder en app zijn bijgewerkt naar versie 2.3.3.",
+        "fr": "Mise à jour du générateur et de l'application vers la version 2.3.3",
+        "it": "builder e app aggiornati alla versione V2.3.3",
+        "es": "Constructor y aplicación actualizados a la versión V2.3.3",
+        "pl": "zaktualizowano kreatora i aplikację do wersji 2.3.3",
+        "uk": "оновлено конструктор та додаток до версії 2.3.3",
+        "zh-cn": "已将构建器和应用程序更新至 V2.3.3 版本"
       }
     },
-		"titleLang": {
-			"en": "minuvis",
-			"de": "minuvis",
-			"ru": "минувис",
-			"pt": "minuvis",
-			"nl": "minuvis",
-			"fr": "minuvis",
-			"it": "minuvis",
-			"es": "minuvis",
-			"pl": "minuta",
-			"uk": "minuvis",
-			"zh-cn": "米努维斯"
-		},
-		"desc": {
-			"en": "Visualization for all devices",
-			"de": "Visualisierung für alle Geräte",
-			"ru": "Визуализация для всех устройств",
-			"pt": "Visualização para todos os dispositivos",
-			"nl": "Visualisatie voor alle apparaten",
-			"fr": "Visualisation pour tous les appareils",
-			"it": "Visualizzazione per tutti i dispositivi",
-			"es": "Visualización para todos los dispositivos.",
-			"pl": "Wizualizacja dla wszystkich urządzeń",
-			"uk": "Візуалізація для всіх пристроїв",
-			"zh-cn": "所有设备的可视化"
-		},
-		"authors": [
-			"svallant <svallant@gmx.eu>"
-		],
-		"keywords": [
-			"Vis SCADA Visualization"
-		],
-		"licenseInformation": {
-			"type": "free",
-			"license": "MIT"
-		},
-		"platform": "Javascript/Node.js",
-		"icon": "minuvis.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/main/admin/minuvis.png",
-		"readme": "https://github.com/minukodu/ioBroker.minuvis/blob/main/README.md",
-		"loglevel": "info",
-		"tier": 3,
-		"mode": "none",
-		"type": "visualization",
-		"onlyWWW": true,
-		"singleton": true,
-		"connectionType": "local",
-		"dataSource": "assumption",
-		"localLinks": {
-			"_default": {
-				"link": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
-				"icon": "minuvis/app/android-chrome-512x512.png",
-				"name": {
-					"en": "minuvis builder",
-					"de": "minuvis builder",
-					"ru": "minuvis builder",
-					"pt": "construtor minuvis",
-					"nl": "minuvis builder",
-					"fr": "constructeur minuvis",
-					"it": "costruttore di minuvis",
-					"es": "constructor de minuvis",
-					"pl": "konstruktor minuvis",
-					"uk": "конструктор Minuvis",
-					"zh-cn": "微型构建器"
-				},
-				"color": "#00828B"
-			}
-		},
-		"welcomeScreen": [
-			{
-				"link": "minuvis/builder/index.html",
-				"name": "minuvis builder",
-				"img": "minuvis/app/android-chrome-512x512.png",
-				"color": "#00828B",
-				"order": 99
-			}
-		],
-		"adminUI": {
-			"config": "none"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=6.0.11",
-				"web": ">=1.5.4"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=7.0.23"
-			}
-		]
-	},
-	"native": {},
-	"objects": [],
-	"instanceObjects": []
+    "titleLang": {
+      "en": "minuvis",
+      "de": "minuvis",
+      "ru": "минувис",
+      "pt": "minuvis",
+      "nl": "minuvis",
+      "fr": "minuvis",
+      "it": "minuvis",
+      "es": "minuvis",
+      "pl": "minuta",
+      "uk": "minuvis",
+      "zh-cn": "米努维斯"
+    },
+    "desc": {
+      "en": "Visualization for all devices",
+      "de": "Visualisierung für alle Geräte",
+      "ru": "Визуализация для всех устройств",
+      "pt": "Visualização para todos os dispositivos",
+      "nl": "Visualisatie voor alle apparaten",
+      "fr": "Visualisation pour tous les appareils",
+      "it": "Visualizzazione per tutti i dispositivi",
+      "es": "Visualización para todos los dispositivos.",
+      "pl": "Wizualizacja dla wszystkich urządzeń",
+      "uk": "Візуалізація для всіх пристроїв",
+      "zh-cn": "所有设备的可视化"
+    },
+    "authors": [
+      "svallant <svallant@gmx.eu>"
+    ],
+    "keywords": [
+      "Vis SCADA Visualization"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "minuvis.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/minukodu/ioBroker.minuvis/admin/minuvis.png",
+    "readme": "https://github.com/minukodu/ioBroker.minuvis/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "none",
+    "type": "visualization",
+    "onlyWWW": true,
+    "singleton": true,
+    "connectionType": "local",
+    "dataSource": "assumption",
+    "localLinks": {
+      "_default": {
+        "link": "%web_protocol%://%ip%:%web_port%/minuvis/builder/index.html",
+        "icon": "minuvis/app/android-chrome-512x512.png",
+        "name": {
+          "en": "minuvis builder",
+          "de": "minuvis builder",
+          "ru": "minuvis builder",
+          "pt": "construtor minuvis",
+          "nl": "minuvis builder",
+          "fr": "constructeur minuvis",
+          "it": "costruttore di minuvis",
+          "es": "constructor de minuvis",
+          "pl": "konstruktor minuvis",
+          "uk": "конструктор Minuvis",
+          "zh-cn": "微型构建器"
+        },
+        "color": "#00828B"
+      }
+    },
+    "welcomeScreen": [
+      {
+        "link": "minuvis/builder/index.html",
+        "name": "minuvis builder",
+        "img": "minuvis/app/android-chrome-512x512.png",
+        "color": "#00828B",
+        "order": 99
+      }
+    ],
+    "adminUI": {
+      "config": "none"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11",
+        "web": ">=1.5.4"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.0.23"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
