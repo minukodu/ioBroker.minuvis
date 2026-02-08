@@ -18,43 +18,6 @@
       },
       "2.3.3": {
         "en": "updated builder and app to V2.3.3",
-        "de": "Builder und App auf V2.3.3 aktualisiert",
-        "ru": "обновленный конструктор и приложение до версии 2.3.3",
-        "pt": "construtor e aplicativo atualizados para V2.3.3",
-        "nl": "geüpdatete bouwer en app naar V2.3.3",
-        "fr": "constructeur et application mis à jour vers V2.3.3",
-        "it": "builder e app aggiornati alla V2.3.3",
-        "es": "constructor y aplicación actualizados a V2.3.3",
-        "pl": "zaktualizowany kreator i aplikacja do wersji 2.3.3",
-        "zh-cn": "将构建器和应用程序更新到 V2.3.3"
-      },
-      "2.3.2": {
-        "en": "remove bug in io-package.json file",
-        "de": "bug in io-package entfernen. json file",
-        "ru": "удалить баг в io-package. json файл",
-        "pt": "remover bug no io-package. arquivo json",
-        "nl": "verwijder bug in io-package. json dossier",
-        "fr": "supprimer bug dans io-package. json file",
-        "it": "rimuovere bug in io-package. file json",
-        "es": "quita el bicho en io-paquete. json file",
-        "pl": "usunąć bug w io-packaged. json file",
-        "uk": "видалити помилки в io-package. файл json",
-        "zh-cn": "b 用于碘剂。 json档案"
-      },
-      "2.3.1": {
-        "en": "updated app to V2.3.1",
-        "de": "App auf V2.3.1 aktualisiert",
-        "ru": "обновлено приложение до V2.3.1",
-        "pt": "aplicativo atualizado para V2.3.1",
-        "nl": "bijgewerkte app naar V2.3.1",
-        "fr": "application mise à jour à V2.3.1",
-        "it": "app aggiornata alla V2.3.1",
-        "es": "aplicación actualizada a V2.3.1",
-        "pl": "zaktualizowana aplikacja do wersji V2.3.1",
-        "zh-cn": "将应用更新为V2.3.1"
-      },
-      "2.3.0": {
-        "en": "updated builder and app to V2.3.3",
         "de": "Builder und App auf Version 2.3.3 aktualisiert.",
         "ru": "Обновлены конструктор и приложение до версии 2.3.3.",
         "pt": "Construtor e aplicativo atualizados para a versão 2.3.3",
