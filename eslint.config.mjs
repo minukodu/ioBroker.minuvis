@@ -18,7 +18,8 @@ export default [
 			'admin/admin.d.ts',
 			'admin/blockly.js',
 			'**/adapter-config.d.ts',
-			'widgets/**/*.js'
+			'widgets/**/*.js',
+			'www'
 		],
 	},
 	{
