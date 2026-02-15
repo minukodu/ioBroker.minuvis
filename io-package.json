@@ -4,17 +4,17 @@
     "version": "2.7.0",
     "news": {
       "2.7.0": {
-        "en": "fixing issues detected by repository checker",
-        "de": "Behebung von Problemen, die vom Repository-Prüfer erkannt wurden",
-        "ru": "Исправление ошибок, обнаруженных средством проверки репозитория.",
-        "pt": "Corrigindo problemas detectados pelo verificador de repositório.",
-        "nl": "Het oplossen van problemen die door de repositorychecker zijn gedetecteerd.",
-        "fr": "Correction des problèmes détectés par le vérificateur de dépôt",
-        "it": "risoluzione dei problemi rilevati dal controllo del repository",
-        "es": "Solución de problemas detectados por el verificador de repositorio",
-        "pl": "naprawianie problemów wykrytych przez moduł sprawdzający repozytorium",
-        "uk": "виправлення проблем, виявлених перевірником репозиторію",
-        "zh-cn": "修复存储库检查器检测到的问题"
+        "en": "fixing issues detected by repository checker\nupdated app and builder to V2.7.0",
+        "de": "Behebung von Problemen, die vom Repository-Prüfer erkannt wurden\nApp und Builder wurden auf Version 2.7.0 aktualisiert.",
+        "ru": "Исправление ошибок, обнаруженных средством проверки репозитория.\nПриложение и конструктор обновлены до версии 2.7.0.",
+        "pt": "Corrigindo problemas detectados pelo verificador de repositório.\nAplicativo e construtor atualizados para a versão 2.7.0.",
+        "nl": "Het oplossen van problemen die door de repositorychecker zijn gedetecteerd.\nDe app en builder zijn bijgewerkt naar versie 2.7.0.",
+        "fr": "Correction des problèmes détectés par le vérificateur de dépôt\nMise à jour de l'application et du générateur vers la version 2.7.0",
+        "it": "risoluzione dei problemi rilevati dal controllo del repository\napp e builder aggiornati alla versione V2.7.0",
+        "es": "Solución de problemas detectados por el verificador de repositorio\nAplicación y constructor actualizados a la versión 2.7.0",
+        "pl": "naprawianie problemów wykrytych przez moduł sprawdzający repozytorium\nzaktualizowano aplikację i kreator do wersji 2.7.0",
+        "uk": "виправлення проблем, виявлених перевірником репозиторію\nоновлено додаток та конструктор до версії 2.7.0",
+        "zh-cn": "修复存储库检查器检测到的问题\n应用程序和构建器已更新至 V2.7.0 版本"
       },
       "2.3.3": {
         "en": "updated builder and app to V2.3.3",
