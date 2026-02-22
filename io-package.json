@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "minuvis",
-    "version": "2.7.0",
+    "version": "2.7.1",
     "news": {
+      "2.7.1": {
+        "en": "updated README\nupdated app and builder to V2.7.1",
+        "de": "aktualisierte README-Datei\nApp und Builder wurden auf Version 2.7.1 aktualisiert.",
+        "ru": "обновленный файл README\nПриложение и конструктор обновлены до версии 2.7.1.",
+        "pt": "README atualizado\nAplicativo e construtor atualizados para a versão 2.7.1.",
+        "nl": "bijgewerkte README\nDe app en builder zijn bijgewerkt naar versie 2.7.1.",
+        "fr": "README mis à jour\nApplication et outil de création mis à jour vers la version 2.7.1",
+        "it": "README aggiornato\napp e builder aggiornati alla versione V2.7.1",
+        "es": "README actualizado\nAplicación y constructor actualizados a la versión 2.7.1",
+        "pl": "zaktualizowany plik README\nzaktualizowano aplikację i kreator do wersji 2.7.1",
+        "uk": "оновлений файл README\nоновлено додаток та конструктор до версії 2.7.1",
+        "zh-cn": "更新后的 README 文件\n应用和构建器已更新至 V2.7.1 版本"
+      },
       "2.7.0": {
         "en": "fixing issues detected by repository checker\nupdated app and builder to V2.7.0",
         "de": "Behebung von Problemen, die vom Repository-Prüfer erkannt wurden\nApp und Builder wurden auf Version 2.7.0 aktualisiert.",
