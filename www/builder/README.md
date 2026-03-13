@@ -10,6 +10,9 @@ and the Material Design Icons Community Icons from https://github.com/Templarian
 Big thanks to authors for these icon sets.
 
 ## Changelog
+### 2.7.2 (2026-03-13)
+* (svallant) update jsonTable widget data
+* 
 ### 2.7.0 (2026-02-15)
 * (svallant) no changes: align version with adapter
 
