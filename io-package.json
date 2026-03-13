@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "minuvis",
-    "version": "2.7.1",
+    "version": "2.7.2",
     "news": {
+      "2.7.2": {
+        "en": "updated builder and app to V2.7.2",
+        "de": "Builder und App auf Version 2.7.2 aktualisiert.",
+        "ru": "Обновлены конструктор и приложение до версии 2.7.2.",
+        "pt": "Construtor e aplicativo atualizados para a versão 2.7.2",
+        "nl": "De builder en app zijn bijgewerkt naar versie 2.7.2.",
+        "fr": "Mise à jour du générateur et de l'application vers la version 2.7.2",
+        "it": "builder e app aggiornati alla versione V2.7.2",
+        "es": "Constructor y aplicación actualizados a la versión V2.7.2",
+        "pl": "zaktualizowano kreatora i aplikację do wersji 2.7.2",
+        "uk": "оновлено конструктор та додаток до версії 2.7.2",
+        "zh-cn": "已将构建器和应用程序更新至 V2.7.2 版本"
+      },
       "2.7.1": {
         "en": "updated README\nupdated app and builder to V2.7.1",
         "de": "aktualisierte README-Datei\nApp und Builder wurden auf Version 2.7.1 aktualisiert.",
@@ -132,7 +145,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.0.23"
+        "admin": ">=7.6.20"
       }
     ]
   },
