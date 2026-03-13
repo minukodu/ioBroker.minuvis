@@ -2119,18 +2119,8 @@ var widgetJSON = {
     },
     colsize: {
       type: 'string',
-      default: '100,100,100',
-      tooltip: 'size of tablecolumns, comma-separated, 0 for hide column',
-    },
-    lineBreaks: {
-      type: 'string',
-      default: '0,0,0',
-      tooltip: '0 for no line-break, 1 for line break,comma-separated',
-    },
-    contentTypes: {
-      type: 'string',
-      default: 't,t,t',
-      tooltip: 't for text, i for image, comma-separated',
+      default: '33,33,33',
+      tooltip: 'size of tablecolumns, comma-separated, sum will be 100%',
     },
     rowsPerPage: {
       type: 'number',
