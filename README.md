@@ -108,6 +108,8 @@ if you are upgrading from version < 1.3.0 please note:
 ### 2.1.0 (2021-07-31)
 * updated app and builder to V2.1.0
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
